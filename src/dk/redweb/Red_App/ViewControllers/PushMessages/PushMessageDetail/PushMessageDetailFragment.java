@@ -31,7 +31,7 @@ public class PushMessageDetailFragment extends BasePageFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflate, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflate, container, R.layout.frag_pushmessagedetail);
+        super.onCreateView(inflate, container, R.layout.page_pushmessagedetail);
 
         int messageId = 0;
         try {
@@ -94,7 +94,7 @@ public class PushMessageDetailFragment extends BasePageFragment {
         super.onResume();
 
         NavBarBox navBarBox = (NavBarBox)getActivity().findViewById(R.id.navbar);
-        navBarBox.setUpButtonTargetForThisPage(_page, null);
+        navBarBox.setUpButtonTargetForThisPage(_page);
     }
 
     private void setAppearance(){

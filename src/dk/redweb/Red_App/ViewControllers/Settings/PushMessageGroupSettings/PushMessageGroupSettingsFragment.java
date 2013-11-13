@@ -31,7 +31,7 @@ public class PushMessageGroupSettingsFragment extends BasePageFragment {
     }
 
     public View onCreateView(LayoutInflater inflate, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflate, container, R.layout.frag_pushmessagegroupsettings);
+        super.onCreateView(inflate, container, R.layout.page_pushmessagegroupsettings);
 
         setAppearance();
         setText();
@@ -50,7 +50,7 @@ public class PushMessageGroupSettingsFragment extends BasePageFragment {
         super.onResume();
 
         NavBarBox navBarBox = (NavBarBox)getActivity().findViewById(R.id.navbar);
-        navBarBox.setUpButtonTargetForThisPage(_page, null);
+        navBarBox.setUpButtonTargetForThisPage(_page);
     }
 
     private void setAppearance(){
@@ -72,7 +72,7 @@ public class PushMessageGroupSettingsFragment extends BasePageFragment {
 
     private void setText(){
         try{
-            TextHelper helper = new TextHelper(_view, Name, _xml);
+            TextHelper helper = new TextHelper(_view, _name, _xml);
 
             helper.setText(R.id.pushmessagegroupsettings_lblTitle, TEXT.PUSHMESSAGEGROUPSETTINGS_TITLE, DEFAULTTEXT.PUSHMESSAGEGROUPSETTINGS_TITLE);
 

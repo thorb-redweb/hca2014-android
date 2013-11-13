@@ -1,6 +1,5 @@
 package dk.redweb.Red_App.ViewControllers.Session.DailySessionList;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +8,7 @@ import android.widget.*;
 import dk.redweb.Red_App.*;
 import dk.redweb.Red_App.Model.Venue;
 import dk.redweb.Red_App.StaticNames.*;
-import dk.redweb.Red_App.ViewControllers.BaseActivity;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
-import dk.redweb.Red_App.ViewControllers.Session.SessionDetail.SessionDetailActivity;
 import dk.redweb.Red_App.ViewModels.SessionVM;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
 import org.joda.time.LocalDate;
@@ -47,7 +44,7 @@ public class DailySessionListFragment extends BasePageFragment {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, R.layout.act_dailysessionlist);
+        super.onCreateView(inflater, container, R.layout.page_dailysessionlist);
 
         _spnVenue = (Spinner)findViewById(R.id.dailysessionlist_spnVenue);
         _lstSession = (ListView)findViewById(R.id.dailysessionlist_lstSessions);
@@ -140,8 +137,7 @@ public class DailySessionListFragment extends BasePageFragment {
 
                 SessionVM selectedSession = (SessionVM) adapter.getItem(position);
                 try {
-                    XmlNode selectedPage = _xml.getPage(_childname);
-                    XmlNode nextPage = selectedPage.deepClone();
+                    XmlNode nextPage = _xml.getPage(_childname).deepClone();
                     nextPage.addChildToNode(PAGE.SESSIONID, selectedSession.SessionId());
                     NavController.changePageWithXmlNode(nextPage,getActivity());
                 } catch (Exception e) {

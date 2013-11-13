@@ -34,7 +34,7 @@ public class ArticleDetailFragment extends BasePageFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflate, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflate, container, R.layout.frag_articledetail);
+        super.onCreateView(inflate, container, R.layout.page_articledetail);
 
         int articleId = 0;
         try {
@@ -108,7 +108,7 @@ public class ArticleDetailFragment extends BasePageFragment {
         super.onResume();
 
         NavBarBox navBarBox = (NavBarBox)getActivity().findViewById(R.id.navbar);
-        navBarBox.setUpButtonTargetForThisPage(_page, null);
+        navBarBox.setUpButtonTargetForThisPage(_page);
     }
 
     private void setAppearance(){

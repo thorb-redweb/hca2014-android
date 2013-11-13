@@ -8,7 +8,7 @@ import android.widget.*;
 import dk.redweb.Red_App.*;
 import dk.redweb.Red_App.Database.DbInterface;
 import dk.redweb.Red_App.StaticNames.*;
-import dk.redweb.Red_App.ViewControllers.Session.SessionDetail.SessionDetailActivity;
+import dk.redweb.Red_App.ViewControllers.Session.SessionDetail.SessionDetailFragment;
 import dk.redweb.Red_App.ViewModels.SessionVM;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
 import dk.redweb.Red_App.XmlHandling.XmlStore;
@@ -76,7 +76,7 @@ public class UpcomingSessions extends LinearLayout{
                 SessionVM selectedSession = (SessionVM) adapter.getItem(position);
                 try {
                     XmlNode selectedPage = _xml.getPage(_childname);
-                    Intent detailIntent = new Intent(view.getContext(), SessionDetailActivity.class);
+                    Intent detailIntent = new Intent(view.getContext(), SessionDetailFragment.class);
                     detailIntent.putExtra(EXTRA.SESSIONID, selectedSession.SessionId());
                     detailIntent.putExtra(EXTRA.PAGE, selectedPage);
                     _frontpageactivity.startActivity(detailIntent);

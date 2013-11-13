@@ -27,7 +27,7 @@ public class ImageArticleListFragment extends BasePageFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, R.layout.frag_imagearticlelist);
+        super.onCreateView(inflater, container, R.layout.page_imagearticlelist);
         setAppearance();
         setText();
 
@@ -52,7 +52,7 @@ public class ImageArticleListFragment extends BasePageFragment {
 
     private void setText(){
         try {
-            TextHelper helper = new TextHelper(_view, Name,_xml);
+            TextHelper helper = new TextHelper(_view, _name,_xml);
             helper.setText(R.id.imageArticleList_lblEmptyList, TEXT.IMAGEARTICLELIST_EMPTYLIST, DEFAULTTEXT.IMAGEARTICLELIST_EMPTYLIST);
         } catch (Exception e) {
             MyLog.e("Exception when setting static text", e);

@@ -49,7 +49,7 @@ public class PushMessageInitializerFragment extends BasePageFragment implements 
         boolean hasInitialized = PushMessageInitializationHandling.checkInitialization(getActivity());
         //hasInitialized = false;
 
-        super.onCreateView(inflate, container, R.layout.frag_pushmessageinitializer);
+        super.onCreateView(inflate, container, R.layout.page_pushmessageinitializer);
 
         if(hasInitialized){
             changeToNextPage();
@@ -86,7 +86,7 @@ public class PushMessageInitializerFragment extends BasePageFragment implements 
         super.onResume();
 
         NavBarBox navBarBox = (NavBarBox)getActivity().findViewById(R.id.navbar);
-        navBarBox.setUpButtonTargetForThisPage(_page, null);
+        navBarBox.setUpButtonTargetForThisPage(_page);
     }
 
     private void setAppearance(){
@@ -126,7 +126,7 @@ public class PushMessageInitializerFragment extends BasePageFragment implements 
 
     private void setText(){
         try{
-            TextHelper helper = new TextHelper(_view, Name, _xml);
+            TextHelper helper = new TextHelper(_view, _name, _xml);
 
             helper.setText(R.id.pushmessageinitializer_lblPageDescription, TEXT.PUSHMESSAGEINITIALIZER_PAGEDESCRIPTION, DEFAULTTEXT.PUSHMESSAGEINITIALIZER_PAGEDESCRIPTION);
 

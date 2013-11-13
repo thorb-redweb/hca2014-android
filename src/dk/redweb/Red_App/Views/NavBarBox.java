@@ -8,16 +8,12 @@ import android.view.View;
 import android.widget.*;
 import dk.redweb.Red_App.*;
 import dk.redweb.Red_App.Database.DbInterface;
-import dk.redweb.Red_App.StaticNames.EXTRA;
 import dk.redweb.Red_App.StaticNames.LOOK;
 import dk.redweb.Red_App.StaticNames.PAGE;
 import dk.redweb.Red_App.StaticNames.TEXT;
 import dk.redweb.Red_App.ViewModels.SessionVM;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
 import dk.redweb.Red_App.XmlHandling.XmlStore;
-
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Redweb with IntelliJ IDEA.
@@ -188,7 +184,7 @@ public class NavBarBox extends LinearLayout {
         }
     }
 
-    public void setUpButtonTargetForThisPage(final XmlNode thisPage, final HashMap<String, Integer> extras){
+    public void setUpButtonTargetForThisPage(final XmlNode thisPage){
         _upButton.setVisibility(VISIBLE);
 
         TextView txtUpButton = (TextView)findViewById(R.id.navbar_lblUpButton);
@@ -198,7 +194,7 @@ public class NavBarBox extends LinearLayout {
             parentPage = _xml.getOfficialParentOf(thisPage);
 
             if(parentPage.hasChild(PAGE.NAVNAME)){
-                txtUpButton.setText(determineNavname(parentPage, extras));
+                txtUpButton.setText(determineNavname(parentPage));
             } else {
                 txtUpButton.setText(parentPage.getStringFromNode(PAGE.NAME));
             }
@@ -211,9 +207,9 @@ public class NavBarBox extends LinearLayout {
             @Override
             public void onClick(View v) {
                 try{
-                    if(extras != null){
-                        for(Map.Entry<String, Integer> entry : extras.entrySet()){
-                            nextPage.addChildToNode(entry.getKey(),String.valueOf(entry.getValue()));
+                    if(thisPage.hasChild(PAGE.PARENTPARAMETERS)){
+                        for(XmlNode child : thisPage.getChildFromNode(PAGE.PARENTPARAMETERS)){
+                            nextPage.addXmlNodeToNode(child);
                         }
                     }
                     NavController.changePageWithXmlNode(nextPage, _parentActivity);
@@ -224,10 +220,10 @@ public class NavBarBox extends LinearLayout {
         });
     }
 
-    private String determineNavname(XmlNode parentPage, HashMap<String,Integer> extras) throws NoSuchFieldException {
+    private String determineNavname(XmlNode parentPage) throws NoSuchFieldException {
         String navname = parentPage.getStringFromNode(PAGE.NAVNAME);
         if(navname.equals(PAGE.TAG_SESSIONTITLE)){
-            int sessionId = extras.get(EXTRA.SESSIONID);
+            int sessionId = parentPage.getChildFromNode(PAGE.PARENTPARAMETERS).getIntegerFromNode(PAGE.SESSIONID);
             SessionVM session = _db.Sessions.getVMFromId(sessionId);
             return session.Title();
         }

@@ -25,7 +25,7 @@ public class TEXT {
     public final static String NAVBAR_UPBUTTON = "backbutton";
 
     public final static String DAILYSESSIONLIST_EMPTYLIST = "emptylist";
-    public final static String DAILYSESSIONLIST_FILTERDATE = "filterdate";
+    public final static String DAILYSESSIONLIST_SPINNERTITLE = "filtersted";
 
     public final static String IMAGEARTICLELIST_EMPTYLIST = "emptylist";
 

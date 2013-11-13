@@ -1,17 +1,16 @@
 package dk.redweb.Red_App.ViewControllers.Map;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.Marker;
 import dk.redweb.Red_App.MyLog;
+import dk.redweb.Red_App.NavController;
 import dk.redweb.Red_App.R;
 import dk.redweb.Red_App.RedEventApplication;
-import dk.redweb.Red_App.StaticNames.EXTRA;
-import dk.redweb.Red_App.ViewControllers.Session.SessionDetail.SessionDetailActivity;
+import dk.redweb.Red_App.StaticNames.PAGE;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
 import dk.redweb.Red_App.XmlHandling.XmlStore;
 
@@ -22,14 +21,14 @@ import dk.redweb.Red_App.XmlHandling.XmlStore;
  */
 public class MapMarkerInfoWindowAdapter  implements GoogleMap.InfoWindowAdapter, GoogleMap.OnInfoWindowClickListener {
 
-    Activity context;
-    LayoutInflater inflater;
+    FragmentActivity _parentActivity;
+    LayoutInflater _inflater;
     XmlStore _xml;
 
-    public MapMarkerInfoWindowAdapter(LayoutInflater inflater, Activity context){
-        this.inflater = inflater;
-        this.context = context;
-        _xml = ((RedEventApplication)context.getApplication()).getXmlStore();
+    public MapMarkerInfoWindowAdapter(LayoutInflater inflater, FragmentActivity parentActivity){
+        _inflater = inflater;
+        _parentActivity = parentActivity;
+        _xml = ((RedEventApplication)parentActivity.getApplication()).getXmlStore();
     }
 
     @Override
@@ -39,7 +38,7 @@ public class MapMarkerInfoWindowAdapter  implements GoogleMap.InfoWindowAdapter,
 
     @Override
     public View getInfoContents(Marker marker) {
-        View infowindow = inflater.inflate(R.layout.mapmarker_infowindow, null);
+        View infowindow = _inflater.inflate(R.layout.mapmarker_infowindow, null);
 
         TextView txtTitle = (TextView)infowindow.findViewById(R.id.mapmarker_title);
         TextView txtBody = (TextView)infowindow.findViewById(R.id.mapmarker_body);
@@ -60,11 +59,10 @@ public class MapMarkerInfoWindowAdapter  implements GoogleMap.InfoWindowAdapter,
         String childname = input[2];
 
         try {
-            XmlNode selectedPage = _xml.getPage(childname);
-            Intent sessionDetailIntent = new Intent(context, SessionDetailActivity.class);
-            sessionDetailIntent.putExtra(EXTRA.SESSIONID, sessionId);
-            sessionDetailIntent.putExtra(EXTRA.PAGE, selectedPage);
-            context.startActivity(sessionDetailIntent);
+            XmlNode childPage = _xml.getPage(childname);
+            XmlNode nextPage = childPage.deepClone();
+            nextPage.addChildToNode(PAGE.SESSIONID,sessionId);
+            NavController.changePageWithXmlNode(nextPage, _parentActivity);
         } catch (Exception e) {
             MyLog.e("Exception in MapMarkerInfoWindowAdapter:onInfoWindowClick", e);
         }

@@ -86,6 +86,8 @@ public class BaseMapFragment extends BasePageFragment implements LocationListene
         super.onCreateView(inflater, container, resourceId);
 
         _mapFragment = SupportMapFragment.newInstance();
+//        FragmentTransaction transaction = getFragmentManager().beginTransaction();
+//        transaction.replace(R.id.map_lnrMapFragmentBox, _mapFragment).commit();
         NavController.changeChildPageWithFragment(_mapFragment, this, R.id.map_lnrMapFragmentBox, false);
 
         _sharedPrefs = _app.getSharedPreferences("SharedPreferences", Context.MODE_PRIVATE);
@@ -149,7 +151,7 @@ public class BaseMapFragment extends BasePageFragment implements LocationListene
 
     private void setText() {
         try{
-            TextHelper helper = new TextHelper(_view, Name, _xml);
+            TextHelper helper = new TextHelper(_view, _name, _xml);
 
             helper.setFlexibleButtonText(R.id.map_flxButtonBack, TEXT.MAP_BACKBUTTON, DEFAULTTEXT.MAP_BACKBUTTON);
         } catch (Exception e) {
@@ -235,7 +237,7 @@ public class BaseMapFragment extends BasePageFragment implements LocationListene
             if(lastLoc != null)
             {
                 _userLatLng = new LatLng(lastLoc.getLatitude(), lastLoc.getLongitude());
-                onLocationChanged(lastLoc);    //HACKS!!!!! Ensures that user icon is displayed. Fix if able.
+                onLocationChanged(lastLoc);    //TODO: HACKS!!!!! Ensures that user icon is displayed. Fix if able.
             } else {
                 _userLatLng = _standardCenter;
             }

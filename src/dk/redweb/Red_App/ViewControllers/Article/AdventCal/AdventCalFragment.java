@@ -36,7 +36,7 @@ public class AdventCalFragment extends BasePageFragment {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, R.layout.frag_adventcal);
+        super.onCreateView(inflater, container, R.layout.page_adventcal);
 
         int catid = -1;
 

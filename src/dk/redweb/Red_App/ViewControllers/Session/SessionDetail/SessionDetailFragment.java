@@ -1,6 +1,5 @@
 package dk.redweb.Red_App.ViewControllers.Session.SessionDetail;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,9 +8,7 @@ import android.webkit.WebView;
 import android.widget.*;
 import dk.redweb.Red_App.*;
 import dk.redweb.Red_App.StaticNames.*;
-import dk.redweb.Red_App.ViewControllers.BaseActivity;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
-import dk.redweb.Red_App.ViewControllers.Map.SessionMap.SessionMapFragment;
 import dk.redweb.Red_App.ViewModels.SessionVM;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
 
@@ -29,7 +26,7 @@ public class SessionDetailFragment extends BasePageFragment {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, R.layout.act_sessiondetail);
+        super.onCreateView(inflater, container, R.layout.page_sessiondetail);
 
 
         int sessionId = 0;

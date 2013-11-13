@@ -30,7 +30,7 @@ public class PushMessageListFragment  extends BasePageFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, R.layout.frag_pushmessagelist);
+        super.onCreateView(inflater, container, R.layout.page_pushmessagelist);
         setAppearance();
         setText();
 
@@ -55,7 +55,7 @@ public class PushMessageListFragment  extends BasePageFragment {
 
     private void setText(){
         try {
-            TextHelper helper = new TextHelper(_view, Name,_xml);
+            TextHelper helper = new TextHelper(_view, _name,_xml);
             helper.setText(R.id.pushmessagelist_lblEmptyList, TEXT.PUSHMESSAGELIST_EMPTYLIST, DEFAULTTEXT.PUSHMESSAGELIST_EMPTYLIST);
         } catch (Exception e) {
             MyLog.e("Exception when setting static text", e);

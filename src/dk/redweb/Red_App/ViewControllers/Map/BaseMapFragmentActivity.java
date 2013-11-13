@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesClient;
@@ -95,13 +94,13 @@ public class BaseMapFragmentActivity extends FragmentActivity implements Locatio
         try {
             name = page.getStringFromNode(PAGE.NAME);
         } catch (NoSuchFieldException e) {
-            Log.e("RedEvent", "NoSuchFieldException for 'name' in baseActivity:Constructor", e);
+            MyLog.e("NoSuchFieldException for 'name' in baseActivity:Constructor", e);
         }
         if(page.hasChild(PAGE.CHILD)){
             try {
                 _childname = page.getStringFromNode(PAGE.CHILD);
             } catch (NoSuchFieldException e) {
-                Log.e("RedEvent", "NoSuchFieldException for 'child' in baseActivity:Constructor", e);
+                MyLog.e("NoSuchFieldException for 'child' in baseActivity:Constructor", e);
             }
         }
 
@@ -203,7 +202,7 @@ public class BaseMapFragmentActivity extends FragmentActivity implements Locatio
             if(lastLoc != null)
             {
                 _userLatLng = new LatLng(lastLoc.getLatitude(), lastLoc.getLongitude());
-                onLocationChanged(lastLoc);    //HACKS!!!!! Ensures that user icon is displayed. Fix if able.
+                onLocationChanged(lastLoc);    //TODO: HACKS!!!!! Ensures that user icon is displayed. Fix if able.
             } else {
                 _userLatLng = _standardCenter;
             }
@@ -252,7 +251,7 @@ public class BaseMapFragmentActivity extends FragmentActivity implements Locatio
             try{
                 connectionResult.startResolutionForResult(this, CONNECTION_FAILURE_RESOLUTION_REQUEST);
             } catch (IntentSender.SendIntentException e) {
-                Log.e("HCA","SendIntentException in onConnectionFailed", e);
+                MyLog.e("SendIntentException in onConnectionFailed", e);
             }
         }
         else {
@@ -263,7 +262,7 @@ public class BaseMapFragmentActivity extends FragmentActivity implements Locatio
     protected boolean servicesConnected(){
         int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(this);
         if(ConnectionResult.SUCCESS == resultCode){
-            Log.d("HCA", "Google Play Services is available");
+            MyLog.d("Google Play Services is available");
             return true;
         }
         else

@@ -24,6 +24,7 @@ public class PAGE {
     public static final String PUSHMESSAGEID = "pushmessageid";
     public static final String RETURNBUTTON = "returnbutton";
     public static final String RETURNONTAP = "returnontap";
+    public static final String SESSIONID = "sessionid";
     public static final String TABIMAGE = "tabimage";
     public static final String TABNAME = "tabname";
     public static final String TOPLOGO = "toplogo";
@@ -64,4 +65,7 @@ public class PAGE {
 
     //Tags
     public static final String TAG_SESSIONTITLE = "@SessionTitle";
+
+    //NavigationHelpers
+    public static final String PARENTPARAMETERS = "parentParameters";
 }

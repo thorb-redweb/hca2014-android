@@ -11,12 +11,13 @@ import com.google.android.gms.maps.model.*;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.R;
 import dk.redweb.Red_App.StaticNames.EXTRA;
+import dk.redweb.Red_App.StaticNames.PAGE;
 import dk.redweb.Red_App.ViewControllers.Map.BaseMapFragment;
 import dk.redweb.Red_App.ViewModels.VenueVM;
 import dk.redweb.Red_App.Views.NavBarBox;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
 
-import java.util.HashMap;
+import java.util.InvalidPropertiesFormatException;
 
 /**
  * Created by Redweb with IntelliJ IDEA.
@@ -56,9 +57,15 @@ public class VenueMapFragment extends BaseMapFragment {
         super.onResume();
 
         NavBarBox navBarBox = (NavBarBox)getActivity().findViewById(R.id.navbar);
-        HashMap<String, Integer> extras = new HashMap<String, Integer>();
-        extras.put(EXTRA.VENUEID, _venue.VenueId());
-        navBarBox.setUpButtonTargetForThisPage(_page,extras);
+
+        XmlNode navBarPage = _page.deepClone();
+        try {
+            XmlNode parentParameters = navBarPage.addNodeToNode(PAGE.PARENTPARAMETERS);
+            parentParameters.addChildToNode(PAGE.VENUEID, _venue.VenueId());
+        } catch (InvalidPropertiesFormatException e) {
+            MyLog.e("Exception when creatimg parentParameters on up-navigation helper page", e);
+        }
+        navBarBox.setUpButtonTargetForThisPage(navBarPage);
     }
 
     @Override

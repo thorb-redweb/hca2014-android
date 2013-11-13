@@ -24,7 +24,7 @@ public class StaticArticleFragment extends BasePageFragment {
     }
 
     public View onCreateView(LayoutInflater inflate, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflate, container, R.layout.frag_staticarticle);
+        super.onCreateView(inflate, container, R.layout.page_staticarticle);
 
         ArticleVM article = null;
         try {

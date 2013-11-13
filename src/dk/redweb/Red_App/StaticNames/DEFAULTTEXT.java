@@ -9,7 +9,7 @@ public class DEFAULTTEXT {
     public static final String MAP_BACKBUTTON = "Tilbage";
 
     public final static String DAILYSESSIONLIST_EMPTYLIST = "Ingen arrangementer matcher din søgning";
-    public final static String DAILYSESSIONLIST_FILTERDATE = "Filtrer efter sted";
+    public final static String DAILYSESSIONLIST_SPINNERTITLE = "Sorter på sted";
 
     public final static String IMAGEARTICLELIST_EMPTYLIST = "Ingen artikler matcher din søgning";
 

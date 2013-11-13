@@ -31,7 +31,7 @@ public class BasePageFragment extends Fragment {
     protected ServerInterface _sv;
     protected XmlStore _xml;
 
-    public String Name;
+    public String _name;
     protected String _childname;
     protected XmlNode _page;
 
@@ -52,7 +52,7 @@ public class BasePageFragment extends Fragment {
         _page = page;
 
         try {
-            Name = page.getStringFromNode(PAGE.NAME);
+            _name = page.getStringFromNode(PAGE.NAME);
         } catch (NoSuchFieldException e) {
             Log.e("RedEvent", "NoSuchFieldException for 'name' in BaseActivity:onCreate getting name from xml", e);
         }
@@ -75,8 +75,8 @@ public class BasePageFragment extends Fragment {
         _xml = _app.getXmlStore();
 
         try {
-            if(_xml.appearance.hasChild(Name))
-                _locallook = _xml.getAppearanceForPage(Name);
+            if(_xml.appearance.hasChild(_name))
+                _locallook = _xml.getAppearanceForPage(_name);
             _globallook = _xml.getAppearanceForPage(LOOK.GLOBAL);
         } catch (Exception e) {
             MyLog.e("Exception in BaseActivity:onCreate getting appearance from xml", e);

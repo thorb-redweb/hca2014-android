@@ -45,7 +45,7 @@ public class SwipeViewFragment extends BasePageFragment {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, R.layout.frag_swipeview);
+        super.onCreateView(inflater, container, R.layout.page_swipeview);
 
         XmlNode[] leafNodes = _page.getAllChildNodesWithName(PAGE.SECTION);
 

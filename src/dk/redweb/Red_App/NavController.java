@@ -121,7 +121,7 @@ public class NavController {
         } else if(type.equals(TYPE.BUTTONGALLERY)){
             return rootString + "ViewControllers.Navigation.ButtonGallery.ButtonGalleryActivity";
         } else if(type.equals(TYPE.DAILYSESSIONLIST)){
-            return rootString + "ViewControllers.Session.DailySessionList.DailySessionListActivity";
+            return rootString + "ViewControllers.Session.DailySessionList.DailySessionListFragment";
         } else if (type.equals(TYPE.IMAGEARTICLELIST)){
             return rootString + "ViewControllers.Article.ImageArticleList.ImageArticleListFragment";
         } else if(type.equals(TYPE.NEWSTICKER)){
@@ -137,7 +137,9 @@ public class NavController {
         } else if (type.equals(TYPE.PUSHMESSAGELIST)){
             return rootString + "ViewControllers.PushMessages.PushMessageList.PushMessageListFragment";
         } else if(type.equals(TYPE.SESSIONDETAIL)){
-            return rootString + "ViewControllers.Session.SessionDetail.SessionDetailActivity";
+            return rootString + "ViewControllers.Session.SessionDetail.SessionDetailFragment";
+        } else if(type.equals(TYPE.SESSIONMAP)){
+            return rootString + "ViewControllers.Map.SessionMap.SessionMapFragment";
         } else if (type.equals(TYPE.SPLITVIEW)){
             return rootString + "ViewControllers.Navigation.SplitView.SplitViewActivity";
         } else if(type.equals(TYPE.STATICARTICLE)){
@@ -149,7 +151,7 @@ public class NavController {
         } else if(type.equals(TYPE.VENUEDETAIL)){
             return rootString + "ViewControllers.Venue.VenueDetail.VenueDetailFragment";
         } else if(type.equals(TYPE.VENUEMAP)){
-            return rootString + "ViewControllers.Map.VenueMap.VenueMapActivity";
+            return rootString + "ViewControllers.Map.VenueMap.VenueMapFragment";
         }
         return null;
     }

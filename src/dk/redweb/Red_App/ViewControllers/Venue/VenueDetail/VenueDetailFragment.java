@@ -30,7 +30,7 @@ public class VenueDetailFragment extends BasePageFragment {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, R.layout.frag_venuedetail);
+        super.onCreateView(inflater, container, R.layout.page_venuedetail);
 
         navbarSetup();
 
@@ -155,7 +155,7 @@ public class VenueDetailFragment extends BasePageFragment {
 
     private void setText(){
         try {
-            TextHelper helper = new TextHelper(_view, Name, _xml);
+            TextHelper helper = new TextHelper(_view, _name, _xml);
             helper.setText(R.id.venueDetail_lblAddressLabel, TEXT.VENUEDETAIL_ADDRESS, DEFAULTTEXT.VENUEDETAIL_ADDRESS);
             helper.setText(R.id.venueDetail_lblButtonMap, TEXT.VENUEDETAIL_MAPBUTTON, DEFAULTTEXT.VENUEDETAIL_MAPBUTTON);
         } catch (Exception e) {

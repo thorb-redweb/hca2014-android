@@ -36,7 +36,7 @@ public class AdventWindowFragment extends BasePageFragment {
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflater, container, R.layout.frag_adventwindow);
+        super.onCreateView(inflater, container, R.layout.page_adventwindow);
 
         int articleId = 0;
         try {
