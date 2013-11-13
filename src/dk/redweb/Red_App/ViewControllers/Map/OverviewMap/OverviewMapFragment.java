@@ -1,15 +1,22 @@
 package dk.redweb.Red_App.ViewControllers.Map.OverviewMap;
 
+import android.content.Context;
 import android.location.Location;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.*;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.R;
+import dk.redweb.Red_App.ViewControllers.Map.BaseMapFragment;
 import dk.redweb.Red_App.ViewControllers.Map.BaseMapFragmentActivity;
 import dk.redweb.Red_App.ViewControllers.Map.MapMarker;
 import dk.redweb.Red_App.ViewControllers.Map.MapMarkerInfoWindowAdapter;
+import dk.redweb.Red_App.Views.NavBarBox;
+import dk.redweb.Red_App.XmlHandling.XmlNode;
 
 import java.util.ArrayList;
 
@@ -18,45 +25,62 @@ import java.util.ArrayList;
  * Date: 9/17/13
  * Time: 3:14 PM
  */
-public class OverviewMapActivity extends BaseMapFragmentActivity {
+public class OverviewMapFragment extends BaseMapFragment {
     ArrayList<Marker> _locationMarkers;
     Marker _userMarker;
 
     boolean _isOnCreateInitialized = false;
 
-    public void onCreate(Bundle savedInstanceState) {
+    public OverviewMapFragment(XmlNode page) {
+        super(page);
+    }
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         try{
-            super.onCreate(savedInstanceState);
-            setContentView(R.layout.map_mapview);
-            super.onAfterContentViewCreated();
+            super.onCreateView(inflater, container, R.layout.map_mapview);
 
             _locationMarkers = new ArrayList<Marker>();
-            MapMarker[] mapMarkers = _db.MapMarkers.getAll();
-
-            for(int i = 0; i < mapMarkers.length; i++)
-            {
-                LatLng loc = mapMarkers[i].Location;
-                String titleArray = mapMarkers[i].Name + "<>" + mapMarkers[i].SessionId + "<>" + _childname;
-                Marker marker = _googleMap.addMarker(new MarkerOptions().position(loc).title(titleArray).snippet(mapMarkers[i].Text));
-                _locationMarkers.add(marker);
-            }
-
-            CameraUpdate center = CameraUpdateFactory.newLatLng(_standardCenter);
-            CameraUpdate zoom = CameraUpdateFactory.zoomTo(_standardZoom);
-
-            _googleMap.moveCamera(center);
-            _googleMap.animateCamera(zoom);
-
-            MapMarkerInfoWindowAdapter infoWindowAdapter = new MapMarkerInfoWindowAdapter(getLayoutInflater(), this);
-            _googleMap.setInfoWindowAdapter(infoWindowAdapter);
-            _googleMap.setOnInfoWindowClickListener(infoWindowAdapter);
-            _isOnCreateInitialized = true;
 
         } catch (Exception e) {
             MyLog.e("Exception in MainMapActivity.onCreate", e);
 
             //setContentView(R.layout.act_maps_unavailable);
         }
+        return _view;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+
+        NavBarBox navBarBox = (NavBarBox)getActivity().findViewById(R.id.navbar);
+        navBarBox.setUpButtonTargetForThisPage(_page);
+    }
+
+    @Override
+    public void onStart(){
+        super.onStart();
+
+        MapMarker[] mapMarkers = _db.MapMarkers.getAll();
+        for(int i = 0; i < mapMarkers.length; i++)
+        {
+            LatLng loc = mapMarkers[i].Location;
+            String titleArray = mapMarkers[i].Name + "<>" + mapMarkers[i].SessionId + "<>" + _childname;
+            Marker marker = _googleMap.addMarker(new MarkerOptions().position(loc).title(titleArray).snippet(mapMarkers[i].Text));
+            _locationMarkers.add(marker);
+        }
+
+        CameraUpdate center = CameraUpdateFactory.newLatLng(_standardCenter);
+        CameraUpdate zoom = CameraUpdateFactory.zoomTo(_standardZoom);
+
+        _googleMap.moveCamera(center);
+        _googleMap.animateCamera(zoom);
+
+        MapMarkerInfoWindowAdapter infoWindowAdapter = new MapMarkerInfoWindowAdapter(getActivity().getLayoutInflater(), getActivity());
+        _googleMap.setInfoWindowAdapter(infoWindowAdapter);
+        _googleMap.setOnInfoWindowClickListener(infoWindowAdapter);
+
+        _isOnCreateInitialized = true;
     }
 
     @Override
