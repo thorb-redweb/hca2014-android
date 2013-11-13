@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import dk.redweb.Red_App.*;
+import dk.redweb.Red_App.Model.Article;
 import dk.redweb.Red_App.StaticNames.*;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.ViewModels.ArticleVM;
@@ -89,7 +90,7 @@ public class ImageArticleListFragment extends BasePageFragment {
         try {
             articles = _db.Articles.getPublishedVMListFromCatid(_page.getIntegerFromNode(PAGE.CATID));
         } catch (NoSuchFieldException e) {
-            Log.e("RedEvent", "NoSuchFieldException for 'catid' in actImageArticleList:reloadListView", e);
+            MyLog.e("NoSuchFieldException for 'catid' in actImageArticleList:reloadListView", e);
         }
         ImageArticleListAdapter lstArticlesAdapter = new ImageArticleListAdapter(_view.getContext(), _net, articles, _xml, _page);
         lstArticles.setAdapter(lstArticlesAdapter);

@@ -65,11 +65,11 @@ public class RedEventApplication  extends Application {
     }
 
     //Debugging section
-    private boolean debugging = true;
+    private boolean debugging = false;
     private DateTime debugCurrentDate;
     private int debugYear = 2013;
-    private int debugMonth = 12;
-    private int debugDay = 2;
+    private int debugMonth = 10;
+    private int debugDay = 1;
     private int debugHour = 13;
     private int debugMinute = 54;
     public DateTime getDebugCurrentDate(){ return debugCurrentDate; }

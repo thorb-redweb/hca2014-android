@@ -50,6 +50,11 @@
         <backbuttonimage>btnclose.png</backbuttonimage>
     </PMessage>
 
+    <Program>
+        <leftarrow>arrow_left.png</leftarrow>
+        <rightarrow>arrow_right.png</rightarrow>
+    </Program>
+
     <PMGroupSettings>
         <backgroundcolor>#88FFFFFF</backgroundcolor>
     </PMGroupSettings>

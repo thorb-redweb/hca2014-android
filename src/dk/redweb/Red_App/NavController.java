@@ -127,7 +127,7 @@ public class NavController {
         } else if(type.equals(TYPE.NEWSTICKER)){
             return rootString + "ViewControllers.FrontPageComponents.NewsTicker";
         } else if(type.equals(TYPE.OVERVIEWMAP)){
-            return rootString + "ViewControllers.Map.OverviewMap.OverviewMapActivity";
+            return rootString + "ViewControllers.Map.OverviewMap.OverviewMapFragment";
         } else if (type.equals(TYPE.PUSHMESSAGEDETAIL)){
             return rootString + "ViewControllers.PushMessages.PushMessageDetail.PushMessageDetailFragment";
         } else if (type.equals(TYPE.PUSHMESSAGEGROUPSETTINGS)){

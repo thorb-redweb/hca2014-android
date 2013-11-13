@@ -38,6 +38,29 @@ public class DbArticles {
         _xml = xml;
     }
 
+    public Article[] getAll(){
+        String sortString = DbSchemas.Art.PUBLISHDATE + " DESC";
+
+        Cursor c = _sql.query(DbSchemas.Art.TABLE_NAME, ALL_COLUMNS, null, null, null, null, sortString);
+
+        Article[] articles = new Article[c.getCount()];
+
+        int i = 0;
+        while(c.moveToNext())
+        {
+            articles[i] = MakeFromCursor(c);
+            i++;
+        }
+
+        if(c.getCount() == 0){
+            MyLog.d("DbArticles:getPublishedListFromCatid: No articles received");
+        }
+
+        c.close();
+
+        return articles;
+    }
+
     public Article[] getListFromCatid(int catid){
         String whereString = DbSchemas.Art.CATID + " = " + catid;
         String sortString = DbSchemas.Art.PUBLISHDATE + " DESC";

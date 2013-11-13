@@ -55,6 +55,9 @@ public class MapMarkerInfoWindowAdapter  implements GoogleMap.InfoWindowAdapter,
     @Override
     public void onInfoWindowClick(Marker marker) {
         String[] input = marker.getTitle().split("<>");
+        if(input.length < 3){
+            return;
+        }
         Integer sessionId = Integer.valueOf(input[1]);
         String childname = input[2];
 

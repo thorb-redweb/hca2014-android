@@ -17,6 +17,7 @@ import dk.redweb.Red_App.ViewControllers.Map.MapMarkerInfoWindowAdapter;
 import dk.redweb.Red_App.ViewModels.SessionVM;
 import dk.redweb.Red_App.Views.NavBarBox;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
+import org.joda.time.LocalDate;
 
 import java.util.InvalidPropertiesFormatException;
 
@@ -73,8 +74,10 @@ public class SessionMapFragment extends BaseMapFragment {
     public void onStart(){
         super.onStart();
 
-        String titleArray = _session.Venue() + "<>" + _session.SessionId() + "<>" + _childname;
-        _sessionMarker = _googleMap.addMarker(new MarkerOptions().position(_session.Location()).title(titleArray));
+        String titleArray = _session.Title() + "<>" + _session.SessionId() + "<>" + _childname;
+        String snippet = _session.StartTimeAsString();
+
+        _sessionMarker = _googleMap.addMarker(new MarkerOptions().position(_session.Location()).title(titleArray).snippet(snippet));
 
         CameraUpdate center = CameraUpdateFactory.newLatLng(_standardCenter);
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(_standardZoom);

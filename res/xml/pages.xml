@@ -17,7 +17,7 @@
     <page>
 		<name>Nyheder</name>
 		<type>ImageArticleList</type>
-		<catid>8</catid>
+		<catid>12</catid>
         <tabname>Forside</tabname>
         <navname>Nyheder</navname>
         <parent>SwipeView</parent>
@@ -46,7 +46,41 @@
     <page>
         <name>About</name>
         <type>StaticArticle</type>
-        <articleid>5</articleid>
+        <articleid>55</articleid>
+    </page>
+    <page>
+        <name>Program</name>
+        <type>DailySessionList</type>
+        <tabname>Program</tabname>
+        <child>Begivenhed</child>
+    </page>
+    <page>
+        <name>Begivenhed</name>
+        <type>SessionDetail</type>
+        <parent>Program</parent>
+        <child>SessionMap</child>
+    </page>
+    <page>
+        <name>SessionMap</name>
+        <type>SessionMap</type>
+        <parent>Begivenhed</parent>
+        <child>Begivenhed</child>
+    </page>
+    <page>
+        <name>OverviewMap</name>
+        <type>OverviewMap</type>
+        <tabname>Map</tabname>
+    </page>
+    <page>
+        <name>RedWeb</name>
+        <type>VenueDetail</type>
+        <venueid>2</venueid>
+        <child>VenueMap</child>
+    </page>
+    <page>
+        <name>VenueMap</name>
+        <type>VenueMap</type>
+        <parent>RedWeb</parent>
     </page>
     <page>
         <name>PMInitializer</name>
