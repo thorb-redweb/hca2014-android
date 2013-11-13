@@ -18,7 +18,7 @@
         </FrameLayout>
         <TextView android:id="@+id/pushmessagedetail_lblBody"
                   style="@style/Layout.Wrap"/>
-        <dk.redweb.EfterSkole_App.Views.FlexibleButton
+        <dk.redweb.Red_App.Views.FlexibleButton
                 android:id="@+id/pushmessagedetail_flxBackButton"
                 style="@style/Layout.Wrap.Complete"
                 android:layout_marginTop="15dp"

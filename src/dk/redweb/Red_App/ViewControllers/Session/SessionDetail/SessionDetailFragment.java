@@ -2,16 +2,16 @@ package dk.redweb.Red_App.ViewControllers.Session.SessionDetail;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.*;
-import dk.redweb.Red_App.AppearanceHelper;
-import dk.redweb.Red_App.MyLog;
-import dk.redweb.Red_App.R;
+import dk.redweb.Red_App.*;
 import dk.redweb.Red_App.StaticNames.*;
-import dk.redweb.Red_App.TextHelper;
 import dk.redweb.Red_App.ViewControllers.BaseActivity;
-import dk.redweb.Red_App.ViewControllers.Map.SessionMap.SessionMapActivity;
+import dk.redweb.Red_App.ViewControllers.BasePageFragment;
+import dk.redweb.Red_App.ViewControllers.Map.SessionMap.SessionMapFragment;
 import dk.redweb.Red_App.ViewModels.SessionVM;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
 
@@ -20,16 +20,24 @@ import dk.redweb.Red_App.XmlHandling.XmlNode;
  * Date: 9/20/13
  * Time: 11:50 AM
  */
-public class SessionDetailActivity extends BaseActivity {
+public class SessionDetailFragment extends BasePageFragment {
 
     SessionVM _session;
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_sessiondetail);
+    public SessionDetailFragment(XmlNode page) {
+        super(page);
+    }
 
-        Bundle extras = getIntent().getExtras();
-        int sessionId = extras.getInt(EXTRA.SESSIONID);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, R.layout.act_sessiondetail);
+
+
+        int sessionId = 0;
+        try {
+            sessionId = _page.getIntegerFromNode(PAGE.SESSIONID);
+        } catch (NoSuchFieldException e) {
+            MyLog.e("Exception when getting sessionid for page from pagenode", e);
+        }
 
         setAppearance();
         setText();
@@ -57,11 +65,9 @@ public class SessionDetailActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 try {
-                    Intent detailIntent = new Intent(v.getContext(), SessionMapActivity.class);
-                    detailIntent.putExtra(EXTRA.SESSIONID, _session.SessionId());
-                    XmlNode selectedPage = _xml.getPage(_childname);
-                    detailIntent.putExtra(EXTRA.PAGE, selectedPage);
-                    _context.startActivity(detailIntent);
+                    XmlNode nextPage = _xml.getPage(_childname).deepClone();
+                    nextPage.addChildToNode(PAGE.SESSIONID, _session.SessionId());
+                    NavController.changePageWithXmlNode(nextPage, getActivity());
                 } catch (Exception e) {
                     MyLog.e("Exception in SessionDetailActivity:onClickListener on rltMapButton", e);
                 }
@@ -80,6 +86,8 @@ public class SessionDetailActivity extends BaseActivity {
         } catch (Exception e) {
             MyLog.e("Exception in SessionDetailActivity:onCreate when attempting to determine body type (web vs. text)", e);
         }
+
+        return _view;
     }
 
     @Override
@@ -92,7 +100,7 @@ public class SessionDetailActivity extends BaseActivity {
 
     private void setAppearance(){
         try {
-            AppearanceHelper helper = new AppearanceHelper(this, _locallook, _globallook);
+            AppearanceHelper helper = new AppearanceHelper(_view.getContext(), _locallook, _globallook);
 
             ScrollView box = (ScrollView)findViewById(R.id.sessionDetail_scrMainView);
             helper.setViewBackgroundColor(box, LOOK.SESSIONDETAIL_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
@@ -151,7 +159,7 @@ public class SessionDetailActivity extends BaseActivity {
 
     private void setText(){
         try {
-            TextHelper helper = new TextHelper(this, _name,_xml);
+            TextHelper helper = new TextHelper(_view, _name,_xml);
             helper.setText(R.id.sessionDetail_lblDateLabel, TEXT.SESSIONDETAIL_DATE, DEFAULTTEXT.SESSIONDETAIL_DATE);
             helper.setText(R.id.sessionDetail_lblVenueLabel, TEXT.SESSIONDETAIL_PLACE, DEFAULTTEXT.SESSIONDETAIL_PLACE);
             helper.setText(R.id.sessionDetail_lblTimeLabel, TEXT.SESSIONDETAIL_TIME, DEFAULTTEXT.SESSIONDETAIL_TIME);

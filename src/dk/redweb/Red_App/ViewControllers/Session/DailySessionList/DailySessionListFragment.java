@@ -2,15 +2,15 @@ package dk.redweb.Red_App.ViewControllers.Session.DailySessionList;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.*;
-import dk.redweb.Red_App.AppearanceHelper;
+import dk.redweb.Red_App.*;
 import dk.redweb.Red_App.Model.Venue;
-import dk.redweb.Red_App.MyLog;
-import dk.redweb.Red_App.R;
 import dk.redweb.Red_App.StaticNames.*;
-import dk.redweb.Red_App.TextHelper;
 import dk.redweb.Red_App.ViewControllers.BaseActivity;
+import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.ViewControllers.Session.SessionDetail.SessionDetailActivity;
 import dk.redweb.Red_App.ViewModels.SessionVM;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
@@ -25,7 +25,7 @@ import java.util.Locale;
  * Date: 9/17/13
  * Time: 3:13 PM
  */
-public class DailySessionListActivity extends BaseActivity {
+public class DailySessionListFragment extends BasePageFragment {
     private Spinner _spnVenue;
     private ListView _lstSession;
 
@@ -33,7 +33,7 @@ public class DailySessionListActivity extends BaseActivity {
     private LocalDate _earliestDateWithSession;
     private LocalDate _latestDateWithSession;
 
-    private static final String VENUE_SPINNER_TITLE = "Sorter på sted";
+    private String _spinnertitle;
     private Venue _filterVenue;
 
     private int getFilterVenueId(){
@@ -42,9 +42,12 @@ public class DailySessionListActivity extends BaseActivity {
         return -1;
     }
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_dailysessionlist);
+    public DailySessionListFragment(XmlNode page) {
+        super(page);
+    }
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, R.layout.act_dailysessionlist);
 
         _spnVenue = (Spinner)findViewById(R.id.dailysessionlist_spnVenue);
         _lstSession = (ListView)findViewById(R.id.dailysessionlist_lstSessions);
@@ -59,34 +62,60 @@ public class DailySessionListActivity extends BaseActivity {
         _dateOfListContent = new LocalDate();
         initializeDate();
         reloadListView();
+
+        return _view;
     }
 
     private void setupDateArrows(){
         final ImageView backArrow = (ImageView)findViewById(R.id.dailysessionlist_imgDateBack);
         final ImageView forwardArrow = (ImageView)findViewById(R.id.dailysessionlist_imgDateForward);
 
-        backArrow.setOnClickListener(new View.OnClickListener() {
+        backArrow.setOnClickListener(LastDateOnClickListener());
+
+        forwardArrow.setOnClickListener(NextDateOnClickListener());
+    }
+
+    private View.OnClickListener LastDateOnClickListener(){
+        return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 _dateOfListContent = _db.Sessions.getDateForLastFromDateAndVenueId(_dateOfListContent,getFilterVenueId());
                 reloadListView();
             }
-        });
+        };
+    }
 
-        forwardArrow.setOnClickListener(new View.OnClickListener() {
+    private View.OnClickListener NextDateOnClickListener(){
+        return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                _dateOfListContent = _db.Sessions.getDateForNextFromDateAndVenueId(_dateOfListContent,getFilterVenueId());
+                _dateOfListContent = _db.Sessions.getDateForNextFromDateAndVenueId(_dateOfListContent, getFilterVenueId());
                 reloadListView();
             }
-        });
+        };
     }
 
     private void setupSpinner(){
         final String[] venues = _db.Venues.getAllNames();
-        loadSpinnerData(_spnVenue, venues, VENUE_SPINNER_TITLE);
+        _spinnertitle = getSpinnerTitle();
+        loadSpinnerData(_spnVenue, venues, _spinnertitle);
 
         _spnVenue.setOnItemSelectedListener(new VenueSpinnerListener());
+    }
+
+    private String getSpinnerTitle(){
+        if(_xml.pageHasText(_name)){
+            try {
+                XmlNode textNode =_xml.getTextForPage(_name);
+                if(textNode.hasChild(TEXT.DAILYSESSIONLIST_SPINNERTITLE)){
+                    return textNode.getStringFromNode(TEXT.DAILYSESSIONLIST_SPINNERTITLE);
+                }
+            } catch (Exception e) {
+                MyLog.e("Exception when getting local text for spinner title", e);
+            }
+        }
+
+        return DEFAULTTEXT.DAILYSESSIONLIST_SPINNERTITLE;
     }
 
     private void loadSpinnerData(Spinner spinner, String[] rawData, String title)
@@ -95,7 +124,7 @@ public class DailySessionListActivity extends BaseActivity {
         System.arraycopy(rawData, 0, data, 1, rawData.length);
         data[0] = title;
 
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, data);
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(_view.getContext(), android.R.layout.simple_spinner_item, data);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(dataAdapter);
     }
@@ -112,10 +141,9 @@ public class DailySessionListActivity extends BaseActivity {
                 SessionVM selectedSession = (SessionVM) adapter.getItem(position);
                 try {
                     XmlNode selectedPage = _xml.getPage(_childname);
-                    Intent detailIntent = new Intent(view.getContext(), SessionDetailActivity.class);
-                    detailIntent.putExtra(EXTRA.SESSIONID, selectedSession.SessionId());
-                    detailIntent.putExtra(EXTRA.PAGE, selectedPage);
-                    _context.startActivity(detailIntent);
+                    XmlNode nextPage = selectedPage.deepClone();
+                    nextPage.addChildToNode(PAGE.SESSIONID, selectedSession.SessionId());
+                    NavController.changePageWithXmlNode(nextPage,getActivity());
                 } catch (Exception e) {
                     MyLog.e("Exception in DailySessionListActivity:onClickListener", e);
                 }
@@ -125,7 +153,7 @@ public class DailySessionListActivity extends BaseActivity {
 
     private void setAppearance(){
         try {
-            AppearanceHelper helper = new AppearanceHelper(this, _locallook, _globallook);
+            AppearanceHelper helper = new AppearanceHelper(_view.getContext(), _locallook, _globallook);
 
             LinearLayout selectorLayout = (LinearLayout)findViewById(R.id.dailysessionlist_lnrSelectorLayout);
             helper.setViewBackgroundColor(selectorLayout, LOOK.DAILYSESSIONLIST_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
@@ -156,8 +184,7 @@ public class DailySessionListActivity extends BaseActivity {
 
     private void setText(){
         try {
-            TextHelper helper = new TextHelper(this, _name,_xml);
-            helper.setText(R.id.dailysessionlist_lblDate, TEXT.DAILYSESSIONLIST_FILTERDATE, DEFAULTTEXT.DAILYSESSIONLIST_FILTERDATE);
+            TextHelper helper = new TextHelper(_view, _name, _xml);
             helper.setText(R.id.dailysessionlist_lblEmptyList, TEXT.DAILYSESSIONLIST_EMPTYLIST, DEFAULTTEXT.DAILYSESSIONLIST_EMPTYLIST);
         } catch (Exception e) {
             MyLog.e("Exception when setting static text", e);
@@ -180,7 +207,7 @@ public class DailySessionListActivity extends BaseActivity {
     private void reloadListView(){
         setDateLabel();
         SessionVM[] sessions = _db.Sessions.getVMListFromDayAndVenueId(_dateOfListContent,getFilterVenueId());
-        DailySessionListAdapter lstSessionsAdapter = new DailySessionListAdapter(this, sessions, _xml, _page);
+        DailySessionListAdapter lstSessionsAdapter = new DailySessionListAdapter(_view.getContext(), sessions, _xml, _page);
         _lstSession.setAdapter(lstSessionsAdapter);
     }
 
@@ -217,7 +244,7 @@ public class DailySessionListActivity extends BaseActivity {
         @Override
         public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             String venueName = _spnVenue.getSelectedItem().toString();
-            if(venueName.equals(VENUE_SPINNER_TITLE))
+            if(venueName.equals(_spinnertitle))
                 _filterVenue = null;
             else
                 _filterVenue = _db.Venues.getFromName(venueName);

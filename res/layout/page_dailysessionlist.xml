@@ -5,14 +5,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
         >
-    <dk.redweb.EfterSkole_App.Views.NavBarBox android:id="@+id/navbar"
-                                            style="@style/Layout.Wrap"
-                                            android:layout_alignParentTop="true"/>
-
     <!-- UpperView -->
     <LinearLayout android:id="@+id/dailysessionlist_lnrSelectorLayout"
                   style="@style/Layout.Wrap"
-                  android:layout_below="@+id/navbar"
+                  android:layout_alignParentTop="true"
                   android:background="@android:color/white"
                   android:paddingLeft="10sp"
                   android:paddingRight="10sp">
@@ -51,15 +47,13 @@
                 android:layout_marginBottom="20sp">
                 <Spinner android:id="@+id/dailysessionlist_spnVenue"
                          style="@style/Layout.Wrap.Complete"/>
-                <TextView android:id="@+id/dailysessionlist_lblSpinnerText"
-                          style="@style/Layout.Wrap.Complete"/>
         </LinearLayout>
     </LinearLayout>
 
     <!--SessionList -->
     <FrameLayout android:id="@+id/dailysessionlist_frmSessionlistlayout"
                  style="@style/Layout.Full"
-                 android:layout_above="@+id/tabbar"
+                 android:layout_alignParentBottom="true"
                  android:layout_below="@+id/dailysessionlist_lnrSelectorLayout"
                  android:background="@android:color/white">
         <ListView android:id="@+id/dailysessionlist_lstSessions"
@@ -77,9 +71,4 @@
         <TextView android:id="@+id/dailysessionlist_lblEmptyList"
                 style="@style/Layout.Wrap.Complete"/>
     </LinearLayout>
-
-    <!-- Bottom Bar -->
-    <dk.redweb.EfterSkole_App.Views.TabbarBox android:id="@+id/tabbar"
-                                            style="@style/Layout.Wrap"
-                                            android:layout_alignParentBottom="true"/>
 </RelativeLayout>

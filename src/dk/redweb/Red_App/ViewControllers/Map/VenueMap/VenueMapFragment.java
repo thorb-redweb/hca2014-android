@@ -23,7 +23,7 @@ import java.util.HashMap;
  * Date: 9/25/13
  * Time: 9:39 AM
  */
-public class VenueMapActivity extends BaseMapFragment {
+public class VenueMapFragment extends BaseMapFragment {
     Marker _venueMarker;
     Marker _userMarker;
 
@@ -31,7 +31,7 @@ public class VenueMapActivity extends BaseMapFragment {
 
     boolean _isOnCreateInitialized = false;
 
-    public VenueMapActivity(XmlNode page) {
+    public VenueMapFragment(XmlNode page) {
         super(page);
     }
 

@@ -20,7 +20,7 @@ import java.util.HashMap;
  * Date: 9/25/13
  * Time: 9:39 AM
  */
-public class SessionMapActivity extends BaseMapFragmentActivity {
+public class SessionMapFragment extends BaseMapFragmentActivity {
     Marker _sessionMarker;
     Marker _userMarker;
 
