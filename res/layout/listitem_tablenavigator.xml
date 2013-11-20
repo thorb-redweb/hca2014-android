@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/Layout.Wrap"
+              android:orientation="horizontal"
+              android:background="@drawable/listitembox"
+              android:minHeight="60dp"
+              android:layout_marginTop="5dp"
+              android:layout_marginBottom="5dp">
+    <ImageView android:id="@+id/tablenavigator_imgFrontIcon"
+               style="@style/Image.Wrap"
+               android:layout_centerVertical="true"
+               android:layout_alignParentLeft="true"/>
+    <TextView android:id="@+id/tablenavigator_lblTitle"
+              style="@style/Layout.Wrap.Complete"
+              android:layout_centerVertical="true"
+              android:layout_toRightOf="@+id/tablenavigator_imgFrontIcon"/>
+    <ImageView android:id="@+id/tablenavigator_imgBackIcon"
+               style="@style/Image.Wrap"
+               android:layout_centerVertical="true"
+               android:layout_alignParentRight="true"/>
+</RelativeLayout>

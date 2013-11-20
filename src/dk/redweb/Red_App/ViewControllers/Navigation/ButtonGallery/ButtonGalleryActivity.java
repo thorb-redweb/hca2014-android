@@ -197,7 +197,7 @@ public class ButtonGalleryActivity extends BaseActivity {
                     try {
                         classname = NavController.getClassNameForTypeString(targetPage.getStringFromNode("type"));
                     } catch (NoSuchFieldException e) {
-                        MyLog.e("NoSuchFieldException in TabbarButton:buttonListener", e);
+                        MyLog.e("NoSuchFieldException in TabbarButton:unsubscribeButtonListener", e);
                     }
                     Intent nextPage = new Intent(context, Class.forName(classname));
                     nextPage.putExtra(EXTRA.PAGE, targetPage);

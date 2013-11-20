@@ -9,6 +9,8 @@ public class TEXT {
 
     public final static String TEXTFILENAME = "text.xml";
 
+    public static final String BACKBUTTON = "backbutton";
+
     //ButtonGallery Specific
     public final static String BUTTONGALLERY_BUTTON1 = "button1";
     public final static String BUTTONGALLERY_BUTTON2 = "button2";
@@ -39,6 +41,14 @@ public class TEXT {
     public static final String PUSHMESSAGEINITIALIZER_BACKBUTTON = "backbutton";
 
     public static final String PUSHMESSAGELIST_EMPTYLIST = "emptylist";
+
+    public static final String PUSHMESSAGEUNSUBSCRIBER_DIALOGTITLE = "dialogtitle";
+    public static final String PUSHMESSAGEUNSUBSCRIBER_DIALOGMESSAGE = "dialogmessage";
+    public static final String PUSHMESSAGEUNSUBSCRIBER_DIALOGOK = "dialogok";
+    public static final String PUSHMESSAGEUNSUBSCRIBER_DIALOGCANCEL = "dialogcancel";
+    public static final String PUSHMESSAGEUNSUBSCRIBER_TITLE = "title";
+    public static final String PUSHMESSAGEUNSUBSCRIBER_UNSUBSCRIBEBUTTON = "unsubscribebutton";
+    public static final String PUSHMESSAGEUNSUBSCRIBER_WARNING = "warning";
 
     public final static String SESSIONDETAIL_DATE = "date";
     public final static String SESSIONDETAIL_PLACE = "place";

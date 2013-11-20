@@ -11,9 +11,8 @@ import dk.redweb.Red_App.*;
 import dk.redweb.Red_App.Database.DbInterface;
 import dk.redweb.Red_App.Network.NetworkInterface;
 import dk.redweb.Red_App.Network.ServerInterface;
-import dk.redweb.Red_App.StaticNames.LOOK;
-import dk.redweb.Red_App.StaticNames.PAGE;
-import dk.redweb.Red_App.StaticNames.TYPE;
+import dk.redweb.Red_App.StaticNames.*;
+import dk.redweb.Red_App.Views.FlexibleButton;
 import dk.redweb.Red_App.Views.NavBarBox;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
 import dk.redweb.Red_App.XmlHandling.XmlStore;
@@ -82,8 +81,6 @@ public class BasePageFragment extends Fragment {
             MyLog.e("Exception in BaseActivity:onCreate getting appearance from xml", e);
         }
 
-        _app.currentPage = _page;
-
         setLogoBars();
 
         return _view;
@@ -138,5 +135,23 @@ public class BasePageFragment extends Fragment {
 
     protected View findViewById(int id){
         return _view.findViewById(id);
+    }
+
+    protected void setupBackButton(){
+        try {
+            FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.flxBackButton);
+            if(_page.hasChild(PAGE.RETURNBUTTON) && _page.getBoolFromNode(PAGE.RETURNBUTTON)){
+                flxBackButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        getFragmentManager().popBackStack();
+                    }
+                });
+            } else {
+                flxBackButton.setVisibility(View.GONE);
+            }
+        } catch (NoSuchFieldException e) {
+            MyLog.e("Exception when getting ReturnButton attribute from page xml", e);
+        }
     }
 }

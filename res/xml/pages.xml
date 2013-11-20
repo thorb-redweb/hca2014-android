@@ -9,15 +9,16 @@
     <page>
         <name>SwipeView</name>
         <type>SwipeView</type>
-        <frontpage>true</frontpage>
         <section>Nyheder</section>
         <section>PMList</section>
+        <section>RedWeb</section>
         <section>About</section>
     </page>
     <page>
 		<name>Nyheder</name>
 		<type>ImageArticleList</type>
 		<catid>12</catid>
+        <frontpage>true</frontpage>
         <tabname>Forside</tabname>
         <navname>Nyheder</navname>
         <parent>SwipeView</parent>
@@ -47,6 +48,7 @@
         <name>About</name>
         <type>StaticArticle</type>
         <articleid>55</articleid>
+        <returnbutton>YES</returnbutton>
     </page>
     <page>
         <name>Program</name>
@@ -59,17 +61,20 @@
         <type>SessionDetail</type>
         <parent>Program</parent>
         <child>SessionMap</child>
+        <returnbutton>YES</returnbutton>
     </page>
     <page>
         <name>SessionMap</name>
         <type>SessionMap</type>
         <parent>Begivenhed</parent>
         <child>Begivenhed</child>
+        <returnbutton>YES</returnbutton>
     </page>
     <page>
         <name>OverviewMap</name>
         <type>OverviewMap</type>
         <tabname>Map</tabname>
+        <returnbutton>YES</returnbutton>
     </page>
     <page>
         <name>RedWeb</name>
@@ -85,8 +90,24 @@
     <page>
         <name>PMInitializer</name>
         <type>PushMessageInitializer</type>
-        <child>PMGroupSettings</child>
+        <child>TableNavigator</child>
         <tabname>Settings</tabname>
+    </page>
+    <page>
+        <name>TableNavigator</name>
+        <type>TableNavigator</type>
+        <entry>
+            <name>Unsubscriber</name>
+            <backicon>arrow_right.png</backicon>
+        </entry>
+        <entry>
+            <name>PMGroupSettings</name>
+            <backicon>arrow_right.png</backicon>
+        </entry>
+    </page>
+    <page>
+        <name>Unsubscriber</name>
+        <type>PushMessageUnsubscriber</type>
     </page>
     <page>
         <name>PMGroupSettings</name>

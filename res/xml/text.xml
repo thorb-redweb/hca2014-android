@@ -4,18 +4,22 @@
         <backbutton>Op</backbutton>
     </navigationbar>
 
-    <Forside>
-        <button3>Gavekalender</button3>
-        <button7>Nyheder</button7>
-    </Forside>
+    <!--<Forside>-->
+        <!--<button3>Gavekalender</button3>-->
+        <!--<button7>Nyheder</button7>-->
+    <!--</Forside>-->
 
-    <NextSessions>
-        <title>Næste Begivenheder</title>
-    </NextSessions>
+    <!--<NextSessions>-->
+        <!--<title>Næste Begivenheder</title>-->
+    <!--</NextSessions>-->
 
-    <NewsTicker>
-        <title>Seneste Nyheder</title>
-    </NewsTicker>
+    <!--<NewsTicker>-->
+        <!--<title>Seneste Nyheder</title>-->
+    <!--</NewsTicker>-->
+
+    <Nyhedsside>
+        <backbutton>""</backbutton>
+    </Nyhedsside>
 
     <Begivenhed>
         <date>Dato</date>

@@ -52,6 +52,11 @@ public class PAGE {
     public static final String BUTTON7CHILD = "button7child";
     public static final String BUTTON8CHILD = "button8child";
 
+    //TableNavigator Specific
+    public static final String ENTRY = "entry";
+    public static final String FRONTICON = "fronticon";
+    public static final String BACKICON = "backicon";
+
     //Map Activity Specific
     public static final String LATITUDE = "latitude";
     public static final String LONGITUDE = "longitude";

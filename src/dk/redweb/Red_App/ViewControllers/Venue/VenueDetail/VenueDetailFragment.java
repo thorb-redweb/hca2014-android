@@ -139,7 +139,7 @@ public class VenueDetailFragment extends BasePageFragment {
                     LOOK.VENUEDETAIL_BUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             ImageView imgButtonMap = (ImageView)findViewById(R.id.venueDetail_imgButtonMap);
-            helper.setImageViewImage(imgButtonMap, LOOK.VENUEDETAIL_MAPBUTTONIMAGE);
+            helper.setImageViewImage(imgButtonMap, LOOK.VENUEDETAIL_BUTTONICON);
 
             TextView txtBody = (TextView)findViewById(R.id.venueDetail_lblBody);
             helper.setTextColor(txtBody, LOOK.VENUEDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);

@@ -19,11 +19,13 @@ public class TYPE {
     public static final String PUSHMESSAGEGROUPSETTINGS = "PushMessageGroupSettings";
     public static final String PUSHMESSAGEINITIALIZER = "PushMessageInitializer";
     public static final String PUSHMESSAGELIST = "PushMessageList";
+    public static final String PUSHMESSAGEUNSUBSCRIBER = "PushMessageUnsubscriber";
     public static final String SESSIONDETAIL = "SessionDetail";
     public static final String SESSIONMAP = "SessionMap";
     public static final String SPLITVIEW = "SplitView";
     public static final String STATICARTICLE = "StaticArticle";
     public static final String SWIPEVIEW = "SwipeView";
+    public static final String TABLENAVIGATOR = "TableNavigator";
     public static final String UPCOMINGSESSIONS = "UpcomingSessions";
     public static final String VENUEDETAIL = "VenueDetail";
     public static final String VENUEMAP = "VenueMap";

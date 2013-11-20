@@ -10,6 +10,7 @@ import dk.redweb.Red_App.*;
 import dk.redweb.Red_App.StaticNames.*;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.ViewModels.SessionVM;
+import dk.redweb.Red_App.Views.FlexibleButton;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
 
 /**
@@ -84,6 +85,8 @@ public class SessionDetailFragment extends BasePageFragment {
             MyLog.e("Exception in SessionDetailActivity:onCreate when attempting to determine body type (web vs. text)", e);
         }
 
+        setupBackButton();
+
         return _view;
     }
 
@@ -149,6 +152,15 @@ public class SessionDetailFragment extends BasePageFragment {
             helper.setTextShadow(txtBody, LOOK.SESSIONDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.SESSIONDETAIL_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
+            FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.flxBackButton);
+            helper.setViewBackgroundImageOrColor(flxBackButton, LOOK.BACKBUTTONBACKGROUNDIMAGE,
+                    LOOK.BACKBUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTCOLOR);
+            helper.setFlexibleButtonImage(flxBackButton, LOOK.BACKBUTTONICON);
+            helper.setFlexibleButtonTextColor(flxBackButton, LOOK.BACKBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.setFlexibleButtonTextSize(flxBackButton, LOOK.BACKBUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.setFlexibleButtonTextStyle(flxBackButton, LOOK.BACKBUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.setFlexibleButtonTextShadow(flxBackButton, LOOK.BACKBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+                    LOOK.BACKBUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
         } catch (Exception e) {
             MyLog.e("Exception in SessionDetailActivity:setAppearance", e);
         }
@@ -161,6 +173,8 @@ public class SessionDetailFragment extends BasePageFragment {
             helper.setText(R.id.sessionDetail_lblVenueLabel, TEXT.SESSIONDETAIL_PLACE, DEFAULTTEXT.SESSIONDETAIL_PLACE);
             helper.setText(R.id.sessionDetail_lblTimeLabel, TEXT.SESSIONDETAIL_TIME, DEFAULTTEXT.SESSIONDETAIL_TIME);
             helper.setText(R.id.sessionDetail_lblButtonMap, TEXT.SESSIONDETAIL_MAPBUTTON, DEFAULTTEXT.SESSIONDETAIL_MAPBUTTON);
+
+            helper.setFlexibleButtonText(R.id.flxBackButton, TEXT.BACKBUTTON, DEFAULTTEXT.BACKBUTTON);
         } catch (Exception e) {
             MyLog.e("Exception when setting static text", e);
         }

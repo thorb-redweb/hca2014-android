@@ -149,33 +149,35 @@ public class BaseMapFragment extends BasePageFragment implements LocationListene
         return _view;
     }
 
+    private void setAppearance() {
+        try {
+            AppearanceHelper helper = new AppearanceHelper(getActivity(), _locallook, _globallook);
+
+            RelativeLayout rltBackground = (RelativeLayout)findViewById(R.id.map_rltMainview);
+            helper.setViewBackgroundImageOrColor(rltBackground, LOOK.BACKGROUNDIMAGE, LOOK.BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
+
+            FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.map_flxButtonBack);
+            helper.setViewBackgroundImageOrColor(flxBackButton, LOOK.BACKBUTTONBACKGROUNDIMAGE,
+                    LOOK.BACKBUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTCOLOR);
+            helper.setFlexibleButtonImage(flxBackButton, LOOK.BACKBUTTONICON);
+            helper.setFlexibleButtonTextColor(flxBackButton, LOOK.BACKBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.setFlexibleButtonTextSize(flxBackButton, LOOK.BACKBUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.setFlexibleButtonTextStyle(flxBackButton, LOOK.BACKBUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.setFlexibleButtonTextShadow(flxBackButton, LOOK.BACKBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+                    LOOK.BACKBUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
+
+        } catch (Exception e) {
+            MyLog.e("Exception when setting appearance for BaseMapFragment", e);
+        }
+    }
+
     private void setText() {
         try{
             TextHelper helper = new TextHelper(_view, _name, _xml);
 
-            helper.setFlexibleButtonText(R.id.map_flxButtonBack, TEXT.MAP_BACKBUTTON, DEFAULTTEXT.MAP_BACKBUTTON);
+            helper.setFlexibleButtonText(R.id.map_flxButtonBack, TEXT.BACKBUTTON, DEFAULTTEXT.BACKBUTTON);
         } catch (Exception e) {
             MyLog.e("Exception when setting text for BaseMapFragment", e);
-        }
-    }
-
-    private void setAppearance() {
-        try {
-            AppearanceHelper helper = new AppearanceHelper(_locallook, _globallook);
-
-            RelativeLayout rltBackground = (RelativeLayout)findViewById(R.id.map_rltMainview);
-            helper.setViewBackgroundImageOrColor(rltBackground, LOOK.MAP_BACKGROUNDIMAGE, LOOK.MAP_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
-
-            FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.map_flxButtonBack);
-            helper.setViewBackgroundColor(flxBackButton, LOOK.MAP_BACKBUTTONCOLOR, LOOK.GLOBAL_ALTCOLOR);
-            helper.setFlexibleButtonTextColor(flxBackButton, LOOK.MAP_BACKBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.setFlexibleButtonTextSize(flxBackButton, LOOK.MAP_BACKBUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setFlexibleButtonTextStyle(flxBackButton, LOOK.MAP_BACKBUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setFlexibleButtonTextShadow(flxBackButton, LOOK.MAP_BACKBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
-                    LOOK.MAP_BACKBUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
-
-        } catch (NoSuchFieldException e) {
-            MyLog.e("Exception when setting appearance for BaseMapFragment", e);
         }
     }
 

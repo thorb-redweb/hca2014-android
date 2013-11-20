@@ -13,7 +13,7 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.R;
 import dk.redweb.Red_App.StaticNames.EXTRA;
-import dk.redweb.Red_App.ViewControllers.PushMessages.PushMessageForwarder.PushMessageForwarder;
+import dk.redweb.Red_App.ViewControllers.System.PushMessageForwarder.PushMessageForwarder;
 
 /**
  * Created by Redweb with IntelliJ IDEA.

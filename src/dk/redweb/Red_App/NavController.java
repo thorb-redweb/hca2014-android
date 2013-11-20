@@ -136,6 +136,8 @@ public class NavController {
             return rootString + "ViewControllers.Settings.PushMessageInitializer.PushMessageInitializerFragment";
         } else if (type.equals(TYPE.PUSHMESSAGELIST)){
             return rootString + "ViewControllers.PushMessages.PushMessageList.PushMessageListFragment";
+        } else if (type.equals(TYPE.PUSHMESSAGEUNSUBSCRIBER)){
+            return rootString + "ViewControllers.Settings.PushMessageUnsubscriber.PushMessageUnsubscriberFragment";
         } else if(type.equals(TYPE.SESSIONDETAIL)){
             return rootString + "ViewControllers.Session.SessionDetail.SessionDetailFragment";
         } else if(type.equals(TYPE.SESSIONMAP)){
@@ -146,6 +148,8 @@ public class NavController {
             return rootString + "ViewControllers.Article.StaticArticle.StaticArticleFragment";
         } else if(type.equals(TYPE.SWIPEVIEW)){
             return rootString + "ViewControllers.Navigation.SwipeView.SwipeViewFragment";
+        } else if(type.equals(TYPE.TABLENAVIGATOR)){
+            return rootString + "ViewControllers.Navigation.TableNavigator.TableNavigatorFragment";
         } else if(type.equals(TYPE.UPCOMINGSESSIONS)){
             return rootString + "ViewControllers.FrontPageComponents.UpcomingSessions";
         } else if(type.equals(TYPE.VENUEDETAIL)){

@@ -1,9 +1,7 @@
 package dk.redweb.Red_App.Network;
 
-import dk.redweb.Red_App.Interfaces.Delegate_PushPMGroupSubscriptionUpdate;
-import dk.redweb.Red_App.Interfaces.Delegate_dumpServer;
-import dk.redweb.Red_App.Interfaces.Delegate_updateFromServer;
-import dk.redweb.Red_App.Interfaces.Delegate_uploadRegistrationAttributes;
+import android.content.DialogInterface;
+import dk.redweb.Red_App.Interfaces.*;
 import dk.redweb.Red_App.RedEventApplication;
 
 /**
@@ -24,6 +22,10 @@ public class ServerInterface {
 
     public void updateFromServer(Delegate_updateFromServer delegate){
         new Handler_UpdateFromServer(delegate, _app).execute();
+    }
+
+    public void removeRegistrationAttributes(Delegate_removeRegistrationAttributes delegate, String regid){
+        new Handler_RemoveRegistrationAttributes(delegate, _app, regid).execute();
     }
 
     public void uploadRegistrationAttributes(Delegate_uploadRegistrationAttributes delegate, String registrationId, String username){

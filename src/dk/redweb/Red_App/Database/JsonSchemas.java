@@ -43,7 +43,6 @@ public class JsonSchemas {
     }
 
     public static abstract class PushGroup {
-        public static final String TABLE_NAME = "pushmessages";
         public static final String GROUP_ID = "groupid";
         public static final String NAME = "name";
         public static final String ITEMTYPE = "itemtype";

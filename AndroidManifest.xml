@@ -36,7 +36,7 @@
         </activity>
         <activity android:name=".ViewControllers.FragmentPagesActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".ViewControllers.PushMessages.PushMessageForwarder.PushMessageForwarder"/>
+        <activity android:name=".ViewControllers.System.PushMessageForwarder.PushMessageForwarder"/>
 
         <receiver
                 android:name=".Network.PushMessages.GcmBroadcastReceiver"

@@ -18,6 +18,42 @@ public class LOOK {
     public static final String TYPEFACE_ITALIC = "italic";
     public static final String TYPEFACE_NORMAL = "normal";
 
+    //global
+    public static final String BACKBUTTONBACKGROUNDCOLOR = "backbuttoncolor";
+    public static final String BACKBUTTONBACKGROUNDIMAGE = "backbuttonimage";
+    public static final String BACKBUTTONICON = "backbuttonicon";
+    public static final String BACKBUTTONTEXTCOLOR = "backbuttontextcolor";
+    public static final String BACKBUTTONTEXTSHADOWCOLOR = "backbuttontextshadowcolor";
+    public static final String BACKBUTTONTEXTSHADOWOFFSET = "backbuttontextshadowoffset";
+    public static final String BACKBUTTONTEXTSIZE = "backbuttontextsize";
+    public static final String BACKBUTTONTEXTSTYLE = "backbuttontextstyle";
+    public static final String BACKGROUNDCOLOR = "backgroundcolor";
+    public static final String BACKGROUNDIMAGE = "backgroundimage";
+    public static final String BUTTONBACKGROUNDCOLOR = "buttoncolor";
+    public static final String BUTTONBACKGROUNDIMAGE = "buttonimage";
+    public static final String BUTTONICON = "buttonicon";
+    public static final String BUTTONTEXTCOLOR = "buttontextcolor";
+    public static final String BUTTONTEXTSHADOWCOLOR = "buttontextshadowcolor";
+    public static final String BUTTONTEXTSHADOWOFFSET = "buttontextshadowoffset";
+    public static final String BUTTONTEXTSIZE = "buttontextsize";
+    public static final String BUTTONTEXTSTYLE = "buttontextstyle";
+    public static final String ITEMTITLECOLOR = "itemtitlecolor";
+    public static final String ITEMTITLESHADOWCOLOR = "itemtitleshadowcolor";
+    public static final String ITEMTITLESHADOWOFFSET = "itemtitleshadowoffset";
+    public static final String ITEMTITLESIZE = "itemtitlesize";
+    public static final String ITEMTITLESTYLE = "itemtitlestyle";
+    public static final String TEXTCOLOR = "textcolor";
+    public static final String TEXTSHADOWCOLOR = "textshadowcolor";
+    public static final String TEXTSHADOWOFFSET = "textshadowoffset";
+    public static final String TEXTSIZE = "textsize";
+    public static final String TEXTSTYLE = "textstyle";
+    public static final String TITLECOLOR = "titlecolor";
+    public static final String TITLESIZE = "titlesize";
+    public static final String TITLESTYLE = "titlestyle";
+    public static final String TITLESHADOWCOLOR = "titleshadowcolor";
+    public static final String TITLESHADOWOFFSET = "titleshadowoffset";
+
+
     //DEFAULT
     public static final String GLOBAL = "default";
     public static final String GLOBAL_ALTCOLOR = "altcolor";
@@ -78,16 +114,6 @@ public class LOOK {
     public static final String TABBAR_TEXTSIZE = "textsize";
     public static final String TABBAR_TEXTSTYLE = "textstyle";
     public static final String TABBAR_VISIBLE = "visible";
-
-    //Maps
-    public static final String MAP_BACKBUTTONCOLOR = "backbuttoncolor";
-    public static final String MAP_BACKBUTTONTEXTCOLOR = "backbuttontextcolor";
-    public static final String MAP_BACKBUTTONTEXTSHADOWCOLOR = "backbuttontextshadowcolor";
-    public static final String MAP_BACKBUTTONTEXTSHADOWOFFSET = "backbuttontextshadowoffset";
-    public static final String MAP_BACKBUTTONTEXTSIZE = "backbuttontextsize";
-    public static final String MAP_BACKBUTTONTEXTSTYLE = "backbuttontextstyle";
-    public static final String MAP_BACKGROUNDCOLOR = "backgroundcolor";
-    public static final String MAP_BACKGROUNDIMAGE = "backgroundimage";
 
     //AdventCal
     public static final String ADVENTCAL_BACKGROUNDCOLOR = "backgroundcolor";
@@ -320,9 +346,6 @@ public class LOOK {
     //SwipeView
     public static final String SWIPEVIEW_BACKGROUNDCOLOR = "backgroundcolor";
     public static final String SWIPEVIEW_BACKGROUNDIMAGE = "backgroundimage";
-    public static final String SWIPEVIEW_BOXHEIGHT = "boxheight";
-    public static final String SWIPEVIEW_BOXWIDTH = "boxwidth";
-    public static final String SWIPEVIEW_GAPWIDTH = "gapwidth";
     public static final String SWIPEVIEW_SELECTEDPAGECOLOR = "selectedpagecolor";
     public static final String SWIPEVIEW_UNSELECTEDPAGECOLOR = "unselectedpagecolor";
 
@@ -344,6 +367,7 @@ public class LOOK {
     public static final String VENUEDETAIL_BACKGROUNDCOLOR = "backgroundcolor";
     public static final String VENUEDETAIL_BACKGROUNDIMAGE = "backgroundimage";
     public static final String VENUEDETAIL_BUTTONCOLOR = "buttoncolor";
+    public static final String VENUEDETAIL_BUTTONICON = "buttonicon";
     public static final String VENUEDETAIL_BUTTONTEXTCOLOR = "buttontextcolor";
     public static final String VENUEDETAIL_BUTTONTEXTSHADOWCOLOR = "buttontextshadowcolor";
     public static final String VENUEDETAIL_BUTTONTEXTSHADOWOFFSET = "buttontextshadowoffset";
@@ -354,7 +378,6 @@ public class LOOK {
     public static final String VENUEDETAIL_LABELSHADOWOFFSET = "labelshadowoffset";
     public static final String VENUEDETAIL_LABELSIZE = "labelsize";
     public static final String VENUEDETAIL_LABELSTYLE = "labelstyle";
-    public static final String VENUEDETAIL_MAPBUTTONIMAGE = "mapbuttonimage";
     public static final String VENUEDETAIL_TEXTCOLOR = "textcolor";
     public static final String VENUEDETAIL_TEXTSHADOWCOLOR = "textshadowcolor";
     public static final String VENUEDETAIL_TEXTSHADOWOFFSET = "textshadowoffset";

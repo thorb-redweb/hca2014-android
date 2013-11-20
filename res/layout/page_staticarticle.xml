@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<WebView xmlns:android="http://schemas.android.com/apk/res/android"
-         android:id="@+id/staticArticle_webBody"
-         style="@style/Layout.Full"/>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        style="@style/Layout.Full">
+    <WebView android:id="@+id/staticArticle_webBody"
+             android:layout_alignParentTop="true"
+             android:layout_above="@id/flxBackButton"
+             style="@style/Layout.Full"/>
+
+    <dk.redweb.Red_App.Views.FlexibleButton
+            android:id="@+id/flxBackButton"
+            android:layout_alignParentBottom="true"
+            style="@style/Layout.Wrap"
+            android:layout_gravity="center_horizontal"/>
+</RelativeLayout>

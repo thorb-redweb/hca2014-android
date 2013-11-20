@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/pushmessageunsubscriber_lnrMainView"
+              style="@style/Layout.Full"
+              android:gravity="center_horizontal">
+    <TextView android:id="@+id/pushmessageunsubscriber_lblTitle"
+              style="@style/Layout.Wrap"
+              android:layout_margin="5dp"/>
+    <TextView android:id="@+id/pushmessageunsubscriber_lblWarning"
+            style="@style/Layout.Wrap"
+            android:layout_margin="5dp"/>
+    <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/pushmessageunsubscriber_flxUnsubscribe"
+            style="@style/Layout.Wrap.Complete"
+            android:layout_margin="5dp"/>
+</LinearLayout>

@@ -35,12 +35,7 @@ public class TextHelper {
     }
 
     public void setText(int id, String textName, String defaultText) throws NoSuchFieldException {
-        String text;
-        if(textStore.hasChild(textName)){
-            text = textStore.getStringFromNode(textName);
-        } else {
-            text = defaultText;
-        }
+        String text = getText(textName, defaultText);
 
         TextView textView = (TextView)view.findViewById(id);
         textView.setText(text);
@@ -53,12 +48,7 @@ public class TextHelper {
     }
 
     public void setFlexibleButtonText(int id, String textName, String defaultText) throws NoSuchFieldException {
-        String text;
-        if(textStore.hasChild(textName)){
-            text = textStore.getStringFromNode(textName);
-        } else {
-            text = defaultText;
-        }
+        String text = getText(textName, defaultText);
 
         FlexibleButton button = (FlexibleButton)view.findViewById(id);
         button.setText(text);
@@ -68,5 +58,21 @@ public class TextHelper {
         if(textStore.hasChild(textName)){
             setFlexibleButtonText(id,textName,"");
         }
+    }
+
+    public String getText(String textName, String defaultText) throws NoSuchFieldException {
+        if(textStore.hasChild(textName)){
+            return getTextFromStore(textName);
+        } else {
+            return defaultText;
+        }
+    }
+
+    private String getTextFromStore(String textName) throws NoSuchFieldException {
+        String text = textStore.getStringFromNode(textName);
+        if(text.equals("\"\"")){
+            text = "";
+        }
+        return text;
     }
 }

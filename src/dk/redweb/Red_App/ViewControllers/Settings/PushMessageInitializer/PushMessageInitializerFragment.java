@@ -44,12 +44,10 @@ public class PushMessageInitializerFragment extends BasePageFragment implements 
 
     @Override
     public View onCreateView(LayoutInflater inflate, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflate, container, R.layout.page_pushmessageinitializer);
 
         _pmHandler = new PushMessageInitializationHandling(getActivity(),this);
         boolean hasInitialized = PushMessageInitializationHandling.checkInitialization(getActivity());
-        //hasInitialized = false;
-
-        super.onCreateView(inflate, container, R.layout.page_pushmessageinitializer);
 
         if(hasInitialized){
             changeToNextPage();
@@ -194,10 +192,9 @@ public class PushMessageInitializerFragment extends BasePageFragment implements 
 
     private void changeToNextPage(){
         try {
-            XmlNode nexpage;
             if(firstVisit){
-                nexpage = _xml.getPage(_childname);
-                NavController.changePageWithXmlNode(nexpage, getActivity());
+                XmlNode nextpage = _xml.getPage(_childname);
+                NavController.changePageWithXmlNode(nextpage, getActivity());
                 firstVisit = false;
             }
             else{

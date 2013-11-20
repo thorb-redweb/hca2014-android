@@ -12,9 +12,8 @@ import android.widget.TextView;
 import dk.redweb.Red_App.AppearanceHelper;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.R;
-import dk.redweb.Red_App.StaticNames.EXTRA;
-import dk.redweb.Red_App.StaticNames.LOOK;
-import dk.redweb.Red_App.StaticNames.PAGE;
+import dk.redweb.Red_App.StaticNames.*;
+import dk.redweb.Red_App.TextHelper;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.ViewModels.ArticleVM;
 import dk.redweb.Red_App.Views.FlexibleButton;
@@ -44,6 +43,7 @@ public class ArticleDetailFragment extends BasePageFragment {
         }
 
         setAppearance();
+        setText();
 
         ArticleVM article = _db.Articles.getVMFromId(articleId);
 
@@ -84,21 +84,8 @@ public class ArticleDetailFragment extends BasePageFragment {
         } else {
             title.setText("Sorry.\r\nThis article has been removed.");
         }
-        try {
-            FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.articledetail_flxBackButton);
-            if(_page.hasChild(PAGE.RETURNBUTTON) && _page.getBoolFromNode(PAGE.RETURNBUTTON)){
-                flxBackButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        getFragmentManager().popBackStack();
-                    }
-                });
-            } else {
-                flxBackButton.setVisibility(View.GONE);
-            }
-        } catch (NoSuchFieldException e) {
-            MyLog.e("Exception when getting ReturnButton attribute from page xml", e);
-        }
+
+        setupBackButton();
 
         return _view;
     }
@@ -133,18 +120,28 @@ public class ArticleDetailFragment extends BasePageFragment {
             helper.setTextShadow(txtBody, LOOK.ARTICLEDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.ARTICLEDETAIL_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
-            FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.articledetail_flxBackButton);
-            helper.setViewBackgroundImageOrColor(flxBackButton, LOOK.ARTICLEDETAIL_BACKBUTTONBACKGROUNDIMAGE,
-                    LOOK.ARTICLEDETAIL_BACKBUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTCOLOR);
-            helper.setFlexibleButtonImage(flxBackButton, LOOK.ARTICLEDETAIL_BACKBUTTONICON);
-            helper.setFlexibleButtonTextColor(flxBackButton, LOOK.ARTICLEDETAIL_BACKBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.setFlexibleButtonTextSize(flxBackButton, LOOK.ARTICLEDETAIL_BACKBUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setFlexibleButtonTextStyle(flxBackButton, LOOK.ARTICLEDETAIL_BACKBUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setFlexibleButtonTextShadow(flxBackButton, LOOK.ARTICLEDETAIL_BACKBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
-                    LOOK.ARTICLEDETAIL_BACKBUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
+            FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.flxBackButton);
+            helper.setViewBackgroundImageOrColor(flxBackButton, LOOK.BACKBUTTONBACKGROUNDIMAGE,
+                    LOOK.BACKBUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTCOLOR);
+            helper.setFlexibleButtonImage(flxBackButton, LOOK.BACKBUTTONICON);
+            helper.setFlexibleButtonTextColor(flxBackButton, LOOK.BACKBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.setFlexibleButtonTextSize(flxBackButton, LOOK.BACKBUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.setFlexibleButtonTextStyle(flxBackButton, LOOK.BACKBUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.setFlexibleButtonTextShadow(flxBackButton, LOOK.BACKBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+                    LOOK.BACKBUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
         } catch (Exception e) {
             MyLog.e("Exception in ArticleDetailActivity:setAppearance", e);
+        }
+    }
+
+    private void setText() {
+        try{
+            TextHelper helper = new TextHelper(_view, _name, _xml);
+
+            helper.setFlexibleButtonText(R.id.flxBackButton, TEXT.BACKBUTTON, DEFAULTTEXT.BACKBUTTON);
+        } catch (Exception e) {
+            MyLog.e("Exception when setting text for BaseMapFragment", e);
         }
     }
 }

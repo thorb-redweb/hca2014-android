@@ -1,4 +1,4 @@
-package dk.redweb.Red_App.ViewControllers.PushMessages.PushMessageForwarder;
+package dk.redweb.Red_App.ViewControllers.System.PushMessageForwarder;
 
 import android.content.Intent;
 import android.os.Bundle;

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/tablenavigator_rltMainView"
+                style="@style/Layout.Full">
+        <ListView android:id="@+id/tablenavigator_lstEntries"
+                  style="@style/Layout.Full"
+                  android:paddingLeft="10sp"
+                  android:paddingRight="15sp"/>
+</RelativeLayout>

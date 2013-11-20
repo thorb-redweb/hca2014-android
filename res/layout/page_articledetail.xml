@@ -14,7 +14,7 @@
         <TextView android:id="@+id/articleDetail_lblBody"
                   style="@style/Layout.Full"/>
         <dk.redweb.Red_App.Views.FlexibleButton
-                android:id="@+id/articledetail_flxBackButton"
+                android:id="@+id/flxBackButton"
                 style="@style/Layout.Wrap.Complete"
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="15dp"

@@ -71,26 +71,10 @@ public class BaseActivity extends FragmentActivity {
         } catch (Exception e) {
             MyLog.e("Exception in BaseActivity:onCreate getting appearance from xml", e);
         }
-
-        _app.currentPage = _page;
     }
 
     protected void onResume() {
         super.onResume();
-    }
-    protected void onPause() {
-        clearPageReferences();
-        super.onPause();
-    }
-    protected void onDestroy() {
-        clearPageReferences();
-        super.onDestroy();
-    }
-
-    private void clearPageReferences(){
-        XmlNode currPage = _app.currentPage;
-        if (currPage != null && currPage.equals(this))
-            _app.currentPage = null;
     }
 
     protected DateTime DateTimeNow(){

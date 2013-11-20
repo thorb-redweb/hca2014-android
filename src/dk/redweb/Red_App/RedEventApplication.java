@@ -32,8 +32,6 @@ public class RedEventApplication  extends Application {
     public NavBarBox getNavbar(){return _navbar;}
     public void setNavbar(NavBarBox navbar){_navbar = navbar;}
 
-    public XmlNode currentPage;
-
     public int getDatabaseDataVersion(){
         SharedPreferences prefs = this.getSharedPreferences("database", MODE_PRIVATE);
         return prefs.getInt("dataVersion", 0);
