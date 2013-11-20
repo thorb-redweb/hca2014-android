@@ -180,7 +180,7 @@ public class PushMessageInitializerFragment extends BasePageFragment implements 
             _progressDialog.setMessage("Gemmer...");
             _progressDialog.show();
 
-            _pmHandler.initializePushService(getActivity(), username);
+            _pmHandler.initializePushService(username);
         }
     }
 

@@ -21,8 +21,6 @@ public class TEXT {
     public final static String BUTTONGALLERY_BUTTON7 = "button7";
     public final static String BUTTONGALLERY_BUTTON8 = "button8";
 
-    public static final String MAP_BACKBUTTON = "backbutton";
-
     public final static String NAVBAR_HOMEBUTTON = "homebutton";
     public final static String NAVBAR_UPBUTTON = "backbutton";
 
@@ -46,6 +44,9 @@ public class TEXT {
     public static final String PUSHMESSAGEUNSUBSCRIBER_DIALOGMESSAGE = "dialogmessage";
     public static final String PUSHMESSAGEUNSUBSCRIBER_DIALOGOK = "dialogok";
     public static final String PUSHMESSAGEUNSUBSCRIBER_DIALOGCANCEL = "dialogcancel";
+    public static final String PUSHMESSAGEUNSUBSCRIBER_DIALOG2TITLE = "dialog2title";
+    public static final String PUSHMESSAGEUNSUBSCRIBER_DIALOG2MESSAGE = "dialog2message";
+    public static final String PUSHMESSAGEUNSUBSCRIBER_DIALOG2OK = "dialog2ok";
     public static final String PUSHMESSAGEUNSUBSCRIBER_TITLE = "title";
     public static final String PUSHMESSAGEUNSUBSCRIBER_UNSUBSCRIBEBUTTON = "unsubscribebutton";
     public static final String PUSHMESSAGEUNSUBSCRIBER_WARNING = "warning";

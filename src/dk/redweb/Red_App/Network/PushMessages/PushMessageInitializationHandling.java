@@ -96,6 +96,14 @@ public class PushMessageInitializationHandling {
                 Context.MODE_PRIVATE);
     }
 
+    public static void removeRegistrationId(Context context){
+        final SharedPreferences prefs = getGcmPreferences(context);
+
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.remove(PROPERTY_REG_ID);
+        editor.commit();
+    }
+
     private static int getAppVersion(Context context) {
         try {
             PackageInfo packageInfo = context.getPackageManager()
@@ -107,7 +115,7 @@ public class PushMessageInitializationHandling {
         }
     }
 
-    public void initializePushService(Context context, String username){
+    public void initializePushService(String username){
         registerInBackground(username);
     }
 
@@ -115,7 +123,7 @@ public class PushMessageInitializationHandling {
         new AsyncTask<Void, Void, String>() {
             @Override
             protected String doInBackground(Void... params) {
-                String result = "";
+                String result;
                 try {
                     result = doTheRegistration(username);
                 } catch (IOException ex) {

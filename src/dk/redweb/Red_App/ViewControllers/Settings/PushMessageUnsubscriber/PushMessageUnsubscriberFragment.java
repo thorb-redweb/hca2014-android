@@ -1,7 +1,6 @@
 package dk.redweb.Red_App.ViewControllers.Settings.PushMessageUnsubscriber;
 
 import android.app.AlertDialog;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,15 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import dk.redweb.Red_App.AppearanceHelper;
+import dk.redweb.Red_App.*;
 import dk.redweb.Red_App.Interfaces.Delegate_removeRegistrationAttributes;
-import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.Network.PushMessages.PushMessageInitializationHandling;
-import dk.redweb.Red_App.R;
 import dk.redweb.Red_App.StaticNames.DEFAULTTEXT;
 import dk.redweb.Red_App.StaticNames.LOOK;
 import dk.redweb.Red_App.StaticNames.TEXT;
-import dk.redweb.Red_App.TextHelper;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.Views.FlexibleButton;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
@@ -29,10 +25,14 @@ import dk.redweb.Red_App.XmlHandling.XmlNode;
  */
 public class PushMessageUnsubscriberFragment extends BasePageFragment implements Delegate_removeRegistrationAttributes {
 
-    String lblDialogTitle;
-    String lblDialogMessage;
-    String lblDialogOk;
-    String lblDialogCancel;
+    String lblWarningDialogTitle;
+    String lblWarningDialogMessage;
+    String lblWarningDialogOk;
+    String lblWarningDialogCancel;
+
+    String lblFinishedDialogTitle;
+    String lblFinishedDialogMessage;
+    String lblFinishedDialogOk;
 
     public PushMessageUnsubscriberFragment(XmlNode page) {
         super(page);
@@ -95,23 +95,37 @@ public class PushMessageUnsubscriberFragment extends BasePageFragment implements
             helper.setText(R.id.pushmessageunsubscriber_lblWarning, TEXT.PUSHMESSAGEUNSUBSCRIBER_WARNING, DEFAULTTEXT.PUSHMESSAGEUNSUBSCRIBER_WARNING);
             helper.setFlexibleButtonText(R.id.pushmessageunsubscriber_flxUnsubscribe, TEXT.PUSHMESSAGEUNSUBSCRIBER_UNSUBSCRIBEBUTTON, DEFAULTTEXT.PUSHMESSAGEUNSUBSCRIBER_UNSUBSCRIBEBUTTON);
 
-            lblDialogTitle = helper.getText(TEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOGTITLE, DEFAULTTEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOGTITLE);
-            lblDialogMessage = helper.getText(TEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOGMESSAGE, DEFAULTTEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOGMESSAGE);
-            lblDialogOk = helper.getText(TEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOGOK, DEFAULTTEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOGOK);
-            lblDialogCancel = helper.getText(TEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOGCANCEL, DEFAULTTEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOGCANCEL);
+            lblFinishedDialogTitle = helper.getText(TEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOG2TITLE, DEFAULTTEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOG2TITLE);
+            lblFinishedDialogMessage = helper.getText(TEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOG2MESSAGE, DEFAULTTEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOG2MESSAGE);
+            lblFinishedDialogOk = helper.getText(TEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOG2OK, DEFAULTTEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOG2OK);
+
+            lblWarningDialogTitle = helper.getText(TEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOGTITLE, DEFAULTTEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOGTITLE);
+            lblWarningDialogMessage = helper.getText(TEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOGMESSAGE, DEFAULTTEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOGMESSAGE);
+            lblWarningDialogOk = helper.getText(TEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOGOK, DEFAULTTEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOGOK);
+            lblWarningDialogCancel = helper.getText(TEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOGCANCEL, DEFAULTTEXT.PUSHMESSAGEUNSUBSCRIBER_DIALOGCANCEL);
 
         } catch (Exception e) {
             MyLog.e("Exception when setting Text for PushMessageUnsubscriberFragment", e);
         }
     }
 
+    public View.OnClickListener unsubscribeButtonListener(){
+        return new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog warningDialog = areYouSureDialog();
+                warningDialog.show();
+            }
+        };
+    }
+
     public AlertDialog areYouSureDialog(){
         AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
 
-        dialog.setMessage(lblDialogMessage);
-        dialog.setTitle(lblDialogTitle);
-        dialog.setPositiveButton(lblDialogOk, okButtonListener());
-        dialog.setNegativeButton(lblDialogCancel, cancelButtonListener());
+        dialog.setMessage(lblWarningDialogMessage);
+        dialog.setTitle(lblWarningDialogTitle);
+        dialog.setPositiveButton(lblWarningDialogOk, okButtonListener());
+        dialog.setNegativeButton(lblWarningDialogCancel, cancelButtonListener());
         return dialog.create();
     }
 
@@ -129,27 +143,6 @@ public class PushMessageUnsubscriberFragment extends BasePageFragment implements
         MyLog.w("Alertdialog displayed");
     }
 
-    public View.OnClickListener unsubscribeButtonListener(){
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AlertDialog warningDialog = areYouSureDialog();
-                warningDialog.show();
-            }
-        };
-    }
-
-    public DialogInterface.OnClickListener okButtonListener(){
-        final PushMessageUnsubscriberFragment context = this;
-        return new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                String regid = PushMessageInitializationHandling.getRegistrationId(getActivity());
-                _sv.removeRegistrationAttributes(context, regid);
-            }
-        };
-    }
-
     public DialogInterface.OnClickListener cancelButtonListener(){
         return new DialogInterface.OnClickListener() {
             @Override
@@ -164,6 +157,47 @@ public class PushMessageUnsubscriberFragment extends BasePageFragment implements
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
+            }
+        };
+    }
+
+    public DialogInterface.OnClickListener okButtonListener(){
+        return new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                removeRegistrationAttributes();
+                finishedDialog().show();
+            }
+        };
+    }
+
+    private void removeRegistrationAttributes(){
+        _db.PushMessageGroups.unsubscribeAll();
+
+        String regid = PushMessageInitializationHandling.getRegistrationId(getActivity());
+        _sv.removeRegistrationAttributes(this, regid);
+
+        PushMessageInitializationHandling.removeRegistrationId(getActivity());
+    }
+
+    public AlertDialog finishedDialog(){
+        AlertDialog.Builder dialog = new AlertDialog.Builder(getActivity());
+
+        dialog.setMessage(lblFinishedDialogMessage);
+        dialog.setTitle(lblFinishedDialogTitle);
+        dialog.setPositiveButton(lblFinishedDialogOk, finishedButtonListener());
+        return dialog.create();
+    }
+
+    public DialogInterface.OnClickListener finishedButtonListener(){
+        return new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                try {
+                    NavController.changePageWithXmlNode(_xml.getFrontPage(),getActivity());
+                } catch (Exception e) {
+                    MyLog.e("Exception when changing page to frontpage after removal of registration attributes", e);
+                }
             }
         };
     }

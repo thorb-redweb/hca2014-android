@@ -30,6 +30,9 @@ public class DEFAULTTEXT {
     public static final String PUSHMESSAGEUNSUBSCRIBER_DIALOGMESSAGE = "Er du sikker på at du vil fravælge push beskeder";
     public static final String PUSHMESSAGEUNSUBSCRIBER_DIALOGOK = "Fravælg";
     public static final String PUSHMESSAGEUNSUBSCRIBER_DIALOGCANCEL = "Fravælg ikke Push Beskeder";
+    public static final String PUSHMESSAGEUNSUBSCRIBER_DIALOG2TITLE = "Færdig";
+    public static final String PUSHMESSAGEUNSUBSCRIBER_DIALOG2MESSAGE = "Du er blevet succesfuldt frameldt push beskeder";
+    public static final String PUSHMESSAGEUNSUBSCRIBER_DIALOG2OK = "Ok";
     public static final String PUSHMESSAGEUNSUBSCRIBER_TITLE = "Fravælg Push Beskeder";
     public static final String PUSHMESSAGEUNSUBSCRIBER_UNSUBSCRIBEBUTTON = "Fravælg push beskeder";
     public static final String PUSHMESSAGEUNSUBSCRIBER_WARNING = "Hvis du fravælger push beskeder vil du miste " +

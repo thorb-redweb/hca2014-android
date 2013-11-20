@@ -115,6 +115,12 @@ public class DbPushMessageGroups {
         _sql.update(DbSchemas.PushGroup.TABLE_NAME, values, whereString, null);
     }
 
+    public void unsubscribeAll() {
+        ContentValues values = new ContentValues();
+        values.put(DbSchemas.PushGroup.SUBSCRIBED, false);
+        _sql.update(DbSchemas.PushGroup.TABLE_NAME, values, null, null);
+    }
+
     public void importSingleFromJSON(JSONObject jsonObject) throws JSONException {
         ContentValues values = new ContentValues();
         int groupId = Integer.parseInt(jsonObject.getString(JsonSchemas.PushGroup.GROUP_ID));
