@@ -1,4 +1,4 @@
-package dk.redweb.Red_App.ViewControllers.Settings.PushMessageInitializer;
+package dk.redweb.Red_App.ViewControllers.Settings.PushMessageSubscriber;
 
 
 import android.app.AlertDialog;
@@ -31,20 +31,20 @@ import dk.redweb.Red_App.XmlHandling.XmlNode;
  * Date: 10/25/13
  * Time: 11:45
  */
-public class PushMessageInitializerFragment extends BasePageFragment implements Delegate_uploadRegistrationAttributes{
+public class PushMessageSubscriberFragment extends BasePageFragment implements Delegate_uploadRegistrationAttributes{
 
     Boolean firstVisit;
     PushMessageInitializationHandling _pmHandler;
     private ProgressDialog _progressDialog;
 
-    public PushMessageInitializerFragment(XmlNode page) {
+    public PushMessageSubscriberFragment(XmlNode page) {
         super(page);
         firstVisit = true;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflate, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreateView(inflate, container, R.layout.page_pushmessageinitializer);
+        super.onCreateView(inflate, container, R.layout.page_pushmessagesubscriber);
 
         _pmHandler = new PushMessageInitializationHandling(getActivity(),this);
         boolean hasInitialized = PushMessageInitializationHandling.checkInitialization(getActivity());
@@ -57,7 +57,7 @@ public class PushMessageInitializerFragment extends BasePageFragment implements 
         setAppearance();
         setText();
 
-        EditText txtUserName = (EditText)findViewById(R.id.pushmessageinitializer_txtUserName);
+        EditText txtUserName = (EditText)findViewById(R.id.pushmessagesubscriber_txtUserName);
         txtUserName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
@@ -70,10 +70,10 @@ public class PushMessageInitializerFragment extends BasePageFragment implements 
             }
         });
 
-        FlexibleButton flxSubmitButton = (FlexibleButton)findViewById(R.id.pushmessageinitializer_flxSubmit);
+        FlexibleButton flxSubmitButton = (FlexibleButton)findViewById(R.id.pushmessagesubscriber_flxSubmit);
         flxSubmitButton.setOnClickListener(submitButtonOnClickListener());
 
-        FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.pushmessageinitializer_flxBack);
+        FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.pushmessagesubscriber_flxBack);
         flxBackButton.setOnClickListener(backButtonOnClickListener());
 
         return _view;
@@ -91,23 +91,23 @@ public class PushMessageInitializerFragment extends BasePageFragment implements 
         try {
             AppearanceHelper helper = new AppearanceHelper(_view.getContext(), _locallook, _globallook);
 
-            LinearLayout lnrBackground = (LinearLayout)findViewById(R.id.pushmessageinitializer_lnrMainView);
+            LinearLayout lnrBackground = (LinearLayout)findViewById(R.id.pushmessagesubscriber_lnrMainView);
             helper.setViewBackgroundImageOrColor(lnrBackground,LOOK.PUSHMESSAGEINITIALIZER_BACKGROUNDIMAGE, LOOK.PUSHMESSAGEINITIALIZER_BACKGROUNDCOLOR,LOOK.GLOBAL_BACKCOLOR);
 
-            TextView lblDescription = (TextView)findViewById(R.id.pushmessageinitializer_lblPageDescription);
+            TextView lblDescription = (TextView)findViewById(R.id.pushmessagesubscriber_lblPageDescription);
             helper.setTextColor(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
             helper.setTextSize(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
             helper.setTextStyle(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
             helper.setTextShadow(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.PUSHMESSAGEINITIALIZER_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
-            TextView lblUserName = (TextView)findViewById(R.id.pushmessageinitializer_lblUserName);
+            TextView lblUserName = (TextView)findViewById(R.id.pushmessagesubscriber_lblUserName);
             helper.setTextColor(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
             helper.setTextSize(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
             helper.setTextStyle(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
             helper.setTextShadow(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.PUSHMESSAGEINITIALIZER_LABELSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
-            FlexibleButton flxSubmitButton = (FlexibleButton)findViewById(R.id.pushmessageinitializer_flxSubmit);
-            FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.pushmessageinitializer_flxBack);
+            FlexibleButton flxSubmitButton = (FlexibleButton)findViewById(R.id.pushmessagesubscriber_flxSubmit);
+            FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.pushmessagesubscriber_flxBack);
             FlexibleButton[] buttons = new FlexibleButton[]{flxSubmitButton,flxBackButton};
             helper.setViewBackgroundImageOrColor(buttons, LOOK.PUSHMESSAGEINITIALIZER_BUTTONBACKGROUNDIMAGE, LOOK.PUSHMESSAGEDETAIL_BACKBUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTCOLOR);
             helper.setFlexibleButtonImage(buttons, LOOK.PUSHMESSAGEINITIALIZER_BUTTONICON);
@@ -126,12 +126,12 @@ public class PushMessageInitializerFragment extends BasePageFragment implements 
         try{
             TextHelper helper = new TextHelper(_view, _name, _xml);
 
-            helper.setText(R.id.pushmessageinitializer_lblPageDescription, TEXT.PUSHMESSAGEINITIALIZER_PAGEDESCRIPTION, DEFAULTTEXT.PUSHMESSAGEINITIALIZER_PAGEDESCRIPTION);
+            helper.setText(R.id.pushmessagesubscriber_lblPageDescription, TEXT.PUSHMESSAGEINITIALIZER_PAGEDESCRIPTION, DEFAULTTEXT.PUSHMESSAGEINITIALIZER_PAGEDESCRIPTION);
 
-            helper.setText(R.id.pushmessageinitializer_lblUserName, TEXT.PUSHMESSAGEINITIALIZER_NAMELABEL, DEFAULTTEXT.PUSHMESSAGEINITIALIZER_NAMELABEL);
+            helper.setText(R.id.pushmessagesubscriber_lblUserName, TEXT.PUSHMESSAGEINITIALIZER_NAMELABEL, DEFAULTTEXT.PUSHMESSAGEINITIALIZER_NAMELABEL);
 
-            helper.setFlexibleButtonText(R.id.pushmessageinitializer_flxSubmit, TEXT.PUSHMESSAGEINITIALIZER_SUBMITBUTTON, DEFAULTTEXT.PUSHMESSAGEINITIALIZER_SUBMITBUTTON);
-            helper.setFlexibleButtonText(R.id.pushmessageinitializer_flxBack, TEXT.PUSHMESSAGEINITIALIZER_BACKBUTTON, DEFAULTTEXT.PUSHMESSAGEINITIALIZER_BACKBUTTON);
+            helper.setFlexibleButtonText(R.id.pushmessagesubscriber_flxSubmit, TEXT.PUSHMESSAGEINITIALIZER_SUBMITBUTTON, DEFAULTTEXT.PUSHMESSAGEINITIALIZER_SUBMITBUTTON);
+            helper.setFlexibleButtonText(R.id.pushmessagesubscriber_flxBack, TEXT.PUSHMESSAGEINITIALIZER_BACKBUTTON, DEFAULTTEXT.PUSHMESSAGEINITIALIZER_BACKBUTTON);
         } catch (Exception e) {
             MyLog.e("Exception when setting page text", e);
         }
@@ -164,7 +164,7 @@ public class PushMessageInitializerFragment extends BasePageFragment implements 
     }
 
     private void addUserToDatabase(){
-        EditText txtName = (EditText)findViewById(R.id.pushmessageinitializer_txtUserName);
+        EditText txtName = (EditText)findViewById(R.id.pushmessagesubscriber_txtUserName);
         String username = txtName.getText().toString();
         if(username.length() < 1){
             AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();

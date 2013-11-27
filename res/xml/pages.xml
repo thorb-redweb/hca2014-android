@@ -7,6 +7,12 @@
         <backgroundimage>splash.png</backgroundimage>
 	</page>
     <page>
+        <name>AutoSubscriber</name>
+        <type>PushMessageAutoSubscriber</type>
+        <child>SwipeView</child>
+        <frontpage>true</frontpage>
+    </page>
+    <page>
         <name>SwipeView</name>
         <type>SwipeView</type>
         <section>Nyheder</section>
@@ -18,7 +24,6 @@
 		<name>Nyheder</name>
 		<type>ImageArticleList</type>
 		<catid>12</catid>
-        <frontpage>true</frontpage>
         <tabname>Forside</tabname>
         <navname>Nyheder</navname>
         <parent>SwipeView</parent>
@@ -89,7 +94,7 @@
     </page>
     <page>
         <name>PMInitializer</name>
-        <type>PushMessageInitializer</type>
+        <type>PushMessageSubscriber</type>
         <child>TableNavigator</child>
         <tabname>Settings</tabname>
     </page>

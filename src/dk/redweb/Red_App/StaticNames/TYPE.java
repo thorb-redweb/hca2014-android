@@ -15,9 +15,10 @@ public class TYPE {
     public static final String IMAGEARTICLELIST = "ImageArticleList";
     public static final String NEWSTICKER = "NewsTicker";
     public static final String OVERVIEWMAP = "OverviewMap";
+    public static final String PUSHMESSAGEAUTOSUBSCRIBER = "PushMessageAutoSubscriber";
     public static final String PUSHMESSAGEDETAIL = "PushMessageDetail";
     public static final String PUSHMESSAGEGROUPSETTINGS = "PushMessageGroupSettings";
-    public static final String PUSHMESSAGEINITIALIZER = "PushMessageInitializer";
+    public static final String PUSHMESSAGESUBSCRIBER = "PushMessageSubscriber";
     public static final String PUSHMESSAGELIST = "PushMessageList";
     public static final String PUSHMESSAGEUNSUBSCRIBER = "PushMessageUnsubscriber";
     public static final String SESSIONDETAIL = "SessionDetail";
