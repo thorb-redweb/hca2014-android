@@ -2,6 +2,7 @@ package dk.redweb.Red_App;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import dk.redweb.Red_App.StaticNames.PAGE;
 import dk.redweb.Red_App.StaticNames.TYPE;
@@ -39,7 +40,12 @@ public class NavController {
             }
         }
 
-        if(parentIsSwipeview){
+        String type = page.getStringFromNode(PAGE.TYPE);
+        if(!parentIsSwipeview && !(type.equals(TYPE.PUSHMESSAGEAUTOSUBSCRIBER))){
+            Fragment fragment = createPageFragmentFromPage(page);
+            changePageWithFragment(fragment, activity, addToBackStack);
+        }
+        else if(parentIsSwipeview){
             try{
                 XmlNode swipeViewPage = xml.getPage(page.getStringFromNode(PAGE.PARENT));
                 SwipeViewFragment swipefragment = (SwipeViewFragment)createPageFragmentFromPage(swipeViewPage);
@@ -50,9 +56,9 @@ public class NavController {
                 MyLog.e("Exception when setting up SwipeView fragment, instead of child of SwipeView Fragment", e);
             }
         }
-        else{
+        else if(type.equals(TYPE.PUSHMESSAGEAUTOSUBSCRIBER)){
             Fragment fragment = createPageFragmentFromPage(page);
-            changePageWithFragment(fragment, activity, addToBackStack);
+            changePageWithFragment(fragment, activity, false);
         }
 
         if(page.hasChild(PAGE.CHILDPAGE)){
@@ -77,6 +83,11 @@ public class NavController {
             fragmentTransaction.addToBackStack(fragment.getClass().getSimpleName());
         }
         fragmentTransaction.commit();
+    }
+
+    public static void popPage(FragmentActivity parentActivity){
+        FragmentManager manager = parentActivity.getSupportFragmentManager();
+        manager.popBackStack();
     }
 
     public static Fragment createPageFragmentFromPage(XmlNode page){
@@ -128,12 +139,14 @@ public class NavController {
             return rootString + "ViewControllers.FrontPageComponents.NewsTicker";
         } else if(type.equals(TYPE.OVERVIEWMAP)){
             return rootString + "ViewControllers.Map.OverviewMap.OverviewMapFragment";
+        } else if (type.equals(TYPE.PUSHMESSAGEAUTOSUBSCRIBER)){
+            return rootString + "ViewControllers.System.PushMessageAutoSubscriber.PushMessageAutoSubscriberFragment";
         } else if (type.equals(TYPE.PUSHMESSAGEDETAIL)){
             return rootString + "ViewControllers.PushMessages.PushMessageDetail.PushMessageDetailFragment";
         } else if (type.equals(TYPE.PUSHMESSAGEGROUPSETTINGS)){
             return rootString + "ViewControllers.Settings.PushMessageGroupSettings.PushMessageGroupSettingsFragment";
-        } else if (type.equals(TYPE.PUSHMESSAGEINITIALIZER)){
-            return rootString + "ViewControllers.Settings.PushMessageInitializer.PushMessageInitializerFragment";
+        } else if (type.equals(TYPE.PUSHMESSAGESUBSCRIBER)){
+            return rootString + "ViewControllers.Settings.PushMessageSubscriber.PushMessageSubscriberFragment";
         } else if (type.equals(TYPE.PUSHMESSAGELIST)){
             return rootString + "ViewControllers.PushMessages.PushMessageList.PushMessageListFragment";
         } else if (type.equals(TYPE.PUSHMESSAGEUNSUBSCRIBER)){

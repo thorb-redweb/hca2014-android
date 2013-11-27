@@ -279,7 +279,7 @@ public class LOOK {
     public static final String PUSHMESSAGEGROUPSETTINGS_TITLESIZE = "titlesize";
     public static final String PUSHMESSAGEGROUPSETTINGS_TITLESTYLE = "titlestyle";
 
-    //PushMessageInitializer
+    //PushMessageSubscriber
     public static final String PUSHMESSAGEINITIALIZER_BACKGROUNDCOLOR = "backgroundcolor";
     public static final String PUSHMESSAGEINITIALIZER_BACKGROUNDIMAGE = "backgroundimage";
     public static final String PUSHMESSAGEINITIALIZER_BUTTONBACKGROUNDCOLOR = "buttoncolor";
@@ -304,11 +304,11 @@ public class LOOK {
     //PushMessageList
     public static final String PUSHMESSAGELIST_BACKGROUNDCOLOR = "backgroundcolor";
     public static final String PUSHMESSAGELIST_BACKGROUNDIMAGE = "backgroundimage";
-    public static final String PUSHMESSAGELIST_ITEMTITLECOLOR = "pushtitlecolor";
-    public static final String PUSHMESSAGELIST_ITEMTITLESHADOWCOLOR = "pushtitleshadowcolor";
-    public static final String PUSHMESSAGELIST_ITEMTITLESHADOWOFFSET = "pushtitleshadowoffset";
-    public static final String PUSHMESSAGELIST_ITEMTITLESIZE = "pushtitlesize";
-    public static final String PUSHMESSAGELIST_ITEMTITLESTYLE = "pushtitlestyle";
+    public static final String PUSHMESSAGELIST_ITEMTITLECOLOR = "itemtitlecolor";
+    public static final String PUSHMESSAGELIST_ITEMTITLESHADOWCOLOR = "itemtitleshadowcolor";
+    public static final String PUSHMESSAGELIST_ITEMTITLESHADOWOFFSET = "itemtitleshadowoffset";
+    public static final String PUSHMESSAGELIST_ITEMTITLESIZE = "itemtitlesize";
+    public static final String PUSHMESSAGELIST_ITEMTITLESTYLE = "itemtitlestyle";
     public static final String PUSHMESSAGELIST_TEXTCOLOR = "textcolor";
     public static final String PUSHMESSAGELIST_TEXTSHADOWCOLOR = "textshadowcolor";
     public static final String PUSHMESSAGELIST_TEXTSHADOWOFFSET = "textshadowoffset";

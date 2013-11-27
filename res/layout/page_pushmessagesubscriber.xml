@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:id="@+id/pushmessageinitializer_lnrMainView"
+              android:id="@+id/pushmessagesubscriber_lnrMainView"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <TextView android:id="@+id/pushmessageinitializer_lblPageDescription"
+    <TextView android:id="@+id/pushmessagesubscriber_lblPageDescription"
               style="@style/Layout.Wrap"
               android:layout_marginTop="15dp"
               android:layout_margin="5dp"/>
-    <TextView android:id="@+id/pushmessageinitializer_lblUserName"
+    <TextView android:id="@+id/pushmessagesubscriber_lblUserName"
               style="@style/Layout.Wrap"
               android:layout_marginLeft="10dp"/>
-    <EditText android:id="@+id/pushmessageinitializer_txtUserName"
+    <EditText android:id="@+id/pushmessagesubscriber_txtUserName"
             style="@style/Layout.Wrap"
             android:singleLine="true"
             android:imeOptions="actionDone"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"/>
     <dk.redweb.Red_App.Views.FlexibleButton
-        android:id="@+id/pushmessageinitializer_flxSubmit"
+        android:id="@+id/pushmessagesubscriber_flxSubmit"
         style="@style/Layout.Wrap.Complete"
         android:layout_gravity="center_horizontal"
         android:minWidth="100dp"
         android:layout_margin="5dp"/>
     <dk.redweb.Red_App.Views.FlexibleButton
-        android:id="@+id/pushmessageinitializer_flxBack"
+        android:id="@+id/pushmessagesubscriber_flxBack"
         style="@style/Layout.Wrap.Complete"
         android:layout_gravity="center_horizontal"
         android:minWidth="100dp"
