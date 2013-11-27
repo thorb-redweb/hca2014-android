@@ -1,4 +1,4 @@
-package dk.redweb.Red_App.ViewControllers.Settings.PushMessageInitializer;
+package dk.redweb.Red_App.ViewControllers.Settings.PushMessageSubscriber;
 
 
 import android.app.AlertDialog;
@@ -31,13 +31,13 @@ import dk.redweb.Red_App.XmlHandling.XmlNode;
  * Date: 10/25/13
  * Time: 11:45
  */
-public class PushMessageInitializerFragment extends BasePageFragment implements Delegate_uploadRegistrationAttributes{
+public class PushMessageSubscriberFragment extends BasePageFragment implements Delegate_uploadRegistrationAttributes{
 
     Boolean firstVisit;
     PushMessageInitializationHandling _pmHandler;
     private ProgressDialog _progressDialog;
 
-    public PushMessageInitializerFragment(XmlNode page) {
+    public PushMessageSubscriberFragment(XmlNode page) {
         super(page);
         firstVisit = true;
     }
