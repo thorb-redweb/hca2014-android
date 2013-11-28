@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
+import android.widget.RelativeLayout;
 import dk.redweb.Red_App.AppearanceHelper;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.R;
@@ -54,6 +55,9 @@ public class StaticArticleFragment extends BasePageFragment {
     private void setAppearance(){
         try {
             AppearanceHelper helper = new AppearanceHelper(_view.getContext(), _locallook, _globallook);
+
+            RelativeLayout rltBackground = (RelativeLayout)findViewById(R.id.staticArticle_rltMainView);
+            helper.setViewBackgroundColor(rltBackground,LOOK.BACKGROUNDCOLOR,LOOK.GLOBAL_BACKCOLOR);
 
             FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.flxBackButton);
             helper.setViewBackgroundImageOrColor(flxBackButton, LOOK.BACKBUTTONBACKGROUNDIMAGE,

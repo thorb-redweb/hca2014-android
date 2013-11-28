@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/staticArticle_rltMainView"
         style="@style/Layout.Full">
     <WebView android:id="@+id/staticArticle_webBody"
              android:layout_alignParentTop="true"
