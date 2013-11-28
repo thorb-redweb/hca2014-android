@@ -29,6 +29,7 @@ public class PAGE {
     public static final String TABNAME = "tabname";
     public static final String TOPLOGO = "toplogo";
     public static final String TYPE = "type";
+    public static final String URL = "url";
     public static final String VENUEID = "venueid";
 
     //Splash Specific

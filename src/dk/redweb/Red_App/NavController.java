@@ -169,6 +169,8 @@ public class NavController {
             return rootString + "ViewControllers.Venue.VenueDetail.VenueDetailFragment";
         } else if(type.equals(TYPE.VENUEMAP)){
             return rootString + "ViewControllers.Map.VenueMap.VenueMapFragment";
+        } else if(type.equals(TYPE.WEBVIEW)){
+            return rootString + "ViewControllers.Misc.WebView.WebViewFragment";
         }
         return null;
     }

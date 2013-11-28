@@ -30,6 +30,7 @@ public class TYPE {
     public static final String UPCOMINGSESSIONS = "UpcomingSessions";
     public static final String VENUEDETAIL = "VenueDetail";
     public static final String VENUEMAP = "VenueMap";
+    public static final String WEBVIEW = "WebView";
 
     public static final String SPLASH = "Splash";
 }

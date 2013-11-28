@@ -82,6 +82,13 @@
         <returnbutton>YES</returnbutton>
     </page>
     <page>
+        <name>WebView</name>
+        <type>WebView</type>
+        <url>http://redweb.dk/</url>
+        <returnbutton>YES</returnbutton>
+        <tabname>WebView</tabname>
+    </page>
+    <page>
         <name>RedWeb</name>
         <type>VenueDetail</type>
         <venueid>2</venueid>
