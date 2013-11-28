@@ -4,9 +4,31 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import dk.redweb.NotImplementedException;
 import dk.redweb.Red_App.StaticNames.PAGE;
 import dk.redweb.Red_App.StaticNames.TYPE;
+import dk.redweb.Red_App.ViewControllers.Article.AdventCal.AdventCalFragment;
+import dk.redweb.Red_App.ViewControllers.Article.AdventCal.AdventWindowFragment;
+import dk.redweb.Red_App.ViewControllers.Article.ArticleDetail.ArticleDetailFragment;
+import dk.redweb.Red_App.ViewControllers.Article.ImageArticleList.ImageArticleListFragment;
+import dk.redweb.Red_App.ViewControllers.Article.StaticArticle.StaticArticleFragment;
+import dk.redweb.Red_App.ViewControllers.FrontPageComponents.UpcomingSessions;
+import dk.redweb.Red_App.ViewControllers.Map.OverviewMap.OverviewMapFragment;
+import dk.redweb.Red_App.ViewControllers.Map.SessionMap.SessionMapFragment;
+import dk.redweb.Red_App.ViewControllers.Map.VenueMap.VenueMapFragment;
+import dk.redweb.Red_App.ViewControllers.Misc.WebView.WebViewFragment;
+import dk.redweb.Red_App.ViewControllers.Navigation.ButtonGallery.ButtonGalleryActivity;
 import dk.redweb.Red_App.ViewControllers.Navigation.SwipeView.SwipeViewFragment;
+import dk.redweb.Red_App.ViewControllers.Navigation.TableNavigator.TableNavigatorFragment;
+import dk.redweb.Red_App.ViewControllers.PushMessages.PushMessageDetail.PushMessageDetailFragment;
+import dk.redweb.Red_App.ViewControllers.PushMessages.PushMessageList.PushMessageListFragment;
+import dk.redweb.Red_App.ViewControllers.Session.DailySessionList.DailySessionListFragment;
+import dk.redweb.Red_App.ViewControllers.Session.SessionDetail.SessionDetailFragment;
+import dk.redweb.Red_App.ViewControllers.Settings.PushMessageGroupSettings.PushMessageGroupSettingsFragment;
+import dk.redweb.Red_App.ViewControllers.Settings.PushMessageSubscriber.PushMessageSubscriberFragment;
+import dk.redweb.Red_App.ViewControllers.Settings.PushMessageUnsubscriber.PushMessageUnsubscriberFragment;
+import dk.redweb.Red_App.ViewControllers.System.PushMessageAutoSubscriber.PushMessageAutoSubscriberFragment;
+import dk.redweb.Red_App.ViewControllers.Venue.VenueDetail.VenueDetailFragment;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
 import dk.redweb.Red_App.XmlHandling.XmlStore;
 
@@ -91,87 +113,65 @@ public class NavController {
     }
 
     public static Fragment createPageFragmentFromPage(XmlNode page){
-        String classname = null;
         try {
-            classname = getClassNameForTypeString(page.getStringFromNode("type"));
+            String type = page.getStringFromNode(PAGE.TYPE);
+            if(type.equals(TYPE.ADVENTCAL)){
+                return new AdventCalFragment(page);
+            } else if(type.equals(TYPE.ADVENTWINDOW)){
+                return new AdventWindowFragment(page);
+            } else if(type.equals(TYPE.ARTICLEDETAIL)){
+                return new ArticleDetailFragment(page);
+            } else if(type.equals(TYPE.BUTTONGALLERY)){
+                throw new NotImplementedException("ButtonGallery has not been updated to the modern framework");
+            } else if(type.equals(TYPE.DAILYSESSIONLIST)){
+                return new DailySessionListFragment(page);
+            } else if (type.equals(TYPE.IMAGEARTICLELIST)){
+                return new ImageArticleListFragment(page);
+            } else if(type.equals(TYPE.NEWSTICKER)){
+                throw new NotImplementedException("Newsticker has not been updated to the modern framework");
+            } else if(type.equals(TYPE.OVERVIEWMAP)){
+                return new OverviewMapFragment(page);
+            } else if (type.equals(TYPE.PUSHMESSAGEAUTOSUBSCRIBER)){
+                return new PushMessageAutoSubscriberFragment(page);
+            } else if (type.equals(TYPE.PUSHMESSAGEDETAIL)){
+                return new PushMessageDetailFragment(page);
+            } else if (type.equals(TYPE.PUSHMESSAGEGROUPSETTINGS)){
+                return new PushMessageGroupSettingsFragment(page);
+            } else if (type.equals(TYPE.PUSHMESSAGESUBSCRIBER)){
+                return new PushMessageSubscriberFragment(page);
+            } else if (type.equals(TYPE.PUSHMESSAGELIST)){
+                return new PushMessageListFragment(page);
+            } else if (type.equals(TYPE.PUSHMESSAGEUNSUBSCRIBER)){
+                return new PushMessageUnsubscriberFragment(page);
+            } else if(type.equals(TYPE.SESSIONDETAIL)){
+                return new SessionDetailFragment(page);
+            } else if(type.equals(TYPE.SESSIONMAP)){
+                return new SessionMapFragment(page);
+            } else if (type.equals(TYPE.SPLITVIEW)){
+                throw new NotImplementedException("SplitView has not been updated to the modern framework");
+            } else if(type.equals(TYPE.STATICARTICLE)){
+                return new StaticArticleFragment(page);
+            } else if(type.equals(TYPE.SWIPEVIEW)){
+                return new SwipeViewFragment(page);
+            } else if(type.equals(TYPE.TABLENAVIGATOR)){
+                return new TableNavigatorFragment(page);
+            } else if(type.equals(TYPE.UPCOMINGSESSIONS)){
+                throw new NotImplementedException("UpcomingSessions has not been updated to the modern framework");
+            } else if(type.equals(TYPE.VENUEDETAIL)){
+                return new VenueDetailFragment(page);
+            } else if(type.equals(TYPE.VENUEMAP)){
+                return new VenueMapFragment(page);
+            } else if(type.equals(TYPE.WEBVIEW)){
+                return new WebViewFragment(page);
+            }
         } catch (NoSuchFieldException e) {
-            MyLog.e("Exception when getting type to inflate into fragment page", e);
+            MyLog.e("Exception when ", e);
         }
-        assert classname != null;
-        Class cl = null;
-        try {
-            cl = Class.forName(classname);
-        } catch (ClassNotFoundException e) {
-            MyLog.e("Exception when getting class from name to inflate into fragment page", e);
-        }
-        assert cl != null;
-        Constructor constructor = null;
-        try {
-            constructor = cl.getConstructor(new Class[] {XmlNode.class});
-        } catch (NoSuchMethodException e) {
-            MyLog.e("Exception when creating constructor for fragment page", e);
-        }
-        assert constructor != null;
-        Fragment pageFragment = null;
-        try {
-            pageFragment = (Fragment)constructor.newInstance(page);
-        } catch (Exception e) {
-            MyLog.e("Exception when creating fragment page", e);
-        }
-        return pageFragment;
+        throw new IllegalArgumentException("A page of the given type does not exist or is not implemented");
     }
 
     public static String getClassNameForTypeString(String type){
-        String rootString = "dk.redweb.Red_App.";
-        if(type.equals(TYPE.ADVENTCAL)){
-            return rootString + "ViewControllers.Article.AdventCal.AdventCalFragment";
-        } else if(type.equals(TYPE.ADVENTWINDOW)){
-            return rootString + "ViewControllers.Article.AdeventWindow.AdventWindowFragment";
-        } else if(type.equals(TYPE.ARTICLEDETAIL)){
-            return rootString + "ViewControllers.Article.ArticleDetail.ArticleDetailFragment";
-        } else if(type.equals(TYPE.BUTTONGALLERY)){
-            return rootString + "ViewControllers.Navigation.ButtonGallery.ButtonGalleryActivity";
-        } else if(type.equals(TYPE.DAILYSESSIONLIST)){
-            return rootString + "ViewControllers.Session.DailySessionList.DailySessionListFragment";
-        } else if (type.equals(TYPE.IMAGEARTICLELIST)){
-            return rootString + "ViewControllers.Article.ImageArticleList.ImageArticleListFragment";
-        } else if(type.equals(TYPE.NEWSTICKER)){
-            return rootString + "ViewControllers.FrontPageComponents.NewsTicker";
-        } else if(type.equals(TYPE.OVERVIEWMAP)){
-            return rootString + "ViewControllers.Map.OverviewMap.OverviewMapFragment";
-        } else if (type.equals(TYPE.PUSHMESSAGEAUTOSUBSCRIBER)){
-            return rootString + "ViewControllers.System.PushMessageAutoSubscriber.PushMessageAutoSubscriberFragment";
-        } else if (type.equals(TYPE.PUSHMESSAGEDETAIL)){
-            return rootString + "ViewControllers.PushMessages.PushMessageDetail.PushMessageDetailFragment";
-        } else if (type.equals(TYPE.PUSHMESSAGEGROUPSETTINGS)){
-            return rootString + "ViewControllers.Settings.PushMessageGroupSettings.PushMessageGroupSettingsFragment";
-        } else if (type.equals(TYPE.PUSHMESSAGESUBSCRIBER)){
-            return rootString + "ViewControllers.Settings.PushMessageSubscriber.PushMessageSubscriberFragment";
-        } else if (type.equals(TYPE.PUSHMESSAGELIST)){
-            return rootString + "ViewControllers.PushMessages.PushMessageList.PushMessageListFragment";
-        } else if (type.equals(TYPE.PUSHMESSAGEUNSUBSCRIBER)){
-            return rootString + "ViewControllers.Settings.PushMessageUnsubscriber.PushMessageUnsubscriberFragment";
-        } else if(type.equals(TYPE.SESSIONDETAIL)){
-            return rootString + "ViewControllers.Session.SessionDetail.SessionDetailFragment";
-        } else if(type.equals(TYPE.SESSIONMAP)){
-            return rootString + "ViewControllers.Map.SessionMap.SessionMapFragment";
-        } else if (type.equals(TYPE.SPLITVIEW)){
-            return rootString + "ViewControllers.Navigation.SplitView.SplitViewActivity";
-        } else if(type.equals(TYPE.STATICARTICLE)){
-            return rootString + "ViewControllers.Article.StaticArticle.StaticArticleFragment";
-        } else if(type.equals(TYPE.SWIPEVIEW)){
-            return rootString + "ViewControllers.Navigation.SwipeView.SwipeViewFragment";
-        } else if(type.equals(TYPE.TABLENAVIGATOR)){
-            return rootString + "ViewControllers.Navigation.TableNavigator.TableNavigatorFragment";
-        } else if(type.equals(TYPE.UPCOMINGSESSIONS)){
-            return rootString + "ViewControllers.FrontPageComponents.UpcomingSessions";
-        } else if(type.equals(TYPE.VENUEDETAIL)){
-            return rootString + "ViewControllers.Venue.VenueDetail.VenueDetailFragment";
-        } else if(type.equals(TYPE.VENUEMAP)){
-            return rootString + "ViewControllers.Map.VenueMap.VenueMapFragment";
-        } else if(type.equals(TYPE.WEBVIEW)){
-            return rootString + "ViewControllers.Misc.WebView.WebViewFragment";
-        }
+
         return null;
     }
 }
