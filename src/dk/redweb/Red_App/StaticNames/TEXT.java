@@ -11,7 +11,10 @@ public class TEXT {
 
     public static final String BACKBUTTON = "backbutton";
 
-    //ButtonGallery Specific
+
+    public static final String BIKETRACKING_STARTBUTTON = "startbutton";
+    public static final String BIKETRACKING_STOPBUTTON = "stopbutton";
+
     public final static String BUTTONGALLERY_BUTTON1 = "button1";
     public final static String BUTTONGALLERY_BUTTON2 = "button2";
     public final static String BUTTONGALLERY_BUTTON3 = "button3";

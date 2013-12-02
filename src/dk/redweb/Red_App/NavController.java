@@ -4,7 +4,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import dk.redweb.NotImplementedException;
 import dk.redweb.Red_App.StaticNames.PAGE;
 import dk.redweb.Red_App.StaticNames.TYPE;
 import dk.redweb.Red_App.ViewControllers.Article.AdventCal.AdventCalFragment;
@@ -12,12 +11,11 @@ import dk.redweb.Red_App.ViewControllers.Article.AdventCal.AdventWindowFragment;
 import dk.redweb.Red_App.ViewControllers.Article.ArticleDetail.ArticleDetailFragment;
 import dk.redweb.Red_App.ViewControllers.Article.ImageArticleList.ImageArticleListFragment;
 import dk.redweb.Red_App.ViewControllers.Article.StaticArticle.StaticArticleFragment;
-import dk.redweb.Red_App.ViewControllers.FrontPageComponents.UpcomingSessions;
+import dk.redweb.Red_App.ViewControllers.Contest.BikeTracking.BikeTrackingFragment;
 import dk.redweb.Red_App.ViewControllers.Map.OverviewMap.OverviewMapFragment;
 import dk.redweb.Red_App.ViewControllers.Map.SessionMap.SessionMapFragment;
 import dk.redweb.Red_App.ViewControllers.Map.VenueMap.VenueMapFragment;
 import dk.redweb.Red_App.ViewControllers.Misc.WebView.WebViewFragment;
-import dk.redweb.Red_App.ViewControllers.Navigation.ButtonGallery.ButtonGalleryActivity;
 import dk.redweb.Red_App.ViewControllers.Navigation.SwipeView.SwipeViewFragment;
 import dk.redweb.Red_App.ViewControllers.Navigation.TableNavigator.TableNavigatorFragment;
 import dk.redweb.Red_App.ViewControllers.PushMessages.PushMessageDetail.PushMessageDetailFragment;
@@ -31,8 +29,6 @@ import dk.redweb.Red_App.ViewControllers.System.PushMessageAutoSubscriber.PushMe
 import dk.redweb.Red_App.ViewControllers.Venue.VenueDetail.VenueDetailFragment;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
 import dk.redweb.Red_App.XmlHandling.XmlStore;
-
-import java.lang.reflect.Constructor;
 
 /**
  * Created by Redweb with IntelliJ IDEA.
@@ -121,6 +117,8 @@ public class NavController {
                 return new AdventWindowFragment(page);
             } else if(type.equals(TYPE.ARTICLEDETAIL)){
                 return new ArticleDetailFragment(page);
+            } else if(type.equals(TYPE.BIKETRACKING)){
+                return new BikeTrackingFragment(page);
             } else if(type.equals(TYPE.BUTTONGALLERY)){
                 throw new NotImplementedException("ButtonGallery has not been updated to the modern framework");
             } else if(type.equals(TYPE.DAILYSESSIONLIST)){

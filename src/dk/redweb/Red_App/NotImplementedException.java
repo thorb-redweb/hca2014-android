@@ -1,4 +1,4 @@
-package dk.redweb;
+package dk.redweb.Red_App;
 
 /**
  * Created by Redweb with IntelliJ IDEA.

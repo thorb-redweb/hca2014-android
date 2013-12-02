@@ -10,6 +10,9 @@ public class DEFAULTTEXT {
 
     public static final String BACKBUTTON = "Tilbage";
 
+    public static final String BIKETRACKING_STARTBUTTON = "Start!";
+    public static final String BIKETRACKING_STOPBUTTON = "Stop!";
+
     public final static String DAILYSESSIONLIST_EMPTYLIST = "Ingen arrangementer matcher din søgning";
     public final static String DAILYSESSIONLIST_SPINNERTITLE = "Sorter på sted";
 
