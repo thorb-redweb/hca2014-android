@@ -11,6 +11,7 @@ import dk.redweb.Red_App.ViewControllers.Article.AdventCal.AdventWindowFragment;
 import dk.redweb.Red_App.ViewControllers.Article.ArticleDetail.ArticleDetailFragment;
 import dk.redweb.Red_App.ViewControllers.Article.ImageArticleList.ImageArticleListFragment;
 import dk.redweb.Red_App.ViewControllers.Article.StaticArticle.StaticArticleFragment;
+import dk.redweb.Red_App.ViewControllers.Contest.BikeTracking.BikeTrackingFragment;
 import dk.redweb.Red_App.ViewControllers.Map.OverviewMap.OverviewMapFragment;
 import dk.redweb.Red_App.ViewControllers.Map.SessionMap.SessionMapFragment;
 import dk.redweb.Red_App.ViewControllers.Map.VenueMap.VenueMapFragment;
@@ -116,6 +117,8 @@ public class NavController {
                 return new AdventWindowFragment(page);
             } else if(type.equals(TYPE.ARTICLEDETAIL)){
                 return new ArticleDetailFragment(page);
+            } else if(type.equals(TYPE.BIKETRACKING)){
+                return new BikeTrackingFragment(page);
             } else if(type.equals(TYPE.BUTTONGALLERY)){
                 throw new NotImplementedException("ButtonGallery has not been updated to the modern framework");
             } else if(type.equals(TYPE.DAILYSESSIONLIST)){
@@ -160,7 +163,7 @@ public class NavController {
                 return new WebViewFragment(page);
             }
         } catch (NoSuchFieldException e) {
-            MyLog.e("Exception when ", e);
+            MyLog.e("Exception when getting ViewController from page type", e);
         }
         throw new IllegalArgumentException("A page of the given type does not exist or is not implemented");
     }
