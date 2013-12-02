@@ -10,6 +10,7 @@ public class TYPE {
     public static final String ADVENTWINDOW = "AdventWindow";
     public static final String ARTICLEDETAIL = "ArticleDetail";
     public static final String ARTICLELIST = "ArticleList";
+    public static final String BIKETRACKING = "BikeTracking";
     public static final String BUTTONGALLERY = "ButtonGallery";
     public static final String DAILYSESSIONLIST = "DailySessionList";
     public static final String IMAGEARTICLELIST = "ImageArticleList";

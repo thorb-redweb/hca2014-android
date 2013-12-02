@@ -1109,7 +1109,7 @@ public class DateTimeZoneBuilder {
                 return null;
             }
             
-            // Stop precalculating if year reaches some arbitrary limit.
+            // StopLocationClient precalculating if year reaches some arbitrary limit.
             if (chrono.year().get(nextMillis) >= YEAR_LIMIT) {
                 return null;
             }

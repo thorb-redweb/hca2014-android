@@ -7,6 +7,11 @@
         <backgroundimage>splash.png</backgroundimage>
 	</page>
     <page>
+        <name>Biking</name>
+        <type>BikeTracking</type>
+        <frontpage>true</frontpage>
+    </page>
+    <page>
         <name>AutoSubscriber</name>
         <type>PushMessageAutoSubscriber</type>
         <child>SwipeView</child>
