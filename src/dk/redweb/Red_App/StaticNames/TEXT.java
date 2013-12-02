@@ -12,7 +12,10 @@ public class TEXT {
     public static final String BACKBUTTON = "backbutton";
 
 
+    public static final String BIKETRACKING_RUNNING = "running";
+    public static final String BIKETRACKING_STOPPED = "stopped";
     public static final String BIKETRACKING_STARTBUTTON = "startbutton";
+    public static final String BIKETRACKING_CONTINUEBUTTON = "continuebutton";
     public static final String BIKETRACKING_STOPBUTTON = "stopbutton";
 
     public final static String BUTTONGALLERY_BUTTON1 = "button1";

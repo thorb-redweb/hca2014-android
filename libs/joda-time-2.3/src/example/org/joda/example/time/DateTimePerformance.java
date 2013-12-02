@@ -871,7 +871,7 @@ public class DateTimePerformance {
     //------------------------------------------------------------------------
     
     /**
-     * Start the stopwatch.
+     * StartLocationClient the stopwatch.
      */
     private void start(String str1, String str2) {
         result = (Result) results.get(str1 + str2);

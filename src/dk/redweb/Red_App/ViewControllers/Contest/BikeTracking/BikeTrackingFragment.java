@@ -1,11 +1,9 @@
 package dk.redweb.Red_App.ViewControllers.Contest.BikeTracking;
 
-import android.location.Location;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import dk.redweb.Red_App.Interfaces.Delegate_biketracker;
 import dk.redweb.Red_App.MyLog;
@@ -26,6 +24,10 @@ public class BikeTrackingFragment extends BasePageFragment implements Delegate_b
 
     private BikeTracker _bikeTracker;
 
+    private State _state;
+
+    private enum State {PRELAUNCH, RUNNING, STOPPED;};
+
     public BikeTrackingFragment(XmlNode page) {
         super(page);
     }
@@ -36,13 +38,11 @@ public class BikeTrackingFragment extends BasePageFragment implements Delegate_b
         setAppearance();
         setText();
 
+        _state = State.PRELAUNCH;
         _bikeTracker = new BikeTracker(this, _app, getActivity());
 
-        FlexibleButton flxStartButton = (FlexibleButton)findViewById(R.id.biketracking_flxStartButton);
-        flxStartButton.setOnClickListener(getStartButtonListener());
-
-        FlexibleButton flxStopButton = (FlexibleButton)findViewById(R.id.biketracking_flxStopButton);
-        flxStopButton.setOnClickListener(getStopButtonListener());
+        FlexibleButton flxTrackerStateButton = (FlexibleButton)findViewById(R.id.biketracking_flxTrackerStateButton);
+        flxTrackerStateButton.setOnClickListener(getTrackerStateButtonListener());
 
         setupBackButton();
 
@@ -56,30 +56,72 @@ public class BikeTrackingFragment extends BasePageFragment implements Delegate_b
     public void setText(){
         try {
             TextHelper helper = new TextHelper(_view, _name,_xml);
-            helper.setFlexibleButtonText(R.id.biketracking_flxStartButton, TEXT.BIKETRACKING_STARTBUTTON, DEFAULTTEXT.BIKETRACKING_STARTBUTTON);
-            helper.setFlexibleButtonText(R.id.biketracking_flxStopButton, TEXT.BIKETRACKING_STOPBUTTON, DEFAULTTEXT.BIKETRACKING_STOPBUTTON);
+            helper.setText(R.id.biketracking_lblTrackerRunning,TEXT.BIKETRACKING_STOPPED,DEFAULTTEXT.BIKETRACKING_STOPPED);
+            helper.setFlexibleButtonText(R.id.biketracking_flxTrackerStateButton, TEXT.BIKETRACKING_STARTBUTTON, DEFAULTTEXT.BIKETRACKING_STARTBUTTON);
             helper.setFlexibleButtonText(R.id.flxBackButton, TEXT.BACKBUTTON, DEFAULTTEXT.BACKBUTTON);
         } catch (Exception e) {
             MyLog.e("Exception when setting static text", e);
         }
     }
 
-    public View.OnClickListener getStartButtonListener(){
+    public View.OnClickListener getTrackerStateButtonListener(){
         return new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                _bikeTracker.Start();
+                handleButtonAccordingToState();
             }
         };
     }
 
-    public View.OnClickListener getStopButtonListener(){
-        return new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                _bikeTracker.Stop();
-            }
-        };
+    public void handleButtonAccordingToState(){
+        switch (_state){
+            case PRELAUNCH:
+                startLocationClient();
+                break;
+            case RUNNING:
+                stopLocationClient();
+                break;
+            case STOPPED:
+                ContinueLocationClient();
+                break;
+        }
+    }
+
+    public void startLocationClient(){
+        _bikeTracker.startLocationClient();
+        try{
+            TextHelper _textHelper = new TextHelper(_view, _name,_xml);
+            _textHelper.setText(R.id.biketracking_lblTrackerRunning, TEXT.BIKETRACKING_RUNNING, DEFAULTTEXT.BIKETRACKING_RUNNING);
+            _textHelper.setFlexibleButtonText(R.id.biketracking_flxTrackerStateButton, TEXT.BIKETRACKING_STOPBUTTON, DEFAULTTEXT.BIKETRACKING_STOPBUTTON);
+        } catch (Exception e) {
+            MyLog.e("Exception when setting 'Running' text on lblTrackerRunning", e);
+        }
+        _state = State.RUNNING;
+    }
+
+    public void stopLocationClient(){
+        _bikeTracker.stopLocationClient();
+        try{
+            TextHelper _textHelper = new TextHelper(_view, _name,_xml);
+            _textHelper.setText(R.id.biketracking_lblTrackerRunning, TEXT.BIKETRACKING_STOPPED, DEFAULTTEXT.BIKETRACKING_STOPPED);
+            _textHelper.setFlexibleButtonText(R.id.biketracking_flxTrackerStateButton, TEXT.BIKETRACKING_CONTINUEBUTTON, DEFAULTTEXT.BIKETRACKING_CONTINUEBUTTON);
+            findViewById(R.id.biketracking_flxTrackerStateButton).setVisibility(View.GONE);
+        } catch (Exception e) {
+            MyLog.e("Exception when setting 'Not Running' text on lblTrackerRunning", e);
+        }
+        _state = State.STOPPED;
+    }
+
+    public void ContinueLocationClient(){
+        _bikeTracker.stopLocationClient();
+        try{
+            TextHelper _textHelper = new TextHelper(_view, _name,_xml);
+            _textHelper.setText(R.id.biketracking_lblTrackerRunning, TEXT.BIKETRACKING_RUNNING, DEFAULTTEXT.BIKETRACKING_RUNNING);
+            _textHelper.setText(R.id.biketracking_lblTrackerRunning, TEXT.BIKETRACKING_STOPBUTTON, DEFAULTTEXT.BIKETRACKING_STOPBUTTON);
+        } catch (Exception e) {
+            MyLog.e("Exception when setting 'Not Running' text on lblTrackerRunning", e);
+        }
+        _state = State.RUNNING;
     }
 
     @Override

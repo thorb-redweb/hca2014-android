@@ -39,32 +39,21 @@
     <TextView android:id="@+id/biketracking_lblTrackerRunning"
               style="@style/Layout.Wrap"
               android:layout_margin="10dp"
-              android:layout_below="@id/biketracking_lnrTopSpeedLabels"/>
-    <LinearLayout android:id="@+id/biketracking_lnrStartStopButtons"
-                  style="@style/Layout.Wrap"
-                  android:orientation="horizontal"
-                  android:gravity="center_horizontal"
-                  android:layout_below="@id/biketracking_lblTrackerRunning">
-        <dk.redweb.Red_App.Views.FlexibleButton
-                android:id="@+id/biketracking_flxStartButton"
-                style="@style/Layout.Wrap.Complete"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="10dp"
-                android:background="@android:color/holo_green_light"/>
-        <dk.redweb.Red_App.Views.FlexibleButton
-                android:id="@+id/biketracking_flxStopButton"
-                style="@style/Layout.Wrap.Complete"
-                android:layout_centerHorizontal="true"
-                android:layout_margin="10dp"
-                android:background="@android:color/holo_blue_light"/>
-    </LinearLayout>
-
+              android:layout_below="@id/biketracking_lnrTopSpeedLabels"
+              android:layout_centerHorizontal="true"/>
+    <dk.redweb.Red_App.Views.FlexibleButton
+            android:id="@+id/biketracking_flxTrackerStateButton"
+            style="@style/Layout.Wrap.Complete"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="10dp"
+            android:background="@android:color/holo_green_light"
+            android:layout_below="@id/biketracking_lblTrackerRunning"/>
     <dk.redweb.Red_App.Views.FlexibleButton
             android:id="@+id/flxBackButton"
             style="@style/Layout.Wrap.Complete"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
             android:background="@android:color/holo_red_light"
-            android:layout_below="@id/biketracking_lnrStartStopButtons"/>
+            android:layout_below="@id/biketracking_flxTrackerStateButton"/>
 
 </RelativeLayout>

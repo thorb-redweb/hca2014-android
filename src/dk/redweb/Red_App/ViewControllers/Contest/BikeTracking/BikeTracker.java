@@ -101,13 +101,15 @@ public class BikeTracker implements LocationListener, GooglePlayServicesClient.C
             if(_newReadingSinceLastDistanceCheck){
                 getTotalDistanceTravelled();
             }
-            if(_locations.size() <= 1){
-                return decimalFormatter.format(0.0);
-            }
+
             long startTime = _locations.get(0).getTime();
             long stopTime = _locations.get(_locations.size()-1).getTime();
             double elapsedTime = stopTime - startTime;
             double timeInHours = elapsedTime / (1000.0 * 60.0 * 60.0);
+            if(timeInHours == 0.0){
+                return decimalFormatter.format(0.0);
+            }
+
             double distanceInKm = _distance / 1000;
             _averagespeed =  distanceInKm/timeInHours;
             _newReadingSinceLastAverageSpeedCheck = false;
@@ -150,12 +152,12 @@ public class BikeTracker implements LocationListener, GooglePlayServicesClient.C
         return 6366000*tt;
     }
 
-    public void Start(){
+    public void startLocationClient(){
         MyLog.v("BikeTracker location client connecting");
         _locationClient.connect();
     }
 
-    public void Stop(){
+    public void stopLocationClient(){
         if(servicesConnected()){
             MyLog.v("BikeTracker location client disconnecting");
             _locationClient.disconnect();
