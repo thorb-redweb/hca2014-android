@@ -34,6 +34,8 @@ public class BasePageFragment extends Fragment {
     protected String _childname;
     protected XmlNode _page;
 
+    protected AppearanceHelper _appearanceHelper;
+    protected TextHelper _textHelper;
     protected XmlNode _locallook;
     protected XmlNode _globallook;
 
@@ -74,11 +76,19 @@ public class BasePageFragment extends Fragment {
         _xml = _app.getXmlStore();
 
         try {
-            if(_xml.appearance.hasChild(_name))
+            if(_xml.appearance.hasChild(_name)){
                 _locallook = _xml.getAppearanceForPage(_name);
+            }
             _globallook = _xml.getAppearanceForPage(LOOK.GLOBAL);
+            _appearanceHelper = new AppearanceHelper(getActivity(), _locallook, _globallook);
         } catch (Exception e) {
             MyLog.e("Exception in BaseActivity:onCreate getting appearance from xml", e);
+        }
+
+        try {
+            _textHelper = new TextHelper(_view, _name, _xml);
+        } catch (Exception e) {
+            MyLog.e("Exception when setting up TextHelper", e);
         }
 
         setLogoBars();
