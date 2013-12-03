@@ -12,6 +12,7 @@ import dk.redweb.Red_App.ViewControllers.Article.ArticleDetail.ArticleDetailFrag
 import dk.redweb.Red_App.ViewControllers.Article.ImageArticleList.ImageArticleListFragment;
 import dk.redweb.Red_App.ViewControllers.Article.StaticArticle.StaticArticleFragment;
 import dk.redweb.Red_App.ViewControllers.Contest.BikeTracking.BikeTrackingFragment;
+import dk.redweb.Red_App.ViewControllers.Contest.StairTracking.StairTrackingFragment;
 import dk.redweb.Red_App.ViewControllers.Map.OverviewMap.OverviewMapFragment;
 import dk.redweb.Red_App.ViewControllers.Map.SessionMap.SessionMapFragment;
 import dk.redweb.Red_App.ViewControllers.Map.VenueMap.VenueMapFragment;
@@ -147,6 +148,8 @@ public class NavController {
                 return new SessionMapFragment(page);
             } else if (type.equals(TYPE.SPLITVIEW)){
                 throw new NotImplementedException("SplitView has not been updated to the modern framework");
+            } else if(type.equals(TYPE.STAIRTRACKING)){
+                return new StairTrackingFragment(page);
             } else if(type.equals(TYPE.STATICARTICLE)){
                 return new StaticArticleFragment(page);
             } else if(type.equals(TYPE.SWIPEVIEW)){
