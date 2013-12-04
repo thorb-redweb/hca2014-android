@@ -8,7 +8,7 @@ import android.util.Log;
  * Time: 2:28 PM
  */
 public class MyLog {
-    private final static String APP_NAME = "RedEvent";
+    private final static String APP_NAME = "Red_App";
 
 
     public static void v(String msg){

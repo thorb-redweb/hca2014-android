@@ -17,6 +17,7 @@ import dk.redweb.Red_App.ViewControllers.Map.OverviewMap.OverviewMapFragment;
 import dk.redweb.Red_App.ViewControllers.Map.SessionMap.SessionMapFragment;
 import dk.redweb.Red_App.ViewControllers.Map.VenueMap.VenueMapFragment;
 import dk.redweb.Red_App.ViewControllers.Misc.WebView.WebViewFragment;
+import dk.redweb.Red_App.ViewControllers.Navigation.ButtonGallery.ButtonGalleryFragment;
 import dk.redweb.Red_App.ViewControllers.Navigation.SwipeView.SwipeViewFragment;
 import dk.redweb.Red_App.ViewControllers.Navigation.TableNavigator.TableNavigatorFragment;
 import dk.redweb.Red_App.ViewControllers.PushMessages.PushMessageDetail.PushMessageDetailFragment;
@@ -121,7 +122,7 @@ public class NavController {
             } else if(type.equals(TYPE.BIKETRACKING)){
                 return new BikeTrackingFragment(page);
             } else if(type.equals(TYPE.BUTTONGALLERY)){
-                throw new NotImplementedException("ButtonGallery has not been updated to the modern framework");
+                return new ButtonGalleryFragment(page);
             } else if(type.equals(TYPE.DAILYSESSIONLIST)){
                 return new DailySessionListFragment(page);
             } else if (type.equals(TYPE.IMAGEARTICLELIST)){

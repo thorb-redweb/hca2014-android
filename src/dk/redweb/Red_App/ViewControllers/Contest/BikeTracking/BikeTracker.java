@@ -46,7 +46,6 @@ public class BikeTracker implements LocationListener, GooglePlayServicesClient.C
     private boolean _isErrorDialogShowing = false;
 
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
-    private final static String KEY_UPDATES_ON = "KEY_UPDATES_ON";
 
     public BikeTracker(Delegate_biketracker delegate, RedEventApplication app, FragmentActivity activity){
         _delegate = delegate;
@@ -160,6 +159,8 @@ public class BikeTracker implements LocationListener, GooglePlayServicesClient.C
     public void stopLocationClient(){
         if(servicesConnected()){
             MyLog.v("BikeTracker location client disconnecting");
+            Location location = _locationClient.getLastLocation();
+            onLocationChanged(location);
             _locationClient.disconnect();
         }
     }

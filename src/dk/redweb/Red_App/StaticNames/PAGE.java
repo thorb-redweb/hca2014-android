@@ -44,14 +44,14 @@ public class PAGE {
     public static final String SECTION = "section";
 
     //ButtonGallery Specific
-    public static final String BUTTON1CHILD = "button1child";
-    public static final String BUTTON2CHILD = "button2child";
-    public static final String BUTTON3CHILD = "button3child";
-    public static final String BUTTON4CHILD = "button4child";
-    public static final String BUTTON5CHILD = "button5child";
-    public static final String BUTTON6CHILD = "button6child";
-    public static final String BUTTON7CHILD = "button7child";
-    public static final String BUTTON8CHILD = "button8child";
+    public static final String BUTTON1CHILD = "button1";
+    public static final String BUTTON2CHILD = "button2";
+    public static final String BUTTON3CHILD = "button3";
+    public static final String BUTTON4CHILD = "button4";
+    public static final String BUTTON5CHILD = "button5";
+    public static final String BUTTON6CHILD = "button6";
+    public static final String BUTTON7CHILD = "button7";
+    public static final String BUTTON8CHILD = "button8";
 
     //TableNavigator Specific
     public static final String ENTRY = "entry";
