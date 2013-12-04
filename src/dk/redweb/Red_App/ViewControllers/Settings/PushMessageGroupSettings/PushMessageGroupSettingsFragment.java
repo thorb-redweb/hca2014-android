@@ -57,10 +57,10 @@ public class PushMessageGroupSettingsFragment extends BasePageFragment {
         try {
             AppearanceHelper helper = new AppearanceHelper(_view.getContext(), _locallook, _globallook);
 
-            LinearLayout lnrBackground = (LinearLayout)findViewById(R.id.pushmessageunsubscriber_lnrMainView);
+            LinearLayout lnrBackground = (LinearLayout)findViewById(R.id.pushmessagegroupsettings_lnrMainView);
             helper.setViewBackgroundTileImageOrColor(lnrBackground, LOOK.PUSHMESSAGEGROUPSETTINGS_BACKGROUNDIMAGE, LOOK.PUSHMESSAGEGROUPSETTINGS_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
-            TextView lblTitle = (TextView)findViewById(R.id.pushmessageunsubscriber_lblWarning);
+            TextView lblTitle = (TextView)findViewById(R.id.pushmessagegroupsettings_lblTitle);
             helper.setTextColor(lblTitle, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
             helper.setTextSize(lblTitle, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLESIZE, LOOK.GLOBAL_ITEMTITLESIZE);
             helper.setTextStyle(lblTitle, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLESTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
