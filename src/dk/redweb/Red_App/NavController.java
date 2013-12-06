@@ -16,6 +16,7 @@ import dk.redweb.Red_App.ViewControllers.Contest.StairTracking.StairTrackingFrag
 import dk.redweb.Red_App.ViewControllers.Map.OverviewMap.OverviewMapFragment;
 import dk.redweb.Red_App.ViewControllers.Map.SessionMap.SessionMapFragment;
 import dk.redweb.Red_App.ViewControllers.Map.VenueMap.VenueMapFragment;
+import dk.redweb.Red_App.ViewControllers.Misc.CameraIntent.CameraIntentFragment;
 import dk.redweb.Red_App.ViewControllers.Misc.WebView.WebViewFragment;
 import dk.redweb.Red_App.ViewControllers.Navigation.ButtonGallery.ButtonGalleryFragment;
 import dk.redweb.Red_App.ViewControllers.Navigation.SwipeView.SwipeViewFragment;
@@ -61,11 +62,7 @@ public class NavController {
         }
 
         String type = page.getStringFromNode(PAGE.TYPE);
-        if(!parentIsSwipeview && !(type.equals(TYPE.PUSHMESSAGEAUTOSUBSCRIBER))){
-            Fragment fragment = createPageFragmentFromPage(page);
-            changePageWithFragment(fragment, activity, addToBackStack);
-        }
-        else if(parentIsSwipeview){
+        if(parentIsSwipeview){ //Transition where the view is put inside a swipeview
             try{
                 XmlNode swipeViewPage = xml.getPage(page.getStringFromNode(PAGE.PARENT));
                 SwipeViewFragment swipefragment = (SwipeViewFragment)createPageFragmentFromPage(swipeViewPage);
@@ -76,11 +73,18 @@ public class NavController {
                 MyLog.e("Exception when setting up SwipeView fragment, instead of child of SwipeView Fragment", e);
             }
         }
-        else if(type.equals(TYPE.PUSHMESSAGEAUTOSUBSCRIBER)){
+        else if(type.equals(TYPE.PUSHMESSAGEAUTOSUBSCRIBER)){ //Transition without being placed in backstack
             Fragment fragment = createPageFragmentFromPage(page);
             changePageWithFragment(fragment, activity, false);
         }
+        else { //Standard Transition
+            Fragment fragment = createPageFragmentFromPage(page);
+            changePageWithFragment(fragment, activity, addToBackStack);
+        }
 
+        //Sometimes a childview will be called directly, but we still want the parent view before it in the backstack
+        //(for example when a view is opened from a notification). The childview is then put as a childpage of the
+        //parent page. The parent page is instantiated above, and the childview is instantiated below.
         if(page.hasChild(PAGE.CHILDPAGE)){
             XmlNode childPage = page.getChildFromNode(PAGE.CHILDPAGE);
             changePageWithXmlNode(childPage, activity, true);
@@ -123,6 +127,8 @@ public class NavController {
                 return new BikeTrackingFragment(page);
             } else if(type.equals(TYPE.BUTTONGALLERY)){
                 return new ButtonGalleryFragment(page);
+            } else if(type.equals(TYPE.CAMERAINTENT)){
+                return new CameraIntentFragment(page);
             } else if(type.equals(TYPE.DAILYSESSIONLIST)){
                 return new DailySessionListFragment(page);
             } else if (type.equals(TYPE.IMAGEARTICLELIST)){

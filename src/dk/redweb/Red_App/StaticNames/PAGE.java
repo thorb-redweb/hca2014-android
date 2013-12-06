@@ -25,6 +25,7 @@ public class PAGE {
     public static final String RETURNBUTTON = "returnbutton";
     public static final String RETURNONTAP = "returnontap";
     public static final String SESSIONID = "sessionid";
+    public static final String STORAGEDIRECTORY = "storagedirectory";
     public static final String TABIMAGE = "tabimage";
     public static final String TABNAME = "tabname";
     public static final String TOPLOGO = "toplogo";

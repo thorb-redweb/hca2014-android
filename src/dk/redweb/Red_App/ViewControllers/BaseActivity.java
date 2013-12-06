@@ -77,6 +77,9 @@ public class BaseActivity extends FragmentActivity {
         super.onResume();
     }
 
+
+
+
     protected DateTime DateTimeNow(){
         DateTime now = new DateTime();
         if(_app.isDebugging()){

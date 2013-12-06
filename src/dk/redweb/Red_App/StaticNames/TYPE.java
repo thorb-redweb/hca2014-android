@@ -12,6 +12,7 @@ public class TYPE {
     public static final String ARTICLELIST = "ArticleList";
     public static final String BIKETRACKING = "BikeTracking";
     public static final String BUTTONGALLERY = "ButtonGallery";
+    public static final String CAMERAINTENT = "CameraIntent";
     public static final String DAILYSESSIONLIST = "DailySessionList";
     public static final String IMAGEARTICLELIST = "ImageArticleList";
     public static final String NEWSTICKER = "NewsTicker";

@@ -64,6 +64,7 @@
         <button4>RedWeb</button4>
         <button5>Biking</button5>
         <button6>Stairing</button6>
+        <button7>Camera</button7>
     </page>
     <page>
         <name>Program</name>
@@ -113,6 +114,12 @@
     <page>
         <name>Stairing</name>
         <type>StairTracking</type>
+    </page>
+    <page>
+        <name>Camera</name>
+        <type>CameraIntent</type>
+        <child>Program</child>
+        <storagedirectory>redApp</storagedirectory>
     </page>
     <page>
         <name>PMInitializer</name>
