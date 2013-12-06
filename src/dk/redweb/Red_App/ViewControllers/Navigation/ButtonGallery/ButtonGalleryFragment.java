@@ -8,13 +8,15 @@ import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import dk.redweb.Red_App.*;
 import dk.redweb.Red_App.StaticNames.EXTRA;
 import dk.redweb.Red_App.StaticNames.LOOK;
 import dk.redweb.Red_App.StaticNames.PAGE;
 import dk.redweb.Red_App.StaticNames.TEXT;
-import dk.redweb.Red_App.ViewControllers.BaseActivity;
+import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.Views.FlexibleButton;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
 
@@ -23,7 +25,7 @@ import dk.redweb.Red_App.XmlHandling.XmlNode;
  * Date: 10/11/13
  * Time: 9:23 AM
  */
-public class ButtonGalleryActivity extends BaseActivity {
+public class ButtonGalleryFragment extends BasePageFragment {
 
     FlexibleButton btn1;
     FlexibleButton btn2;
@@ -34,13 +36,18 @@ public class ButtonGalleryActivity extends BaseActivity {
     FlexibleButton btn7;
     FlexibleButton btn8;
 
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.act_buttongallery);
+    public ButtonGalleryFragment(XmlNode page) {
+        super(page);
+    }
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, R.layout.page_buttongallery);
 
         setupButtons();
         setAppearance();
         setText();
+
+        return _view;
     }
 
     private void setupButtons(){
@@ -101,7 +108,7 @@ public class ButtonGalleryActivity extends BaseActivity {
 
     private void setAppearance(){
         try {
-            AppearanceHelper helper = new AppearanceHelper(this,_locallook, _globallook);
+            AppearanceHelper helper = _appearanceHelper;
 
             View lnrBackground = findViewById(R.id.buttongallery_lnrBackground);
             helper.setViewBackgroundImageOrColor(lnrBackground, LOOK.BUTTONGALLERY_BACKGROUNDIMAGE, LOOK.BUTTONGALLERY_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
@@ -124,7 +131,7 @@ public class ButtonGalleryActivity extends BaseActivity {
             helper.setFlexibleButtonTextShadow(flexButtons,LOOK.BUTTONGALLERY_BUTTONTEXTSHADOWCOLOR,LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.BUTTONGALLERY_BUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
-            if(_locallook.hasChild(LOOK.BUTTONGALLERY_BUTTONCORNERRADIUS)){
+            if(_locallook != null && _locallook.hasChild(LOOK.BUTTONGALLERY_BUTTONCORNERRADIUS)){
                 for(FlexibleButton flexButton : flexButtons){
                     flexButton.setBackground(makeRoundedBackground(_locallook,_globallook));
                 }
@@ -171,7 +178,7 @@ public class ButtonGalleryActivity extends BaseActivity {
 
     private void setText(){
         try {
-            TextHelper helper = new TextHelper(this, _name, _xml);
+            TextHelper helper = _textHelper;
 
             helper.tryFlexibleButtonText(R.id.buttongallery_btn1, TEXT.BUTTONGALLERY_BUTTON1);
             helper.tryFlexibleButtonText(R.id.buttongallery_btn2, TEXT.BUTTONGALLERY_BUTTON2);
@@ -191,20 +198,9 @@ public class ButtonGalleryActivity extends BaseActivity {
             @Override
             public void onClick(View view) {
                 try {
-                    Context context = view.getContext();
-
-                    String classname = null;
-                    try {
-                        classname = NavController.getClassNameForTypeString(targetPage.getStringFromNode("type"));
-                    } catch (NoSuchFieldException e) {
-                        MyLog.e("NoSuchFieldException in TabbarButton:unsubscribeButtonListener", e);
-                    }
-                    Intent nextPage = new Intent(context, Class.forName(classname));
-                    nextPage.putExtra(EXTRA.PAGE, targetPage);
-                    context.startActivity(nextPage);
-
-                } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
+                    NavController.changePageWithXmlNode(targetPage, getActivity());
+                } catch (NoSuchFieldException e) {
+                    MyLog.e("Exception in onClick when attempting to change page in ButtonGalleryFragment", e);
                 }
             }
         };

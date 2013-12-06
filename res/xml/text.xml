@@ -21,6 +21,15 @@
         <backbutton>""</backbutton>
     </Nyhedsside>
 
+    <ButtonMenu>
+        <button1>Program</button1>
+        <button2>Kort</button2>
+        <button3>WebView</button3>
+        <button4>RedWeb</button4>
+        <button5>Cykel</button5>
+        <button6>Trapper</button6>
+    </ButtonMenu>
+
     <Begivenhed>
         <date>Dato</date>
         <place>Sted</place>

@@ -7,11 +7,6 @@
         <backgroundimage>splash.png</backgroundimage>
 	</page>
     <page>
-        <name>Biking</name>
-        <type>BikeTracking</type>
-        <frontpage>true</frontpage>
-    </page>
-    <page>
         <name>AutoSubscriber</name>
         <type>PushMessageAutoSubscriber</type>
         <child>SwipeView</child>
@@ -22,7 +17,6 @@
         <type>SwipeView</type>
         <section>Nyheder</section>
         <section>PMList</section>
-        <section>RedWeb</section>
         <section>About</section>
     </page>
     <page>
@@ -61,9 +55,19 @@
         <returnbutton>YES</returnbutton>
     </page>
     <page>
+        <name>ButtonMenu</name>
+        <type>ButtonGallery</type>
+        <tabname>ButtonMenu</tabname>
+        <button1>Program</button1>
+        <button2>OverviewMap</button2>
+        <button3>WebView</button3>
+        <button4>RedWeb</button4>
+        <button5>Biking</button5>
+        <button6>Stairing</button6>
+    </page>
+    <page>
         <name>Program</name>
         <type>DailySessionList</type>
-        <tabname>Program</tabname>
         <child>Begivenhed</child>
     </page>
     <page>
@@ -83,7 +87,6 @@
     <page>
         <name>OverviewMap</name>
         <type>OverviewMap</type>
-        <tabname>Map</tabname>
         <returnbutton>YES</returnbutton>
     </page>
     <page>
@@ -91,7 +94,6 @@
         <type>WebView</type>
         <url>http://redweb.dk/</url>
         <returnbutton>YES</returnbutton>
-        <tabname>WebView</tabname>
     </page>
     <page>
         <name>RedWeb</name>
@@ -103,6 +105,14 @@
         <name>VenueMap</name>
         <type>VenueMap</type>
         <parent>RedWeb</parent>
+    </page>
+    <page>
+        <name>Biking</name>
+        <type>BikeTracking</type>
+    </page>
+    <page>
+        <name>Stairing</name>
+        <type>StairTracking</type>
     </page>
     <page>
         <name>PMInitializer</name>

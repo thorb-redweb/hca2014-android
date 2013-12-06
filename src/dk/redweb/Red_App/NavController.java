@@ -12,10 +12,12 @@ import dk.redweb.Red_App.ViewControllers.Article.ArticleDetail.ArticleDetailFrag
 import dk.redweb.Red_App.ViewControllers.Article.ImageArticleList.ImageArticleListFragment;
 import dk.redweb.Red_App.ViewControllers.Article.StaticArticle.StaticArticleFragment;
 import dk.redweb.Red_App.ViewControllers.Contest.BikeTracking.BikeTrackingFragment;
+import dk.redweb.Red_App.ViewControllers.Contest.StairTracking.StairTrackingFragment;
 import dk.redweb.Red_App.ViewControllers.Map.OverviewMap.OverviewMapFragment;
 import dk.redweb.Red_App.ViewControllers.Map.SessionMap.SessionMapFragment;
 import dk.redweb.Red_App.ViewControllers.Map.VenueMap.VenueMapFragment;
 import dk.redweb.Red_App.ViewControllers.Misc.WebView.WebViewFragment;
+import dk.redweb.Red_App.ViewControllers.Navigation.ButtonGallery.ButtonGalleryFragment;
 import dk.redweb.Red_App.ViewControllers.Navigation.SwipeView.SwipeViewFragment;
 import dk.redweb.Red_App.ViewControllers.Navigation.TableNavigator.TableNavigatorFragment;
 import dk.redweb.Red_App.ViewControllers.PushMessages.PushMessageDetail.PushMessageDetailFragment;
@@ -120,7 +122,7 @@ public class NavController {
             } else if(type.equals(TYPE.BIKETRACKING)){
                 return new BikeTrackingFragment(page);
             } else if(type.equals(TYPE.BUTTONGALLERY)){
-                throw new NotImplementedException("ButtonGallery has not been updated to the modern framework");
+                return new ButtonGalleryFragment(page);
             } else if(type.equals(TYPE.DAILYSESSIONLIST)){
                 return new DailySessionListFragment(page);
             } else if (type.equals(TYPE.IMAGEARTICLELIST)){
@@ -147,6 +149,8 @@ public class NavController {
                 return new SessionMapFragment(page);
             } else if (type.equals(TYPE.SPLITVIEW)){
                 throw new NotImplementedException("SplitView has not been updated to the modern framework");
+            } else if(type.equals(TYPE.STAIRTRACKING)){
+                return new StairTrackingFragment(page);
             } else if(type.equals(TYPE.STATICARTICLE)){
                 return new StaticArticleFragment(page);
             } else if(type.equals(TYPE.SWIPEVIEW)){

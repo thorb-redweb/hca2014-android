@@ -135,12 +135,5 @@
                         android:visibility="gone"/>
             </LinearLayout>
         </LinearLayout>
-
-
     </LinearLayout>
-
-
-    <dk.redweb.Red_App.Views.TabbarBox android:id="@+id/tabbar"
-                                            style="@style/Layout.Wrap"
-                                            android:layout_alignParentBottom="true"/>
 </RelativeLayout>

@@ -90,7 +90,6 @@ public class BikeTrackingFragment extends BasePageFragment implements Delegate_b
     public void startLocationClient(){
         _bikeTracker.startLocationClient();
         try{
-            TextHelper _textHelper = new TextHelper(_view, _name,_xml);
             _textHelper.setText(R.id.biketracking_lblTrackerRunning, TEXT.BIKETRACKING_RUNNING, DEFAULTTEXT.BIKETRACKING_RUNNING);
             _textHelper.setFlexibleButtonText(R.id.biketracking_flxTrackerStateButton, TEXT.BIKETRACKING_STOPBUTTON, DEFAULTTEXT.BIKETRACKING_STOPBUTTON);
         } catch (Exception e) {
@@ -102,7 +101,6 @@ public class BikeTrackingFragment extends BasePageFragment implements Delegate_b
     public void stopLocationClient(){
         _bikeTracker.stopLocationClient();
         try{
-            TextHelper _textHelper = new TextHelper(_view, _name,_xml);
             _textHelper.setText(R.id.biketracking_lblTrackerRunning, TEXT.BIKETRACKING_STOPPED, DEFAULTTEXT.BIKETRACKING_STOPPED);
             _textHelper.setFlexibleButtonText(R.id.biketracking_flxTrackerStateButton, TEXT.BIKETRACKING_CONTINUEBUTTON, DEFAULTTEXT.BIKETRACKING_CONTINUEBUTTON);
             findViewById(R.id.biketracking_flxTrackerStateButton).setVisibility(View.GONE);
@@ -115,7 +113,6 @@ public class BikeTrackingFragment extends BasePageFragment implements Delegate_b
     public void ContinueLocationClient(){
         _bikeTracker.stopLocationClient();
         try{
-            TextHelper _textHelper = new TextHelper(_view, _name,_xml);
             _textHelper.setText(R.id.biketracking_lblTrackerRunning, TEXT.BIKETRACKING_RUNNING, DEFAULTTEXT.BIKETRACKING_RUNNING);
             _textHelper.setText(R.id.biketracking_lblTrackerRunning, TEXT.BIKETRACKING_STOPBUTTON, DEFAULTTEXT.BIKETRACKING_STOPBUTTON);
         } catch (Exception e) {

@@ -25,6 +25,7 @@ public class TYPE {
     public static final String SESSIONDETAIL = "SessionDetail";
     public static final String SESSIONMAP = "SessionMap";
     public static final String SPLITVIEW = "SplitView";
+    public static final String STAIRTRACKING = "StairTracking";
     public static final String STATICARTICLE = "StaticArticle";
     public static final String SWIPEVIEW = "SwipeView";
     public static final String TABLENAVIGATOR = "TableNavigator";
