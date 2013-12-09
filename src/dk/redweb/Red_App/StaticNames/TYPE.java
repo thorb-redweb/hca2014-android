@@ -14,7 +14,9 @@ public class TYPE {
     public static final String BUTTONGALLERY = "ButtonGallery";
     public static final String CAMERAINTENT = "CameraIntent";
     public static final String DAILYSESSIONLIST = "DailySessionList";
+    public static final String FILEBROWSER = "FileBrowser";
     public static final String IMAGEARTICLELIST = "ImageArticleList";
+    public static final String IMAGEUPLOADER = "ImageUploader";
     public static final String NEWSTICKER = "NewsTicker";
     public static final String OVERVIEWMAP = "OverviewMap";
     public static final String PUSHMESSAGEAUTOSUBSCRIBER = "PushMessageAutoSubscriber";

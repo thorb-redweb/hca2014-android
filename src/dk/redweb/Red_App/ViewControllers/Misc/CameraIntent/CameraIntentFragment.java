@@ -1,5 +1,6 @@
 package dk.redweb.Red_App.ViewControllers.Misc.CameraIntent;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -28,6 +29,7 @@ public class CameraIntentFragment extends BasePageFragment {
     private static final int CAMERA_PIC_REQUEST = 1337;
     File folder;
     static Uri capturedImageUri=null;
+    String filePath;
 
     boolean firstVisit;
 
@@ -40,12 +42,10 @@ public class CameraIntentFragment extends BasePageFragment {
         super.onCreateView(inflate, container, R.layout.page_cameraintent);
 
         if(firstVisit){
-            Calendar cal = Calendar.getInstance();
-
             String directoryName = "redApp";
             try {
-                if(_page.hasChild(PAGE.STORAGEDIRECTORY)){
-                    directoryName = _page.getStringFromNode(PAGE.STORAGEDIRECTORY);
+                if(_page.hasChild(PAGE.FOLDER)){
+                    directoryName = _page.getStringFromNode(PAGE.FOLDER);
                 }
             } catch (NoSuchFieldException e) {
                 MyLog.e("Exception when attempting to create file object from Page.StorageDirectory", e);
@@ -56,7 +56,8 @@ public class CameraIntentFragment extends BasePageFragment {
                 folder.mkdirs();
             }
 
-            File file = new File(folder.getAbsolutePath(),  (cal.getTimeInMillis()+".jpg"));
+            String fileName = DateTimeNow().toString("yyyy-MM-dd_hh-mm-ss-SSS");
+            File file = new File(folder.getAbsolutePath(), fileName + ".jpg");
 
             if(file.exists()){
                 file.delete();
@@ -66,6 +67,7 @@ public class CameraIntentFragment extends BasePageFragment {
             } catch (IOException e) {
                 MyLog.e("Exception when attempting to create file in memory", e);
             }
+            filePath = file.getPath();
 
             capturedImageUri = Uri.fromFile(file);
             Intent i = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -81,13 +83,21 @@ public class CameraIntentFragment extends BasePageFragment {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        pushToNextPage();
+        if(resultCode == Activity.RESULT_CANCELED)
+        {
+            NavController.popPage(getActivity());
+        }
+        else {
+            pushToNextPage();
+        }
     }
 
     private void pushToNextPage(){
         try {
             if(firstVisit){
                 XmlNode nextpage = _xml.getPage(_childname);
+                nextpage = nextpage.deepClone();
+                nextpage.addChildToNode(PAGE.FILEPATH, filePath);
                 NavController.changePageWithXmlNode(nextpage, getActivity());
                 firstVisit = false;
             }

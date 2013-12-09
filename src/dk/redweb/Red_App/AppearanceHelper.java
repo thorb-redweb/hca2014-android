@@ -42,7 +42,7 @@ public class AppearanceHelper {
             throw new Exception("setImageViewImage Method cannot be used without context having been initialized in the AppearanceHelper constructor");
         if(localLook != null && localLook.hasChild(localName)) {
             String imagename = localLook.getStringFromNode(localName);
-            Drawable drawable = My.getDrawableFromFilename(imagename, context);
+            Drawable drawable = My.getDrawableFromResourceWithFilename(imagename, context);
             imageView.setImageDrawable(drawable);
         } else {
             imageView.setVisibility(View.GONE);
@@ -60,7 +60,7 @@ public class AppearanceHelper {
             throw new Exception("setImageViewImage Method cannot be used without context having been initialized in the AppearanceHelper constructor");
         if(localLook != null && localLook.hasChild(localName)) {
             String imagename = localLook.getStringFromNode(localName);
-            Drawable drawable = My.getDrawableFromFilename(imagename, context);
+            Drawable drawable = My.getDrawableFromResourceWithFilename(imagename, context);
             flexButton.setImageDrawable(drawable);
         } else {
             flexButton.setImageVisibility(View.GONE);
@@ -189,7 +189,7 @@ public class AppearanceHelper {
 
     public void setViewBackgroundImageOrColor(View view, String localImageName, String localColorName, String globalColorName) throws NoSuchFieldException {
         if(localLook != null && localLook.hasChild(localImageName))
-            view.setBackground(My.getDrawableFromFilename(localLook.getStringFromNode(localImageName), context));
+            view.setBackground(My.getDrawableFromResourceWithFilename(localLook.getStringFromNode(localImageName), context));
         else
             setViewBackgroundColor(view, localColorName, globalColorName);
     }
@@ -202,7 +202,7 @@ public class AppearanceHelper {
 
     public void setViewBackgroundTileImageOrColor(View view, String localImageName, String localColorName, String globalColorName) throws NoSuchFieldException {
         if(localLook != null && localLook.hasChild(localImageName)) {
-            view.setBackground(My.getDrawableFromFilename(localLook.getStringFromNode(localImageName), context));
+            view.setBackground(My.getDrawableFromResourceWithFilename(localLook.getStringFromNode(localImageName), context));
             BitmapDrawable bmp = (BitmapDrawable)view.getBackground();
             bmp.mutate();
             bmp.setTileModeXY(Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
@@ -225,7 +225,7 @@ public class AppearanceHelper {
             view.setBackground(layerDrawable);
         }
         else if(localLook != null && localLook.hasChild(localImageName))
-            view.setBackground(My.getDrawableFromFilename(localLook.getStringFromNode(localImageName), context));
+            view.setBackground(My.getDrawableFromResourceWithFilename(localLook.getStringFromNode(localImageName), context));
         else
             setViewBackgroundColor(view, localColorName, globalColorName);
     }

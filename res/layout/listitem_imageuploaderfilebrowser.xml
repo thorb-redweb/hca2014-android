@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/Layout.Full"
+              android:orientation="horizontal"
+              android:layout_height="120sp">
+    <ImageView android:id="@+id/imageuploadfilebrowser_imgFileImage"
+               style="@style/Layout.Wrap.Complete"/>
+    <TextView android:id="@+id/imageuploadfilebrowser_lblFileName"
+              style="@style/Layout.Wrap"
+              android:layout_gravity="center_vertical"/>
+</LinearLayout>

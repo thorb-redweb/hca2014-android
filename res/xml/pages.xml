@@ -65,6 +65,7 @@
         <button5>Biking</button5>
         <button6>Stairing</button6>
         <button7>Camera</button7>
+        <button8>Image Uploader</button8>
     </page>
     <page>
         <name>Program</name>
@@ -118,8 +119,13 @@
     <page>
         <name>Camera</name>
         <type>CameraIntent</type>
-        <child>Program</child>
-        <storagedirectory>redApp</storagedirectory>
+        <child>Image Uploader</child>
+        <folder>redApp</folder>
+    </page>
+    <page>
+        <name>Image Uploader</name>
+        <type>ImageUploader</type>
+        <folder>redApp</folder>
     </page>
     <page>
         <name>PMInitializer</name>

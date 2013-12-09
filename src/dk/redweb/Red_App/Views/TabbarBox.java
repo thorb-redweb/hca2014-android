@@ -84,7 +84,7 @@ public class TabbarBox extends LinearLayout {
         try {
             if(page.hasChild(PAGE.TABIMAGE)) {
                 String iconName = page.getStringFromNode(PAGE.TABIMAGE);
-                Drawable icon = My.getDrawableFromFilename(iconName, getContext());
+                Drawable icon = My.getDrawableFromResourceWithFilename(iconName, getContext());
                 button.setButtonImage(icon);
             }
         } catch (NoSuchFieldException e) {

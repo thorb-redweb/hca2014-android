@@ -129,7 +129,7 @@ public class BasePageFragment extends Fragment {
             if(_page.hasChild(PAGE.TOPLOGO)){
                 imgTopLogo.setVisibility(View.VISIBLE);
                 String toplogoFilename = _page.getStringFromNode(PAGE.TOPLOGO);
-                Drawable toplogoDrawable = My.getDrawableFromFilename(toplogoFilename, getActivity());
+                Drawable toplogoDrawable = My.getDrawableFromResourceWithFilename(toplogoFilename, getActivity());
                 imgTopLogo.setImageDrawable(toplogoDrawable);
             } else {
                 imgTopLogo.setVisibility(View.GONE);

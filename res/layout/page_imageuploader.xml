@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+    <ImageView android:id="@+id/imageuploader_imgImageToUpload"
+               style="@style/Layout.Full"
+               android:layout_alignParentTop="true"
+               android:layout_above="@+id/imageuploader_flxOpenBrowser"
+               android:layout_margin="5dp"/>
+
+    <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/imageuploader_flxOpenBrowser"
+                                            style="@style/Layout.Wrap.Complete"
+                                            android:layout_centerHorizontal="true"
+                                            android:layout_above="@+id/imageuploader_flxUploadImage"
+                                            android:layout_marginBottom="10dp"/>
+
+    <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/imageuploader_flxUploadImage"
+                                            style="@style/Layout.Wrap.Complete"
+                                            android:layout_centerHorizontal="true"
+                                            android:layout_alignParentBottom="true"
+                                            android:layout_marginBottom="5dp"/>
+</RelativeLayout>

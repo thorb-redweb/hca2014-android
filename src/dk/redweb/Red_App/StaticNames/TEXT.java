@@ -35,6 +35,9 @@ public class TEXT {
 
     public final static String IMAGEARTICLELIST_EMPTYLIST = "emptylist";
 
+    public static final String IMAGEUPLOADER_FILEBROWSERBUTTON = "filebrowserbutton";
+    public static final String IMAGEUPLOADER_UPLOADIMAGEBUTTON = "uploadimagebutton";
+
     public final static String NEWSTICKER_TITLE = "title";
 
     public static final String PUSHMESSAGEGROUPSETTINGS_TITLE = "title";

@@ -58,7 +58,7 @@ public class SplashActivity extends Activity implements Delegate_dumpServer, Del
         try {
             XmlNode page = _xml.getPage(TYPE.SPLASH);
             String imageFileName = page.getStringFromNode(PAGE.BACKGROUNDIMAGE);
-            Drawable drawable = My.getDrawableFromFilename(imageFileName, getApplicationContext());
+            Drawable drawable = My.getDrawableFromResourceWithFilename(imageFileName, getApplicationContext());
 
             _screen.setBackground(drawable);
         } catch (Exception e) {

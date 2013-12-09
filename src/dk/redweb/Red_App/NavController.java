@@ -17,6 +17,8 @@ import dk.redweb.Red_App.ViewControllers.Map.OverviewMap.OverviewMapFragment;
 import dk.redweb.Red_App.ViewControllers.Map.SessionMap.SessionMapFragment;
 import dk.redweb.Red_App.ViewControllers.Map.VenueMap.VenueMapFragment;
 import dk.redweb.Red_App.ViewControllers.Misc.CameraIntent.CameraIntentFragment;
+import dk.redweb.Red_App.ViewControllers.Misc.ImageUploader.ImageUploaderFileBrowserFragment;
+import dk.redweb.Red_App.ViewControllers.Misc.ImageUploader.ImageUploaderFragment;
 import dk.redweb.Red_App.ViewControllers.Misc.WebView.WebViewFragment;
 import dk.redweb.Red_App.ViewControllers.Navigation.ButtonGallery.ButtonGalleryFragment;
 import dk.redweb.Red_App.ViewControllers.Navigation.SwipeView.SwipeViewFragment;
@@ -131,8 +133,12 @@ public class NavController {
                 return new CameraIntentFragment(page);
             } else if(type.equals(TYPE.DAILYSESSIONLIST)){
                 return new DailySessionListFragment(page);
+            } else if (type.equals(TYPE.FILEBROWSER)){
+                return new ImageUploaderFileBrowserFragment(page);
             } else if (type.equals(TYPE.IMAGEARTICLELIST)){
                 return new ImageArticleListFragment(page);
+            } else if (type.equals(TYPE.IMAGEUPLOADER)){
+                return new ImageUploaderFragment(page);
             } else if(type.equals(TYPE.NEWSTICKER)){
                 throw new NotImplementedException("Newsticker has not been updated to the modern framework");
             } else if(type.equals(TYPE.OVERVIEWMAP)){

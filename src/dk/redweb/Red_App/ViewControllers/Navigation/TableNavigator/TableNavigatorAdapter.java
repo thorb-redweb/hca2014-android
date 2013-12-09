@@ -55,7 +55,7 @@ public class TableNavigatorAdapter extends ArrayAdapter<XmlNode> {
         try{
             ImageView imgFrontIcon = (ImageView)rowView.findViewById(R.id.tablenavigator_imgFrontIcon);
             if(entry.hasChild(PAGE.FRONTICON)){
-                Drawable drawable = My.getDrawableFromFilename(entry.getStringFromNode(PAGE.FRONTICON), _context);
+                Drawable drawable = My.getDrawableFromResourceWithFilename(entry.getStringFromNode(PAGE.FRONTICON), _context);
                 imgFrontIcon.setImageDrawable(drawable);
             } else {
                 imgFrontIcon.setVisibility(View.GONE);
@@ -63,7 +63,7 @@ public class TableNavigatorAdapter extends ArrayAdapter<XmlNode> {
 
             ImageView imgBackIcon = (ImageView)rowView.findViewById(R.id.tablenavigator_imgBackIcon);
             if(entry.hasChild(PAGE.BACKICON)){
-                Drawable drawable = My.getDrawableFromFilename(entry.getStringFromNode(PAGE.BACKICON), _context);
+                Drawable drawable = My.getDrawableFromResourceWithFilename(entry.getStringFromNode(PAGE.BACKICON), _context);
                 imgBackIcon.setImageDrawable(drawable);
             } else {
                 imgBackIcon.setVisibility(View.GONE);
