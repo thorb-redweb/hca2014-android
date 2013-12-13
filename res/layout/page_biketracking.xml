@@ -36,7 +36,7 @@
         <TextView android:id="@+id/biketracking_lblTopSpeedData"
                   style="@style/Layout.Wrap.Complete"/>
     </LinearLayout>
-    <TextView android:id="@+id/biketracking_lblTrackerRunning"
+    <TextView android:id="@+id/biketracking_lblStatus"
               style="@style/Layout.Wrap"
               android:layout_margin="10dp"
               android:layout_below="@id/biketracking_lnrTopSpeedLabels"
@@ -47,13 +47,21 @@
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
             android:background="@android:color/holo_green_light"
-            android:layout_below="@id/biketracking_lblTrackerRunning"/>
+            android:layout_below="@id/biketracking_lblStatus"/>
+    <dk.redweb.Red_App.Views.FlexibleButton
+            android:id="@+id/biketracking_flxUploadButton"
+            style="@style/Layout.Wrap.Complete"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/holo_red_light"
+            android:layout_below="@id/biketracking_flxTrackerStateButton"/>
     <dk.redweb.Red_App.Views.FlexibleButton
             android:id="@+id/flxBackButton"
             style="@style/Layout.Wrap.Complete"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
             android:background="@android:color/holo_red_light"
-            android:layout_below="@id/biketracking_flxTrackerStateButton"/>
+            android:layout_below="@id/biketracking_flxUploadButton"/>
 
 </RelativeLayout>

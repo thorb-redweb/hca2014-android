@@ -23,6 +23,13 @@ public class DbSchemas {
         public static final String PUBLISHDATE = "publishdate";
     }
 
+    public static abstract class Bike implements BaseColumns {
+        public static final String TABLE_NAME = "bikecontest";
+        public static final String LATITUDE = "latitude";
+        public static final String LONGITUDE = "longitude";
+        public static final String TIME = "time";
+    }
+
     public static abstract class Event implements BaseColumns {
         public static final String TABLE_NAME = "events";
         public static final String EVENT_ID = "eventid";

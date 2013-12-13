@@ -30,9 +30,10 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
     XmlStore _xml;
 
     public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "RedEvent.db";
+    public static final String DATABASE_NAME = "RedApp.db";
 
     public final DbArticles Articles;
+    public final DbBikeContest BikeContest;
     public final DbCommon Common;
     public final DbEvents Events;
     public final DbMapMarkers MapMarkers;
@@ -52,6 +53,11 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
             DbSchemas.Art.INTROIMAGEPATH + " TEXT, " +
             DbSchemas.Art.MAINIMAGEPATH + " TEXT, " +
             DbSchemas.Art.PUBLISHDATE + " TEXT)";
+    private static final String SQL_CREATE_BIKECONTEST_TABLE = "CREATE TABLE " + DbSchemas.Bike.TABLE_NAME +
+            " (" + DbSchemas.Bike._ID + " INTEGER PRIMARY KEY," +
+            DbSchemas.Bike.LATITUDE + " REAL, " +
+            DbSchemas.Bike.LONGITUDE + " REAL, " +
+            DbSchemas.Bike.TIME + " BIGINT)";
     private static final String SQL_CREATE_EVENT_TABLE = "CREATE TABLE " + DbSchemas.Event.TABLE_NAME +
             " (" + DbSchemas.Event._ID + " INTEGER PRIMARY KEY," +
             DbSchemas.Event.EVENT_ID + " INTEGER, " +
@@ -94,6 +100,7 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
             DbSchemas.Venue.IMAGEPATH + " TEXT)";
 
     private static final String SQL_DELETE_ARTICLE_TABLE = "DROP TABLE IF EXISTS " + DbSchemas.Art.TABLE_NAME;
+    private static final String SQL_DELETE_BIKECONTEST_TABLE = "DROP TABLE IF EXISTS " + DbSchemas.Bike.TABLE_NAME;
     private static final String SQL_DELETE_EVENT_TABLE = "DROP TABLE IF EXISTS " + DbSchemas.Event.TABLE_NAME;
     private static final String SQL_DELETE_PUSHMESSAGE_TABLE = "DROP TABLE IF EXISTS " + DbSchemas.Push.TABLE_NAME;
     private static final String SQL_DELETE_PUSHMESSAGEGROUP_TABLE = "DROP TABLE IF EXISTS " + DbSchemas.PushGroup.TABLE_NAME;
@@ -109,6 +116,7 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
         _xml = xml;
 
         Articles = new DbArticles(_app, _sql, _sv, _xml);
+        BikeContest = new DbBikeContest(_app,_sql,_sv,_xml);
         Common = new DbCommon(_app, _sql, _sv, _xml);
         Events = new DbEvents(_app, _sql, this, _sv, _xml);
         MapMarkers = new DbMapMarkers(_app, _sql, this, _sv, _xml);
@@ -120,6 +128,7 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ARTICLE_TABLE);
+        db.execSQL(SQL_CREATE_BIKECONTEST_TABLE);
         db.execSQL(SQL_CREATE_EVENT_TABLE);
         db.execSQL(SQL_CREATE_PUSHMESSAGE_TABLE);
         db.execSQL(SQL_CREATE_PUSHMESSAGEGROUP_TABLE);
@@ -129,6 +138,7 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_ARTICLE_TABLE);
+        db.execSQL(SQL_DELETE_BIKECONTEST_TABLE);
         db.execSQL(SQL_DELETE_EVENT_TABLE);
         db.execSQL(SQL_DELETE_PUSHMESSAGE_TABLE);
         db.execSQL(SQL_DELETE_PUSHMESSAGEGROUP_TABLE);

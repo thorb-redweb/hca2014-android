@@ -165,6 +165,50 @@ public class LOOK {
     public static final String ARTICLEDETAIL_TITLESIZE = "titlesize";
     public static final String ARTICLEDETAIL_TITLESTYLE = "titlestyle";
 
+    //BikeTracking
+    public static final String BIKETRACKING_LABELCOLOR = "labelcolor";
+    public static final String BIKETRACKING_LABELSIZE = "labelsize";
+    public static final String BIKETRACKING_LABELSTYLE = "labelstyle";
+    public static final String BIKETRACKING_LABELSHADOWCOLOR = "labelshadowcolor";
+    public static final String BIKETRACKING_LABELSHADOWOFFSET = "labelshadowoffset";
+    public static final String BIKETRACKING_DATACOLOR = "datacolor";
+    public static final String BIKETRACKING_DATASIZE = "datasize";
+    public static final String BIKETRACKING_DATASTYLE = "datastyle";
+    public static final String BIKETRACKING_DATASHADOWCOLOR = "datashadowcolor";
+    public static final String BIKETRACKING_DATASHADOWOFFSET = "datashadowoffset";
+    public static final String BIKETRACKING_STARTBUTTONBACKGROUNDCOLOR = "startbuttoncolor";
+    public static final String BIKETRACKING_STARTBUTTONBACKGROUNDIMAGE = "startbuttonimage";
+    public static final String BIKETRACKING_STARTBUTTONICON = "startbuttonicon";
+    public static final String BIKETRACKING_STARTBUTTONTEXTCOLOR = "startbuttontextcolor";
+    public static final String BIKETRACKING_STARTBUTTONTEXTSHADOWCOLOR = "startbuttontextshadowoffset";
+    public static final String BIKETRACKING_STARTBUTTONTEXTSHADOWOFFSET = "startbuttontextshadowoffset";
+    public static final String BIKETRACKING_STARTBUTTONTEXTSIZE = "startbuttontextsize";
+    public static final String BIKETRACKING_STARTBUTTONTEXTSTYLE = "startbuttontextstyle";
+    public static final String BIKETRACKING_STOPBUTTONBACKGROUNDCOLOR = "stopbuttoncolor";
+    public static final String BIKETRACKING_STOPBUTTONBACKGROUNDIMAGE = "stopbuttonimage";
+    public static final String BIKETRACKING_STOPBUTTONICON = "stopbuttonicon";
+    public static final String BIKETRACKING_STOPBUTTONTEXTCOLOR = "stopbuttontextcolor";
+    public static final String BIKETRACKING_STOPBUTTONTEXTSHADOWCOLOR = "stopbuttontextshadowoffset";
+    public static final String BIKETRACKING_STOPBUTTONTEXTSHADOWOFFSET = "stopbuttontextshadowoffset";
+    public static final String BIKETRACKING_STOPBUTTONTEXTSIZE = "stopbuttontextsize";
+    public static final String BIKETRACKING_STOPBUTTONTEXTSTYLE = "stopbuttontextstyle";
+    public static final String BIKETRACKING_CONTINUEBUTTONBACKGROUNDCOLOR = "continuebuttoncolor";
+    public static final String BIKETRACKING_CONTINUEBUTTONBACKGROUNDIMAGE = "continuebuttonimage";
+    public static final String BIKETRACKING_CONTINUEBUTTONICON = "continuebuttonicon";
+    public static final String BIKETRACKING_CONTINUEBUTTONTEXTCOLOR = "continuebuttontextcolor";
+    public static final String BIKETRACKING_CONTINUEBUTTONTEXTSHADOWCOLOR = "continuebuttontextshadowoffset";
+    public static final String BIKETRACKING_CONTINUEBUTTONTEXTSHADOWOFFSET = "continuebuttontextshadowoffset";
+    public static final String BIKETRACKING_CONTINUEBUTTONTEXTSIZE = "continuebuttontextsize";
+    public static final String BIKETRACKING_CONTINUEBUTTONTEXTSTYLE = "continuebuttontextstyle";
+    public static final String BIKETRACKING_UPLOADBUTTONBACKGROUNDCOLOR = "uploadbuttoncolor";
+    public static final String BIKETRACKING_UPLOADBUTTONBACKGROUNDIMAGE = "uploadbuttonimage";
+    public static final String BIKETRACKING_UPLOADBUTTONICON = "uploadbuttonicon";
+    public static final String BIKETRACKING_UPLOADBUTTONTEXTCOLOR = "uploadbuttontextcolor";
+    public static final String BIKETRACKING_UPLOADBUTTONTEXTSHADOWCOLOR = "uploadbuttontextshadowoffset";
+    public static final String BIKETRACKING_UPLOADBUTTONTEXTSHADOWOFFSET = "uploadbuttontextshadowoffset";
+    public static final String BIKETRACKING_UPLOADBUTTONTEXTSIZE = "uploadbuttontextsize";
+    public static final String BIKETRACKING_UPLOADBUTTONTEXTSTYLE = "uploadbuttontextstyle";
+
     //ButtonGallery
     public static final String BUTTONGALLERY_BACKGROUNDCOLOR = "backgroundcolor";
     public static final String BUTTONGALLERY_BACKGROUNDIMAGE = "backgroundimage";
