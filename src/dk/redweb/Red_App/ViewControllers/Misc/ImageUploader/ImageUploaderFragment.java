@@ -29,9 +29,11 @@ import java.util.List;
 public class ImageUploaderFragment extends BasePageFragment {
 
     private static final int FILE_SELECT_CODE = 0;
+    private boolean firstvisit;
 
     public ImageUploaderFragment(XmlNode page) {
         super(page);
+        firstvisit = true;
     }
 
     public View onCreateView(LayoutInflater inflate, ViewGroup container, Bundle savedInstanceState) {
@@ -72,8 +74,12 @@ public class ImageUploaderFragment extends BasePageFragment {
                 MyLog.e("Exception when attempting to get FilePath from xml page", e);
             }
         }
-        else{
+        else if(firstvisit){
+            firstvisit = false;
             openBrowser();
+        }
+        else{
+            NavController.popPage(getActivity());
         }
     }
 
