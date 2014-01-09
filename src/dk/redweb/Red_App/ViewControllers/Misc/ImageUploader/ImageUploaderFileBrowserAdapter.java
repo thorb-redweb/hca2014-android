@@ -55,7 +55,10 @@ public class ImageUploaderFileBrowserAdapter extends ArrayAdapter<File> {
 
         Drawable image = My.getDrawableFromDiskWithFilename(file.getPath(), _app, 120, 120, true);
         imgImage.setImageDrawable(image);
-        txtTitle.setText(file.getName());
+
+        String[] nameBits = file.getName().split("-");
+
+        txtTitle.setText(nameBits[0]+"/"+nameBits[1]+"/"+nameBits[2]+"\n"+nameBits[3]+":"+nameBits[4]+":"+nameBits[5]);
 
         return rowView;
     }

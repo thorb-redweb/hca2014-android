@@ -61,7 +61,7 @@ public class CameraIntentFragment extends BasePageFragment {
                 folder.mkdirs();
             }
 
-            String fileName = DateTimeNow().toString("yyyy-MM-dd_hh-mm-ss-SSS");
+            String fileName = DateTimeNow().toString("yyyy-MM-dd-hh-mm-ss-SSS");
             File file = new File(folder.getAbsolutePath(), fileName + ".jpg");
 
             if(file.exists()){

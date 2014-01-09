@@ -25,7 +25,7 @@ public class DEFAULTTEXT {
 
     public final static String IMAGEARTICLELIST_EMPTYLIST = "Ingen artikler matcher din søgning";
 
-    public static final String IMAGEUPLOADER_FILEBROWSERBUTTON = "Vælg anden fil";
+    public static final String IMAGEUPLOADER_FILEBROWSERBUTTON = "Billed browser";
     public static final String IMAGEUPLOADER_UPLOADIMAGEBUTTON = "Upload billede";
 
     public final static String NEWSTICKER_TITLE = "Seneste Nyheder";
