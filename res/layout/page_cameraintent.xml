@@ -2,7 +2,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               style="@style/Layout.Full">
-    <TextView
+    <TextView android:id="@+id/cameraIntent_lblRedirectionMessage"
             style="@style/Layout.Wrap"
             android:layout_gravity="center_vertical"
             android:text="Connecting to camera.."/>

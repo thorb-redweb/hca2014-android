@@ -10,9 +10,11 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import dk.redweb.Red_App.AppearanceHelper;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.NavController;
 import dk.redweb.Red_App.R;
+import dk.redweb.Red_App.StaticNames.LOOK;
 import dk.redweb.Red_App.StaticNames.PAGE;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
@@ -40,6 +42,8 @@ public class ImageUploaderFileBrowserFragment extends BasePageFragment {
 
         setupList();
         reloadListView();
+
+        setAppearance();
 
         return _view;
     }
@@ -101,5 +105,17 @@ public class ImageUploaderFileBrowserFragment extends BasePageFragment {
 
         ImageUploaderFileBrowserAdapter lstFileAdapter = new ImageUploaderFileBrowserAdapter(_view.getContext(), files, _app, _page);
         lstFiles.setAdapter(lstFileAdapter);
+    }
+
+    private void setAppearance(){
+        AppearanceHelper helper = _appearanceHelper;
+
+        try {
+            helper.setViewBackgroundTileImageOrColor(_view, LOOK.BACKGROUNDIMAGE, LOOK.BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
+        } catch (NoSuchFieldException e) {
+            MyLog.e("Exception when setting appearance on ImageUploaderFileBrowser", e);
+        }
+
+
     }
 }

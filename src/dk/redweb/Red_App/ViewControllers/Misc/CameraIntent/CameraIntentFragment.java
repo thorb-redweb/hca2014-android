@@ -9,9 +9,12 @@ import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+import dk.redweb.Red_App.AppearanceHelper;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.NavController;
 import dk.redweb.Red_App.R;
+import dk.redweb.Red_App.StaticNames.LOOK;
 import dk.redweb.Red_App.StaticNames.PAGE;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
@@ -40,6 +43,8 @@ public class CameraIntentFragment extends BasePageFragment {
 
     public View onCreateView(LayoutInflater inflate, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflate, container, R.layout.page_cameraintent);
+
+        setAppearance();
 
         if(firstVisit){
             String directoryName = "redApp";
@@ -79,6 +84,21 @@ public class CameraIntentFragment extends BasePageFragment {
         }
 
         return _view;
+    }
+
+    private void setAppearance(){
+        AppearanceHelper helper = _appearanceHelper;
+        try {
+            helper.setViewBackgroundTileImageOrColor(_view, LOOK.BACKGROUNDIMAGE, LOOK.BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
+
+            TextView lblRedirectionMessage = (TextView)findViewById(R.id.cameraIntent_lblRedirectionMessage);
+            helper.setTextColor(lblRedirectionMessage, LOOK.TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.setTextSize(lblRedirectionMessage, LOOK.TEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.setTextStyle(lblRedirectionMessage, LOOK.TEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.setTextShadow(lblRedirectionMessage, LOOK.TEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR, LOOK.TEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
+        } catch (NoSuchFieldException e) {
+            MyLog.e("Exception when attempting to set appearance for CameraIntent", e);
+        }
     }
 
     @Override
