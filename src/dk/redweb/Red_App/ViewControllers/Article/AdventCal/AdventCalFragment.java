@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import dk.redweb.Red_App.AppearanceHelper;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.R;
 import dk.redweb.Red_App.StaticNames.EXTRA;

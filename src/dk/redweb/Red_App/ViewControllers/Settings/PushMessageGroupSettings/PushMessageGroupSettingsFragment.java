@@ -7,13 +7,13 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import dk.redweb.Red_App.AppearanceHelper;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.R;
 import dk.redweb.Red_App.StaticNames.DEFAULTTEXT;
 import dk.redweb.Red_App.StaticNames.LOOK;
 import dk.redweb.Red_App.StaticNames.TEXT;
-import dk.redweb.Red_App.TextHelper;
+import dk.redweb.Red_App.Helper.TextHelper.TextHelper;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.ViewModels.PushMessageGroupVM;
 import dk.redweb.Red_App.Views.NavBarBox;
@@ -61,10 +61,10 @@ public class PushMessageGroupSettingsFragment extends BasePageFragment {
             helper.setViewBackgroundTileImageOrColor(lnrBackground, LOOK.PUSHMESSAGEGROUPSETTINGS_BACKGROUNDIMAGE, LOOK.PUSHMESSAGEGROUPSETTINGS_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView lblTitle = (TextView)findViewById(R.id.pushmessagegroupsettings_lblTitle);
-            helper.setTextColor(lblTitle, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(lblTitle, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLESIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setTextStyle(lblTitle, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLESTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setTextShadow(lblTitle, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLESHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
+            helper.TextView.setTextColor(lblTitle, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(lblTitle, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLESIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.TextView.setTextStyle(lblTitle, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLESTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.TextView.setTextShadow(lblTitle, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLESHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
         } catch (Exception e) {
             MyLog.e("Exception when setting appearance for PushMessageDetail", e);
         }

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import dk.redweb.Red_App.*;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
 import dk.redweb.Red_App.Network.NetworkInterface;
 import dk.redweb.Red_App.StaticNames.LOOK;
 import dk.redweb.Red_App.StaticNames.PAGE;
@@ -82,14 +83,14 @@ public class TableNavigatorAdapter extends ArrayAdapter<XmlNode> {
             XmlNode localLook = null;
             if(_xml.appearance.hasChild(_parent.getStringFromNode(PAGE.NAME)))
                 localLook = _xml.getAppearanceForPage(_parent.getStringFromNode(PAGE.NAME));
-            AppearanceHelper helper = new AppearanceHelper(localLook, globalLook);
+            AppearanceHelper helper = new AppearanceHelper(_context, localLook, globalLook);
 
             helper.setViewBackgroundColor(lineitem, LOOK.BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
             TextView txtTitle = (TextView)lineitem.findViewById(R.id.tablenavigator_lblTitle);
-            helper.setTextColor(txtTitle, LOOK.TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtTitle, LOOK.TEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setTextStyle(txtTitle, LOOK.TEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setTextShadow(txtTitle, LOOK.TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtTitle, LOOK.TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtTitle, LOOK.TEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.TextView.setTextStyle(txtTitle, LOOK.TEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.TextView.setTextShadow(txtTitle, LOOK.TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.TEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
         } catch (Exception e) {

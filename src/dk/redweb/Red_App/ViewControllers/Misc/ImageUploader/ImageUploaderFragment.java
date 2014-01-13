@@ -1,18 +1,15 @@
 package dk.redweb.Red_App.ViewControllers.Misc.ImageUploader;
 
-import android.content.Intent;
 import android.graphics.Point;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 import dk.redweb.Red_App.*;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
+import dk.redweb.Red_App.Helper.TextHelper.TextHelper;
 import dk.redweb.Red_App.StaticNames.*;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.Views.FlexibleButton;
@@ -92,11 +89,11 @@ public class ImageUploaderFragment extends BasePageFragment {
             FlexibleButton flxUpload = (FlexibleButton)findViewById(R.id.imageuploader_flxUploadImage);
             FlexibleButton[] flxButtons = {flxBrowser,flxUpload};
             helper.setViewBackgroundImageOrColor(flxButtons, LOOK.BUTTONBACKGROUNDIMAGE, LOOK.BUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTCOLOR);
-            helper.setFlexibleButtonImage(flxButtons, LOOK.BUTTONICON);
-            helper.setFlexibleButtonTextColor(flxButtons, LOOK.BUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.setFlexibleButtonTextSize(flxButtons, LOOK.BUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setFlexibleButtonTextStyle(flxButtons, LOOK.BUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setFlexibleButtonTextShadow(flxButtons, LOOK.BUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+            helper.FlexButton.setImage(flxButtons, LOOK.BUTTONICON);
+            helper.FlexButton.setTextColor(flxButtons, LOOK.BUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.FlexButton.setTextSize(flxButtons, LOOK.BUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.FlexButton.setTextStyle(flxButtons, LOOK.BUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.FlexButton.setTextShadow(flxButtons, LOOK.BUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
                     LOOK.BUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
         } catch (Exception e) {
             MyLog.e("Exception when setting appearance for ImageUploaderFragment", e);

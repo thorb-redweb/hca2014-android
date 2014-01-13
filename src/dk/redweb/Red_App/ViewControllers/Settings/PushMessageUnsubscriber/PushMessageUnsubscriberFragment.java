@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import dk.redweb.Red_App.*;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
+import dk.redweb.Red_App.Helper.TextHelper.TextHelper;
 import dk.redweb.Red_App.Interfaces.Delegate_removeRegistrationAttributes;
 import dk.redweb.Red_App.Network.PushMessages.PushMessageInitializationHandling;
 import dk.redweb.Red_App.StaticNames.DEFAULTTEXT;
@@ -59,27 +61,27 @@ public class PushMessageUnsubscriberFragment extends BasePageFragment implements
             helper.setViewBackgroundTileImageOrColor(mainViewLayout, LOOK.BACKGROUNDIMAGE, LOOK.BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView lblTitle = (TextView)findViewById(R.id.pushmessageunsubscriber_lblTitle);
-            helper.setTextColor(lblTitle, LOOK.TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(lblTitle, LOOK.TITLESIZE, LOOK.GLOBAL_TITLESIZE);
-            helper.setTextStyle(lblTitle, LOOK.TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
-            helper.setTextShadow(lblTitle, LOOK.TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(lblTitle, LOOK.TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(lblTitle, LOOK.TITLESIZE, LOOK.GLOBAL_TITLESIZE);
+            helper.TextView.setTextStyle(lblTitle, LOOK.TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
+            helper.TextView.setTextShadow(lblTitle, LOOK.TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                                            LOOK.TITLESHADOWOFFSET, LOOK.GLOBAL_TITLESHADOWOFFSET);
 
             TextView lblWarning = (TextView)findViewById(R.id.pushmessageunsubscriber_lblWarning);
-            helper.setTextColor(lblWarning, LOOK.TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(lblWarning, LOOK.TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(lblWarning, LOOK.TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(lblWarning, LOOK.TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(lblWarning, LOOK.TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(lblWarning, LOOK.TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(lblWarning, LOOK.TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(lblWarning, LOOK.TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             FlexibleButton flxUnsubscribe = (FlexibleButton)findViewById(R.id.pushmessageunsubscriber_flxUnsubscribe);
             helper.setViewBackgroundImageOrColor(flxUnsubscribe, LOOK.BUTTONBACKGROUNDIMAGE,
                     LOOK.BUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTCOLOR);
-            helper.setFlexibleButtonImage(flxUnsubscribe, LOOK.BUTTONICON);
-            helper.setFlexibleButtonTextColor(flxUnsubscribe, LOOK.BUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.setFlexibleButtonTextSize(flxUnsubscribe, LOOK.BUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setFlexibleButtonTextStyle(flxUnsubscribe, LOOK.BUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setFlexibleButtonTextShadow(flxUnsubscribe, LOOK.BUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+            helper.FlexButton.setImage(flxUnsubscribe, LOOK.BUTTONICON);
+            helper.FlexButton.setTextColor(flxUnsubscribe, LOOK.BUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.FlexButton.setTextSize(flxUnsubscribe, LOOK.BUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.FlexButton.setTextStyle(flxUnsubscribe, LOOK.BUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.FlexButton.setTextShadow(flxUnsubscribe, LOOK.BUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
                     LOOK.BUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
         } catch (Exception e) {

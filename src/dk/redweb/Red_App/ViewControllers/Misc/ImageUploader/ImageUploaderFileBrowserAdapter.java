@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import dk.redweb.Red_App.*;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
 import dk.redweb.Red_App.StaticNames.LOOK;
 import dk.redweb.Red_App.StaticNames.PAGE;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
@@ -69,15 +70,15 @@ public class ImageUploaderFileBrowserAdapter extends ArrayAdapter<File> {
             XmlNode localLook = null;
             if(_xml.appearance.hasChild(_page.getStringFromNode(PAGE.NAME)))
                 localLook = _xml.getAppearanceForPage(_page.getStringFromNode(PAGE.NAME));
-            AppearanceHelper helper = new AppearanceHelper(localLook, globalLook);
+            AppearanceHelper helper = new AppearanceHelper(_context, localLook, globalLook);
 
             helper.setViewBackgroundColor(lineitem, LOOK.IMAGEARTICLELIST_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView txtTitle = (TextView)lineitem.findViewById(R.id.imageuploadfilebrowser_lblFileName);
-            helper.setTextColor(txtTitle, LOOK.IMAGEARTICLELIST_ITEMTITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtTitle, LOOK.IMAGEARTICLELIST_ITEMTITLESIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setTextStyle(txtTitle, LOOK.IMAGEARTICLELIST_ITEMTITLESTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setTextShadow(txtTitle, LOOK.IMAGEARTICLELIST_ITEMTITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtTitle, LOOK.IMAGEARTICLELIST_ITEMTITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtTitle, LOOK.IMAGEARTICLELIST_ITEMTITLESIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.TextView.setTextStyle(txtTitle, LOOK.IMAGEARTICLELIST_ITEMTITLESTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.TextView.setTextShadow(txtTitle, LOOK.IMAGEARTICLELIST_ITEMTITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.IMAGEARTICLELIST_ITEMTITLESHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
         } catch (Exception e) {
             MyLog.e("Exception in FileBrowserAdapter:setAppearance", e);

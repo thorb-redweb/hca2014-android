@@ -1,7 +1,5 @@
 package dk.redweb.Red_App.ViewControllers.Navigation.ButtonGallery;
 
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
@@ -12,7 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import dk.redweb.Red_App.*;
-import dk.redweb.Red_App.StaticNames.EXTRA;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
+import dk.redweb.Red_App.Helper.TextHelper.TextHelper;
 import dk.redweb.Red_App.StaticNames.LOOK;
 import dk.redweb.Red_App.StaticNames.PAGE;
 import dk.redweb.Red_App.StaticNames.TEXT;
@@ -113,22 +112,22 @@ public class ButtonGalleryFragment extends BasePageFragment {
             View lnrBackground = findViewById(R.id.buttongallery_lnrBackground);
             helper.setViewBackgroundImageOrColor(lnrBackground, LOOK.BUTTONGALLERY_BACKGROUNDIMAGE, LOOK.BUTTONGALLERY_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
-            helper.setFlexibleButtonImage(btn1, LOOK.BUTTONGALLERY_BUTTON1IMAGE);
-            helper.setFlexibleButtonImage(btn2, LOOK.BUTTONGALLERY_BUTTON2IMAGE);
-            helper.setFlexibleButtonImage(btn3, LOOK.BUTTONGALLERY_BUTTON3IMAGE);
-            helper.setFlexibleButtonImage(btn4, LOOK.BUTTONGALLERY_BUTTON4IMAGE);
-            helper.setFlexibleButtonImage(btn5, LOOK.BUTTONGALLERY_BUTTON5IMAGE);
-            helper.setFlexibleButtonImage(btn6, LOOK.BUTTONGALLERY_BUTTON6IMAGE);
-            helper.setFlexibleButtonImage(btn7, LOOK.BUTTONGALLERY_BUTTON7IMAGE);
-            helper.setFlexibleButtonImage(btn8, LOOK.BUTTONGALLERY_BUTTON8IMAGE);
+            helper.FlexButton.setImage(btn1, LOOK.BUTTONGALLERY_BUTTON1IMAGE);
+            helper.FlexButton.setImage(btn2, LOOK.BUTTONGALLERY_BUTTON2IMAGE);
+            helper.FlexButton.setImage(btn3, LOOK.BUTTONGALLERY_BUTTON3IMAGE);
+            helper.FlexButton.setImage(btn4, LOOK.BUTTONGALLERY_BUTTON4IMAGE);
+            helper.FlexButton.setImage(btn5, LOOK.BUTTONGALLERY_BUTTON5IMAGE);
+            helper.FlexButton.setImage(btn6, LOOK.BUTTONGALLERY_BUTTON6IMAGE);
+            helper.FlexButton.setImage(btn7, LOOK.BUTTONGALLERY_BUTTON7IMAGE);
+            helper.FlexButton.setImage(btn8, LOOK.BUTTONGALLERY_BUTTON8IMAGE);
 
 
             FlexibleButton[] flexButtons = {btn1,btn2,btn3,btn4,btn5,btn6,btn7,btn8};
             helper.setViewBackgroundImageOrColor(flexButtons, LOOK.BUTTONGALLERY_BUTTONBACKIMAGE, LOOK.BUTTONGALLERY_BUTTONCOLOR,LOOK.GLOBAL_ALTCOLOR);
-            helper.setFlexibleButtonTextColor(flexButtons,LOOK.BUTTONGALLERY_BUTTONTEXTCOLOR,LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setFlexibleButtonTextSize(flexButtons,LOOK.BUTTONGALLERY_BUTTONTEXTSIZE,LOOK.GLOBAL_TEXTSIZE);
-            helper.setFlexibleButtonTextStyle(flexButtons,LOOK.BUTTONGALLERY_BUTTONTEXTSTYLE,LOOK.GLOBAL_TEXTSTYLE);
-            helper.setFlexibleButtonTextShadow(flexButtons,LOOK.BUTTONGALLERY_BUTTONTEXTSHADOWCOLOR,LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.FlexButton.setTextColor(flexButtons, LOOK.BUTTONGALLERY_BUTTONTEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.FlexButton.setTextSize(flexButtons, LOOK.BUTTONGALLERY_BUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.FlexButton.setTextStyle(flexButtons, LOOK.BUTTONGALLERY_BUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.FlexButton.setTextShadow(flexButtons, LOOK.BUTTONGALLERY_BUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.BUTTONGALLERY_BUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             if(_locallook != null && _locallook.hasChild(LOOK.BUTTONGALLERY_BUTTONCORNERRADIUS)){

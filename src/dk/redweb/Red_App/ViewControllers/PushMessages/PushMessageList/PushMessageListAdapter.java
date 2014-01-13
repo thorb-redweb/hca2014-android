@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import dk.redweb.Red_App.AppearanceHelper;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.R;
 import dk.redweb.Red_App.StaticNames.LOOK;
@@ -60,22 +60,22 @@ public class PushMessageListAdapter extends ArrayAdapter<PushMessageVM> {
             XmlNode localLook = null;
             if(_xml.appearance.hasChild(_parent.getStringFromNode(PAGE.NAME)))
                 localLook = _xml.getAppearanceForPage(_parent.getStringFromNode(PAGE.NAME));
-            AppearanceHelper helper = new AppearanceHelper(localLook, globalLook);
+            AppearanceHelper helper = new AppearanceHelper(_context, localLook, globalLook);
 
             helper.setViewBackgroundColor(lineitem, LOOK.PUSHMESSAGELIST_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView txtTitle = (TextView)lineitem.findViewById(R.id.pushmessagelistitem_lblTitle);
-            helper.setTextColor(txtTitle, LOOK.PUSHMESSAGELIST_ITEMTITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtTitle, LOOK.PUSHMESSAGELIST_ITEMTITLESIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setTextStyle(txtTitle, LOOK.PUSHMESSAGELIST_ITEMTITLESTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setTextShadow(txtTitle, LOOK.PUSHMESSAGELIST_ITEMTITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtTitle, LOOK.PUSHMESSAGELIST_ITEMTITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtTitle, LOOK.PUSHMESSAGELIST_ITEMTITLESIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.TextView.setTextStyle(txtTitle, LOOK.PUSHMESSAGELIST_ITEMTITLESTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.TextView.setTextShadow(txtTitle, LOOK.PUSHMESSAGELIST_ITEMTITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.PUSHMESSAGELIST_ITEMTITLESHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
             TextView txtBody = (TextView)lineitem.findViewById(R.id.pushmessagelistitem_lblMessage);
-            helper.setTextColor(txtBody, LOOK.PUSHMESSAGELIST_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtBody, LOOK.PUSHMESSAGELIST_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(txtBody, LOOK.PUSHMESSAGELIST_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(txtBody, LOOK.PUSHMESSAGELIST_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtBody, LOOK.PUSHMESSAGELIST_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtBody, LOOK.PUSHMESSAGELIST_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(txtBody, LOOK.PUSHMESSAGELIST_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(txtBody, LOOK.PUSHMESSAGELIST_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.PUSHMESSAGELIST_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
         } catch (Exception e) {

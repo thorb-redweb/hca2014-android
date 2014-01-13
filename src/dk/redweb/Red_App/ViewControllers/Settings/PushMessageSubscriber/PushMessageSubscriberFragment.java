@@ -16,6 +16,8 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import dk.redweb.Red_App.*;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
+import dk.redweb.Red_App.Helper.TextHelper.TextHelper;
 import dk.redweb.Red_App.Interfaces.Delegate_uploadRegistrationAttributes;
 import dk.redweb.Red_App.Network.PushMessages.PushMessageInitializationHandling;
 import dk.redweb.Red_App.StaticNames.DEFAULTTEXT;
@@ -95,26 +97,26 @@ public class PushMessageSubscriberFragment extends BasePageFragment implements D
             helper.setViewBackgroundImageOrColor(lnrBackground,LOOK.PUSHMESSAGEINITIALIZER_BACKGROUNDIMAGE, LOOK.PUSHMESSAGEINITIALIZER_BACKGROUNDCOLOR,LOOK.GLOBAL_BACKCOLOR);
 
             TextView lblDescription = (TextView)findViewById(R.id.pushmessagesubscriber_lblPageDescription);
-            helper.setTextColor(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.PUSHMESSAGEINITIALIZER_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
+            helper.TextView.setTextColor(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.PUSHMESSAGEINITIALIZER_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             TextView lblUserName = (TextView)findViewById(R.id.pushmessagesubscriber_lblUserName);
-            helper.setTextColor(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setTextStyle(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setTextShadow(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.PUSHMESSAGEINITIALIZER_LABELSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
+            helper.TextView.setTextColor(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.TextView.setTextStyle(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.TextView.setTextShadow(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.PUSHMESSAGEINITIALIZER_LABELSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
             FlexibleButton flxSubmitButton = (FlexibleButton)findViewById(R.id.pushmessagesubscriber_flxSubmit);
             FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.pushmessagesubscriber_flxBack);
             FlexibleButton[] buttons = new FlexibleButton[]{flxSubmitButton,flxBackButton};
             helper.setViewBackgroundImageOrColor(buttons, LOOK.PUSHMESSAGEINITIALIZER_BUTTONBACKGROUNDIMAGE, LOOK.PUSHMESSAGEDETAIL_BACKBUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTCOLOR);
-            helper.setFlexibleButtonImage(buttons, LOOK.PUSHMESSAGEINITIALIZER_BUTTONICON);
-            helper.setFlexibleButtonTextColor(buttons, LOOK.PUSHMESSAGEINITIALIZER_BUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.setFlexibleButtonTextSize(buttons, LOOK.PUSHMESSAGEINITIALIZER_BUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setFlexibleButtonTextStyle(buttons, LOOK.PUSHMESSAGEINITIALIZER_BUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setFlexibleButtonTextShadow(buttons, LOOK.PUSHMESSAGEINITIALIZER_BUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR, LOOK.PUSHMESSAGEINITIALIZER_BUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
+            helper.FlexButton.setImage(buttons, LOOK.PUSHMESSAGEINITIALIZER_BUTTONICON);
+            helper.FlexButton.setTextColor(buttons, LOOK.PUSHMESSAGEINITIALIZER_BUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.FlexButton.setTextSize(buttons, LOOK.PUSHMESSAGEINITIALIZER_BUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.FlexButton.setTextStyle(buttons, LOOK.PUSHMESSAGEINITIALIZER_BUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.FlexButton.setTextShadow(buttons, LOOK.PUSHMESSAGEINITIALIZER_BUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR, LOOK.PUSHMESSAGEINITIALIZER_BUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
 
         } catch (Exception e) {

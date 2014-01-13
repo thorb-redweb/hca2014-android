@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import dk.redweb.Red_App.*;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
+import dk.redweb.Red_App.Helper.TextHelper.TextHelper;
 import dk.redweb.Red_App.Model.Venue;
 import dk.redweb.Red_App.StaticNames.*;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
@@ -168,10 +170,10 @@ public class DailySessionListFragment extends BasePageFragment {
             helper.setImageViewImage(forwardArrow, LOOK.DAILYSESSIONLIST_RIGHTARROW);
 
             TextView title = (TextView)findViewById(R.id.dailysessionlist_lblDate);
-            helper.setTextColor(title, LOOK.DAILYSESSIONLIST_DATETEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(title, LOOK.DAILYSESSIONLIST_DATETEXTSIZE, LOOK.GLOBAL_TITLESIZE);
-            helper.setTextStyle(title, LOOK.DAILYSESSIONLIST_DATETEXTSTYLE, LOOK.GLOBAL_TITLESTYLE);
-            helper.setTextShadow(title, LOOK.DAILYSESSIONLIST_DATETEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(title, LOOK.DAILYSESSIONLIST_DATETEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(title, LOOK.DAILYSESSIONLIST_DATETEXTSIZE, LOOK.GLOBAL_TITLESIZE);
+            helper.TextView.setTextStyle(title, LOOK.DAILYSESSIONLIST_DATETEXTSTYLE, LOOK.GLOBAL_TITLESTYLE);
+            helper.TextView.setTextShadow(title, LOOK.DAILYSESSIONLIST_DATETEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.DAILYSESSIONLIST_DATETEXTSHADOWOFFSET, LOOK.GLOBAL_TITLESHADOWOFFSET);
         } catch (Exception e) {
             MyLog.e("Exception in UpcomingSessions:setAppearance", e);

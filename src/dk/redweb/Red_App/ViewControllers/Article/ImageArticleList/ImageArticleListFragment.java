@@ -1,13 +1,13 @@
 package dk.redweb.Red_App.ViewControllers.Article.ImageArticleList;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import dk.redweb.Red_App.*;
-import dk.redweb.Red_App.Model.Article;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
+import dk.redweb.Red_App.Helper.TextHelper.TextHelper;
 import dk.redweb.Red_App.StaticNames.*;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.ViewModels.ArticleVM;

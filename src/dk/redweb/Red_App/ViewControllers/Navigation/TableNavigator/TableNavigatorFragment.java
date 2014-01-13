@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import dk.redweb.Red_App.AppearanceHelper;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.NavController;
 import dk.redweb.Red_App.R;

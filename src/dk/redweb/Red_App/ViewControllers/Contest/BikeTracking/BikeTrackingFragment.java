@@ -10,13 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import dk.redweb.Red_App.AppearanceHelper;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.R;
 import dk.redweb.Red_App.StaticNames.DEFAULTTEXT;
 import dk.redweb.Red_App.StaticNames.LOOK;
 import dk.redweb.Red_App.StaticNames.TEXT;
-import dk.redweb.Red_App.TextHelper;
+import dk.redweb.Red_App.Helper.TextHelper.TextHelper;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.Views.FlexibleButton;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
@@ -87,46 +87,46 @@ public class BikeTrackingFragment extends BasePageFragment{
             TextView lblSpeedLabel = (TextView)findViewById(R.id.biketracking_lblSpeedLabel);
             TextView lblTopSpeedLabel = (TextView)findViewById(R.id.biketracking_lblTopSpeedLabel);
             TextView[] labels = {lblDistanceLabel,lblSpeedLabel,lblTopSpeedLabel};
-            helper.setTextColor(labels, LOOK.BIKETRACKING_LABELCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(labels, LOOK.BIKETRACKING_LABELSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setTextStyle(labels, LOOK.BIKETRACKING_LABELSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setTextShadow(labels, LOOK.BIKETRACKING_LABELSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.BIKETRACKING_LABELSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
+            helper.TextView.setTextColor(labels, LOOK.BIKETRACKING_LABELCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(labels, LOOK.BIKETRACKING_LABELSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.TextView.setTextStyle(labels, LOOK.BIKETRACKING_LABELSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.TextView.setTextShadow(labels, LOOK.BIKETRACKING_LABELSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.BIKETRACKING_LABELSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
             TextView lblDistanceData = (TextView)findViewById(R.id.biketracking_lblDistanceData);
             TextView lblSpeedData = (TextView)findViewById(R.id.biketracking_lblSpeedData);
             TextView lblTopSpeedData = (TextView)findViewById(R.id.biketracking_lblTopSpeedData);
             TextView lblStatus = (TextView)findViewById(R.id.biketracking_lblStatus);
             TextView[] datalabels = {lblDistanceData,lblSpeedData,lblTopSpeedData, lblStatus};
-            helper.setTextColor(datalabels, LOOK.BIKETRACKING_DATACOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(datalabels, LOOK.BIKETRACKING_DATASIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(datalabels, LOOK.BIKETRACKING_DATASTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(datalabels, LOOK.BIKETRACKING_DATASHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.BIKETRACKING_DATASHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
+            helper.TextView.setTextColor(datalabels, LOOK.BIKETRACKING_DATACOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(datalabels, LOOK.BIKETRACKING_DATASIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(datalabels, LOOK.BIKETRACKING_DATASTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(datalabels, LOOK.BIKETRACKING_DATASHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.BIKETRACKING_DATASHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             FlexibleButton flxActionButton = (FlexibleButton)findViewById(R.id.biketracking_flxTrackerStateButton);
             helper.setViewBackgroundImageOrColor(flxActionButton, LOOK.BIKETRACKING_STARTBUTTONBACKGROUNDIMAGE, LOOK.BIKETRACKING_STARTBUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTCOLOR);
-            helper.setFlexibleButtonImage(flxActionButton, LOOK.BIKETRACKING_STARTBUTTONICON);
-            helper.setFlexibleButtonTextColor(flxActionButton, LOOK.BIKETRACKING_STARTBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.setFlexibleButtonTextSize(flxActionButton, LOOK.BIKETRACKING_STARTBUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setFlexibleButtonTextStyle(flxActionButton, LOOK.BIKETRACKING_STARTBUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setFlexibleButtonTextShadow(flxActionButton, LOOK.BIKETRACKING_STARTBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+            helper.FlexButton.setImage(flxActionButton, LOOK.BIKETRACKING_STARTBUTTONICON);
+            helper.FlexButton.setTextColor(flxActionButton, LOOK.BIKETRACKING_STARTBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.FlexButton.setTextSize(flxActionButton, LOOK.BIKETRACKING_STARTBUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.FlexButton.setTextStyle(flxActionButton, LOOK.BIKETRACKING_STARTBUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.FlexButton.setTextShadow(flxActionButton, LOOK.BIKETRACKING_STARTBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
                     LOOK.BIKETRACKING_STARTBUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
             FlexibleButton flxUploadButton = (FlexibleButton)findViewById(R.id.biketracking_flxUploadButton);
             helper.setViewBackgroundImageOrColor(flxUploadButton, LOOK.BIKETRACKING_UPLOADBUTTONBACKGROUNDIMAGE, LOOK.BIKETRACKING_UPLOADBUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTCOLOR);
-            helper.setFlexibleButtonImage(flxUploadButton, LOOK.BIKETRACKING_UPLOADBUTTONICON);
-            helper.setFlexibleButtonTextColor(flxUploadButton, LOOK.BIKETRACKING_UPLOADBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.setFlexibleButtonTextSize(flxUploadButton, LOOK.BIKETRACKING_UPLOADBUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setFlexibleButtonTextStyle(flxUploadButton, LOOK.BIKETRACKING_UPLOADBUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setFlexibleButtonTextShadow(flxUploadButton, LOOK.BIKETRACKING_UPLOADBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+            helper.FlexButton.setImage(flxUploadButton, LOOK.BIKETRACKING_UPLOADBUTTONICON);
+            helper.FlexButton.setTextColor(flxUploadButton, LOOK.BIKETRACKING_UPLOADBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.FlexButton.setTextSize(flxUploadButton, LOOK.BIKETRACKING_UPLOADBUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.FlexButton.setTextStyle(flxUploadButton, LOOK.BIKETRACKING_UPLOADBUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.FlexButton.setTextShadow(flxUploadButton, LOOK.BIKETRACKING_UPLOADBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
                     LOOK.BIKETRACKING_UPLOADBUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
             FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.flxBackButton);
             helper.setViewBackgroundImageOrColor(flxBackButton, LOOK.BACKBUTTONBACKGROUNDIMAGE, LOOK.BACKBUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTCOLOR);
-            helper.setFlexibleButtonImage(flxBackButton, LOOK.BACKBUTTONICON);
-            helper.setFlexibleButtonTextColor(flxBackButton, LOOK.BACKBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.setFlexibleButtonTextSize(flxBackButton, LOOK.BACKBUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setFlexibleButtonTextStyle(flxBackButton, LOOK.BACKBUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setFlexibleButtonTextShadow(flxBackButton, LOOK.BACKBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+            helper.FlexButton.setImage(flxBackButton, LOOK.BACKBUTTONICON);
+            helper.FlexButton.setTextColor(flxBackButton, LOOK.BACKBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.FlexButton.setTextSize(flxBackButton, LOOK.BACKBUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.FlexButton.setTextStyle(flxBackButton, LOOK.BACKBUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.FlexButton.setTextShadow(flxBackButton, LOOK.BACKBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
                     LOOK.BACKBUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
         }
         catch (Exception e){

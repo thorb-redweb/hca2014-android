@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import dk.redweb.Red_App.*;
 import dk.redweb.Red_App.Database.DbInterface;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
+import dk.redweb.Red_App.Helper.TextHelper.TextHelper;
 import dk.redweb.Red_App.Network.NetworkInterface;
 import dk.redweb.Red_App.Network.ServerInterface;
 import dk.redweb.Red_App.StaticNames.*;

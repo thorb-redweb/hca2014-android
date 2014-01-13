@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.*;
 import dk.redweb.Red_App.*;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
+import dk.redweb.Red_App.Helper.TextHelper.TextHelper;
 import dk.redweb.Red_App.StaticNames.*;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.ViewModels.SessionVM;
@@ -106,60 +108,60 @@ public class SessionDetailFragment extends BasePageFragment {
             helper.setViewBackgroundColor(box, LOOK.SESSIONDETAIL_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView txtTitle = (TextView)findViewById(R.id.sessionDetail_lblTitle);
-            helper.setTextColor(txtTitle, LOOK.SESSIONDETAIL_TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtTitle,LOOK.SESSIONDETAIL_TITLESIZE, LOOK.GLOBAL_TITLESIZE);
-            helper.setTextStyle(txtTitle, LOOK.SESSIONDETAIL_TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
-            helper.setTextShadow(txtTitle, LOOK.SESSIONDETAIL_TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtTitle, LOOK.SESSIONDETAIL_TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtTitle,LOOK.SESSIONDETAIL_TITLESIZE, LOOK.GLOBAL_TITLESIZE);
+            helper.TextView.setTextStyle(txtTitle, LOOK.SESSIONDETAIL_TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
+            helper.TextView.setTextShadow(txtTitle, LOOK.SESSIONDETAIL_TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.SESSIONDETAIL_TITLESHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             TextView txtDateLabel = (TextView)findViewById(R.id.sessionDetail_lblDateLabel);
             TextView txtVenueLabel = (TextView)findViewById(R.id.sessionDetail_lblVenueLabel);
             TextView txtTimeLabel = (TextView)findViewById(R.id.sessionDetail_lblTimeLabel);
             TextView[] txtLabels = new TextView[]{txtDateLabel,txtVenueLabel,txtTimeLabel};
-            helper.setTextColor(txtLabels, LOOK.SESSIONDETAIL_LABELCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtLabels,LOOK.SESSIONDETAIL_LABELSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setTextStyle(txtLabels, LOOK.SESSIONDETAIL_LABELSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setTextShadow(txtLabels, LOOK.SESSIONDETAIL_LABELSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtLabels, LOOK.SESSIONDETAIL_LABELCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtLabels,LOOK.SESSIONDETAIL_LABELSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.TextView.setTextStyle(txtLabels, LOOK.SESSIONDETAIL_LABELSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.TextView.setTextShadow(txtLabels, LOOK.SESSIONDETAIL_LABELSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.SESSIONDETAIL_LABELSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
             TextView txtDateValue = (TextView)findViewById(R.id.sessionDetail_lblDateValue);
             TextView txtVenueValue = (TextView)findViewById(R.id.sessionDetail_lblVenueValue);
             TextView txtTimeValue = (TextView)findViewById(R.id.sessionDetail_lblTimeValue);
             TextView[] txtValues = new TextView[]{txtDateValue,txtVenueValue,txtTimeValue};
-            helper.setTextColor(txtValues, LOOK.SESSIONDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtValues,LOOK.SESSIONDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(txtValues, LOOK.SESSIONDETAIL_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(txtValues, LOOK.SESSIONDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtValues, LOOK.SESSIONDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtValues,LOOK.SESSIONDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(txtValues, LOOK.SESSIONDETAIL_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(txtValues, LOOK.SESSIONDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.SESSIONDETAIL_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             RelativeLayout lnrButtonMap = (RelativeLayout)findViewById(R.id.sessionDetail_rltMapButton);
             helper.setViewBackgroundColor(lnrButtonMap, LOOK.SESSIONDETAIL_BUTTONCOLOR, LOOK.GLOBAL_ALTCOLOR);
 
             TextView txtButtonMap = (TextView)findViewById(R.id.sessionDetail_lblButtonMap);
-            helper.setTextColor(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.setTextSize(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.TextView.setTextSize(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
                     LOOK.SESSIONDETAIL_BUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             ImageView imgButtonMap = (ImageView)findViewById(R.id.sessionDetail_imgButtonMap);
             helper.setImageViewImage(imgButtonMap, LOOK.SESSIONDETAIL_MAPBUTTONIMAGE);
 
             TextView txtBody = (TextView)findViewById(R.id.sessionDetail_lblBody);
-            helper.setTextColor(txtBody, LOOK.SESSIONDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtBody, LOOK.SESSIONDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(txtBody, LOOK.SESSIONDETAIL_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(txtBody, LOOK.SESSIONDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtBody, LOOK.SESSIONDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtBody, LOOK.SESSIONDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(txtBody, LOOK.SESSIONDETAIL_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(txtBody, LOOK.SESSIONDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.SESSIONDETAIL_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.flxBackButton);
             helper.setViewBackgroundImageOrColor(flxBackButton, LOOK.BACKBUTTONBACKGROUNDIMAGE,
                     LOOK.BACKBUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTCOLOR);
-            helper.setFlexibleButtonImage(flxBackButton, LOOK.BACKBUTTONICON);
-            helper.setFlexibleButtonTextColor(flxBackButton, LOOK.BACKBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.setFlexibleButtonTextSize(flxBackButton, LOOK.BACKBUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setFlexibleButtonTextStyle(flxBackButton, LOOK.BACKBUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setFlexibleButtonTextShadow(flxBackButton, LOOK.BACKBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+            helper.FlexButton.setImage(flxBackButton, LOOK.BACKBUTTONICON);
+            helper.FlexButton.setTextColor(flxBackButton, LOOK.BACKBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.FlexButton.setTextSize(flxBackButton, LOOK.BACKBUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.FlexButton.setTextStyle(flxBackButton, LOOK.BACKBUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.FlexButton.setTextShadow(flxBackButton, LOOK.BACKBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
                     LOOK.BACKBUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
         } catch (Exception e) {
             MyLog.e("Exception in SessionDetailActivity:setAppearance", e);
