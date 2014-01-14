@@ -1,4 +1,4 @@
-package dk.redweb.Red_App;
+package dk.redweb.Red_App.Helper.TextHelper;
 
 import android.app.Activity;
 import android.view.View;

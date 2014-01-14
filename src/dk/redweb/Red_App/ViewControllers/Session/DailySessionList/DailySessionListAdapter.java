@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import dk.redweb.Red_App.AppearanceHelper;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.R;
 import dk.redweb.Red_App.StaticNames.LOOK;
@@ -23,6 +23,7 @@ import dk.redweb.Red_App.XmlHandling.XmlStore;
  */
 public class DailySessionListAdapter  extends ArrayAdapter<SessionVM> {
 
+    private Context _context;
     private XmlStore _xml;
     private XmlNode _parent;
 
@@ -30,6 +31,7 @@ public class DailySessionListAdapter  extends ArrayAdapter<SessionVM> {
 
     public DailySessionListAdapter(Context context, SessionVM[] values, XmlStore xml, XmlNode parent){
         super(context, R.layout.listitem_dailysessionlist, values);
+        _context = context;
         this.sessions = values;
         _xml = xml;
         _parent = parent;
@@ -56,23 +58,25 @@ public class DailySessionListAdapter  extends ArrayAdapter<SessionVM> {
     private void setAppearance(LinearLayout lineitem){
         try {
             XmlNode globalLook = _xml.getAppearanceForPage(LOOK.GLOBAL);
-            XmlNode localLook = _xml.getAppearanceForPage(_parent.getStringFromNode(PAGE.NAME));
-            AppearanceHelper helper = new AppearanceHelper(localLook, globalLook);
+            XmlNode localLook = null;
+            if(_xml.appearance.hasChild(_parent.getStringFromNode(PAGE.NAME)))
+                localLook = _xml.getAppearanceForPage(_parent.getStringFromNode(PAGE.NAME));
+            AppearanceHelper helper = new AppearanceHelper(_context, localLook, globalLook);
 
             helper.setViewBackgroundColor(lineitem, LOOK.DAILYSESSIONLIST_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView txtTimeAndPlace = (TextView)lineitem.findViewById(R.id.dailysessionlistitem_lblTimeAndPlace);
-            helper.setTextColor(txtTimeAndPlace, LOOK.DAILYSESSIONLIST_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtTimeAndPlace, LOOK.DAILYSESSIONLIST_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(txtTimeAndPlace, LOOK.DAILYSESSIONLIST_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(txtTimeAndPlace, LOOK.DAILYSESSIONLIST_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtTimeAndPlace, LOOK.DAILYSESSIONLIST_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtTimeAndPlace, LOOK.DAILYSESSIONLIST_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(txtTimeAndPlace, LOOK.DAILYSESSIONLIST_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(txtTimeAndPlace, LOOK.DAILYSESSIONLIST_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.DAILYSESSIONLIST_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             TextView txtEvent = (TextView)lineitem.findViewById(R.id.dailysessionlistitem_lblEvent);
-            helper.setTextColor(txtEvent, LOOK.DAILYSESSIONLIST_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtEvent, LOOK.DAILYSESSIONLIST_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(txtEvent, LOOK.DAILYSESSIONLIST_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(txtEvent, LOOK.DAILYSESSIONLIST_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtEvent, LOOK.DAILYSESSIONLIST_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtEvent, LOOK.DAILYSESSIONLIST_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(txtEvent, LOOK.DAILYSESSIONLIST_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(txtEvent, LOOK.DAILYSESSIONLIST_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.DAILYSESSIONLIST_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
         } catch (Exception e) {

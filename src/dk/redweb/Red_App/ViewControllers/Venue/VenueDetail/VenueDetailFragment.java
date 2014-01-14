@@ -11,6 +11,8 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import dk.redweb.Red_App.*;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
+import dk.redweb.Red_App.Helper.TextHelper.TextHelper;
 import dk.redweb.Red_App.StaticNames.*;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.ViewModels.VenueVM;
@@ -108,44 +110,44 @@ public class VenueDetailFragment extends BasePageFragment {
             helper.setViewBackgroundTileImageOrColor(box, LOOK.VENUEDETAIL_BACKGROUNDIMAGE, LOOK.VENUEDETAIL_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView txtTitle = (TextView)findViewById(R.id.venueDetail_lblTitle);
-            helper.setTextColor(txtTitle, LOOK.VENUEDETAIL_TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtTitle,LOOK.VENUEDETAIL_TITLESIZE, LOOK.GLOBAL_TITLESIZE);
-            helper.setTextStyle(txtTitle, LOOK.VENUEDETAIL_TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
-            helper.setTextShadow(txtTitle, LOOK.VENUEDETAIL_TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
-                    LOOK.VENUEDETAIL_TITLESHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
+            helper.TextView.setTextColor(txtTitle, LOOK.TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtTitle,LOOK.TITLESIZE, LOOK.GLOBAL_TITLESIZE);
+            helper.TextView.setTextStyle(txtTitle, LOOK.TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
+            helper.TextView.setTextShadow(txtTitle, LOOK.TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+                    LOOK.TITLESHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             TextView txtAddressLabel = (TextView)findViewById(R.id.venueDetail_lblAddressLabel);
-            helper.setTextColor(txtAddressLabel, LOOK.VENUEDETAIL_LABELCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtAddressLabel,LOOK.VENUEDETAIL_LABELSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setTextStyle(txtAddressLabel, LOOK.VENUEDETAIL_LABELSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setTextShadow(txtAddressLabel, LOOK.VENUEDETAIL_LABELSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtAddressLabel, LOOK.VENUEDETAIL_LABELCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtAddressLabel,LOOK.VENUEDETAIL_LABELSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.TextView.setTextStyle(txtAddressLabel, LOOK.VENUEDETAIL_LABELSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.TextView.setTextShadow(txtAddressLabel, LOOK.VENUEDETAIL_LABELSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.VENUEDETAIL_LABELSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
             TextView txtAddressValue = (TextView)findViewById(R.id.venueDetail_lblAddressValue);
-            helper.setTextColor(txtAddressValue, LOOK.VENUEDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtAddressValue,LOOK.VENUEDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(txtAddressValue, LOOK.VENUEDETAIL_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(txtAddressValue, LOOK.VENUEDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtAddressValue, LOOK.VENUEDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtAddressValue,LOOK.VENUEDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(txtAddressValue, LOOK.VENUEDETAIL_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(txtAddressValue, LOOK.VENUEDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.VENUEDETAIL_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             RelativeLayout lnrButtonMap = (RelativeLayout)findViewById(R.id.venueDetail_rltMapButton);
             helper.setViewBackgroundColor(lnrButtonMap, LOOK.VENUEDETAIL_BUTTONCOLOR, LOOK.GLOBAL_ALTCOLOR);
 
             TextView txtButtonMap = (TextView)findViewById(R.id.venueDetail_lblButtonMap);
-            helper.setTextColor(txtButtonMap, LOOK.VENUEDETAIL_BUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.setTextSize(txtButtonMap, LOOK.VENUEDETAIL_BUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(txtButtonMap, LOOK.VENUEDETAIL_BUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(txtButtonMap, LOOK.VENUEDETAIL_BUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtButtonMap, LOOK.VENUEDETAIL_BUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.TextView.setTextSize(txtButtonMap, LOOK.VENUEDETAIL_BUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(txtButtonMap, LOOK.VENUEDETAIL_BUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(txtButtonMap, LOOK.VENUEDETAIL_BUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
                     LOOK.VENUEDETAIL_BUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             ImageView imgButtonMap = (ImageView)findViewById(R.id.venueDetail_imgButtonMap);
             helper.setImageViewImage(imgButtonMap, LOOK.VENUEDETAIL_BUTTONICON);
 
             TextView txtBody = (TextView)findViewById(R.id.venueDetail_lblBody);
-            helper.setTextColor(txtBody, LOOK.VENUEDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtBody, LOOK.VENUEDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(txtBody, LOOK.VENUEDETAIL_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(txtBody, LOOK.VENUEDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtBody, LOOK.VENUEDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtBody, LOOK.VENUEDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(txtBody, LOOK.VENUEDETAIL_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(txtBody, LOOK.VENUEDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.VENUEDETAIL_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
         } catch (Exception e) {

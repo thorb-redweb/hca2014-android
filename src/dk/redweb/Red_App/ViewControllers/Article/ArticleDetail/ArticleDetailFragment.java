@@ -9,11 +9,11 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
-import dk.redweb.Red_App.AppearanceHelper;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.R;
 import dk.redweb.Red_App.StaticNames.*;
-import dk.redweb.Red_App.TextHelper;
+import dk.redweb.Red_App.Helper.TextHelper.TextHelper;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.ViewModels.ArticleVM;
 import dk.redweb.Red_App.Views.FlexibleButton;
@@ -107,27 +107,27 @@ public class ArticleDetailFragment extends BasePageFragment {
             helper.setViewBackgroundTileImageOrColor(mainViewLayout, LOOK.ARTICLEDETAIL_BACKGROUNDIMAGE, LOOK.ARTICLEDETAIL_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView txtTitle = (TextView)findViewById(R.id.articleDetail_lblTitle);
-            helper.setTextColor(txtTitle, LOOK.ARTICLEDETAIL_TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtTitle, LOOK.ARTICLEDETAIL_TITLESIZE, LOOK.GLOBAL_TITLESIZE);
-            helper.setTextStyle(txtTitle, LOOK.ARTICLEDETAIL_TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
-            helper.setTextShadow(txtTitle, LOOK.ARTICLEDETAIL_TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtTitle, LOOK.ARTICLEDETAIL_TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtTitle, LOOK.ARTICLEDETAIL_TITLESIZE, LOOK.GLOBAL_TITLESIZE);
+            helper.TextView.setTextStyle(txtTitle, LOOK.ARTICLEDETAIL_TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
+            helper.TextView.setTextShadow(txtTitle, LOOK.ARTICLEDETAIL_TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.ARTICLEDETAIL_TITLESHADOWOFFSET, LOOK.GLOBAL_TITLESHADOWOFFSET);
 
             TextView txtBody = (TextView)findViewById(R.id.articleDetail_lblBody);
-            helper.setTextColor(txtBody, LOOK.ARTICLEDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtBody, LOOK.ARTICLEDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(txtBody, LOOK.ARTICLEDETAIL_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(txtBody, LOOK.ARTICLEDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtBody, LOOK.ARTICLEDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtBody, LOOK.ARTICLEDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(txtBody, LOOK.ARTICLEDETAIL_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(txtBody, LOOK.ARTICLEDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.ARTICLEDETAIL_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.flxBackButton);
             helper.setViewBackgroundImageOrColor(flxBackButton, LOOK.BACKBUTTONBACKGROUNDIMAGE,
                     LOOK.BACKBUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTCOLOR);
-            helper.setFlexibleButtonImage(flxBackButton, LOOK.BACKBUTTONICON);
-            helper.setFlexibleButtonTextColor(flxBackButton, LOOK.BACKBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.setFlexibleButtonTextSize(flxBackButton, LOOK.BACKBUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setFlexibleButtonTextStyle(flxBackButton, LOOK.BACKBUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setFlexibleButtonTextShadow(flxBackButton, LOOK.BACKBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+            helper.FlexButton.setImage(flxBackButton, LOOK.BACKBUTTONICON);
+            helper.FlexButton.setTextColor(flxBackButton, LOOK.BACKBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.FlexButton.setTextSize(flxBackButton, LOOK.BACKBUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.FlexButton.setTextStyle(flxBackButton, LOOK.BACKBUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.FlexButton.setTextShadow(flxBackButton, LOOK.BACKBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
                     LOOK.BACKBUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
         } catch (Exception e) {

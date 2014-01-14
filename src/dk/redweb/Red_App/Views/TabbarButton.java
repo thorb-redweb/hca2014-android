@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import dk.redweb.Red_App.*;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
 import dk.redweb.Red_App.StaticNames.LOOK;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
 import dk.redweb.Red_App.XmlHandling.XmlStore;
@@ -58,12 +59,12 @@ public class TabbarButton extends LinearLayout {
             XmlNode localLook = null;
             if(_xml.pageHasAppearance(LOOK.TABBAR))
                 localLook = _xml.getAppearanceForPage(LOOK.TABBAR);
-            AppearanceHelper helper = new AppearanceHelper(localLook, globalLook);
+            AppearanceHelper helper = new AppearanceHelper(_app.getApplicationContext(), localLook, globalLook);
 
-            helper.setTextColor(_buttonTextView, LOOK.TABBAR_TEXTCOLOR, LOOK.GLOBAL_BARTEXTCOLOR);
-            helper.setTextSize(_buttonTextView, LOOK.TABBAR_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(_buttonTextView, LOOK.TABBAR_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(_buttonTextView, LOOK.TABBAR_TEXTSHADOWCOLOR, LOOK.GLOBAL_BARTEXTSHADOWCOLOR, LOOK.TABBAR_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
+            helper.TextView.setTextColor(_buttonTextView, LOOK.TABBAR_TEXTCOLOR, LOOK.GLOBAL_BARTEXTCOLOR);
+            helper.TextView.setTextSize(_buttonTextView, LOOK.TABBAR_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(_buttonTextView, LOOK.TABBAR_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(_buttonTextView, LOOK.TABBAR_TEXTSHADOWCOLOR, LOOK.GLOBAL_BARTEXTSHADOWCOLOR, LOOK.TABBAR_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             LinearLayout lnrView = (LinearLayout)findViewById(R.id.tabbarButton_lnrView);
             ViewGroup.LayoutParams tabbarButtonParams = lnrView.getLayoutParams();

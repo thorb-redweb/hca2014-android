@@ -8,7 +8,7 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import dk.redweb.Red_App.AppearanceHelper;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.R;
 import dk.redweb.Red_App.StaticNames.EXTRA;
@@ -114,29 +114,29 @@ public class AdventWindowFragment extends BasePageFragment {
                     LOOK.ADVENTWINDOW_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView txtTitle = (TextView)findViewById(R.id.adventwindow_lblTitle);
-            helper.setTextColor(txtTitle,LOOK.ADVENTWINDOW_TITLECOLOR,LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtTitle,LOOK.ADVENTWINDOW_TITLESIZE,LOOK.GLOBAL_TITLESIZE);
-            helper.setTextStyle(txtTitle,LOOK.ADVENTWINDOW_TITLESTYLE,LOOK.GLOBAL_TITLESTYLE);
-            helper.setTextShadow(txtTitle,LOOK.ADVENTWINDOW_TITLESHADOWCOLOR,LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtTitle,LOOK.ADVENTWINDOW_TITLECOLOR,LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtTitle,LOOK.ADVENTWINDOW_TITLESIZE,LOOK.GLOBAL_TITLESIZE);
+            helper.TextView.setTextStyle(txtTitle,LOOK.ADVENTWINDOW_TITLESTYLE,LOOK.GLOBAL_TITLESTYLE);
+            helper.TextView.setTextShadow(txtTitle,LOOK.ADVENTWINDOW_TITLESHADOWCOLOR,LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.ADVENTWINDOW_TITLESHADOWOFFSET,LOOK.GLOBAL_TITLESHADOWOFFSET);
 
             TextView txtBody = (TextView)findViewById(R.id.adventwindow_lblBody);
             helper.setViewBackgroundImageOrColor(txtBody, LOOK.ADVENTWINDOW_TEXTBACKGROUNDIMAGE,
                     LOOK.ADVENTWINDOW_TEXTBACKGROUNDCOLOR,LOOK.GLOBAL_ALTCOLOR);
-            helper.setTextColor(txtBody,LOOK.ADVENTWINDOW_TEXTCOLOR,LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.setTextSize(txtBody,LOOK.ADVENTWINDOW_TEXTSIZE,LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(txtBody,LOOK.ADVENTWINDOW_TEXTSTYLE,LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(txtBody,LOOK.ADVENTWINDOW_TEXTSHADOWCOLOR,LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtBody,LOOK.ADVENTWINDOW_TEXTCOLOR,LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.TextView.setTextSize(txtBody,LOOK.ADVENTWINDOW_TEXTSIZE,LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(txtBody,LOOK.ADVENTWINDOW_TEXTSTYLE,LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(txtBody,LOOK.ADVENTWINDOW_TEXTSHADOWCOLOR,LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
                     LOOK.ADVENTWINDOW_TEXTSHADOWOFFSET,LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.adventwindow_flxBackButton);
             helper.setViewBackgroundImageOrColor(flxBackButton, LOOK.ADVENTWINDOW_BACKBUTTONBACKGROUNDIMAGE,
                     LOOK.ADVENTWINDOW_BACKBUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTCOLOR);
-            helper.setFlexibleButtonImage(flxBackButton, LOOK.ADVENTWINDOW_BACKBUTTONICON);
-            helper.setFlexibleButtonTextColor(flxBackButton, LOOK.ADVENTWINDOW_BACKBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.setFlexibleButtonTextSize(flxBackButton, LOOK.ADVENTWINDOW_BACKBUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setFlexibleButtonTextStyle(flxBackButton, LOOK.ADVENTWINDOW_BACKBUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setFlexibleButtonTextShadow(flxBackButton, LOOK.ADVENTWINDOW_BACKBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+            helper.FlexButton.setImage(flxBackButton, LOOK.ADVENTWINDOW_BACKBUTTONICON);
+            helper.FlexButton.setTextColor(flxBackButton, LOOK.ADVENTWINDOW_BACKBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.FlexButton.setTextSize(flxBackButton, LOOK.ADVENTWINDOW_BACKBUTTONTEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.FlexButton.setTextStyle(flxBackButton, LOOK.ADVENTWINDOW_BACKBUTTONTEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.FlexButton.setTextShadow(flxBackButton, LOOK.ADVENTWINDOW_BACKBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
                     LOOK.ADVENTWINDOW_BACKBUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
         } catch (Exception e) {

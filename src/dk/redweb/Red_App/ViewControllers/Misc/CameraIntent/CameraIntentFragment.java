@@ -10,7 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import dk.redweb.Red_App.AppearanceHelper;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.NavController;
 import dk.redweb.Red_App.R;
@@ -21,7 +21,6 @@ import dk.redweb.Red_App.XmlHandling.XmlNode;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Calendar;
 
 /**
  * Created by Redweb with IntelliJ IDEA.
@@ -92,10 +91,10 @@ public class CameraIntentFragment extends BasePageFragment {
             helper.setViewBackgroundTileImageOrColor(_view, LOOK.BACKGROUNDIMAGE, LOOK.BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView lblRedirectionMessage = (TextView)findViewById(R.id.cameraIntent_lblRedirectionMessage);
-            helper.setTextColor(lblRedirectionMessage, LOOK.TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(lblRedirectionMessage, LOOK.TEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.setTextStyle(lblRedirectionMessage, LOOK.TEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.setTextShadow(lblRedirectionMessage, LOOK.TEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR, LOOK.TEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
+            helper.TextView.setTextColor(lblRedirectionMessage, LOOK.TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(lblRedirectionMessage, LOOK.TEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.TextView.setTextStyle(lblRedirectionMessage, LOOK.TEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.TextView.setTextShadow(lblRedirectionMessage, LOOK.TEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR, LOOK.TEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
         } catch (NoSuchFieldException e) {
             MyLog.e("Exception when attempting to set appearance for CameraIntent", e);
         }

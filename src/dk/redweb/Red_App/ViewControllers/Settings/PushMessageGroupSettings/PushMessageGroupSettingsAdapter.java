@@ -5,7 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
-import dk.redweb.Red_App.AppearanceHelper;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
 import dk.redweb.Red_App.Database.DbInterface;
 import dk.redweb.Red_App.Interfaces.Delegate_PushPMGroupSubscriptionUpdate;
 import dk.redweb.Red_App.MyLog;
@@ -27,6 +27,8 @@ public class PushMessageGroupSettingsAdapter extends ArrayAdapter<PushMessageGro
 
     DbInterface _db;
     ServerInterface _sv;
+    Context _context;
+
     XmlStore _xml;
     XmlNode _parent;
 
@@ -37,6 +39,8 @@ public class PushMessageGroupSettingsAdapter extends ArrayAdapter<PushMessageGro
         _db = app.getDbInterface();
         _sv = app.getServerInterface();
         _xml = app.getXmlStore();
+        _context = context;
+
         _parent = parent;
         pmgroups = values;
     }
@@ -85,16 +89,16 @@ public class PushMessageGroupSettingsAdapter extends ArrayAdapter<PushMessageGro
             {
                 localLook = _xml.getAppearanceForPage(_parent.getStringFromNode(PAGE.NAME));
             }
-            AppearanceHelper helper = new AppearanceHelper(localLook, globalLook);
+            AppearanceHelper helper = new AppearanceHelper(_context, localLook, globalLook);
 
             FrameLayout lnrBox = (FrameLayout)lineitem.findViewById(R.id.pushmessagegroupsettinglistitem_rltItemBox);
             helper.setViewBackgroundColor(lnrBox, LOOK.PUSHMESSAGEGROUPSETTINGS_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView txtGroupName = (TextView)lineitem.findViewById(R.id.pushmessagegroupsettinglistitem_lblGroupName);
-            helper.setTextColor(txtGroupName, LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.setTextSize(txtGroupName, LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(txtGroupName, LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(txtGroupName, LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtGroupName, LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setTextSize(txtGroupName, LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(txtGroupName, LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(txtGroupName, LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
         } catch (Exception e) {

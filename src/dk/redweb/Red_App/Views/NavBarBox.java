@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.*;
 import dk.redweb.Red_App.*;
 import dk.redweb.Red_App.Database.DbInterface;
+import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
+import dk.redweb.Red_App.Helper.TextHelper.TextHelper;
 import dk.redweb.Red_App.StaticNames.LOOK;
 import dk.redweb.Red_App.StaticNames.PAGE;
 import dk.redweb.Red_App.StaticNames.TEXT;
@@ -73,10 +75,10 @@ public class NavBarBox extends LinearLayout {
             if(localLook.getBoolWithNoneAsFalseFromNode(LOOK.NAVBAR_HASTITLE)){
                 TextView txtTitle = (TextView) findViewById(R.id.navbar_lblTitle);
                 txtTitle.setVisibility(VISIBLE);
-                helper.setTextColor(txtTitle,LOOK.NAVBAR_TITLECOLOR,LOOK.GLOBAL_ALTTEXTCOLOR);
-                helper.setTextSize(txtTitle, LOOK.NAVBAR_TITLESIZE, LOOK.GLOBAL_TITLESIZE);
-                helper.setTextStyle(txtTitle, LOOK.NAVBAR_TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
-                helper.setTextShadow(txtTitle, LOOK.NAVBAR_TITLESHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+                helper.TextView.setTextColor(txtTitle,LOOK.NAVBAR_TITLECOLOR,LOOK.GLOBAL_ALTTEXTCOLOR);
+                helper.TextView.setTextSize(txtTitle, LOOK.NAVBAR_TITLESIZE, LOOK.GLOBAL_TITLESIZE);
+                helper.TextView.setTextStyle(txtTitle, LOOK.NAVBAR_TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
+                helper.TextView.setTextShadow(txtTitle, LOOK.NAVBAR_TITLESHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
                         LOOK.NAVBAR_TITLESHADOWOFFSET, LOOK.GLOBAL_TITLESHADOWOFFSET);
             }
 
@@ -87,10 +89,10 @@ public class NavBarBox extends LinearLayout {
             helper.setImageViewImage(imgHomeButton, LOOK.NAVBAR_HOMEBUTTONIMAGE);
 
             TextView txtHomeButton = (TextView)findViewById(R.id.navbar_lblHomeButton);
-            helper.setTextColor(txtHomeButton,LOOK.NAVBAR_HOMEBUTTONTEXTCOLOR,LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.setTextSize(txtHomeButton, LOOK.NAVBAR_HOMEBUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(txtHomeButton, LOOK.NAVBAR_HOMEBUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(txtHomeButton, LOOK.NAVBAR_HOMEBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtHomeButton,LOOK.NAVBAR_HOMEBUTTONTEXTCOLOR,LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.TextView.setTextSize(txtHomeButton, LOOK.NAVBAR_HOMEBUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(txtHomeButton, LOOK.NAVBAR_HOMEBUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(txtHomeButton, LOOK.NAVBAR_HOMEBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
                     LOOK.NAVBAR_HOMEBUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             //Up Button
@@ -100,10 +102,10 @@ public class NavBarBox extends LinearLayout {
             helper.setImageViewImage(imgUpButton, LOOK.NAVBAR_UPBUTTONIMAGE);
 
             TextView txtUpButton = (TextView)findViewById(R.id.navbar_lblUpButton);
-            helper.setTextColor(txtUpButton,LOOK.NAVBAR_UPBUTTONTEXTCOLOR,LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.setTextSize(txtUpButton, LOOK.NAVBAR_UPBUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.setTextStyle(txtUpButton, LOOK.NAVBAR_UPBUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.setTextShadow(txtUpButton, LOOK.NAVBAR_UPBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+            helper.TextView.setTextColor(txtUpButton,LOOK.NAVBAR_UPBUTTONTEXTCOLOR,LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.TextView.setTextSize(txtUpButton, LOOK.NAVBAR_UPBUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setTextStyle(txtUpButton, LOOK.NAVBAR_UPBUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setTextShadow(txtUpButton, LOOK.NAVBAR_UPBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
                     LOOK.NAVBAR_UPBUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
         } catch (Exception e) {
