@@ -56,13 +56,13 @@ public class AppearanceHelper {
     }
 
     public void setListViewBackgroundColor(ListView listView, String localName, String globalName) throws NoSuchFieldException {
-        int backgroundColor = getColor(localName, globalName);
+        int backgroundColor = Getter.getColor(localName, globalName);
         listView.setBackgroundColor(backgroundColor);
         listView.setCacheColorHint(backgroundColor);
     }
 
     public void setViewBackgroundColor(View view, String localName, String globalName) throws NoSuchFieldException {
-        int backgroundColor = getColor(localName, globalName);
+        int backgroundColor = Getter.getColor(localName, globalName);
         view.setBackgroundColor(backgroundColor);
     }
 
@@ -93,7 +93,7 @@ public class AppearanceHelper {
     public void setViewBackgroundImageOrColor(View view, String localImageName, String localCornerName, String localColorName, String globalColorName) throws NoSuchFieldException {
         if(localLook != null && localLook.hasChild(localCornerName)){
             float radius = localLook.getFloatFromNode(localCornerName);
-            int color = parseColor(localLook.getStringFromNode(localColorName));
+            int color = Getter.getColor(localColorName, globalColorName);
             float[] radii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
 
             RoundRectShape roundRectShape = new RoundRectShape(radii, null, null);
@@ -107,40 +107,5 @@ public class AppearanceHelper {
             view.setBackground(My.getDrawableFromResourceWithFilename(localLook.getStringFromNode(localImageName), context));
         else
             setViewBackgroundColor(view, localColorName, globalColorName);
-    }
-
-    private int getColor(String localName, String globalName) throws NoSuchFieldException{
-        if(pageHas(localName)) {
-            return parseColor(localLook.getStringFromNode(localName));
-        } else {
-            return parseColor(globalLook.getStringFromNode(globalName));
-        }
-    }
-
-    private int parseColor(String color){
-        if(color.equals(LOOK.INVISIBLE)) {
-            return Color.parseColor("#00000000");
-        } else {
-            return Color.parseColor(color);
-        }
-    }
-
-    private float[] getCoords(String localName, String globalName) throws NoSuchFieldException{
-        String pointAsString;
-        if(pageHas(localName)){
-            pointAsString = localLook.getStringFromNode(localName);
-        } else {
-            pointAsString = globalLook.getStringFromNode(globalName);
-        }
-        String[] pointArray = pointAsString.split(",");
-        return new float[]{Float.parseFloat(pointArray[0]), Float.parseFloat(pointArray[1])};
-    }
-
-    private boolean pageOrGlobalHas(String localname, String globalname){
-        return (pageHas(localname) || globalLook.hasChild(globalname));
-    }
-
-    private boolean pageHas(String localname){
-        return localLook != null && localLook.hasChild(localname);
     }
 }
