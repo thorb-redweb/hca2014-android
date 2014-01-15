@@ -145,26 +145,6 @@ public class ButtonGalleryFragment extends BasePageFragment {
         float radius = localLook.getFloatFromNode(LOOK.BUTTONGALLERY_BUTTONCORNERRADIUS);
         int color = Color.parseColor(localLook.getStringFromNode(LOOK.BUTTONGALLERY_BUTTONCOLOR));
         float[] radii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
-//        float[] topHalfOuterRadii = new float[] {radius, radius, radius, radius, 0, 0, 0, 0};
-//        float[] bottomHalfOuterRadii = new float[] {0, 0, 0, 0, radius, radius, radius, radius};
-//        int topColor = Color.BLUE;
-//        int bottomColor = Color.CYAN;
-//        int cellHeight = 40;
-
-//        RoundRectShape top_round_rect = new RoundRectShape(topHalfOuterRadii, null, null);
-//        ShapeDrawable top_shape_drawable = new ShapeDrawable(top_round_rect);
-//        top_shape_drawable.getPaint().setColor(topColor);
-//
-//        RoundRectShape bottom_round_rect = new RoundRectShape(bottomHalfOuterRadii, null, null);
-//        ShapeDrawable bottom_shape_drawable = new ShapeDrawable(bottom_round_rect);
-//        bottom_shape_drawable.getPaint().setColor(bottomColor);
-//
-//        Drawable[] drawarray = {top_shape_drawable, bottom_shape_drawable};
-//        LayerDrawable layerDrawable = new LayerDrawable(drawarray);
-//
-//        int halfOfCellHeight = cellHeight/2;
-//        layerDrawable.setLayerInset(0,0,0,0,halfOfCellHeight);
-//        layerDrawable.setLayerInset(1,0,halfOfCellHeight,0,0);
 
         RoundRectShape roundRectShape = new RoundRectShape(radii, null, null);
         ShapeDrawable shapeDrawable = new ShapeDrawable(roundRectShape);
@@ -179,14 +159,40 @@ public class ButtonGalleryFragment extends BasePageFragment {
         try {
             TextHelper helper = _textHelper;
 
-            helper.tryFlexibleButtonText(R.id.buttongallery_btn1, TEXT.BUTTONGALLERY_BUTTON1);
-            helper.tryFlexibleButtonText(R.id.buttongallery_btn2, TEXT.BUTTONGALLERY_BUTTON2);
-            helper.tryFlexibleButtonText(R.id.buttongallery_btn3, TEXT.BUTTONGALLERY_BUTTON3);
-            helper.tryFlexibleButtonText(R.id.buttongallery_btn4, TEXT.BUTTONGALLERY_BUTTON4);
-            helper.tryFlexibleButtonText(R.id.buttongallery_btn5, TEXT.BUTTONGALLERY_BUTTON5);
-            helper.tryFlexibleButtonText(R.id.buttongallery_btn6, TEXT.BUTTONGALLERY_BUTTON6);
-            helper.tryFlexibleButtonText(R.id.buttongallery_btn7, TEXT.BUTTONGALLERY_BUTTON7);
-            helper.tryFlexibleButtonText(R.id.buttongallery_btn8, TEXT.BUTTONGALLERY_BUTTON8);
+            String defaultText;
+
+            if(_page.hasChild(PAGE.BUTTON1CHILD)){
+                defaultText = _page.getStringFromNode(PAGE.BUTTON1CHILD);
+                helper.setFlexibleButtonText(R.id.buttongallery_btn1, TEXT.BUTTONGALLERY_BUTTON1, defaultText);
+            }
+            if(_page.hasChild(PAGE.BUTTON2CHILD)){
+                defaultText = _page.getStringFromNode(PAGE.BUTTON2CHILD);
+                helper.setFlexibleButtonText(R.id.buttongallery_btn2, TEXT.BUTTONGALLERY_BUTTON2, defaultText);
+            }
+            if(_page.hasChild(PAGE.BUTTON3CHILD)){
+                defaultText = _page.getStringFromNode(PAGE.BUTTON3CHILD);
+                helper.setFlexibleButtonText(R.id.buttongallery_btn3, TEXT.BUTTONGALLERY_BUTTON3, defaultText);
+            }
+            if(_page.hasChild(PAGE.BUTTON4CHILD)){
+                defaultText = _page.getStringFromNode(PAGE.BUTTON4CHILD);
+                helper.setFlexibleButtonText(R.id.buttongallery_btn4, TEXT.BUTTONGALLERY_BUTTON4, defaultText);
+            }
+            if(_page.hasChild(PAGE.BUTTON5CHILD)){
+                defaultText = _page.getStringFromNode(PAGE.BUTTON5CHILD);
+                helper.setFlexibleButtonText(R.id.buttongallery_btn5, TEXT.BUTTONGALLERY_BUTTON5, defaultText);
+            }
+            if(_page.hasChild(PAGE.BUTTON6CHILD)){
+                defaultText = _page.getStringFromNode(PAGE.BUTTON6CHILD);
+                helper.setFlexibleButtonText(R.id.buttongallery_btn6, TEXT.BUTTONGALLERY_BUTTON6, defaultText);
+            }
+            if(_page.hasChild(PAGE.BUTTON7CHILD)){
+                defaultText = _page.getStringFromNode(PAGE.BUTTON7CHILD);
+                helper.setFlexibleButtonText(R.id.buttongallery_btn7, TEXT.BUTTONGALLERY_BUTTON7, defaultText);
+            }
+            if(_page.hasChild(PAGE.BUTTON8CHILD)){
+                defaultText = _page.getStringFromNode(PAGE.BUTTON8CHILD);
+                helper.setFlexibleButtonText(R.id.buttongallery_btn8, TEXT.BUTTONGALLERY_BUTTON8, defaultText);
+            }
         } catch (Exception e) {
             MyLog.e("Exception when setting text", e);
         }
