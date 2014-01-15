@@ -97,16 +97,16 @@ public class PushMessageSubscriberFragment extends BasePageFragment implements D
             helper.setViewBackgroundImageOrColor(lnrBackground,LOOK.PUSHMESSAGEINITIALIZER_BACKGROUNDIMAGE, LOOK.PUSHMESSAGEINITIALIZER_BACKGROUNDCOLOR,LOOK.GLOBAL_BACKCOLOR);
 
             TextView lblDescription = (TextView)findViewById(R.id.pushmessagesubscriber_lblPageDescription);
-            helper.TextView.setTextColor(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.TextView.setTextStyle(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.TextView.setTextShadow(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.PUSHMESSAGEINITIALIZER_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
+            helper.TextView.setColor(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setStyle(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setShadow(lblDescription, LOOK.PUSHMESSAGEINITIALIZER_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.PUSHMESSAGEINITIALIZER_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             TextView lblUserName = (TextView)findViewById(R.id.pushmessagesubscriber_lblUserName);
-            helper.TextView.setTextColor(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.TextView.setTextStyle(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.TextView.setTextShadow(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.PUSHMESSAGEINITIALIZER_LABELSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
+            helper.TextView.setColor(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.TextView.setStyle(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.TextView.setShadow(lblUserName, LOOK.PUSHMESSAGEINITIALIZER_LABELSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.PUSHMESSAGEINITIALIZER_LABELSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
             FlexibleButton flxSubmitButton = (FlexibleButton)findViewById(R.id.pushmessagesubscriber_flxSubmit);
             FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.pushmessagesubscriber_flxBack);

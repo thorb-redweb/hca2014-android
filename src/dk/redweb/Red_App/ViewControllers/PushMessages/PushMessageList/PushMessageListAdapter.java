@@ -65,17 +65,17 @@ public class PushMessageListAdapter extends ArrayAdapter<PushMessageVM> {
             helper.setViewBackgroundColor(lineitem, LOOK.PUSHMESSAGELIST_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView txtTitle = (TextView)lineitem.findViewById(R.id.pushmessagelistitem_lblTitle);
-            helper.TextView.setTextColor(txtTitle, LOOK.PUSHMESSAGELIST_ITEMTITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(txtTitle, LOOK.PUSHMESSAGELIST_ITEMTITLESIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.TextView.setTextStyle(txtTitle, LOOK.PUSHMESSAGELIST_ITEMTITLESTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.TextView.setTextShadow(txtTitle, LOOK.PUSHMESSAGELIST_ITEMTITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setColor(txtTitle, LOOK.PUSHMESSAGELIST_ITEMTITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(txtTitle, LOOK.PUSHMESSAGELIST_ITEMTITLESIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.TextView.setStyle(txtTitle, LOOK.PUSHMESSAGELIST_ITEMTITLESTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.TextView.setShadow(txtTitle, LOOK.PUSHMESSAGELIST_ITEMTITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.PUSHMESSAGELIST_ITEMTITLESHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
             TextView txtBody = (TextView)lineitem.findViewById(R.id.pushmessagelistitem_lblMessage);
-            helper.TextView.setTextColor(txtBody, LOOK.PUSHMESSAGELIST_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(txtBody, LOOK.PUSHMESSAGELIST_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.TextView.setTextStyle(txtBody, LOOK.PUSHMESSAGELIST_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.TextView.setTextShadow(txtBody, LOOK.PUSHMESSAGELIST_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setColor(txtBody, LOOK.PUSHMESSAGELIST_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(txtBody, LOOK.PUSHMESSAGELIST_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setStyle(txtBody, LOOK.PUSHMESSAGELIST_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setShadow(txtBody, LOOK.PUSHMESSAGELIST_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.PUSHMESSAGELIST_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
         } catch (Exception e) {

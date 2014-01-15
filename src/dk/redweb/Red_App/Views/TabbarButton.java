@@ -61,10 +61,10 @@ public class TabbarButton extends LinearLayout {
                 localLook = _xml.getAppearanceForPage(LOOK.TABBAR);
             AppearanceHelper helper = new AppearanceHelper(_app.getApplicationContext(), localLook, globalLook);
 
-            helper.TextView.setTextColor(_buttonTextView, LOOK.TABBAR_TEXTCOLOR, LOOK.GLOBAL_BARTEXTCOLOR);
-            helper.TextView.setTextSize(_buttonTextView, LOOK.TABBAR_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.TextView.setTextStyle(_buttonTextView, LOOK.TABBAR_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.TextView.setTextShadow(_buttonTextView, LOOK.TABBAR_TEXTSHADOWCOLOR, LOOK.GLOBAL_BARTEXTSHADOWCOLOR, LOOK.TABBAR_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
+            helper.TextView.setColor(_buttonTextView, LOOK.TABBAR_TEXTCOLOR, LOOK.GLOBAL_BARTEXTCOLOR);
+            helper.TextView.setSize(_buttonTextView, LOOK.TABBAR_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setStyle(_buttonTextView, LOOK.TABBAR_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setShadow(_buttonTextView, LOOK.TABBAR_TEXTSHADOWCOLOR, LOOK.GLOBAL_BARTEXTSHADOWCOLOR, LOOK.TABBAR_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             LinearLayout lnrView = (LinearLayout)findViewById(R.id.tabbarButton_lnrView);
             ViewGroup.LayoutParams tabbarButtonParams = lnrView.getLayoutParams();

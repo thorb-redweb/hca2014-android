@@ -20,20 +20,20 @@ public class TextViewAppearanceHelper {
         _getter = getter;
     }
 
-    public void setTextColor(TextView textView, String localName, String globalName) throws NoSuchFieldException {
+    public void setColor(TextView textView, String localName, String globalName) throws NoSuchFieldException {
         textView.setTextColor(_getter.getColor(localName, globalName));
     }
 
-    public void setTextSize(TextView textView, String localName, String globalName) throws NoSuchFieldException {
+    public void setSize(TextView textView, String localName, String globalName) throws NoSuchFieldException {
         textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, _getter.getFloat(localName, globalName));
     }
 
-    public void setTextStyle(TextView textView, String localName, String globalName) throws NoSuchFieldException {
+    public void setStyle(TextView textView, String localName, String globalName) throws NoSuchFieldException {
         textView.setTypeface(null, _getter.getTextStyle(localName, globalName));
     }
 
-    public void setTextShadow(TextView textView, String localColorName, String globalColorName,
-                              String localOffsetName, String globalOffsetName) throws NoSuchFieldException{
+    public void setShadow(TextView textView, String localColorName, String globalColorName,
+                          String localOffsetName, String globalOffsetName) throws NoSuchFieldException{
 
         if(_getter.localOrGlobalPageHas(localColorName, globalColorName) && _getter.localOrGlobalPageHas(localOffsetName, globalOffsetName))
         {

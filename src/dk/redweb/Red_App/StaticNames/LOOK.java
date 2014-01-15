@@ -53,6 +53,22 @@ public class LOOK {
     public static final String TITLESHADOWCOLOR = "titleshadowcolor";
     public static final String TITLESHADOWOFFSET = "titleshadowoffset";
 
+    //Default Snippets for Custom Styles
+    public static final String DEFCOLOR_ALT = "alt";
+    public static final String DEFCOLOR_BACK = "back";
+    public static final String DEFCOLOR_BAR = "bar";
+    public static final String DEFSIZE_ITEMTITLE = "itemtitle";
+    public static final String DEFSIZE_TEXT = "text";
+    public static final String DEFSIZE_TITLE = "title";
+
+    public static final String APPEARANCEHELPER_DEF_COLOR = "color";
+    public static final String APPEARANCEHELPER_DEF_TEXTCOLOR = "textcolor";
+    public static final String APPEARANCEHELPER_DEF_SHADOWCOLOR = "shadowcolor";
+    public static final String APPEARANCEHELPER_DEF_TEXTSHADOWCOLOR = "textshadowcolor";
+    public static final String APPEARANCEHELPER_DEF_SHADOWOFFSET = "shadowoffset";
+    public static final String APPEARANCEHELPER_DEF_TEXTSHADOWOFFSET = "textshadowoffset";
+    public static final String APPEARANCEHELPER_DEF_SIZE = "size";
+    public static final String APPEARANCEHELPER_DEF_STYLE = "style";
 
     //DEFAULT
     public static final String GLOBAL = "default";

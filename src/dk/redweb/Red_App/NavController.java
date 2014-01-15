@@ -26,6 +26,7 @@ import dk.redweb.Red_App.ViewControllers.PushMessages.PushMessageDetail.PushMess
 import dk.redweb.Red_App.ViewControllers.PushMessages.PushMessageList.PushMessageListFragment;
 import dk.redweb.Red_App.ViewControllers.Session.DailySessionList.DailySessionListFragment;
 import dk.redweb.Red_App.ViewControllers.Session.SessionDetail.SessionDetailFragment;
+import dk.redweb.Red_App.ViewControllers.Session.StyledSessionList.StyledSessionListFragment;
 import dk.redweb.Red_App.ViewControllers.Settings.PushMessageGroupSettings.PushMessageGroupSettingsFragment;
 import dk.redweb.Red_App.ViewControllers.Settings.PushMessageSubscriber.PushMessageSubscriberFragment;
 import dk.redweb.Red_App.ViewControllers.Settings.PushMessageUnsubscriber.PushMessageUnsubscriberFragment;
@@ -162,6 +163,8 @@ public class NavController {
                 throw new NotImplementedException("SplitView has not been updated to the modern framework");
             } else if(type.equals(TYPE.STATICARTICLE)){
                 return new StaticArticleFragment(page);
+            } else if(type.equals(TYPE.STYLEDSESSIONLIST)){
+                return new StyledSessionListFragment(page);
             } else if(type.equals(TYPE.SWIPEVIEW)){
                 return new SwipeViewFragment(page);
             } else if(type.equals(TYPE.TABLENAVIGATOR)){

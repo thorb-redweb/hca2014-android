@@ -87,10 +87,10 @@ public class TableNavigatorAdapter extends ArrayAdapter<XmlNode> {
 
             helper.setViewBackgroundColor(lineitem, LOOK.BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
             TextView txtTitle = (TextView)lineitem.findViewById(R.id.tablenavigator_lblTitle);
-            helper.TextView.setTextColor(txtTitle, LOOK.TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(txtTitle, LOOK.TEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.TextView.setTextStyle(txtTitle, LOOK.TEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.TextView.setTextShadow(txtTitle, LOOK.TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setColor(txtTitle, LOOK.TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(txtTitle, LOOK.TEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.TextView.setStyle(txtTitle, LOOK.TEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.TextView.setShadow(txtTitle, LOOK.TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.TEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
         } catch (Exception e) {

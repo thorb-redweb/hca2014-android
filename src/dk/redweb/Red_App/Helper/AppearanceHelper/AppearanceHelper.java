@@ -11,6 +11,7 @@ import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.*;
+import dk.redweb.Red_App.CustomShapeDrawable;
 import dk.redweb.Red_App.Helper.AppearanceHelper.FlexibleButtons.FlexButtonAppearanceForwarder;
 import dk.redweb.Red_App.Helper.AppearanceHelper.Labels.TextViewAppearanceForwarder;
 import dk.redweb.Red_App.My;
@@ -25,6 +26,7 @@ import dk.redweb.Red_App.XmlHandling.XmlNode;
 public class AppearanceHelper {
 
     Context context;
+    public Context getContext(){return context;}
     XmlNode localLook;
     XmlNode globalLook;
 
@@ -107,5 +109,33 @@ public class AppearanceHelper {
             view.setBackground(My.getDrawableFromResourceWithFilename(localLook.getStringFromNode(localImageName), context));
         else
             setViewBackgroundColor(view, localColorName, globalColorName);
+    }
+
+    public void setViewBackgroundAsShape(View view, String localBackgroundColorName, String globalBackgroundColorName,
+                                         String localBorderWidth, String localBorderColor, String globalBorderColor, String localCornerRadiusName) throws Exception{
+        float radius = localLook.getFloatFromNode(localCornerRadiusName);
+        int backgroundcolor = Getter.getColor(localBackgroundColorName, globalBackgroundColorName);
+        int borderwidth = localLook.getIntegerFromNode(localBorderWidth);
+        int bordercolor = Getter.getColor(localBorderColor, globalBorderColor);
+        float[] radii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
+
+        RoundRectShape roundRectShape = new RoundRectShape(radii, null, null);
+        ShapeDrawable shapeDrawable = new CustomShapeDrawable(roundRectShape, backgroundcolor,bordercolor,borderwidth);
+        LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{shapeDrawable});
+
+        view.setBackground(layerDrawable);
+    }
+
+    public void setViewBackgroundAsShape(View view, String localBackgroundColorName, String globalBackgroundColorName,
+                                         int borderWidth, String localBorderColor, String globalBorderColor, int cornerRadius) throws Exception{
+        int backgroundcolor = Getter.getColor(localBackgroundColorName, globalBackgroundColorName);
+        int bordercolor = Getter.getColor(localBorderColor, globalBorderColor);
+        float[] radii = new float[]{cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius};
+
+        RoundRectShape roundRectShape = new RoundRectShape(radii, null, null);
+        ShapeDrawable shapeDrawable = new CustomShapeDrawable(roundRectShape, backgroundcolor,bordercolor,borderWidth);
+        LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{shapeDrawable});
+
+        view.setBackground(layerDrawable);
     }
 }

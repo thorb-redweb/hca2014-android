@@ -1,15 +1,18 @@
 <appearance>
     <default>
-        <barcolor>#d32027</barcolor>
+        <barcolor>#02a5e5</barcolor>
         <bartextcolor>#FFFFFF</bartextcolor>
-        <backcolor>#FFFFFF</backcolor>
-        <backtextcolor>#000000</backtextcolor>
-        <altcolor>#e5007d</altcolor>
+        <backcolor>#151839</backcolor>
+        <backtextcolor>#FFFFFF</backtextcolor>
+        <backtextshadowcolor>#000000</backtextshadowcolor>
+        <altcolor>#02a5e5</altcolor>
         <alttextcolor>#FFFFFF</alttextcolor>
         <textsize>18.0</textsize>
         <textstyle>normal</textstyle>
-        <titlesize>22.0</titlesize>
+        <titlesize>24.0</titlesize>
         <titlestyle>bold</titlestyle>
+        <titleshadowoffset>2.0,2.0</titleshadowoffset>
+        <titleshadowradius>2.0</titleshadowradius>
         <itemtitlesize>18.0</itemtitlesize>
         <itemtitlestyle>bold</itemtitlestyle>
     </default>
@@ -28,34 +31,52 @@
     </tabbar>
 
     <SwipeView>
-        <backgroundcolor>#049fe1</backgroundcolor>
-        <selectedpagecolor>#145daf</selectedpagecolor>
-        <unselectedpagecolor>#a2cee0</unselectedpagecolor>
-        <gapwidth>45.0</gapwidth>
-        <boxwidth>15.0</boxwidth>
-        <boxheight>15.0</boxheight>
+        <backgroundimage>julebaggrund.jpg</backgroundimage>
+        <selectedpagecolor>#b4282e</selectedpagecolor>
+        <unselectedpagecolor>#FFFFFF</unselectedpagecolor>
     </SwipeView>
 
+    <JuleKalender>
+        <backgroundcolor>#00000000</backgroundcolor>
+    </JuleKalender>
+
+    <Laage>
+        <backgroundimage>julebaggrund.jpg</backgroundimage>
+        <titlecolor>#b4282e</titlecolor>
+        <titlesize>36.0</titlesize>
+        <textbackgroundcolor>#FFFFFF</textbackgroundcolor>
+        <textcolor>#000000</textcolor>
+        <backbuttonimage>btnseeyou.png</backbuttonimage>
+    </Laage>
+
     <Nyheder>
+        <backgroundcolor>#66151839</backgroundcolor>
+        <cellbackgroundcolor>#66151839</cellbackgroundcolor>
     </Nyheder>
 
     <Nyhedsside>
+        <backgroundimage>julebaggrund.jpg</backgroundimage>
+        <titlecolor>#b4282e</titlecolor>
         <backbuttonimage>btnclose.png</backbuttonimage>
     </Nyhedsside>
-
-    <PMList>
-    </PMList>
-
-    <PMessage>
-        <backbuttonimage>btnclose.png</backbuttonimage>
-    </PMessage>
 
     <Program>
         <leftarrow>arrow_left.png</leftarrow>
         <rightarrow>arrow_right.png</rightarrow>
     </Program>
 
-    <PMGroupSettings>
-        <backgroundcolor>#88FFFFFF</backgroundcolor>
-    </PMGroupSettings>
+    <RedWeb>
+        <backgroundcolor>#66151839</backgroundcolor>
+        <titlecolor>#b4282e</titlecolor>
+    </RedWeb>
+
+    <RedWebMap>
+        <backbuttonimage>btnclose.png</backbuttonimage>
+    </RedWebMap>
+
+    <SSessionList>
+        <itemtitlestyle>italic</itemtitlestyle>
+        <camerabuttonimage>camera.png</camerabuttonimage>
+        <archivebuttonimage>eye.png</archivebuttonimage>
+    </SSessionList>
 </appearance>

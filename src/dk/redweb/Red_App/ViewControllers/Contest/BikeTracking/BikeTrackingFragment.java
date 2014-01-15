@@ -87,20 +87,20 @@ public class BikeTrackingFragment extends BasePageFragment{
             TextView lblSpeedLabel = (TextView)findViewById(R.id.biketracking_lblSpeedLabel);
             TextView lblTopSpeedLabel = (TextView)findViewById(R.id.biketracking_lblTopSpeedLabel);
             TextView[] labels = {lblDistanceLabel,lblSpeedLabel,lblTopSpeedLabel};
-            helper.TextView.setTextColor(labels, LOOK.BIKETRACKING_LABELCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(labels, LOOK.BIKETRACKING_LABELSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.TextView.setTextStyle(labels, LOOK.BIKETRACKING_LABELSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.TextView.setTextShadow(labels, LOOK.BIKETRACKING_LABELSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.BIKETRACKING_LABELSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
+            helper.TextView.setColor(labels, LOOK.BIKETRACKING_LABELCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(labels, LOOK.BIKETRACKING_LABELSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.TextView.setStyle(labels, LOOK.BIKETRACKING_LABELSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.TextView.setShadow(labels, LOOK.BIKETRACKING_LABELSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.BIKETRACKING_LABELSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
             TextView lblDistanceData = (TextView)findViewById(R.id.biketracking_lblDistanceData);
             TextView lblSpeedData = (TextView)findViewById(R.id.biketracking_lblSpeedData);
             TextView lblTopSpeedData = (TextView)findViewById(R.id.biketracking_lblTopSpeedData);
             TextView lblStatus = (TextView)findViewById(R.id.biketracking_lblStatus);
             TextView[] datalabels = {lblDistanceData,lblSpeedData,lblTopSpeedData, lblStatus};
-            helper.TextView.setTextColor(datalabels, LOOK.BIKETRACKING_DATACOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(datalabels, LOOK.BIKETRACKING_DATASIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.TextView.setTextStyle(datalabels, LOOK.BIKETRACKING_DATASTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.TextView.setTextShadow(datalabels, LOOK.BIKETRACKING_DATASHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.BIKETRACKING_DATASHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
+            helper.TextView.setColor(datalabels, LOOK.BIKETRACKING_DATACOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(datalabels, LOOK.BIKETRACKING_DATASIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setStyle(datalabels, LOOK.BIKETRACKING_DATASTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setShadow(datalabels, LOOK.BIKETRACKING_DATASHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.BIKETRACKING_DATASHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             FlexibleButton flxActionButton = (FlexibleButton)findViewById(R.id.biketracking_flxTrackerStateButton);
             helper.setViewBackgroundImageOrColor(flxActionButton, LOOK.BIKETRACKING_STARTBUTTONBACKGROUNDIMAGE, LOOK.BIKETRACKING_STARTBUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTCOLOR);

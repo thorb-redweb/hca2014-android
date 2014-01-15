@@ -95,10 +95,10 @@ public class PushMessageGroupSettingsAdapter extends ArrayAdapter<PushMessageGro
             helper.setViewBackgroundColor(lnrBox, LOOK.PUSHMESSAGEGROUPSETTINGS_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView txtGroupName = (TextView)lineitem.findViewById(R.id.pushmessagegroupsettinglistitem_lblGroupName);
-            helper.TextView.setTextColor(txtGroupName, LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(txtGroupName, LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.TextView.setTextStyle(txtGroupName, LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.TextView.setTextShadow(txtGroupName, LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setColor(txtGroupName, LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(txtGroupName, LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setStyle(txtGroupName, LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setShadow(txtGroupName, LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.PUSHMESSAGEGROUPSETTINGS_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
         } catch (Exception e) {

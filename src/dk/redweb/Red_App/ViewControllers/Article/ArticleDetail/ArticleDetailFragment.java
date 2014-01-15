@@ -107,17 +107,17 @@ public class ArticleDetailFragment extends BasePageFragment {
             helper.setViewBackgroundTileImageOrColor(mainViewLayout, LOOK.ARTICLEDETAIL_BACKGROUNDIMAGE, LOOK.ARTICLEDETAIL_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView txtTitle = (TextView)findViewById(R.id.articleDetail_lblTitle);
-            helper.TextView.setTextColor(txtTitle, LOOK.ARTICLEDETAIL_TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(txtTitle, LOOK.ARTICLEDETAIL_TITLESIZE, LOOK.GLOBAL_TITLESIZE);
-            helper.TextView.setTextStyle(txtTitle, LOOK.ARTICLEDETAIL_TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
-            helper.TextView.setTextShadow(txtTitle, LOOK.ARTICLEDETAIL_TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setColor(txtTitle, LOOK.ARTICLEDETAIL_TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(txtTitle, LOOK.ARTICLEDETAIL_TITLESIZE, LOOK.GLOBAL_TITLESIZE);
+            helper.TextView.setStyle(txtTitle, LOOK.ARTICLEDETAIL_TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
+            helper.TextView.setShadow(txtTitle, LOOK.ARTICLEDETAIL_TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.ARTICLEDETAIL_TITLESHADOWOFFSET, LOOK.GLOBAL_TITLESHADOWOFFSET);
 
             TextView txtBody = (TextView)findViewById(R.id.articleDetail_lblBody);
-            helper.TextView.setTextColor(txtBody, LOOK.ARTICLEDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(txtBody, LOOK.ARTICLEDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.TextView.setTextStyle(txtBody, LOOK.ARTICLEDETAIL_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.TextView.setTextShadow(txtBody, LOOK.ARTICLEDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setColor(txtBody, LOOK.ARTICLEDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(txtBody, LOOK.ARTICLEDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setStyle(txtBody, LOOK.ARTICLEDETAIL_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setShadow(txtBody, LOOK.ARTICLEDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.ARTICLEDETAIL_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.flxBackButton);

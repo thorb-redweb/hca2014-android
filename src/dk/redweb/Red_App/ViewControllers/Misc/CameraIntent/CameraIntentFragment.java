@@ -91,10 +91,10 @@ public class CameraIntentFragment extends BasePageFragment {
             helper.setViewBackgroundTileImageOrColor(_view, LOOK.BACKGROUNDIMAGE, LOOK.BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView lblRedirectionMessage = (TextView)findViewById(R.id.cameraIntent_lblRedirectionMessage);
-            helper.TextView.setTextColor(lblRedirectionMessage, LOOK.TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(lblRedirectionMessage, LOOK.TEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.TextView.setTextStyle(lblRedirectionMessage, LOOK.TEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.TextView.setTextShadow(lblRedirectionMessage, LOOK.TEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR, LOOK.TEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
+            helper.TextView.setColor(lblRedirectionMessage, LOOK.TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(lblRedirectionMessage, LOOK.TEXTSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.TextView.setStyle(lblRedirectionMessage, LOOK.TEXTSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.TextView.setShadow(lblRedirectionMessage, LOOK.TEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR, LOOK.TEXTSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
         } catch (NoSuchFieldException e) {
             MyLog.e("Exception when attempting to set appearance for CameraIntent", e);
         }

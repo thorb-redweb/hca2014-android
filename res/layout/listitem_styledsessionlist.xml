@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              style="@style/Layout.Wrap"
+              android:orientation="vertical"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp"
+              android:paddingTop="5dp"
+              android:paddingBottom="5dp">
+    <TextView android:id="@+id/styledSessionList_lblTime"
+              style="@style/Layout.Wrap.Complete"
+              android:lineSpacingMultiplier=".95"/>
+    <TextView android:id="@+id/styledSessionList_lblBody"
+              style="@style/Layout.Wrap.Complete"
+              android:lineSpacingMultiplier=".95"/>
+</LinearLayout>

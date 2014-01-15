@@ -128,6 +128,33 @@
         <folder>redApp</folder>
     </page>
     <page>
+        <name>ButtonMenu2</name>
+        <type>ButtonGallery</type>
+        <tabname>BM2</tabname>
+        <button1>About2</button1>
+        <button2>Nyheder2</button2>
+        <button3>SSessionList</button3>
+    </page>
+    <page>
+        <name>About2</name>
+        <type>StaticArticle</type>
+        <articleid>55</articleid>
+        <returnbutton>YES</returnbutton>
+    </page>
+    <page>
+        <name>Nyheder2</name>
+        <type>ImageArticleList</type>
+        <catid>12</catid>
+        <navname>Nyheder</navname>
+        <child>Nyhedsside</child>
+    </page>
+    <page>
+        <name>SSessionList</name>
+        <type>StyledSessionList</type>
+        <child>Camera</child>
+        <child2>Begivenhed</child2>
+    </page>
+    <page>
         <name>PMInitializer</name>
         <type>PushMessageSubscriber</type>
         <child>TableNavigator</child>

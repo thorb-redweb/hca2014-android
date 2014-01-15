@@ -61,17 +61,17 @@ public class PushMessageUnsubscriberFragment extends BasePageFragment implements
             helper.setViewBackgroundTileImageOrColor(mainViewLayout, LOOK.BACKGROUNDIMAGE, LOOK.BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView lblTitle = (TextView)findViewById(R.id.pushmessageunsubscriber_lblTitle);
-            helper.TextView.setTextColor(lblTitle, LOOK.TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(lblTitle, LOOK.TITLESIZE, LOOK.GLOBAL_TITLESIZE);
-            helper.TextView.setTextStyle(lblTitle, LOOK.TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
-            helper.TextView.setTextShadow(lblTitle, LOOK.TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
-                                           LOOK.TITLESHADOWOFFSET, LOOK.GLOBAL_TITLESHADOWOFFSET);
+            helper.TextView.setColor(lblTitle, LOOK.TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(lblTitle, LOOK.TITLESIZE, LOOK.GLOBAL_TITLESIZE);
+            helper.TextView.setStyle(lblTitle, LOOK.TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
+            helper.TextView.setShadow(lblTitle, LOOK.TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+                    LOOK.TITLESHADOWOFFSET, LOOK.GLOBAL_TITLESHADOWOFFSET);
 
             TextView lblWarning = (TextView)findViewById(R.id.pushmessageunsubscriber_lblWarning);
-            helper.TextView.setTextColor(lblWarning, LOOK.TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(lblWarning, LOOK.TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.TextView.setTextStyle(lblWarning, LOOK.TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.TextView.setTextShadow(lblWarning, LOOK.TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setColor(lblWarning, LOOK.TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(lblWarning, LOOK.TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setStyle(lblWarning, LOOK.TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setShadow(lblWarning, LOOK.TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             FlexibleButton flxUnsubscribe = (FlexibleButton)findViewById(R.id.pushmessageunsubscriber_flxUnsubscribe);

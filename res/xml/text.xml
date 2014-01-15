@@ -4,54 +4,38 @@
         <backbutton>Op</backbutton>
     </navigationbar>
 
-    <!--<Forside>-->
-        <!--<button3>Gavekalender</button3>-->
-        <!--<button7>Nyheder</button7>-->
-    <!--</Forside>-->
+    <Forside>
+        <button1>Kort</button1>
+        <button2>Program</button2>
+        <button3>Nyheder</button3>
+        <button4>Om</button4>
+    </Forside>
 
-    <!--<NextSessions>-->
-        <!--<title>Næste Begivenheder</title>-->
-    <!--</NextSessions>-->
+    <Laage>
+        <backbutton>Vi ses!</backbutton>
+    </Laage>
 
-    <!--<NewsTicker>-->
-        <!--<title>Seneste Nyheder</title>-->
-    <!--</NewsTicker>-->
+    <NextSessions>
+        <title>Events</title>
+    </NextSessions>
 
-    <Nyhedsside>
-        <backbutton>""</backbutton>
-    </Nyhedsside>
-
-    <ButtonMenu>
-        <button1>Program</button1>
-        <button2>Kort</button2>
-        <button3>WebView</button3>
-        <button4>RedWeb</button4>
-        <button5>Cykel</button5>
-        <button6>Trapper</button6>
-        <button7>Camera</button7>
-        <button8>Image Uploader</button8>
-    </ButtonMenu>
+    <NewsTicker>
+        <title>News!</title>
+    </NewsTicker>
 
     <Begivenhed>
-        <date>Dato</date>
-        <place>Sted</place>
-        <time>Tidspunkt</time>
-        <mapbutton>Find vej på kort</mapbutton>
+        <date>Dag</date>
+        <place>Venue</place>
+        <time>Kl.</time>
+        <mapbutton>Sejl derudaf</mapbutton>
     </Begivenhed>
-
-    <PMInitializer>
-        <pagedescription>For at modtage efterskolens nyheder skal du tilmelde dig med dit rigtige navn.</pagedescription>
-        <namelabel>Fulde navn</namelabel>
-        <submitbutton>Fortsæt</submitbutton>
-        <backbutton>Tilbage</backbutton>
-    </PMInitializer>
 
     <Venues>
         <address>Adresse</address>
         <mapbutton>Find til Redweb</mapbutton>
     </Venues>
 
-    <VenueMap>
-        <backbutton>Læs mere om redWeb</backbutton>
-    </VenueMap>
+    <SSessionList>
+        <title>Dagens events</title>
+    </SSessionList>
 </text>

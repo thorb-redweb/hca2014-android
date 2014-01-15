@@ -108,50 +108,50 @@ public class SessionDetailFragment extends BasePageFragment {
             helper.setViewBackgroundColor(box, LOOK.SESSIONDETAIL_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView txtTitle = (TextView)findViewById(R.id.sessionDetail_lblTitle);
-            helper.TextView.setTextColor(txtTitle, LOOK.SESSIONDETAIL_TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(txtTitle,LOOK.SESSIONDETAIL_TITLESIZE, LOOK.GLOBAL_TITLESIZE);
-            helper.TextView.setTextStyle(txtTitle, LOOK.SESSIONDETAIL_TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
-            helper.TextView.setTextShadow(txtTitle, LOOK.SESSIONDETAIL_TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setColor(txtTitle, LOOK.SESSIONDETAIL_TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(txtTitle, LOOK.SESSIONDETAIL_TITLESIZE, LOOK.GLOBAL_TITLESIZE);
+            helper.TextView.setStyle(txtTitle, LOOK.SESSIONDETAIL_TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
+            helper.TextView.setShadow(txtTitle, LOOK.SESSIONDETAIL_TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.SESSIONDETAIL_TITLESHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             TextView txtDateLabel = (TextView)findViewById(R.id.sessionDetail_lblDateLabel);
             TextView txtVenueLabel = (TextView)findViewById(R.id.sessionDetail_lblVenueLabel);
             TextView txtTimeLabel = (TextView)findViewById(R.id.sessionDetail_lblTimeLabel);
             TextView[] txtLabels = new TextView[]{txtDateLabel,txtVenueLabel,txtTimeLabel};
-            helper.TextView.setTextColor(txtLabels, LOOK.SESSIONDETAIL_LABELCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(txtLabels,LOOK.SESSIONDETAIL_LABELSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
-            helper.TextView.setTextStyle(txtLabels, LOOK.SESSIONDETAIL_LABELSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
-            helper.TextView.setTextShadow(txtLabels, LOOK.SESSIONDETAIL_LABELSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setColor(txtLabels, LOOK.SESSIONDETAIL_LABELCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(txtLabels, LOOK.SESSIONDETAIL_LABELSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.TextView.setStyle(txtLabels, LOOK.SESSIONDETAIL_LABELSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.TextView.setShadow(txtLabels, LOOK.SESSIONDETAIL_LABELSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.SESSIONDETAIL_LABELSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
             TextView txtDateValue = (TextView)findViewById(R.id.sessionDetail_lblDateValue);
             TextView txtVenueValue = (TextView)findViewById(R.id.sessionDetail_lblVenueValue);
             TextView txtTimeValue = (TextView)findViewById(R.id.sessionDetail_lblTimeValue);
             TextView[] txtValues = new TextView[]{txtDateValue,txtVenueValue,txtTimeValue};
-            helper.TextView.setTextColor(txtValues, LOOK.SESSIONDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(txtValues,LOOK.SESSIONDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.TextView.setTextStyle(txtValues, LOOK.SESSIONDETAIL_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.TextView.setTextShadow(txtValues, LOOK.SESSIONDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setColor(txtValues, LOOK.SESSIONDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(txtValues, LOOK.SESSIONDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setStyle(txtValues, LOOK.SESSIONDETAIL_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setShadow(txtValues, LOOK.SESSIONDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.SESSIONDETAIL_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             RelativeLayout lnrButtonMap = (RelativeLayout)findViewById(R.id.sessionDetail_rltMapButton);
             helper.setViewBackgroundColor(lnrButtonMap, LOOK.SESSIONDETAIL_BUTTONCOLOR, LOOK.GLOBAL_ALTCOLOR);
 
             TextView txtButtonMap = (TextView)findViewById(R.id.sessionDetail_lblButtonMap);
-            helper.TextView.setTextColor(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.TextView.setTextSize(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.TextView.setTextStyle(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.TextView.setTextShadow(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+            helper.TextView.setColor(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.TextView.setSize(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setStyle(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setShadow(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
                     LOOK.SESSIONDETAIL_BUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             ImageView imgButtonMap = (ImageView)findViewById(R.id.sessionDetail_imgButtonMap);
             helper.setImageViewImage(imgButtonMap, LOOK.SESSIONDETAIL_MAPBUTTONIMAGE);
 
             TextView txtBody = (TextView)findViewById(R.id.sessionDetail_lblBody);
-            helper.TextView.setTextColor(txtBody, LOOK.SESSIONDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(txtBody, LOOK.SESSIONDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.TextView.setTextStyle(txtBody, LOOK.SESSIONDETAIL_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.TextView.setTextShadow(txtBody, LOOK.SESSIONDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+            helper.TextView.setColor(txtBody, LOOK.SESSIONDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(txtBody, LOOK.SESSIONDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setStyle(txtBody, LOOK.SESSIONDETAIL_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setShadow(txtBody, LOOK.SESSIONDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.SESSIONDETAIL_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.flxBackButton);

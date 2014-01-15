@@ -114,20 +114,20 @@ public class AdventWindowFragment extends BasePageFragment {
                     LOOK.ADVENTWINDOW_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
             TextView txtTitle = (TextView)findViewById(R.id.adventwindow_lblTitle);
-            helper.TextView.setTextColor(txtTitle,LOOK.ADVENTWINDOW_TITLECOLOR,LOOK.GLOBAL_BACKTEXTCOLOR);
-            helper.TextView.setTextSize(txtTitle,LOOK.ADVENTWINDOW_TITLESIZE,LOOK.GLOBAL_TITLESIZE);
-            helper.TextView.setTextStyle(txtTitle,LOOK.ADVENTWINDOW_TITLESTYLE,LOOK.GLOBAL_TITLESTYLE);
-            helper.TextView.setTextShadow(txtTitle,LOOK.ADVENTWINDOW_TITLESHADOWCOLOR,LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
-                    LOOK.ADVENTWINDOW_TITLESHADOWOFFSET,LOOK.GLOBAL_TITLESHADOWOFFSET);
+            helper.TextView.setColor(txtTitle, LOOK.ADVENTWINDOW_TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(txtTitle, LOOK.ADVENTWINDOW_TITLESIZE, LOOK.GLOBAL_TITLESIZE);
+            helper.TextView.setStyle(txtTitle, LOOK.ADVENTWINDOW_TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
+            helper.TextView.setShadow(txtTitle, LOOK.ADVENTWINDOW_TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+                    LOOK.ADVENTWINDOW_TITLESHADOWOFFSET, LOOK.GLOBAL_TITLESHADOWOFFSET);
 
             TextView txtBody = (TextView)findViewById(R.id.adventwindow_lblBody);
             helper.setViewBackgroundImageOrColor(txtBody, LOOK.ADVENTWINDOW_TEXTBACKGROUNDIMAGE,
                     LOOK.ADVENTWINDOW_TEXTBACKGROUNDCOLOR,LOOK.GLOBAL_ALTCOLOR);
-            helper.TextView.setTextColor(txtBody,LOOK.ADVENTWINDOW_TEXTCOLOR,LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.TextView.setTextSize(txtBody,LOOK.ADVENTWINDOW_TEXTSIZE,LOOK.GLOBAL_TEXTSIZE);
-            helper.TextView.setTextStyle(txtBody,LOOK.ADVENTWINDOW_TEXTSTYLE,LOOK.GLOBAL_TEXTSTYLE);
-            helper.TextView.setTextShadow(txtBody,LOOK.ADVENTWINDOW_TEXTSHADOWCOLOR,LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
-                    LOOK.ADVENTWINDOW_TEXTSHADOWOFFSET,LOOK.GLOBAL_TEXTSHADOWOFFSET);
+            helper.TextView.setColor(txtBody, LOOK.ADVENTWINDOW_TEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.TextView.setSize(txtBody, LOOK.ADVENTWINDOW_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setStyle(txtBody, LOOK.ADVENTWINDOW_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setShadow(txtBody, LOOK.ADVENTWINDOW_TEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+                    LOOK.ADVENTWINDOW_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             FlexibleButton flxBackButton = (FlexibleButton)findViewById(R.id.adventwindow_flxBackButton);
             helper.setViewBackgroundImageOrColor(flxBackButton, LOOK.ADVENTWINDOW_BACKBUTTONBACKGROUNDIMAGE,
