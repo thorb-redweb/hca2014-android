@@ -2,6 +2,7 @@ package dk.redweb.Red_App.Helper.TextHelper;
 
 import android.app.Activity;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import dk.redweb.Red_App.Views.FlexibleButton;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
@@ -45,6 +46,13 @@ public class TextHelper {
         if(textStore.hasChild(textName)){
             setText(id,textName,"");
         }
+    }
+
+    public void setEditTextHint(int id, String textName, String defaultText) throws NoSuchFieldException {
+        String text = getText(textName, defaultText);
+
+        EditText editText = (EditText)view.findViewById(id);
+        editText.setHint(text);
     }
 
     public void setFlexibleButtonText(int id, String textName, String defaultText) throws NoSuchFieldException {

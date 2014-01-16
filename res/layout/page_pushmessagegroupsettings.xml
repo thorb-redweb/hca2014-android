@@ -2,7 +2,6 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:id="@+id/pushmessagegroupsettings_lnrMainView"
-              android:orientation="vertical"
               style="@style/Layout.Full">
     <TextView android:id="@+id/pushmessagegroupsettings_lblTitle"
             style="@style/Layout.Wrap"

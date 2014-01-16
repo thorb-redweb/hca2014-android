@@ -117,6 +117,9 @@ public class CameraIntentFragment extends BasePageFragment {
                 XmlNode nextpage = _xml.getPage(_childname);
                 nextpage = nextpage.deepClone();
                 nextpage.addChildToNode(PAGE.FILEPATH, filePath);
+                if(_page.hasChild(PAGE.SESSIONID)){
+                    nextpage.addChildToNode(PAGE.SESSIONID, _page.getStringFromNode(PAGE.SESSIONID));
+                }
                 NavController.changePageWithXmlNode(nextpage, getActivity());
                 firstVisit = false;
             }

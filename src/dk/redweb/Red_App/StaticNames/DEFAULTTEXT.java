@@ -52,6 +52,16 @@ public class DEFAULTTEXT {
             "alle dine push message præferencer, inklusiv dine tilmeldte grupper. Dette vil fjerne din mulighed for at " +
             "se arkiverede beskeder fra tilmeldte grupper.";
 
+    public static final String REDUPLOAD_BACKBUTTON = "Tilbage";
+    public static final String REDUPLOAD_NEXTBUTTON = "Tag flere billeder";
+    public static final String REDUPLOAD_APPROVALBUTTON = "Få tilladelse";
+    public static final String REDUPLOAD_UPLOADBUTTON = "Upload";
+    public static final String REDUPLOAD_DELETEPICTUREBUTTON = "Slet billede";
+    public static final String REDUPLOAD_PICTURETEXTHINT = "Billed Tekst";
+    public static final String REDUPLOAD_APPROVALSTATEMENT = "Tilladelse givet";
+    public static final String REDUPLOAD_APPROVALSTATUSYES = "Ja";
+    public static final String REDUPLOAD_APPROVALSTATUSNO = "Nej";
+
     public final static String SESSIONDETAIL_DATE = "Dato";
     public final static String SESSIONDETAIL_PLACE = "Sted";
     public final static String SESSIONDETAIL_TIME = "Tidspunkt";

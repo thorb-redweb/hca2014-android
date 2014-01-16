@@ -64,6 +64,7 @@ public class RedEventApplication  extends Application {
 
     //Debugging section
     private boolean debugging = false;
+    private boolean debugSkipUpdates = true;
     private DateTime debugCurrentDate;
     private int debugYear = 2013;
     private int debugMonth = 10;
@@ -72,6 +73,7 @@ public class RedEventApplication  extends Application {
     private int debugMinute = 54;
     public DateTime getDebugCurrentDate(){ return debugCurrentDate; }
     public boolean isDebugging(){ return debugging; }
+    public boolean shouldSkipUpdate() { return debugSkipUpdates; }
 
     public RedEventApplication(){
         debugCurrentDate = new DateTime(debugYear, debugMonth, debugDay, debugHour, debugMinute);

@@ -11,6 +11,7 @@ import dk.redweb.Red_App.ViewControllers.Article.AdventCal.AdventWindowFragment;
 import dk.redweb.Red_App.ViewControllers.Article.ArticleDetail.ArticleDetailFragment;
 import dk.redweb.Red_App.ViewControllers.Article.ImageArticleList.ImageArticleListFragment;
 import dk.redweb.Red_App.ViewControllers.Article.StaticArticle.StaticArticleFragment;
+import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.ViewControllers.Contest.BikeTracking.BikeTrackingFragment;
 import dk.redweb.Red_App.ViewControllers.Map.OverviewMap.OverviewMapFragment;
 import dk.redweb.Red_App.ViewControllers.Map.SessionMap.SessionMapFragment;
@@ -18,6 +19,7 @@ import dk.redweb.Red_App.ViewControllers.Map.VenueMap.VenueMapFragment;
 import dk.redweb.Red_App.ViewControllers.Misc.CameraIntent.CameraIntentFragment;
 import dk.redweb.Red_App.ViewControllers.Misc.ImageUploader.ImageUploaderFileBrowserFragment;
 import dk.redweb.Red_App.ViewControllers.Misc.ImageUploader.ImageUploaderFragment;
+import dk.redweb.Red_App.ViewControllers.Misc.RedUpload.RedUploadFragment;
 import dk.redweb.Red_App.ViewControllers.Misc.WebView.WebViewFragment;
 import dk.redweb.Red_App.ViewControllers.Navigation.ButtonGallery.ButtonGalleryFragment;
 import dk.redweb.Red_App.ViewControllers.Navigation.SwipeView.SwipeViewFragment;
@@ -100,7 +102,7 @@ public class NavController {
 
     public static void changeChildPageWithFragment(Fragment pageFragment, Fragment parentFragment, int fragmentcontainerId, boolean addToBackStack){
         FragmentTransaction fragmentTransaction = parentFragment.getChildFragmentManager().beginTransaction();
-        doThePageChange(pageFragment,fragmentTransaction, fragmentcontainerId, addToBackStack);
+        doThePageChange(pageFragment, fragmentTransaction, fragmentcontainerId, addToBackStack);
     }
 
     private static void doThePageChange(Fragment fragment, FragmentTransaction fragmentTransaction, int fragmentContainerId, boolean addToBackStack){
@@ -155,6 +157,8 @@ public class NavController {
                 return new PushMessageListFragment(page);
             } else if (type.equals(TYPE.PUSHMESSAGEUNSUBSCRIBER)){
                 return new PushMessageUnsubscriberFragment(page);
+            } else if(type.equals(TYPE.REDUPLOAD)){
+                return new RedUploadFragment(page);
             } else if(type.equals(TYPE.SESSIONDETAIL)){
                 return new SessionDetailFragment(page);
             } else if(type.equals(TYPE.SESSIONMAP)){
@@ -182,10 +186,5 @@ public class NavController {
             MyLog.e("Exception when getting ViewController from page type", e);
         }
         throw new IllegalArgumentException("A page of the given type does not exist or is not implemented");
-    }
-
-    public static String getClassNameForTypeString(String type){
-
-        return null;
     }
 }

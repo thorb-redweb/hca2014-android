@@ -81,7 +81,7 @@ public class SplashActivity extends Activity implements Delegate_dumpServer, Del
             _shortload = true;
             _sv.dumpServer(this);
         }
-        else if(_app.getLastDatabaseUpdate().isBefore(DateTime.now().minusMinutes(0))){
+        else if(_app.getLastDatabaseUpdate().isBefore(DateTime.now().minusMinutes(0)) && !_app.shouldSkipUpdate()){
             _shortload = false;
             returnFromDumpToDatabase();
         }

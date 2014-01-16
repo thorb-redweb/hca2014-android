@@ -10,7 +10,9 @@ public class LOOK {
     public static final String APPEARANCEFILENAME = "appearance.xml";
 
     //Color Constants
+    public static final String BLACK = "black";
     public static final String INVISIBLE = "invisible";
+    public static final String WHITE = "white";
 
     //Style Constants
     public static final String TYPEFACE_BOLD = "bold";
@@ -61,14 +63,19 @@ public class LOOK {
     public static final String DEFSIZE_TEXT = "text";
     public static final String DEFSIZE_TITLE = "title";
 
+    public static final String APPEARANCEHELPER_DEF_BACKGROUNDCOLOR = "color";
+    public static final String APPEARANCEHELPER_DEF_BACKGROUNDIMAGE = "image";
     public static final String APPEARANCEHELPER_DEF_COLOR = "color";
-    public static final String APPEARANCEHELPER_DEF_TEXTCOLOR = "textcolor";
+    public static final String APPEARANCEHELPER_DEF_ICON = "icon";
     public static final String APPEARANCEHELPER_DEF_SHADOWCOLOR = "shadowcolor";
-    public static final String APPEARANCEHELPER_DEF_TEXTSHADOWCOLOR = "textshadowcolor";
     public static final String APPEARANCEHELPER_DEF_SHADOWOFFSET = "shadowoffset";
-    public static final String APPEARANCEHELPER_DEF_TEXTSHADOWOFFSET = "textshadowoffset";
     public static final String APPEARANCEHELPER_DEF_SIZE = "size";
     public static final String APPEARANCEHELPER_DEF_STYLE = "style";
+    public static final String APPEARANCEHELPER_DEF_TEXTCOLOR = "textcolor";
+    public static final String APPEARANCEHELPER_DEF_TEXTSHADOWCOLOR = "textshadowcolor";
+    public static final String APPEARANCEHELPER_DEF_TEXTSHADOWOFFSET = "textshadowoffset";
+    public static final String APPEARANCEHELPER_DEF_TEXTSIZE = "textsize";
+    public static final String APPEARANCEHELPER_DEF_TEXTSTYLE = "textstyle";
 
     //DEFAULT
     public static final String GLOBAL = "default";
@@ -374,6 +381,9 @@ public class LOOK {
     public static final String PUSHMESSAGELIST_TEXTSHADOWOFFSET = "textshadowoffset";
     public static final String PUSHMESSAGELIST_TEXTSIZE = "textsize";
     public static final String PUSHMESSAGELIST_TEXTSTYLE = "textstyle";
+
+    //RedUpload
+    public static final String REDUPLOAD_APPROVALBOXCOLOR= "approvalboxcolor";
 
     //SessionDetail
     public static final String SESSIONDETAIL_BACKGROUNDCOLOR = "backgroundcolor";

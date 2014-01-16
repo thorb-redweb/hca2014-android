@@ -1,5 +1,8 @@
 package dk.redweb.Red_App.XmlHandling;
 
+import android.nfc.FormatException;
+import dk.redweb.Red_App.ViewControllers.BasePageFragment;
+
 import java.io.*;
 import java.util.*;
 
@@ -135,26 +138,6 @@ public class XmlNode implements Iterable<XmlNode>, Serializable {
             }
         }
         return childNodes.toArray(new XmlNode[i]);
-    }
-
-    public Map<String, Object> convertToMap(){
-        return getDictionaryFromChildNode(this);
-    }
-
-    private Map<String, Object> getDictionaryFromChildNode(XmlNode node){
-
-        Map<String, Object> dictionary = new HashMap<String, Object>();
-
-        for (XmlNode child : (ArrayList<XmlNode>)node.value) {
-            if(child.value instanceof ArrayList){
-                Map<String, Object> childDictionary = getDictionaryFromChildNode(child);
-                dictionary.put(child.name, childDictionary);
-            }
-            else{
-                dictionary.put(child.name, child.value);
-            }
-        }
-        return dictionary;
     }
 
     public boolean hasChild(String name){

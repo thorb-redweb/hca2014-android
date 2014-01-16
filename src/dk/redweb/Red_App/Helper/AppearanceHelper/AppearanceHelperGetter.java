@@ -8,6 +8,9 @@ import android.graphics.drawable.Drawable;
 import dk.redweb.Red_App.StaticNames.LOOK;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by Redweb with IntelliJ IDEA.
  * Date: 1/13/14
@@ -26,6 +29,10 @@ public class AppearanceHelperGetter {
     }
 
     public int getColor(String localName, String globalName) throws NoSuchFieldException{
+        if(staticColors.containsKey(globalName)) {
+            return staticColors.get(globalName);
+        }
+
         if(localPageHas(localName)) {
             return parseColor(_localLook.getStringFromNode(localName));
         } else {
@@ -34,11 +41,19 @@ public class AppearanceHelperGetter {
     }
 
     private int parseColor(String color){
-        if(color.equals(LOOK.INVISIBLE)) {
-            return Color.parseColor("#00000000");
-        } else {
-            return Color.parseColor(color);
+        if(staticColors.containsKey(color)) {
+            return staticColors.get(color);
         }
+
+        return Color.parseColor(color);
+    }
+
+    private static final Map<String, Integer> staticColors;
+    static {
+        staticColors = new HashMap<String, Integer>();
+        staticColors.put(LOOK.BLACK,Color.parseColor("#000000"));
+        staticColors.put(LOOK.INVISIBLE,Color.parseColor("#00000000"));
+        staticColors.put(LOOK.WHITE,Color.parseColor("#FFFFFF"));
     }
 
     public float[] getCoords(String localName, String globalName) throws NoSuchFieldException{

@@ -25,6 +25,7 @@ public class TYPE {
     public static final String PUSHMESSAGESUBSCRIBER = "PushMessageSubscriber";
     public static final String PUSHMESSAGELIST = "PushMessageList";
     public static final String PUSHMESSAGEUNSUBSCRIBER = "PushMessageUnsubscriber";
+    public static final String REDUPLOAD = "RedUpload";
     public static final String SESSIONDETAIL = "SessionDetail";
     public static final String SESSIONMAP = "SessionMap";
     public static final String SPLITVIEW = "SplitView";

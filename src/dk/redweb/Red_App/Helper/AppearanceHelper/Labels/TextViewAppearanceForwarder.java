@@ -78,4 +78,45 @@ public class TextViewAppearanceForwarder {
         setStyle(textView, localStyle, globalStyle);
         setShadow(textView, localShadowColor, globalShadowColor, localShadowOffset, globalShadowOffset);
     }
+
+    public void setTitleStyle(TextView textView) throws NoSuchFieldException {
+        setColor(textView, LOOK.TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+        setSize(textView, LOOK.TITLESIZE, LOOK.GLOBAL_TITLESIZE);
+        setStyle(textView, LOOK.TITLESTYLE, LOOK.GLOBAL_TITLESTYLE);
+        setShadow(textView, LOOK.TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.TITLESHADOWOFFSET, LOOK.GLOBAL_TITLESHADOWOFFSET);
+    }
+
+    public void setBackItemTitleStyle(TextView textView) throws NoSuchFieldException {
+        setColor(textView, LOOK.ITEMTITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+        setSize(textView, LOOK.ITEMTITLESIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+        setStyle(textView, LOOK.ITEMTITLESTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+        setShadow(textView, LOOK.ITEMTITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.ITEMTITLESHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
+    }
+
+    public void setAltItemTitleStyle(TextView textView) throws NoSuchFieldException {
+        setColor(textView, LOOK.ITEMTITLECOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+        setSize(textView, LOOK.ITEMTITLESIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+        setStyle(textView, LOOK.ITEMTITLESTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+        setShadow(textView, LOOK.ITEMTITLESHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR, LOOK.ITEMTITLESHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
+    }
+
+    public void setBackTextStyle(TextView textView) throws NoSuchFieldException {
+        setColor(textView, LOOK.TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+        setSize(textView, LOOK.TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+        setStyle(textView, LOOK.TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+        setShadow(textView, LOOK.TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
+    }
+
+    public void setBackTextStyleForList(TextView[] textViews) throws NoSuchFieldException {
+        for(TextView textView : textViews){
+            setBackTextStyle(textView);
+        }
+    }
+
+    public void setAltTextStyle(TextView textView) throws NoSuchFieldException {
+        setColor(textView, LOOK.TEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+        setSize(textView, LOOK.TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+        setStyle(textView, LOOK.TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+        setShadow(textView, LOOK.TEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR, LOOK.TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
+    }
 }
