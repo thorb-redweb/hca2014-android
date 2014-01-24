@@ -1,4 +1,4 @@
-package dk.redweb.Red_App.Model;
+package dk.redweb.Red_App.DatabaseModel;
 
 import dk.redweb.Red_App.Interfaces.IDbInterface;
 

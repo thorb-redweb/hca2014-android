@@ -1,4 +1,4 @@
-package dk.redweb.Red_App.Model;
+package dk.redweb.Red_App.DatabaseModel;
 
 import org.joda.time.DateTime;
 

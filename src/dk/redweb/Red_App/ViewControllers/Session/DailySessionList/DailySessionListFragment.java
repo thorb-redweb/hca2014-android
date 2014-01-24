@@ -8,7 +8,7 @@ import android.widget.*;
 import dk.redweb.Red_App.*;
 import dk.redweb.Red_App.Helper.AppearanceHelper.AppearanceHelper;
 import dk.redweb.Red_App.Helper.TextHelper.TextHelper;
-import dk.redweb.Red_App.Model.Venue;
+import dk.redweb.Red_App.DatabaseModel.Venue;
 import dk.redweb.Red_App.StaticNames.*;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.ViewModels.SessionVM;

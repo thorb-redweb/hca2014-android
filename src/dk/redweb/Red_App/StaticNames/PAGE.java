@@ -9,10 +9,16 @@ public class PAGE {
 
     public static final String PAGESFILENAME = "pages.xml";
 
+    public static final String GLOBAL = "global";
+
+    //Activate Subcomponents
+    public static final String USEREDUPLOAD = "redupload";
+
     //Page Globals
     public static final String ARTICLEID = "articleid";
     public static final String CATID = "catid";
     public static final String CHILD = "child";
+    public static final String CHILD2 = "child2";
     public static final String CHILDPAGE = "childpage";
     public static final String FILEPATH = "filepath";
     public static final String FOLDER = "folder";
@@ -22,6 +28,8 @@ public class PAGE {
     public static final String PAGE = "page";
     public static final String PARENT = "parent";
     public static final String PARENTPAGE = "parentpage";
+    public static final String POPTWICE = "poptwice";
+    public static final String POPTHRICE = "popthrice";
     public static final String PUSHGROUPID = "pushgroupid";
     public static final String PUSHGROUPIDS = "pushgroupids";
     public static final String PUSHMESSAGEID = "pushmessageid";
@@ -55,6 +63,12 @@ public class PAGE {
     public static final String BUTTON6CHILD = "button6";
     public static final String BUTTON7CHILD = "button7";
     public static final String BUTTON8CHILD = "button8";
+
+    //RedUpload Specific
+    public static final String REDUPLOADFOLDERTYPE = "foldertype";
+    public static final String REDUPLOADFOLDERTYPESESSION = "session";
+    public static final String REDUPLOADFOLDERTYPEOTHER = "other";
+    public static final String REDUPLOADFOLDERID = "folderid";
 
     //TableNavigator Specific
     public static final String ENTRY = "entry";

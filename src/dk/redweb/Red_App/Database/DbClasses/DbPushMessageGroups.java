@@ -7,7 +7,7 @@ import dk.redweb.Red_App.Database.Converters;
 import dk.redweb.Red_App.Database.DbInterface;
 import dk.redweb.Red_App.Database.DbSchemas;
 import dk.redweb.Red_App.Database.JsonSchemas;
-import dk.redweb.Red_App.Model.PushMessageGroup;
+import dk.redweb.Red_App.DatabaseModel.PushMessageGroup;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.Network.ServerInterface;
 import dk.redweb.Red_App.RedEventApplication;

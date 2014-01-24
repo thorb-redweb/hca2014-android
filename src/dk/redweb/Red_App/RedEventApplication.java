@@ -4,8 +4,11 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.util.Log;
 import dk.redweb.Red_App.Database.DbInterface;
+import dk.redweb.Red_App.Model.RedUploadDataStore;
+import dk.redweb.Red_App.Model.VolatileStores;
 import dk.redweb.Red_App.Network.NetworkInterface;
 import dk.redweb.Red_App.Network.ServerInterface;
+import dk.redweb.Red_App.StaticNames.PAGE;
 import dk.redweb.Red_App.Views.NavBarBox;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
 import dk.redweb.Red_App.XmlHandling.XmlStore;
@@ -27,6 +30,9 @@ public class RedEventApplication  extends Application {
     public ServerInterface getServerInterface(){ return _serverInterface; }
     private XmlStore _xmlStore;
     public XmlStore getXmlStore(){ return _xmlStore; }
+
+    private VolatileStores _volatileDataStores;
+    public VolatileStores getVolatileDataStores() { return  _volatileDataStores; }
 
     private NavBarBox _navbar;
     public NavBarBox getNavbar(){return _navbar;}
@@ -92,5 +98,21 @@ public class RedEventApplication  extends Application {
         _networkInterface = new NetworkInterface();
         _serverInterface = new ServerInterface(this);
         _dbInterface = new DbInterface(this, _networkInterface, _serverInterface, _xmlStore);
+
+        getInitializationData();
+    }
+
+    public void getInitializationData(){
+        _volatileDataStores = new VolatileStores();
+        try {
+            if(_xmlStore.pages.hasChild(PAGE.GLOBAL)){
+                XmlNode global = _xmlStore.pages.getChildFromNode(PAGE.GLOBAL);
+                if(global.getBoolWithNoneAsFalseFromNode(PAGE.USEREDUPLOAD)){
+                    _volatileDataStores.add(new RedUploadDataStore(_dbInterface));
+                }
+            }
+        } catch (NoSuchFieldException e) {
+            MyLog.e("Exception when adding addons", e);
+        }
     }
 }

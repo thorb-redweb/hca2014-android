@@ -1,6 +1,6 @@
 package dk.redweb.Red_App.ViewModels;
 
-import dk.redweb.Red_App.Model.Article;
+import dk.redweb.Red_App.DatabaseModel.Article;
 import dk.redweb.Red_App.StringUtils;
 import org.joda.time.DateTime;
 import org.joda.time.format.DateTimeFormat;

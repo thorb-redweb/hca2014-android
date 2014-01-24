@@ -2,11 +2,13 @@ package dk.redweb.Red_App.Helper.AppearanceHelper;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.Shader;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.RectShape;
 import android.graphics.drawable.shapes.RoundRectShape;
 import android.util.TypedValue;
 import android.view.View;
@@ -61,6 +63,45 @@ public class AppearanceHelper {
         int backgroundColor = Getter.getColor(localName, globalName);
         listView.setBackgroundColor(backgroundColor);
         listView.setCacheColorHint(backgroundColor);
+    }
+
+    public void setViewThreeSides(View view, String localBackgroundColorName, String globalBackgroundColorName,
+                                  int borderWidth, String localBorderColor, String globalBorderColor) throws NoSuchFieldException {
+        Drawable[] layers = new Drawable[2];
+
+        int backgroundColor = Getter.getColor(localBackgroundColorName, globalBackgroundColorName);
+        int borderColor = Getter.getColor(localBorderColor, globalBorderColor);
+
+        ShapeDrawable sd1 = new ShapeDrawable(new RectShape());
+        sd1.getPaint().setColor(borderColor);
+        sd1.setPadding(0, borderWidth, borderWidth, borderWidth);
+
+        ShapeDrawable sd2 = new ShapeDrawable(new RectShape());
+        sd2.getPaint().setColor(backgroundColor);
+
+        layers[0] = sd1;
+        layers[1] = sd2;
+        LayerDrawable composite = new LayerDrawable(layers);
+        view.setBackground(composite);
+    }
+
+    public void setViewBackgroundWithBorder(View view, String localBackgroundColor, String globalBackgroundColor, int borderWidth, String localBorderColor, String globalBorderColor) throws NoSuchFieldException {
+        Drawable[] layers = new Drawable[2];
+
+        int backgroundColor = Getter.getColor(localBackgroundColor, globalBackgroundColor);
+        int borderColor = Getter.getColor(localBorderColor, globalBorderColor);
+
+        ShapeDrawable sd1 = new ShapeDrawable(new RectShape());
+        sd1.getPaint().setColor(borderColor);
+        sd1.setPadding(borderWidth, borderWidth, borderWidth, borderWidth);
+
+        ShapeDrawable sd2 = new ShapeDrawable(new RectShape());
+        sd2.getPaint().setColor(backgroundColor);
+
+        layers[0] = sd1;
+        layers[1] = sd2;
+        LayerDrawable composite = new LayerDrawable(layers);
+        view.setBackground(composite);
     }
 
     public void setViewBackgroundColor(View view, String localName, String globalName) throws NoSuchFieldException {

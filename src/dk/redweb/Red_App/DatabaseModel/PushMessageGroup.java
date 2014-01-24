@@ -1,4 +1,4 @@
-package dk.redweb.Red_App.Model;
+package dk.redweb.Red_App.DatabaseModel;
 
 /**
  * Created by Redweb with IntelliJ IDEA.

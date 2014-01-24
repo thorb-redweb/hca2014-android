@@ -1,7 +1,7 @@
 <pages>
-    <page>
-        <type>Global</type>
-    </page>
+    <global>
+        <redupload>YES</redupload>
+    </global>
 	<page>
 		<type>Splash</type>
         <backgroundimage>splash.png</backgroundimage>
@@ -133,9 +133,8 @@
         <tabname>BM2</tabname>
         <button1>About2</button1>
         <button2>Nyheder2</button2>
-        <button3>SSessionList</button3>
-        <button5>Camera2</button5>
-        <button6>RedUploader</button6>
+        <button3>RUEvents</button3>
+        <button4>RUOther</button4>
     </page>
     <page>
         <name>About2</name>
@@ -151,10 +150,18 @@
         <child>Nyhedsside</child>
     </page>
     <page>
-        <name>SSessionList</name>
-        <type>StyledSessionList</type>
-        <child>Camera</child>
-        <child2>Begivenhed</child2>
+        <name>RUEvents</name>
+        <type>RedUploadFolder</type>
+        <child>Camera2</child>
+        <child2>ContentFolder</child2>
+        <foldertype>session</foldertype>
+    </page>
+    <page>
+        <name>RUOther</name>
+        <type>RedUploadFolder</type>
+        <child>Camera2</child>
+        <child2>ContentFolder</child2>
+        <foldertype>other</foldertype>
     </page>
     <page>
         <name>Camera2</name>
@@ -164,12 +171,17 @@
         <sessionid>2</sessionid>
     </page>
     <page>
+        <name>ContentFolder</name>
+        <type>RedUploadFolderContent</type>
+        <child>Camera2</child>
+        <child2>RedUploader</child2>
+    </page>
+    <page>
         <name>RedUploader</name>
-        <type>RedUpload</type>
-        <child>Begivenhed</child>
+        <type>RedUploadPictureView</type>
+        <parent>RUEvents</parent>
+        <child>Camera2</child>
         <folder>redApp</folder>
-        <filepath>/storage/sdcard0/redApp/2014-01-15-04-16-46-252.jpg</filepath>
-        <sessionid>2</sessionid>
     </page>
     <page>
         <name>PMInitializer</name>

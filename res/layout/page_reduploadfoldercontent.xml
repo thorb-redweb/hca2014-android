@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <LinearLayout android:id="@+id/reduploadfoldercontent_lnrTopButtons"
+                  style="@style/Layout.Wrap"
+                  android:orientation="horizontal"
+                  android:layout_alignParentTop="true">
+        <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/reduploadfoldercontent_flxBack"
+                                                style="@style/Layout.Wrap.Complete"
+                                                android:layout_weight="1"
+                                                android:layout_margin="5dp"/>
+        <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/reduploadfoldercontent_flxNext"
+                                                style="@style/Layout.Wrap.Complete"
+                                                android:layout_weight="1"
+                                                android:layout_margin="5dp"/>
+    </LinearLayout>
+
+    <GridView android:id="@+id/reduploadfoldercontent_grdContent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_above="@+id/reduploadfoldercontent_lnrBottomButtons"
+            android:layout_below="@+id/reduploadfoldercontent_lnrTopButtons"
+
+            android:columnWidth="150dp"
+            android:numColumns="auto_fit"
+            android:verticalSpacing="10dp"
+            android:horizontalSpacing="10dp"
+            android:stretchMode="columnWidth"
+            android:gravity="center"/>
+
+    <LinearLayout android:id="@+id/reduploadfoldercontent_lnrBottomButtons"
+                  style="@style/Layout.Wrap"
+                  android:orientation="horizontal"
+                  android:layout_alignParentBottom="true">
+        <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/reduploadfoldercontent_flxUpload"
+                                                style="@style/Layout.Wrap.Complete"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="1"
+                                                android:layout_margin="5dp"/>
+        <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/reduploadfoldercontent_flxEdit"
+                                                style="@style/Layout.Wrap.Complete"
+                                                android:layout_width="0dp"
+                                                android:layout_weight="1"
+                                                android:layout_margin="5dp"/>
+    </LinearLayout>
+</RelativeLayout>

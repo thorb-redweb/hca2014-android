@@ -2,69 +2,69 @@
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               style="@style/Layout.Full">
-    <LinearLayout android:id="@+id/redupload_lnrTopButtons"
+    <LinearLayout android:id="@+id/reduploadpictureview_lnrTopButtons"
             style="@style/Layout.Wrap"
             android:orientation="horizontal"
             android:layout_alignParentTop="true">
-        <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/redupload_flxBack"
+        <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/reduploadpictureview_flxBack"
                                                 style="@style/Layout.Wrap.Complete"
                                                 android:layout_weight="1"
                                                 android:layout_margin="5dp"/>
-        <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/redupload_flxNext"
+        <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/reduploadpictureview_flxNext"
                                                 style="@style/Layout.Wrap.Complete"
                                                 android:layout_weight="1"
                                                 android:layout_margin="5dp"/>
     </LinearLayout>
 
-    <TextView android:id="@+id/redupload_lblTitle"
+    <TextView android:id="@+id/reduploadpictureview_lblTitle"
             style="@style/Layout.Wrap"
-            android:layout_below="@+id/redupload_lnrTopButtons"
+            android:layout_below="@+id/reduploadpictureview_lnrTopButtons"
             android:layout_marginTop="15dp"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:layout_marginBottom="5dp"/>
-    <ImageView android:id="@+id/redupload_imgPicture"
+    <ImageView android:id="@+id/reduploadpictureview_imgPicture"
                style="@style/Layout.Wrap"
-                android:layout_above="@+id/redupload_lnrTxtPictureText"
-            android:layout_below="@+id/redupload_lblTitle"
+                android:layout_above="@+id/reduploadpictureview_lnrTxtPictureText"
+            android:layout_below="@+id/reduploadpictureview_lblTitle"
             android:layout_margin="5dp"/>
 
-    <LinearLayout android:id="@+id/redupload_lnrTxtPictureText"
+    <LinearLayout android:id="@+id/reduploadpictureview_lnrTxtPictureText"
             style="@style/Layout.Wrap"
-            android:layout_above="@+id/redupload_rltApprovalBox"
+            android:layout_above="@+id/reduploadpictureview_rltApprovalBox"
             android:layout_margin="5dp">
-        <EditText android:id="@+id/redupload_txtPictureText"
+        <EditText android:id="@+id/reduploadpictureview_txtPictureText"
                   style="@style/Layout.Wrap"
                   android:layout_margin="5dp"
                   android:singleLine="true"/>
     </LinearLayout>
 
 
-    <RelativeLayout android:id="@+id/redupload_rltApprovalBox"
+    <RelativeLayout android:id="@+id/reduploadpictureview_rltApprovalBox"
             style="@style/Layout.Wrap"
-            android:layout_above="@+id/redupload_lnrBottomButtons"
+            android:layout_above="@+id/reduploadpictureview_lnrBottomButtons"
             android:layout_margin="5dp">
-        <TextView android:id="@+id/redupload_lblApprovalStatement"
+        <TextView android:id="@+id/reduploadpictureview_lblApprovalStatement"
                 style="@style/Layout.Wrap.Complete"
                 android:layout_alignParentLeft="true"/>
-        <TextView android:id="@+id/redupload_lblApprovalStatus"
+        <TextView android:id="@+id/reduploadpictureview_lblApprovalStatus"
                   style="@style/Layout.Wrap.Complete"
-                android:layout_toLeftOf="@+id/redupload_swcApproved"/>
-        <Switch android:id="@+id/redupload_swcApproved"
+                android:layout_toLeftOf="@+id/reduploadpictureview_swcApproved"/>
+        <Switch android:id="@+id/reduploadpictureview_swcApproved"
                 style="@style/Layout.Wrap.Complete"
                 android:layout_alignParentRight="true"/>
     </RelativeLayout>
 
-    <LinearLayout android:id="@+id/redupload_lnrBottomButtons"
+    <LinearLayout android:id="@+id/reduploadpictureview_lnrBottomButtons"
             style="@style/Layout.Wrap"
             android:orientation="horizontal"
             android:layout_alignParentBottom="true">
-        <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/redupload_flxApproval"
+        <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/reduploadpictureview_flxApproval"
                                             style="@style/Layout.Wrap.Complete"
                                             android:layout_width="0dp"
                                             android:layout_weight="1"
                                             android:layout_margin="5dp"/>
-        <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/redupload_flxDeletePicture"
+        <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/reduploadpictureview_flxDeletePicture"
                                             style="@style/Layout.Wrap.Complete"
                                             android:layout_width="0dp"
                                             android:layout_weight="1"

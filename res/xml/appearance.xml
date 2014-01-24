@@ -1,12 +1,11 @@
 <appearance>
     <default>
         <barcolor>#02a5e5</barcolor>
-        <bartextcolor>#FFFFFF</bartextcolor>
-        <backcolor>#151839</backcolor>
-        <backtextcolor>#FFFFFF</backtextcolor>
-        <backtextshadowcolor>#000000</backtextshadowcolor>
-        <altcolor>#02a5e5</altcolor>
-        <alttextcolor>#FFFFFF</alttextcolor>
+        <bartextcolor>#666666</bartextcolor>
+        <backcolor>#ffffff</backcolor>
+        <backtextcolor>#666666</backtextcolor>
+        <altcolor>#ed3030</altcolor>
+        <alttextcolor>#666666</alttextcolor>
         <textsize>18.0</textsize>
         <textstyle>normal</textstyle>
         <titlesize>24.0</titlesize>
@@ -79,4 +78,19 @@
         <camerabuttonimage>camera.png</camerabuttonimage>
         <archivebuttonimage>eye.png</archivebuttonimage>
     </SSessionList>
+
+    <RUEvents>
+        <backgroundimage>bg_tile.png</backgroundimage>
+        <itembordercolor>#cdcdcd</itembordercolor>
+        <camerabuttonimage>icon_camera.png</camerabuttonimage>
+        <archivebuttonimage>icon_eye.png</archivebuttonimage>
+    </RUEvents>
+
+    <RUOther>
+        <backgroundimage>bg_tile.png</backgroundimage>
+        <subitemcamerabuttoncolor>#951a1a</subitemcamerabuttoncolor>
+        <itembordercolor>#cdcdcd</itembordercolor>
+        <camerabuttonimage>icon_camera.png</camerabuttonimage>
+        <archivebuttonimage>icon_eye.png</archivebuttonimage>
+    </RUOther>
 </appearance>

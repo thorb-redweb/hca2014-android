@@ -1,7 +1,7 @@
 package dk.redweb.Red_App.ViewModels;
 
 import com.google.android.gms.maps.model.LatLng;
-import dk.redweb.Red_App.Model.Venue;
+import dk.redweb.Red_App.DatabaseModel.Venue;
 import dk.redweb.Red_App.StringUtils;
 
 /**

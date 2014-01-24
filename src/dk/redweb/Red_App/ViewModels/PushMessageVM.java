@@ -1,6 +1,6 @@
 package dk.redweb.Red_App.ViewModels;
 
-import dk.redweb.Red_App.Model.PushMessage;
+import dk.redweb.Red_App.DatabaseModel.PushMessage;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 

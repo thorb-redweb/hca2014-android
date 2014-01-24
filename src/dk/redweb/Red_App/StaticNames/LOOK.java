@@ -384,6 +384,10 @@ public class LOOK {
 
     //RedUpload
     public static final String REDUPLOAD_APPROVALBOXCOLOR= "approvalboxcolor";
+    public static final String REDUPLOAD_CAMERABUTTONCOLOR = "camerabuttoncolor";
+    public static final String REDUPLOAD_ITEMBACKGROUNDCOLOR = "itembackgroundcolor";
+    public static final String REDUPLOAD_SUBITEMCAMERACOLOR = "subitemcamerabuttoncolor";
+    public static final String REDUPLOAD_ITEMBORDERCOLOR = "itembordercolor";
 
     //SessionDetail
     public static final String SESSIONDETAIL_BACKGROUNDCOLOR = "backgroundcolor";

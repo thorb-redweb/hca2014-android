@@ -57,6 +57,14 @@ public class DbSchemas {
         public static final String SUBSCRIBED = "subscribed";
     }
 
+    public static class RedUpload implements BaseColumns{
+        public static final String TABLE_NAME = "redupload";
+        public static final String LOCALIMAGEPATH = "localimagepath";
+        public static final String SERVERFOLDER = "serverfolder";
+        public static final String TEXT = "text";
+        public static final String APPROVED = "approved";
+    }
+
     public static abstract class Ses implements BaseColumns {
         public static final String TABLE_NAME = "sessions";
         public static final String SESSION_ID = "sessionid";
