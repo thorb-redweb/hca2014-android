@@ -1,14 +1,19 @@
 package dk.redweb.Red_App.Views;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import dk.redweb.Red_App.R;
+
+import static android.R.color.darker_gray;
+import static android.R.drawable;
 
 /**
  * Created by Redweb with IntelliJ IDEA.
@@ -23,20 +28,15 @@ public class FlexibleButton extends RelativeLayout{
     public FlexibleButton(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        //LayoutInflater inflater = ;
+        inflateLayout(context);
+    }
+
+    public void inflateLayout(Context context){
         LayoutInflater.from(context).inflate(R.layout.view_flexiblebutton, this);
 
         txtButton = (TextView)findViewById(R.id.flexibleButton_lblButton);
         imgButton = (ImageView)findViewById(R.id.flexibleButton_imgButton);
     }
-
-//    public void setBackground(Drawable background){
-//        rltButton.setBackground(background);
-//    }
-//
-//    public void setBackgroundColor(int color){
-//        rltButton.setBackgroundColor(color);
-//    }
 
     public void setImageDrawable(Drawable image){
         imgButton.setImageDrawable(image);

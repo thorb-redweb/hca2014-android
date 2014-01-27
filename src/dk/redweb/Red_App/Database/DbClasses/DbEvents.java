@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import dk.redweb.Red_App.Database.DbInterface;
 import dk.redweb.Red_App.Database.DbSchemas;
 import dk.redweb.Red_App.Database.JsonSchemas;
-import dk.redweb.Red_App.Model.Event;
+import dk.redweb.Red_App.DatabaseModel.Event;
 import dk.redweb.Red_App.MyLog;
 import dk.redweb.Red_App.Network.ServerInterface;
 import dk.redweb.Red_App.RedEventApplication;

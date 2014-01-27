@@ -2,7 +2,9 @@ package dk.redweb.Red_App.Helper.TextHelper;
 
 import android.app.Activity;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import dk.redweb.Red_App.Views.FlexibleButton;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
@@ -42,6 +44,11 @@ public class TextHelper {
         textView.setText(text);
     }
 
+    public void setText(TextView textView, String textName, String defaultText) throws NoSuchFieldException {
+        String text = getText(textName, defaultText);
+        textView.setText(text);
+    }
+
     public void tryText(int id, String textName) throws NoSuchFieldException {
         if(textStore.hasChild(textName)){
             setText(id,textName,"");
@@ -55,6 +62,12 @@ public class TextHelper {
         editText.setHint(text);
     }
 
+    public void setEditTextHint(EditText editText, String textName, String defaultText) throws NoSuchFieldException {
+        String text = getText(textName, defaultText);
+
+        editText.setHint(text);
+    }
+
     public void setFlexibleButtonText(int id, String textName, String defaultText) throws NoSuchFieldException {
         String text = getText(textName, defaultText);
 
@@ -62,10 +75,18 @@ public class TextHelper {
         button.setText(text);
     }
 
-    public void tryFlexibleButtonText(int id, String textName) throws NoSuchFieldException {
-        if(textStore.hasChild(textName)){
-            setFlexibleButtonText(id,textName,"");
-        }
+    public void setFlexibleButtonText(FlexibleButton button, String textName, String defaultText) throws NoSuchFieldException {
+        String text = getText(textName, defaultText);
+
+        button.setText(text);
+    }
+
+    public void setSwitchText(Switch theswitch, String textNameOn, String defaultTextOn, String textNameOff, String defaultTextOff) throws NoSuchFieldException {
+        String textOn = getText(textNameOn, defaultTextOn);
+        String textOff = getText(textNameOff, defaultTextOff);
+
+        theswitch.setTextOn(textOn);
+        theswitch.setTextOff(textOff);
     }
 
     public String getText(String textName, String defaultText) throws NoSuchFieldException {

@@ -57,13 +57,13 @@ public class BasePageFragment extends Fragment {
         try {
             _name = page.getStringFromNode(PAGE.NAME);
         } catch (NoSuchFieldException e) {
-            Log.e("RedEvent", "NoSuchFieldException for 'name' in BaseActivity:onCreate getting name from xml", e);
+            MyLog.e("NoSuchFieldException for 'name' in BasePageFragment:constructor getting name from xml", e);
         }
         if(page.hasChild(PAGE.CHILD)){
             try {
                 _childname = page.getStringFromNode(PAGE.CHILD);
             } catch (NoSuchFieldException e) {
-                Log.e("RedEvent", "NoSuchFieldException for 'child' in BaseActivity:onCreate getting childname from xml", e);
+                MyLog.e("NoSuchFieldException for 'child' in BasePageFragment:constructor getting childname from xml", e);
             }
         }
     }

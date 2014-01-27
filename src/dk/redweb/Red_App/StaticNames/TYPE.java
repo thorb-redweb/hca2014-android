@@ -25,11 +25,12 @@ public class TYPE {
     public static final String PUSHMESSAGESUBSCRIBER = "PushMessageSubscriber";
     public static final String PUSHMESSAGELIST = "PushMessageList";
     public static final String PUSHMESSAGEUNSUBSCRIBER = "PushMessageUnsubscriber";
-    public static final String REDUPLOAD = "RedUpload";
+    public static final String REDUPLOADFOLDER = "RedUploadFolder";
+    public static final String REDUPLOADFOLDERCONTENT = "RedUploadFolderContent";
+    public static final String REDUPLOADPICTUREVIEW = "RedUploadPictureView";
     public static final String SESSIONDETAIL = "SessionDetail";
     public static final String SESSIONMAP = "SessionMap";
     public static final String SPLITVIEW = "SplitView";
-    public static final String STAIRTRACKING = "StairTracking";
     public static final String STATICARTICLE = "StaticArticle";
     public static final String STYLEDSESSIONLIST = "StyledSessionList";
     public static final String SWIPEVIEW = "SwipeView";

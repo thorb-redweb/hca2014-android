@@ -11,7 +11,6 @@ import dk.redweb.Red_App.ViewControllers.Article.AdventCal.AdventWindowFragment;
 import dk.redweb.Red_App.ViewControllers.Article.ArticleDetail.ArticleDetailFragment;
 import dk.redweb.Red_App.ViewControllers.Article.ImageArticleList.ImageArticleListFragment;
 import dk.redweb.Red_App.ViewControllers.Article.StaticArticle.StaticArticleFragment;
-import dk.redweb.Red_App.ViewControllers.BasePageFragment;
 import dk.redweb.Red_App.ViewControllers.Contest.BikeTracking.BikeTrackingFragment;
 import dk.redweb.Red_App.ViewControllers.Map.OverviewMap.OverviewMapFragment;
 import dk.redweb.Red_App.ViewControllers.Map.SessionMap.SessionMapFragment;
@@ -19,7 +18,9 @@ import dk.redweb.Red_App.ViewControllers.Map.VenueMap.VenueMapFragment;
 import dk.redweb.Red_App.ViewControllers.Misc.CameraIntent.CameraIntentFragment;
 import dk.redweb.Red_App.ViewControllers.Misc.ImageUploader.ImageUploaderFileBrowserFragment;
 import dk.redweb.Red_App.ViewControllers.Misc.ImageUploader.ImageUploaderFragment;
-import dk.redweb.Red_App.ViewControllers.Misc.RedUpload.RedUploadFragment;
+import dk.redweb.Red_App.ViewControllers.RedUpload.RedUploadFolder.RedUploadFolderFragment;
+import dk.redweb.Red_App.ViewControllers.RedUpload.RedUploadFolderContent.RedUploadFolderContentFragment;
+import dk.redweb.Red_App.ViewControllers.RedUpload.RedUploadPictureView.RedUploadPictureViewFragment;
 import dk.redweb.Red_App.ViewControllers.Misc.WebView.WebViewFragment;
 import dk.redweb.Red_App.ViewControllers.Navigation.ButtonGallery.ButtonGalleryFragment;
 import dk.redweb.Red_App.ViewControllers.Navigation.SwipeView.SwipeViewFragment;
@@ -114,77 +115,96 @@ public class NavController {
     }
 
     public static void popPage(FragmentActivity parentActivity){
+        popPageNumberTimes(1, parentActivity);
+    }
+
+    public static void popTwoPages(FragmentActivity parentActivity){
+        popPageNumberTimes(2, parentActivity);
+    }
+
+    public static void popThreePages(FragmentActivity parentActivity) {
+        popPageNumberTimes(3, parentActivity);
+    }
+
+    public static void popPageNumberTimes(int popTimes, FragmentActivity parentActivity) {
         FragmentManager manager = parentActivity.getSupportFragmentManager();
-        manager.popBackStack();
+        for(int i = 0; i < popTimes; i++){
+            manager.popBackStack();
+        }
     }
 
     public static Fragment createPageFragmentFromPage(XmlNode page){
+        String type = "";
         try {
-            String type = page.getStringFromNode(PAGE.TYPE);
-            if(type.equals(TYPE.ADVENTCAL)){
-                return new AdventCalFragment(page);
-            } else if(type.equals(TYPE.ADVENTWINDOW)){
-                return new AdventWindowFragment(page);
-            } else if(type.equals(TYPE.ARTICLEDETAIL)){
-                return new ArticleDetailFragment(page);
-            } else if(type.equals(TYPE.BIKETRACKING)){
-                return new BikeTrackingFragment(page);
-            } else if(type.equals(TYPE.BUTTONGALLERY)){
-                return new ButtonGalleryFragment(page);
-            } else if(type.equals(TYPE.CAMERAINTENT)){
-                return new CameraIntentFragment(page);
-            } else if(type.equals(TYPE.DAILYSESSIONLIST)){
-                return new DailySessionListFragment(page);
-            } else if (type.equals(TYPE.FILEBROWSER)){
-                return new ImageUploaderFileBrowserFragment(page);
-            } else if (type.equals(TYPE.IMAGEARTICLELIST)){
-                return new ImageArticleListFragment(page);
-            } else if (type.equals(TYPE.IMAGEUPLOADER)){
-                return new ImageUploaderFragment(page);
-            } else if(type.equals(TYPE.NEWSTICKER)){
-                throw new NotImplementedException("Newsticker has not been updated to the modern framework");
-            } else if(type.equals(TYPE.OVERVIEWMAP)){
-                return new OverviewMapFragment(page);
-            } else if (type.equals(TYPE.PUSHMESSAGEAUTOSUBSCRIBER)){
-                return new PushMessageAutoSubscriberFragment(page);
-            } else if (type.equals(TYPE.PUSHMESSAGEDETAIL)){
-                return new PushMessageDetailFragment(page);
-            } else if (type.equals(TYPE.PUSHMESSAGEGROUPSETTINGS)){
-                return new PushMessageGroupSettingsFragment(page);
-            } else if (type.equals(TYPE.PUSHMESSAGESUBSCRIBER)){
-                return new PushMessageSubscriberFragment(page);
-            } else if (type.equals(TYPE.PUSHMESSAGELIST)){
-                return new PushMessageListFragment(page);
-            } else if (type.equals(TYPE.PUSHMESSAGEUNSUBSCRIBER)){
-                return new PushMessageUnsubscriberFragment(page);
-            } else if(type.equals(TYPE.REDUPLOAD)){
-                return new RedUploadFragment(page);
-            } else if(type.equals(TYPE.SESSIONDETAIL)){
-                return new SessionDetailFragment(page);
-            } else if(type.equals(TYPE.SESSIONMAP)){
-                return new SessionMapFragment(page);
-            } else if (type.equals(TYPE.SPLITVIEW)){
-                throw new NotImplementedException("SplitView has not been updated to the modern framework");
-            } else if(type.equals(TYPE.STATICARTICLE)){
-                return new StaticArticleFragment(page);
-            } else if(type.equals(TYPE.STYLEDSESSIONLIST)){
-                return new StyledSessionListFragment(page);
-            } else if(type.equals(TYPE.SWIPEVIEW)){
-                return new SwipeViewFragment(page);
-            } else if(type.equals(TYPE.TABLENAVIGATOR)){
-                return new TableNavigatorFragment(page);
-            } else if(type.equals(TYPE.UPCOMINGSESSIONS)){
-                throw new NotImplementedException("UpcomingSessions has not been updated to the modern framework");
-            } else if(type.equals(TYPE.VENUEDETAIL)){
-                return new VenueDetailFragment(page);
-            } else if(type.equals(TYPE.VENUEMAP)){
-                return new VenueMapFragment(page);
-            } else if(type.equals(TYPE.WEBVIEW)){
-                return new WebViewFragment(page);
-            }
+            type = page.getStringFromNode(PAGE.TYPE);
         } catch (NoSuchFieldException e) {
-            MyLog.e("Exception when getting ViewController from page type", e);
+            MyLog.e("Exception when getting type from page", e);
         }
-        throw new IllegalArgumentException("A page of the given type does not exist or is not implemented");
+        if(type.equals(TYPE.ADVENTCAL)){
+            return new AdventCalFragment(page);
+        } else if(type.equals(TYPE.ADVENTWINDOW)){
+            return new AdventWindowFragment(page);
+        } else if(type.equals(TYPE.ARTICLEDETAIL)){
+            return new ArticleDetailFragment(page);
+        } else if(type.equals(TYPE.BIKETRACKING)){
+            return new BikeTrackingFragment(page);
+        } else if(type.equals(TYPE.BUTTONGALLERY)){
+            return new ButtonGalleryFragment(page);
+        } else if(type.equals(TYPE.CAMERAINTENT)){
+            return new CameraIntentFragment(page);
+        } else if(type.equals(TYPE.DAILYSESSIONLIST)){
+            return new DailySessionListFragment(page);
+        } else if (type.equals(TYPE.FILEBROWSER)){
+            return new ImageUploaderFileBrowserFragment(page);
+        } else if (type.equals(TYPE.IMAGEARTICLELIST)){
+            return new ImageArticleListFragment(page);
+        } else if (type.equals(TYPE.IMAGEUPLOADER)){
+            return new ImageUploaderFragment(page);
+        } else if(type.equals(TYPE.NEWSTICKER)){
+            throw new NotImplementedException("Newsticker has not been updated to the modern framework");
+        } else if(type.equals(TYPE.OVERVIEWMAP)){
+            return new OverviewMapFragment(page);
+        } else if (type.equals(TYPE.PUSHMESSAGEAUTOSUBSCRIBER)){
+            return new PushMessageAutoSubscriberFragment(page);
+        } else if (type.equals(TYPE.PUSHMESSAGEDETAIL)){
+            return new PushMessageDetailFragment(page);
+        } else if (type.equals(TYPE.PUSHMESSAGEGROUPSETTINGS)){
+            return new PushMessageGroupSettingsFragment(page);
+        } else if (type.equals(TYPE.PUSHMESSAGESUBSCRIBER)){
+            return new PushMessageSubscriberFragment(page);
+        } else if (type.equals(TYPE.PUSHMESSAGELIST)){
+            return new PushMessageListFragment(page);
+        } else if (type.equals(TYPE.PUSHMESSAGEUNSUBSCRIBER)){
+            return new PushMessageUnsubscriberFragment(page);
+        } else if(type.equals(TYPE.REDUPLOADFOLDER)){
+            return new RedUploadFolderFragment(page);
+        } else if(type.equals(TYPE.REDUPLOADFOLDERCONTENT)){
+            return new RedUploadFolderContentFragment(page);
+        } else if(type.equals(TYPE.REDUPLOADPICTUREVIEW)){
+            return new RedUploadPictureViewFragment(page);
+        } else if(type.equals(TYPE.SESSIONDETAIL)){
+            return new SessionDetailFragment(page);
+        } else if(type.equals(TYPE.SESSIONMAP)){
+            return new SessionMapFragment(page);
+        } else if (type.equals(TYPE.SPLITVIEW)){
+            throw new NotImplementedException("SplitView has not been updated to the modern framework");
+        } else if(type.equals(TYPE.STATICARTICLE)){
+            return new StaticArticleFragment(page);
+        } else if(type.equals(TYPE.STYLEDSESSIONLIST)){
+            return new StyledSessionListFragment(page);
+        } else if(type.equals(TYPE.SWIPEVIEW)){
+            return new SwipeViewFragment(page);
+        } else if(type.equals(TYPE.TABLENAVIGATOR)){
+            return new TableNavigatorFragment(page);
+        } else if(type.equals(TYPE.UPCOMINGSESSIONS)){
+            throw new NotImplementedException("UpcomingSessions has not been updated to the modern framework");
+        } else if(type.equals(TYPE.VENUEDETAIL)){
+            return new VenueDetailFragment(page);
+        } else if(type.equals(TYPE.VENUEMAP)){
+            return new VenueMapFragment(page);
+        } else if(type.equals(TYPE.WEBVIEW)){
+            return new WebViewFragment(page);
+        }
+        throw new IllegalArgumentException("A page of the type: " + type + " does not exist or is not implemented");
     }
 }

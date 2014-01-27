@@ -64,10 +64,13 @@ public class TEXT {
     public static final String PUSHMESSAGEUNSUBSCRIBER_UNSUBSCRIBEBUTTON = "unsubscribebutton";
     public static final String PUSHMESSAGEUNSUBSCRIBER_WARNING = "warning";
 
+    public static final String REDUPLOADFOLDER_TITLE = "title";
     public static final String REDUPLOAD_BACKBUTTON = "backbutton";
     public static final String REDUPLOAD_NEXTBUTTON = "topbutton";
+    public static final String REDUPLOAD_TOPBUTTON = "topbutton";
     public static final String REDUPLOAD_APPROVALBUTTON = "bottombuttonunapproved";
     public static final String REDUPLOAD_UPLOADBUTTON = "bottombuttonapproved";
+    public static final String REDUPLOAD_EDITBUTTON = "editbutton";
     public static final String REDUPLOAD_DELETEPICTUREBUTTON = "deletepicturebutton";
     public static final String REDUPLOAD_PICTURETEXTHINT = "picturetexthint";
     public static final String REDUPLOAD_APPROVALSTATEMENT = "approvalstatement";

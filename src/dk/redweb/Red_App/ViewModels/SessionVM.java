@@ -1,7 +1,7 @@
 package dk.redweb.Red_App.ViewModels;
 
 import com.google.android.gms.maps.model.LatLng;
-import dk.redweb.Red_App.Model.Session;
+import dk.redweb.Red_App.DatabaseModel.Session;
 import dk.redweb.Red_App.StringUtils;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;

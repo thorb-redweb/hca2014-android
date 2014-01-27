@@ -1,6 +1,6 @@
 package dk.redweb.Red_App.ViewModels;
 
-import dk.redweb.Red_App.Model.PushMessageGroup;
+import dk.redweb.Red_App.DatabaseModel.PushMessageGroup;
 
 /**
  * Created by Redweb with IntelliJ IDEA.

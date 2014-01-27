@@ -6,7 +6,7 @@ import com.google.android.gms.maps.model.LatLng;
 import dk.redweb.Red_App.Database.Converters;
 import dk.redweb.Red_App.Database.DbInterface;
 import dk.redweb.Red_App.Database.DbSchemas;
-import dk.redweb.Red_App.Model.Session;
+import dk.redweb.Red_App.DatabaseModel.Session;
 import dk.redweb.Red_App.Network.ServerInterface;
 import dk.redweb.Red_App.RedEventApplication;
 import dk.redweb.Red_App.ViewControllers.Map.MapMarker;

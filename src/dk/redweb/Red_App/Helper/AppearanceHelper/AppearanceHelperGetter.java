@@ -52,6 +52,7 @@ public class AppearanceHelperGetter {
     static {
         staticColors = new HashMap<String, Integer>();
         staticColors.put(LOOK.BLACK,Color.parseColor("#000000"));
+        staticColors.put(LOOK.LIGHTGREY,Color.parseColor("#bfbfbf"));
         staticColors.put(LOOK.INVISIBLE,Color.parseColor("#00000000"));
         staticColors.put(LOOK.WHITE,Color.parseColor("#FFFFFF"));
     }
@@ -84,6 +85,14 @@ public class AppearanceHelperGetter {
             return _localLook.getFloatFromNode(localName);
         } else {
             return _globalLook.getFloatFromNode(globalName);
+        }
+    }
+
+    public int getInt(String localName, String globalName) throws NoSuchFieldException {
+        if(localPageHas(localName)){
+            return _localLook.getIntegerFromNode(localName);
+        } else {
+            return _globalLook.getIntegerFromNode(globalName);
         }
     }
 

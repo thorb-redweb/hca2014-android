@@ -12,6 +12,7 @@ public class LOOK {
     //Color Constants
     public static final String BLACK = "black";
     public static final String INVISIBLE = "invisible";
+    public static final String LIGHTGREY = "lightgrey";
     public static final String WHITE = "white";
 
     //Style Constants
@@ -384,6 +385,10 @@ public class LOOK {
 
     //RedUpload
     public static final String REDUPLOAD_APPROVALBOXCOLOR= "approvalboxcolor";
+    public static final String REDUPLOAD_CAMERABUTTONCOLOR = "camerabuttoncolor";
+    public static final String REDUPLOAD_ITEMBACKGROUNDCOLOR = "itembackgroundcolor";
+    public static final String REDUPLOAD_SUBITEMCAMERACOLOR = "subitemcamerabuttoncolor";
+    public static final String REDUPLOAD_ITEMBORDERCOLOR = "itembordercolor";
 
     //SessionDetail
     public static final String SESSIONDETAIL_BACKGROUNDCOLOR = "backgroundcolor";

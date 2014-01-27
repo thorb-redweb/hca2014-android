@@ -14,9 +14,9 @@ import android.graphics.drawable.shapes.Shape;
  */
 public class CustomShapeDrawable extends ShapeDrawable {
     private final Paint fillpaint, strokepaint;
-    private int strokeWidth;
+    private float strokeWidth;
 
-    public CustomShapeDrawable(Shape s, int fill, int stroke, int strokeWidth){
+    public CustomShapeDrawable(Shape s, int fill, int stroke, float strokeWidth){
         super(s);
         fillpaint = new Paint(this.getPaint());
         fillpaint.setColor(fill);

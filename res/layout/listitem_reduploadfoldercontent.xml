@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<dk.redweb.Red_App.ViewControllers.RedUpload.RedUploadFolderContent.RedUploadFolderContentItem xmlns:android="http://schemas.android.com/apk/res/android"
+                                                android:orientation="vertical"
+                                                android:layout_width="150dp"
+                                                android:layout_height="wrap_content">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/reduploadfoldercontent_rltItemBox"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content">
+        <LinearLayout android:id="@+id/reduploadfoldercontent_lnrImageBox"
+                style="@style/Layout.Full">
+            <ImageView android:id="@+id/reduploadfoldercontent_imgPicture"
+                       android:layout_width="150dp"
+                       android:layout_height="wrap_content"
+                       android:layout_alignParentTop="true"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/reduploadfoldercontent_lnrApprovedTag"
+                      android:orientation="horizontal"
+                      android:layout_width="20dp"
+                      android:layout_height="20dp"
+                      android:layout_alignParentRight="true"
+                      android:layout_marginRight="5dp"
+                      android:layout_alignParentTop="true"
+                      android:layout_marginTop="5dp"
+                />
+        <LinearLayout android:id="@+id/reduploadfoldercontent_lrnBottomArea"
+                      android:orientation="horizontal"
+                      android:layout_width="fill_parent"
+                      android:layout_height="wrap_content"
+                      android:gravity="center"
+                      android:layout_below="@+id/reduploadfoldercontent_lnrImageBox"
+                      android:layout_alignParentBottom="true">
+            <TextView android:id="@+id/reduploadfoldercontent_lblTitle"
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:layout_margin="5dp"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/reduploadfoldercontent_lnrItemBoxBorder"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:layout_alignTop="@+id/reduploadfoldercontent_lnrImageBox"
+              android:layout_alignBottom="@+id/reduploadfoldercontent_lrnBottomArea"
+              android:layout_alignRight="@+id/reduploadfoldercontent_lrnBottomArea"
+              android:layout_alignLeft="@+id/reduploadfoldercontent_lrnBottomArea"/>
+    </RelativeLayout>
+</dk.redweb.Red_App.ViewControllers.RedUpload.RedUploadFolderContent.RedUploadFolderContentItem>

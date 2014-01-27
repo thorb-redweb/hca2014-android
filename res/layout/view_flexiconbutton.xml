@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+       android:minHeight="50dp"
+       android:minWidth="75dp">
+    <LinearLayout android:id="@+id/flexibleButton_lnrLabelBox"
+            style="@style/Layout.Wrap.Complete"
+            android:padding="5dp"
+            android:gravity="center"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@id/flexibleButton_imgButton">
+        <TextView android:id="@+id/flexibleButton_lblButton"
+                  style="@style/Layout.Wrap.Complete"/>
+    </LinearLayout>
+    <ImageView android:id="@+id/flexibleButton_imgButton"
+               style="@style/Image.Wrap"
+               android:padding="5dp"
+               android:layout_alignTop="@+id/flexibleButton_lnrLabelBox"
+               android:layout_alignBottom="@+id/flexibleButton_lnrLabelBox"
+            android:layout_alignParentRight="true"
+            android:background="#ed3030"/>
+</merge>

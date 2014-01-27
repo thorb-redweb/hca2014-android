@@ -80,7 +80,7 @@ public class StyledSessionListFragment extends BasePageFragment {
 
             helper.setViewBackgroundTileImageOrColor(_view, LOOK.BACKGROUNDIMAGE, LOOK.BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
-            helper.setViewBackgroundAsShape(_lstSession, LOOK.BACKGROUNDCOLOR, LOOK.GLOBAL_ALTCOLOR, 3, LOOK.BUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR, 7);
+            helper.Shape.setViewBackgroundAsShape(_lstSession, LOOK.BACKGROUNDCOLOR, LOOK.GLOBAL_ALTCOLOR, 3, LOOK.BUTTONBACKGROUNDCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR, 7);
         } catch (Exception e) {
             MyLog.e("Exception in UpcomingSessions:setAppearance", e);
         }
