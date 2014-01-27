@@ -16,6 +16,7 @@ import android.widget.*;
 import dk.redweb.Red_App.CustomShapeDrawable;
 import dk.redweb.Red_App.Helper.AppearanceHelper.FlexibleButtons.FlexButtonAppearanceForwarder;
 import dk.redweb.Red_App.Helper.AppearanceHelper.Labels.TextViewAppearanceForwarder;
+import dk.redweb.Red_App.Helper.AppearanceHelper.Shapes.ShapeAppearanceForwarder;
 import dk.redweb.Red_App.My;
 import dk.redweb.Red_App.StaticNames.LOOK;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
@@ -35,6 +36,7 @@ public class AppearanceHelper {
     public AppearanceHelperGetter Getter;
 
     public FlexButtonAppearanceForwarder FlexButton;
+    public ShapeAppearanceForwarder Shape;
     public TextViewAppearanceForwarder TextView;
 
     public AppearanceHelper(Context context, XmlNode local, XmlNode global){
@@ -43,8 +45,9 @@ public class AppearanceHelper {
         globalLook = global;
 
         Getter = new AppearanceHelperGetter(context, local, global);
-        FlexButton = new FlexButtonAppearanceForwarder(this,Getter);
-        TextView = new TextViewAppearanceForwarder(this,Getter);
+        FlexButton = new FlexButtonAppearanceForwarder(this, Getter);
+        Shape = new ShapeAppearanceForwarder(this, Getter);
+        TextView = new TextViewAppearanceForwarder(this, Getter);
     }
 
     public void setImageViewImage(ImageView imageView, String localName) throws Exception {
@@ -63,45 +66,6 @@ public class AppearanceHelper {
         int backgroundColor = Getter.getColor(localName, globalName);
         listView.setBackgroundColor(backgroundColor);
         listView.setCacheColorHint(backgroundColor);
-    }
-
-    public void setViewThreeSides(View view, String localBackgroundColorName, String globalBackgroundColorName,
-                                  int borderWidth, String localBorderColor, String globalBorderColor) throws NoSuchFieldException {
-        Drawable[] layers = new Drawable[2];
-
-        int backgroundColor = Getter.getColor(localBackgroundColorName, globalBackgroundColorName);
-        int borderColor = Getter.getColor(localBorderColor, globalBorderColor);
-
-        ShapeDrawable sd1 = new ShapeDrawable(new RectShape());
-        sd1.getPaint().setColor(borderColor);
-        sd1.setPadding(0, borderWidth, borderWidth, borderWidth);
-
-        ShapeDrawable sd2 = new ShapeDrawable(new RectShape());
-        sd2.getPaint().setColor(backgroundColor);
-
-        layers[0] = sd1;
-        layers[1] = sd2;
-        LayerDrawable composite = new LayerDrawable(layers);
-        view.setBackground(composite);
-    }
-
-    public void setViewBackgroundWithBorder(View view, String localBackgroundColor, String globalBackgroundColor, int borderWidth, String localBorderColor, String globalBorderColor) throws NoSuchFieldException {
-        Drawable[] layers = new Drawable[2];
-
-        int backgroundColor = Getter.getColor(localBackgroundColor, globalBackgroundColor);
-        int borderColor = Getter.getColor(localBorderColor, globalBorderColor);
-
-        ShapeDrawable sd1 = new ShapeDrawable(new RectShape());
-        sd1.getPaint().setColor(borderColor);
-        sd1.setPadding(borderWidth, borderWidth, borderWidth, borderWidth);
-
-        ShapeDrawable sd2 = new ShapeDrawable(new RectShape());
-        sd2.getPaint().setColor(backgroundColor);
-
-        layers[0] = sd1;
-        layers[1] = sd2;
-        LayerDrawable composite = new LayerDrawable(layers);
-        view.setBackground(composite);
     }
 
     public void setViewBackgroundColor(View view, String localName, String globalName) throws NoSuchFieldException {
@@ -150,33 +114,5 @@ public class AppearanceHelper {
             view.setBackground(My.getDrawableFromResourceWithFilename(localLook.getStringFromNode(localImageName), context));
         else
             setViewBackgroundColor(view, localColorName, globalColorName);
-    }
-
-    public void setViewBackgroundAsShape(View view, String localBackgroundColorName, String globalBackgroundColorName,
-                                         String localBorderWidth, String localBorderColor, String globalBorderColor, String localCornerRadiusName) throws Exception{
-        float radius = localLook.getFloatFromNode(localCornerRadiusName);
-        int backgroundcolor = Getter.getColor(localBackgroundColorName, globalBackgroundColorName);
-        int borderwidth = localLook.getIntegerFromNode(localBorderWidth);
-        int bordercolor = Getter.getColor(localBorderColor, globalBorderColor);
-        float[] radii = new float[]{radius, radius, radius, radius, radius, radius, radius, radius};
-
-        RoundRectShape roundRectShape = new RoundRectShape(radii, null, null);
-        ShapeDrawable shapeDrawable = new CustomShapeDrawable(roundRectShape, backgroundcolor,bordercolor,borderwidth);
-        LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{shapeDrawable});
-
-        view.setBackground(layerDrawable);
-    }
-
-    public void setViewBackgroundAsShape(View view, String localBackgroundColorName, String globalBackgroundColorName,
-                                         int borderWidth, String localBorderColor, String globalBorderColor, int cornerRadius) throws Exception{
-        int backgroundcolor = Getter.getColor(localBackgroundColorName, globalBackgroundColorName);
-        int bordercolor = Getter.getColor(localBorderColor, globalBorderColor);
-        float[] radii = new float[]{cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius};
-
-        RoundRectShape roundRectShape = new RoundRectShape(radii, null, null);
-        ShapeDrawable shapeDrawable = new CustomShapeDrawable(roundRectShape, backgroundcolor,bordercolor,borderWidth);
-        LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{shapeDrawable});
-
-        view.setBackground(layerDrawable);
     }
 }

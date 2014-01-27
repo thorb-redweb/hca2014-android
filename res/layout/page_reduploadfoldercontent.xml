@@ -3,25 +3,38 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <LinearLayout android:id="@+id/reduploadfoldercontent_lnrTopButtons"
-                  style="@style/Layout.Wrap"
-                  android:orientation="horizontal"
-                  android:layout_alignParentTop="true">
+    <RelativeLayout android:id="@+id/reduploadfoldercontent_rltTopButtons"
+                    style="@style/Layout.Wrap"
+                    android:orientation="horizontal"
+                    android:layout_alignParentTop="true"
+                    android:layout_margin="10dp">
         <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/reduploadfoldercontent_flxBack"
                                                 style="@style/Layout.Wrap.Complete"
-                                                android:layout_weight="1"
-                                                android:layout_margin="5dp"/>
-        <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/reduploadfoldercontent_flxNext"
+                                                android:layout_alignTop="@+id/reduploadfoldercontent_flxiNext"
+                                                android:layout_alignBottom="@+id/reduploadfoldercontent_flxiNext"
+                                                android:layout_alignParentLeft="true"
+                                                android:layout_marginLeft="5dp"
+                                                android:layout_marginRight="5dp"/>
+        <dk.redweb.Red_App.Views.FlexIconButton android:id="@+id/reduploadfoldercontent_flxiNext"
                                                 style="@style/Layout.Wrap.Complete"
-                                                android:layout_weight="1"
+                                                android:padding="20dp"
+                                                android:layout_toRightOf="@+id/reduploadfoldercontent_flxBack"
+                                                android:layout_alignParentRight="true"
                                                 android:layout_margin="5dp"/>
-    </LinearLayout>
+    </RelativeLayout>
+
+    <TextView android:id="@+id/reduploadfoldercontent_lblTitle"
+              style="@style/Layout.Wrap"
+              android:layout_below="@+id/reduploadfoldercontent_rltTopButtons"
+              android:layout_marginLeft="10dp"
+              android:layout_marginRight="10dp"
+              android:layout_marginBottom="10dp"/>
 
     <GridView android:id="@+id/reduploadfoldercontent_grdContent"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
+            android:layout_below="@+id/reduploadfoldercontent_lblTitle"
             android:layout_above="@+id/reduploadfoldercontent_lnrBottomButtons"
-            android:layout_below="@+id/reduploadfoldercontent_lnrTopButtons"
 
             android:columnWidth="150dp"
             android:numColumns="auto_fit"
@@ -35,12 +48,12 @@
                   android:orientation="horizontal"
                   android:layout_alignParentBottom="true">
         <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/reduploadfoldercontent_flxUpload"
-                                                style="@style/Layout.Wrap.Complete"
+                                                android:layout_height="fill_parent"
                                                 android:layout_width="0dp"
                                                 android:layout_weight="1"
                                                 android:layout_margin="5dp"/>
         <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/reduploadfoldercontent_flxEdit"
-                                                style="@style/Layout.Wrap.Complete"
+                                                android:layout_height="fill_parent"
                                                 android:layout_width="0dp"
                                                 android:layout_weight="1"
                                                 android:layout_margin="5dp"/>

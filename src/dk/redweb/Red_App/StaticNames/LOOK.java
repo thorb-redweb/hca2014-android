@@ -12,6 +12,7 @@ public class LOOK {
     //Color Constants
     public static final String BLACK = "black";
     public static final String INVISIBLE = "invisible";
+    public static final String LIGHTGREY = "lightgrey";
     public static final String WHITE = "white";
 
     //Style Constants

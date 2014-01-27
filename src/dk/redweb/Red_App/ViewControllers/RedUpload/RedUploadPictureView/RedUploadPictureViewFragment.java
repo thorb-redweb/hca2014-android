@@ -23,6 +23,7 @@ import dk.redweb.Red_App.StaticNames.LOOK;
 import dk.redweb.Red_App.StaticNames.PAGE;
 import dk.redweb.Red_App.StaticNames.TEXT;
 import dk.redweb.Red_App.ViewControllers.BasePageFragment;
+import dk.redweb.Red_App.Views.FlexIconButton;
 import dk.redweb.Red_App.Views.FlexibleButton;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
 
@@ -39,7 +40,8 @@ public class RedUploadPictureViewFragment extends BasePageFragment {
     private RedUploadServerFolder _folder;
 
     private FlexibleButton _flxBack;
-    private FlexibleButton _flxNext;
+    private FlexIconButton _flxiNext;
+    private ImageView _imgNext;
     private TextView _lblTitle;
     private ImageView _imgPicture;
     private LinearLayout _lnrTxtPictureText;
@@ -69,7 +71,8 @@ public class RedUploadPictureViewFragment extends BasePageFragment {
 
     private void fetchControls(){
         _flxBack = (FlexibleButton)findViewById(R.id.reduploadpictureview_flxBack);
-        _flxNext = (FlexibleButton)findViewById(R.id.reduploadpictureview_flxNext);
+        _flxiNext = (FlexIconButton)findViewById(R.id.reduploadpictureview_flxiNext);
+        _imgNext = (ImageView)findViewById(R.id.flexibleButton_imgButton);
         _lblTitle = (TextView)findViewById(R.id.reduploadpictureview_lblTitle);
         _imgPicture = (ImageView)findViewById(R.id.reduploadpictureview_imgPicture);
         _lnrTxtPictureText = (LinearLayout)findViewById(R.id.reduploadpictureview_lnrTxtPictureText);
@@ -101,9 +104,6 @@ public class RedUploadPictureViewFragment extends BasePageFragment {
                 }
             }
             else {
-                _flxNext.setEnabled(false);
-                _flxApproval.setEnabled(false);
-                _flxDeletePicture.setEnabled(false);
                 MyLog.e("No filepath provided for image");
             }
         } catch (NoSuchFieldException e) {
@@ -114,11 +114,11 @@ public class RedUploadPictureViewFragment extends BasePageFragment {
     private void setControls(){
         _txtPictureText.setText(_redUploadImageObject.text);
 
-        _swcApproval.setEnabled(_redUploadImageObject.approved);
+        _swcApproval.setEnabled(false);
         _swcApproval.setChecked(_redUploadImageObject.approved);
 
         _flxBack.setOnClickListener(backAction());
-        _flxNext.setOnClickListener(nextAction());
+        _flxiNext.setOnClickListener(nextAction());
         _txtPictureText.addTextChangedListener(textChangedEvent());
         _flxApproval.setOnClickListener(approveUploadAction());
         _flxDeletePicture.setOnClickListener(deleteAction());
@@ -129,20 +129,40 @@ public class RedUploadPictureViewFragment extends BasePageFragment {
             AppearanceHelper helper = _appearanceHelper;
             helper.setViewBackgroundTileImageOrColor(_view, LOOK.BACKGROUNDIMAGE, LOOK.BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
-            helper.FlexButton.setCustomStyle(_flxBack, "topbutton", LOOK.DEFCOLOR_ALT, LOOK.DEFSIZE_ITEMTITLE);
-            helper.FlexButton.setCustomStyle(_flxNext, "topbutton", LOOK.DEFCOLOR_ALT, LOOK.DEFSIZE_ITEMTITLE);
+            FlexibleButton[] topButtons = {_flxBack, _flxiNext};
+            helper.Shape.setViewBackgroundAsShape(topButtons, "topbuttonbackgroundcolor", LOOK.GLOBAL_BACKCOLOR, "borderwidth", "topbuttonbordercolor", LOOK.GLOBAL_BACKTEXTCOLOR, "corner");
+            helper.FlexButton.setTextColor(topButtons, "topbuttontextcolor", LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.FlexButton.setTextSize(topButtons, "topbuttontextsize", LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.FlexButton.setTextStyle(topButtons, "topbuttontextstyle", LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.FlexButton.setTextShadow(topButtons, "topbuttontextshadowcolor", LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, "topbuttontextshadowoffset", LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
+
+            helper.FlexButton.setImage(_flxiNext, "camerabuttonicon");
+            helper.setViewBackgroundColor(_imgNext, "camerabuttoniconcolor", LOOK.GLOBAL_ALTCOLOR);
 
             helper.TextView.setTitleStyle(_lblTitle);
 
-            helper.setViewBackgroundColor(_rltApprovalBox, LOOK.REDUPLOAD_APPROVALBOXCOLOR, LOOK.GLOBAL_ALTCOLOR);
+            helper.Shape.setViewBackgroundAsShape(_lnrTxtPictureText, "textboxbackgroundcolor", LOOK.GLOBAL_BACKCOLOR, "borderwidth", "textboxbordercolor", LOOK.GLOBAL_BACKTEXTCOLOR,"corner");
 
-            helper.setViewBackgroundAsShape(_lnrTxtPictureText, "", LOOK.WHITE, 3, "", LOOK.BLACK,10);
+            helper.Shape.setViewBackgroundAsShape(_rltApprovalBox, LOOK.REDUPLOAD_APPROVALBOXCOLOR, LOOK.GLOBAL_BACKCOLOR, "borderwidth", "approvalboxbordercolor", LOOK.GLOBAL_BACKTEXTCOLOR, "corner");
 
             helper.TextView.setAltTextStyle(_lblApprovalStatement);
-            helper.TextView.setAltTextStyle(_lblApprovalStatus);
 
-            helper.FlexButton.setCustomStyle(_flxApproval, "bottombutton", LOOK.DEFCOLOR_BACK, LOOK.DEFSIZE_ITEMTITLE);
-            helper.FlexButton.setCustomStyle(_flxDeletePicture, "bottombutton", LOOK.DEFCOLOR_BACK, LOOK.DEFSIZE_ITEMTITLE);
+            helper.TextView.setAltTextStyle(_lblApprovalStatus);
+            if(_redUploadImageObject.approved){
+                helper.FlexButton.setCustomStyle(_flxApproval, "uploadbutton", LOOK.DEFCOLOR_BACK, LOOK.DEFSIZE_ITEMTITLE);
+                helper.Shape.setViewBackgroundAsShapeWithGradiant(_flxApproval, "uploadbuttonbackgroundcolor", LOOK.GLOBAL_BACKCOLOR, "uploadbuttonbackgroundcolor2", LOOK.GLOBAL_BACKCOLOR, "borderwidth", "uploadbuttonbordercolor", LOOK.GLOBAL_BACKTEXTCOLOR, "corner");
+                helper.setViewBackgroundColor(_swcApproval, "uploadbuttonbackgroundcolor", LOOK.GLOBAL_BACKCOLOR);
+            }
+            else{
+                helper.FlexButton.setCustomStyle(_flxApproval, "approvalbutton", LOOK.DEFCOLOR_BACK, LOOK.DEFSIZE_ITEMTITLE);
+                helper.Shape.setViewBackgroundAsShapeWithGradiant(_flxApproval, "approvalbuttonbackgroundcolor", LOOK.GLOBAL_BACKCOLOR, "approvalbuttonbackgroundcolor2", LOOK.GLOBAL_BACKCOLOR, "borderwidth", "approvalbuttonbordercolor", LOOK.GLOBAL_BACKTEXTCOLOR, "corner");
+                helper.setViewBackgroundColor(_swcApproval, "approvalbuttonbackgroundcolor", LOOK.GLOBAL_BACKCOLOR);
+            }
+            _flxApproval.setMinimumHeight(80);
+
+            helper.FlexButton.setCustomStyle(_flxDeletePicture, "deletebutton", LOOK.DEFCOLOR_BACK, LOOK.DEFSIZE_ITEMTITLE);
+            helper.Shape.setViewBackgroundAsShapeWithGradiant(_flxDeletePicture, "deletebuttonbackgroundcolor", LOOK.GLOBAL_BACKCOLOR, "deletebuttonbackgroundcolor2", LOOK.GLOBAL_BACKCOLOR, "borderwidth", "deletebuttonbordercolor", LOOK.GLOBAL_BACKTEXTCOLOR, "corner");
+            _flxDeletePicture.setMinimumHeight(80);
         } catch (Exception e) {
             MyLog.e("Exception when setting appearance for RedUploadFragment", e);
         }
@@ -152,11 +172,11 @@ public class RedUploadPictureViewFragment extends BasePageFragment {
         try{
             TextHelper helper = _textHelper;
             helper.setFlexibleButtonText(_flxBack, TEXT.REDUPLOAD_BACKBUTTON, DEFAULTTEXT.REDUPLOAD_BACKBUTTON);
-            helper.setFlexibleButtonText(_flxNext, TEXT.REDUPLOAD_NEXTBUTTON, DEFAULTTEXT.REDUPLOAD_NEXTBUTTON);
+            helper.setFlexibleButtonText(_flxiNext, TEXT.REDUPLOAD_NEXTBUTTON, DEFAULTTEXT.REDUPLOAD_NEXTBUTTON);
             _lblTitle.setText(_folder.getName());
             helper.setEditTextHint(_txtPictureText, TEXT.REDUPLOAD_PICTURETEXTHINT, DEFAULTTEXT.REDUPLOAD_PICTURETEXTHINT);
             helper.setText(_lblApprovalStatement, TEXT.REDUPLOAD_APPROVALSTATEMENT, DEFAULTTEXT.REDUPLOAD_APPROVALSTATEMENT);
-            helper.setText(_lblApprovalStatus, TEXT.REDUPLOAD_APPROVALSTATUSNO, DEFAULTTEXT.REDUPLOAD_APPROVALSTATUSNO);
+            helper.setSwitchText(_swcApproval, TEXT.REDUPLOAD_APPROVALSTATUSYES, DEFAULTTEXT.REDUPLOAD_APPROVALSTATUSYES, TEXT.REDUPLOAD_APPROVALSTATUSNO, DEFAULTTEXT.REDUPLOAD_APPROVALSTATUSNO);
             helper.setFlexibleButtonText(_flxApproval, TEXT.REDUPLOAD_APPROVALBUTTON, DEFAULTTEXT.REDUPLOAD_APPROVALBUTTON);
             helper.setFlexibleButtonText(_flxDeletePicture, TEXT.REDUPLOAD_DELETEPICTUREBUTTON, DEFAULTTEXT.REDUPLOAD_DELETEPICTUREBUTTON);
         } catch (NoSuchFieldException e) {
@@ -261,8 +281,18 @@ public class RedUploadPictureViewFragment extends BasePageFragment {
                         MyLog.e("Exception when changing text on button to upload status", e);
                     }
 
-                    _redUploadImageObject.approved = false;
+                    _redUploadImageObject.approved = true;
                     _db.RedUpload.updateEntry(_redUploadImageObject);
+
+                    try{
+                        _appearanceHelper.FlexButton.setCustomStyle(_flxApproval, "uploadbutton", LOOK.DEFCOLOR_BACK, LOOK.DEFSIZE_ITEMTITLE);
+                        _appearanceHelper.Shape.setViewBackgroundAsShapeWithGradiant(_flxApproval, "uploadbuttonbackgroundcolor", LOOK.GLOBAL_BACKCOLOR,
+                                "uploadbuttonbackgroundcolor2", LOOK.GLOBAL_BACKCOLOR, "borderwidth", "uploadbuttonbordercolor", LOOK.GLOBAL_BACKTEXTCOLOR, "corner");
+                        _appearanceHelper.setViewBackgroundColor(_swcApproval, "uploadbuttonbackgroundcolor", LOOK.GLOBAL_BACKCOLOR);
+                    }
+                    catch (Exception e) {
+                        MyLog.e("Exception when changing buttom appearance to match new state", e);
+                    }
                 }
             }
         };

@@ -90,6 +90,16 @@ public class DbRedUpload {
         return redUploadImages;
     }
 
+    public boolean serverFolderHasEntries(String serverFolder){
+        String whereString = DbSchemas.RedUpload.SERVERFOLDER + " = '" + serverFolder + "'";
+        Cursor c = _sql.query(DbSchemas.RedUpload.TABLE_NAME, ALL_COLUMNS, whereString, null, null, null, null);
+
+        if(c.getCount() > 0){
+            return true;
+        }
+        return false;
+    }
+
     public void createEntry(RedUploadImage redUploadImage){
         ContentValues values = new ContentValues();
         values.put(DbSchemas.RedUpload.LOCALIMAGEPATH, redUploadImage.localImagePath);

@@ -5,12 +5,16 @@
                                                 android:layout_width="150dp"
                                                 android:layout_height="wrap_content">
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:id="@+id/reduploadfoldercontent_rltItemBox"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content">
-        <ImageView android:id="@+id/reduploadfoldercontent_imgPicture"
-                   android:layout_width="150dp"
-                   android:layout_height="wrap_content"
-                   android:layout_alignParentTop="true"/>
+        <LinearLayout android:id="@+id/reduploadfoldercontent_lnrImageBox"
+                style="@style/Layout.Full">
+            <ImageView android:id="@+id/reduploadfoldercontent_imgPicture"
+                       android:layout_width="150dp"
+                       android:layout_height="wrap_content"
+                       android:layout_alignParentTop="true"/>
+        </LinearLayout>
         <LinearLayout android:id="@+id/reduploadfoldercontent_lnrApprovedTag"
                       android:orientation="horizontal"
                       android:layout_width="20dp"
@@ -25,11 +29,20 @@
                       android:layout_width="fill_parent"
                       android:layout_height="wrap_content"
                       android:gravity="center"
-                      android:layout_below="@+id/reduploadfoldercontent_imgPicture"
+                      android:layout_below="@+id/reduploadfoldercontent_lnrImageBox"
                       android:layout_alignParentBottom="true">
             <TextView android:id="@+id/reduploadfoldercontent_lblTitle"
                       android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"/>
+                      android:layout_height="wrap_content"
+                      android:layout_margin="5dp"/>
         </LinearLayout>
+        <LinearLayout android:id="@+id/reduploadfoldercontent_lnrItemBoxBorder"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal"
+              android:layout_alignTop="@+id/reduploadfoldercontent_lnrImageBox"
+              android:layout_alignBottom="@+id/reduploadfoldercontent_lrnBottomArea"
+              android:layout_alignRight="@+id/reduploadfoldercontent_lrnBottomArea"
+              android:layout_alignLeft="@+id/reduploadfoldercontent_lrnBottomArea"/>
     </RelativeLayout>
 </dk.redweb.Red_App.ViewControllers.RedUpload.RedUploadFolderContent.RedUploadFolderContentItem>

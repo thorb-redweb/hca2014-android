@@ -78,10 +78,15 @@ public class RedUploadSessionFolderItem extends BaseViewItem {
         try{
             AppearanceHelper helper = _appearanceHelper;
 
-            helper.setViewBackgroundAsShape(_rltBoxBackground, LOOK.REDUPLOAD_ITEMBACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR, 3, LOOK.REDUPLOAD_ITEMBORDERCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR, 15);
+            helper.Shape.setViewBackgroundAsShape(_rltBoxBackground, LOOK.REDUPLOAD_ITEMBACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR, 3, LOOK.REDUPLOAD_ITEMBORDERCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR, 15);
             helper.setViewBackgroundColor(_flxPicture, LOOK.REDUPLOAD_CAMERABUTTONCOLOR, LOOK.GLOBAL_ALTCOLOR);
             helper.FlexButton.setImage(_flxPicture, "camerabuttonimage");
-            helper.setViewThreeSides(_flxArchive, LOOK.REDUPLOAD_ITEMBACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR, 3, LOOK.REDUPLOAD_ITEMBORDERCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            if(_db.RedUpload.serverFolderHasEntries(_datasource.getServerFolder())){
+                helper.Shape.setViewThreeSides(_flxArchive, LOOK.REDUPLOAD_ITEMBACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR, 3, LOOK.REDUPLOAD_ITEMBORDERCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            }
+            else{
+                helper.Shape.setViewThreeSides(_flxArchive, null, LOOK.LIGHTGREY, 3, LOOK.REDUPLOAD_ITEMBORDERCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            }
             helper.FlexButton.setImage(_flxArchive, "archivebuttonimage");
 
             helper.TextView.setAltItemTitleStyle(_lblTime);
@@ -100,7 +105,7 @@ public class RedUploadSessionFolderItem extends BaseViewItem {
             @Override
             public void onClick(View v) {
                 try {
-                    XmlNode nextPage = _xml.getPage(_page.getStringFromNode(PAGE.CHILD));
+                    XmlNode nextPage = _xml.getPage(_page.getStringFromNode(PAGE.CHILD)).deepClone();
                     nextPage.addChildToNode(PAGE.REDUPLOADFOLDERID, _datasource.getFolderId());
                     NavController.changePageWithXmlNode(nextPage, _activity);
                 } catch (Exception e) {
@@ -115,7 +120,7 @@ public class RedUploadSessionFolderItem extends BaseViewItem {
             @Override
             public void onClick(View v) {
                 try {
-                    XmlNode nextPage = _xml.getPage(_page.getStringFromNode(PAGE.CHILD2));
+                    XmlNode nextPage = _xml.getPage(_page.getStringFromNode(PAGE.CHILD2)).deepClone();
                     nextPage.addChildToNode(PAGE.REDUPLOADFOLDERID, _datasource.getFolderId());
                     NavController.changePageWithXmlNode(nextPage, _activity);
                 } catch (Exception e) {

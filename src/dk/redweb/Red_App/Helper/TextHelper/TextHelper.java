@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import dk.redweb.Red_App.Views.FlexibleButton;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
@@ -78,6 +79,14 @@ public class TextHelper {
         String text = getText(textName, defaultText);
 
         button.setText(text);
+    }
+
+    public void setSwitchText(Switch theswitch, String textNameOn, String defaultTextOn, String textNameOff, String defaultTextOff) throws NoSuchFieldException {
+        String textOn = getText(textNameOn, defaultTextOn);
+        String textOff = getText(textNameOff, defaultTextOff);
+
+        theswitch.setTextOn(textOn);
+        theswitch.setTextOff(textOff);
     }
 
     public String getText(String textName, String defaultText) throws NoSuchFieldException {

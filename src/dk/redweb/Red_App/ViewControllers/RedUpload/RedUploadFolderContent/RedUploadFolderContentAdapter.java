@@ -51,7 +51,7 @@ public class RedUploadFolderContentAdapter extends ArrayAdapter<RedUploadImage> 
 
         RedUploadImage redUploadImage = _values[row];
 
-        Drawable image = My.getDrawableFromDiskWithFilename(redUploadImage.localImagePath, _activity, 100, 100, true);
+        Drawable image = My.getDrawableFromDiskWithFilename(redUploadImage.localImagePath, _activity, 150, 0, true);
 
         _thumbnails.put(row,image);
         return image;

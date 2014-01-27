@@ -9,7 +9,7 @@
         <textsize>18.0</textsize>
         <textstyle>normal</textstyle>
         <titlesize>24.0</titlesize>
-        <titlestyle>bold</titlestyle>
+        <titlestyle>normal</titlestyle>
         <titleshadowoffset>2.0,2.0</titleshadowoffset>
         <titleshadowradius>2.0</titleshadowradius>
         <itemtitlesize>18.0</itemtitlesize>
@@ -73,12 +73,6 @@
         <backbuttonimage>btnclose.png</backbuttonimage>
     </RedWebMap>
 
-    <SSessionList>
-        <itemtitlestyle>italic</itemtitlestyle>
-        <camerabuttonimage>camera.png</camerabuttonimage>
-        <archivebuttonimage>eye.png</archivebuttonimage>
-    </SSessionList>
-
     <RUEvents>
         <backgroundimage>bg_tile.png</backgroundimage>
         <itembordercolor>#cdcdcd</itembordercolor>
@@ -93,4 +87,65 @@
         <camerabuttonimage>icon_camera.png</camerabuttonimage>
         <archivebuttonimage>icon_eye.png</archivebuttonimage>
     </RUOther>
+
+    <ContentFolder>
+        <backgroundimage>bg_tile.png</backgroundimage>
+        <topbuttonbackgroundcolor>#ffffff</topbuttonbackgroundcolor>
+        <topbuttontextstyle>normal</topbuttontextstyle>
+        <topbuttonbordercolor>#cdcdcd</topbuttonbordercolor>
+        <camerabuttonicon>icon_camera.png</camerabuttonicon>
+
+        <imagebackgroundcolor>#303030</imagebackgroundcolor>
+
+        <itembackgroundcolor>#ffffff</itembackgroundcolor>
+        <itembordercolor>#cdcdcd</itembordercolor>
+        <approveditemmarkercolor>#60af00</approveditemmarkercolor>
+        <unapproveditemmarkercolor>#e1c200</unapproveditemmarkercolor>
+        <selecteditembackgroundcolor>#60af00</selecteditembackgroundcolor>
+        <selecteditemtextcolor>#ffffff</selecteditemtextcolor>
+
+        <approvedtitlecolor>#ffffff</approvedtitlecolor>
+
+        <uploadbuttonbackgroundcolor>#60af00</uploadbuttonbackgroundcolor>
+        <uploadbuttonbackgroundcolor2>#4b8700</uploadbuttonbackgroundcolor2>
+        <uploadbuttonbordercolor>#4b8700</uploadbuttonbordercolor>
+        <uploadbuttontextcolor>#ffffff</uploadbuttontextcolor>
+
+        <editbuttonbackgroundcolor>#0099cd</editbuttonbackgroundcolor>
+        <editbuttonbackgroundcolor2>#0076a1</editbuttonbackgroundcolor2>
+        <editbuttonbordercolor>#0076a1</editbuttonbordercolor>
+        <editbuttontextcolor>#ffffff</editbuttontextcolor>
+
+        <borderwidth>1</borderwidth>
+        <corner>15</corner>
+    </ContentFolder>
+
+    <RedUploader>
+        <backgroundimage>bg_tile.png</backgroundimage>
+        <topbuttonbackgroundcolor>#ffffff</topbuttonbackgroundcolor>
+        <topbuttontextstyle>normal</topbuttontextstyle>
+        <topbuttonbordercolor>#cdcdcd</topbuttonbordercolor>
+        <camerabuttonicon>icon_camera.png</camerabuttonicon>
+
+        <textboxbackgroundcolor>#dedede</textboxbackgroundcolor>
+        <approvalboxbordercolor>#cdcdcd</approvalboxbordercolor>
+
+        <approvalbuttonbackgroundcolor>#e1c200</approvalbuttonbackgroundcolor>
+        <approvalbuttonbackgroundcolor2>#b09900</approvalbuttonbackgroundcolor2>
+        <approvalbuttonbordercolor>#b9a217</approvalbuttonbordercolor>
+        <approvalbuttontextcolor>#ffffff</approvalbuttontextcolor>
+
+        <uploadbuttonbackgroundcolor>#60af00</uploadbuttonbackgroundcolor>
+        <uploadbuttonbackgroundcolor2>#4b8700</uploadbuttonbackgroundcolor2>
+        <uploadbuttonbordercolor>#4b8700</uploadbuttonbordercolor>
+        <uploadbuttontextcolor>#ffffff</uploadbuttontextcolor>
+
+        <deletebuttonbackgroundcolor>#ea2f2f</deletebuttonbackgroundcolor>
+        <deletebuttonbackgroundcolor2>#b82222</deletebuttonbackgroundcolor2>
+        <deletebuttonbordercolor>#c62727</deletebuttonbordercolor>
+        <deletebuttontextcolor>#ffffff</deletebuttontextcolor>
+
+        <borderwidth>1</borderwidth>
+        <corner>15</corner>
+    </RedUploader>
 </appearance>

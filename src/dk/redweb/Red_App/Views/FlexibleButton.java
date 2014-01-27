@@ -28,6 +28,10 @@ public class FlexibleButton extends RelativeLayout{
     public FlexibleButton(Context context, AttributeSet attrs) {
         super(context, attrs);
 
+        inflateLayout(context);
+    }
+
+    public void inflateLayout(Context context){
         LayoutInflater.from(context).inflate(R.layout.view_flexiblebutton, this);
 
         txtButton = (TextView)findViewById(R.id.flexibleButton_lblButton);
@@ -62,14 +66,5 @@ public class FlexibleButton extends RelativeLayout{
 
     public void setTextShadowLayer(float radius, float dx, float dy, int color){
         txtButton.setShadowLayer(radius,dx,dy,color);
-    }
-
-    @Override
-    public void setEnabled(boolean enabled){
-        super.setEnabled(true);
-        if (!enabled){
-            this.setBackgroundColor(darker_gray);
-            imgButton.setColorFilter(0xFF000000, PorterDuff.Mode.MULTIPLY);
-        }
     }
 }
