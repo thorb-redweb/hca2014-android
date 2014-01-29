@@ -47,8 +47,6 @@ public class RedUploadFolderFragment extends BasePageFragment {
     public View onCreateView(LayoutInflater inflate, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflate, container, R.layout.page_reduploadfolder);
 
-
-
         fetchControls();
         setValues();
         setControls();

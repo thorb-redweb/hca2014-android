@@ -31,11 +31,21 @@ public class ShapeAppearanceHelper {
         int bordercolor = _getter.getColor(localBorderColor, globalBorderColor);
         float[] radii = new float[]{cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius, cornerRadius};
 
-        RoundRectShape roundRectShape = new RoundRectShape(radii, null, null);
-        ShapeDrawable shapeDrawable = new CustomShapeDrawable(roundRectShape, backgroundcolor,bordercolor,borderWidth);
-        LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{shapeDrawable});
+        Drawable[] layers = new Drawable[2];
 
-        view.setBackground(layerDrawable);
+        ShapeDrawable sd1 = new ShapeDrawable(new RoundRectShape(radii, null, null));
+        sd1.getPaint().setColor(bordercolor);
+        sd1.setPadding((int)borderWidth, (int)borderWidth, (int)borderWidth, (int)borderWidth);
+//        ShapeDrawable shapeDrawable = new CustomShapeDrawable(roundRectShape, backgroundcolor,bordercolor,borderWidth);
+//        LayerDrawable layerDrawable = new LayerDrawable(new Drawable[]{shapeDrawable});
+        ShapeDrawable sd2 = new ShapeDrawable(new RoundRectShape(radii, null, null));
+        sd2.getPaint().setColor(backgroundcolor);
+
+        layers[0] = sd1;
+        layers[1] = sd2;
+        LayerDrawable composite = new LayerDrawable(layers);
+
+        view.setBackground(composite);
     }
 
     public void setViewBackgroundAsShapeWithGradiant(View view, String localBackgroundColorNameTop, String globalBackgroundColorNameTop,

@@ -40,14 +40,21 @@ public class RedUploadDataStore extends VolatileStore {
         RedUploadImage[] redUploadImages = db.RedUpload.getAll();
 
         for (RedUploadImage image : redUploadImages) {
-            boolean folderDoesntExist = true;
+            boolean sessionFolderDoesntExist = true;
             for (RedUploadServerFolder folder : _sessionFolders) {
                 if (folder.getServerFolder().equals(image.serverFolder)) {
-                    folderDoesntExist = false;
+                    sessionFolderDoesntExist = false;
                     break;
                 }
             }
-            if(folderDoesntExist){
+            boolean otherFolderDoesntExist = true;
+            for (RedUploadServerFolder folder : _otherFolders) {
+                if (folder.getServerFolder().equals(image.serverFolder)) {
+                    otherFolderDoesntExist = false;
+                    break;
+                }
+            }
+            if(sessionFolderDoesntExist && otherFolderDoesntExist){
                 db.RedUpload.deleteEntryWithImagePath(image.localImagePath);
             }
         }

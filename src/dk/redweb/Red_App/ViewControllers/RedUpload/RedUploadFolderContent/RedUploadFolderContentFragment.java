@@ -99,7 +99,6 @@ public class RedUploadFolderContentFragment extends BasePageFragment {
     private void setAppearance() {
         try{
             AppearanceHelper helper = _appearanceHelper;
-            helper.Shape.setViewBackgroundAsShape(_flxBack, "topbuttonbackgroundcolor", LOOK.GLOBAL_BACKCOLOR, "borderwidth", "topbuttonbordercolor", LOOK.GLOBAL_ALTTEXTCOLOR, "corner");
 
             FlexibleButton[] topButtons = {_flxBack, _flxiNext};
             helper.Shape.setViewBackgroundAsShape(topButtons, "topbuttonbackgroundcolor", LOOK.GLOBAL_BACKCOLOR, "borderwidth", "topbuttonbordercolor", LOOK.GLOBAL_BACKTEXTCOLOR, "corner");
