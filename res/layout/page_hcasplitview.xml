@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+            android:paddingLeft="20dp" android:paddingRight="20dp">
+        <RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+            <TextView android:id="@+id/hcasplitview_lblEventsTitle"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="NÆSTE ARRANGEMENT"/>
+            <LinearLayout android:layout_width="match_parent" android:layout_height="2dp"
+                          android:layout_below="@+id/hcasplitview_lblEventsTitle"
+                          android:background="#e5007d"/>
+        </RelativeLayout>
+        <ListView android:id="@+id/hcasplitview_lstArrangements"
+                  android:layout_width="match_parent" android:layout_height="match_parent"
+                  android:cacheColorHint="@android:color/white"
+                  android:divider="@null"
+                  android:dividerHeight="0dp"/>
+
+    </LinearLayout>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1"
+            android:background="#e5007d">
+        <TextView
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@android:color/white"
+                android:text="SENESTE NYHED"/>
+        <dk.redweb.Red_App.Views.NewsTicker android:id="@+id/hcasplitview_nwsTicker"
+                android:layout_width="match_parent" android:layout_height="wrap_content">
+            <include android:id="@+id/hcasplitview_news1"
+                     layout="@layout/listitem_newsticker"/>
+            <include android:id="@+id/hcasplitview_news2"
+                     layout="@layout/listitem_newsticker"/>
+            <include android:id="@+id/hcasplitview_news3"
+                     layout="@layout/listitem_newsticker"/>
+        </dk.redweb.Red_App.Views.NewsTicker>
+
+    </LinearLayout>
+</LinearLayout>

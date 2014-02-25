@@ -33,6 +33,7 @@ import dk.redweb.Red_App.ViewControllers.Session.StyledSessionList.StyledSession
 import dk.redweb.Red_App.ViewControllers.Settings.PushMessageGroupSettings.PushMessageGroupSettingsFragment;
 import dk.redweb.Red_App.ViewControllers.Settings.PushMessageSubscriber.PushMessageSubscriberFragment;
 import dk.redweb.Red_App.ViewControllers.Settings.PushMessageUnsubscriber.PushMessageUnsubscriberFragment;
+import dk.redweb.Red_App.ViewControllers.SplitView.HcaSplitViewFragment;
 import dk.redweb.Red_App.ViewControllers.System.PushMessageAutoSubscriber.PushMessageAutoSubscriberFragment;
 import dk.redweb.Red_App.ViewControllers.Venue.VenueDetail.VenueDetailFragment;
 import dk.redweb.Red_App.XmlHandling.XmlNode;
@@ -156,6 +157,8 @@ public class NavController {
             return new DailySessionListFragment(page);
         } else if (type.equals(TYPE.FILEBROWSER)){
             return new ImageUploaderFileBrowserFragment(page);
+        } else if (type.equals(TYPE.HCASPLITVIEW)){
+            return new HcaSplitViewFragment(page);
         } else if (type.equals(TYPE.IMAGEARTICLELIST)){
             return new ImageArticleListFragment(page);
         } else if (type.equals(TYPE.IMAGEUPLOADER)){

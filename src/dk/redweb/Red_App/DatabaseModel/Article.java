@@ -1,5 +1,6 @@
 package dk.redweb.Red_App.DatabaseModel;
 
+import android.net.Uri;
 import org.joda.time.DateTime;
 
 /**
@@ -17,6 +18,7 @@ public class Article {
     public String IntroImagePath;
     public String MainImagePath;
     public DateTime PublishDate;
+    public Uri ExternalLink;
 
     public Article(){
         ArticleId = -1;

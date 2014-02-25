@@ -1,5 +1,6 @@
 package dk.redweb.Red_App.ViewModels;
 
+import android.net.Uri;
 import dk.redweb.Red_App.DatabaseModel.Article;
 import dk.redweb.Red_App.StringUtils;
 import org.joda.time.DateTime;
@@ -31,6 +32,10 @@ public class ArticleVM {
 
     public int CatId(){
         return _article.Catid;
+    }
+
+    public Uri ExternalLink(){
+        return Uri.parse("redweb.dk");
     }
 
     public DateTime PublishDate(){
