@@ -18,7 +18,7 @@
     <LinearLayout android:id="@+id/map_lnrButtonFrame"
             style="@style/Layout.Wrap"
             android:layout_alignParentBottom="true">
-        <dk.redweb.Red_App.Views.FlexibleButton
+        <dk.redweb.hca2014.Views.FlexibleButton
             android:id="@+id/map_flxButtonBack"
             style="@style/Layout.Wrap"
                 android:layout_height="50dp"/>

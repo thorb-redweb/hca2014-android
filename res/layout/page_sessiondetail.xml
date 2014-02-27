@@ -112,7 +112,7 @@
             <TextView android:id="@+id/sessionDetail_lblBody"
                       style="@style/Layout.Full"
                       android:padding="7sp"/>
-            <dk.redweb.Red_App.Views.FlexibleButton
+            <dk.redweb.hca2014.Views.FlexibleButton
                     android:id="@+id/flxBackButton"
                     style="@style/Layout.Wrap.Complete"
                     android:layout_marginTop="15dp"

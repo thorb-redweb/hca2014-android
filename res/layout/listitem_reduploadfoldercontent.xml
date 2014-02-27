@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<dk.redweb.Red_App.ViewControllers.RedUpload.RedUploadFolderContent.RedUploadFolderContentItem xmlns:android="http://schemas.android.com/apk/res/android"
+<dk.redweb.hca2014.ViewControllers.RedUpload.RedUploadFolderContent.RedUploadFolderContentItem xmlns:android="http://schemas.android.com/apk/res/android"
                                                 android:orientation="vertical"
                                                 android:layout_width="150dp"
                                                 android:layout_height="wrap_content">
@@ -45,4 +45,4 @@
               android:layout_alignRight="@+id/reduploadfoldercontent_lrnBottomArea"
               android:layout_alignLeft="@+id/reduploadfoldercontent_lrnBottomArea"/>
     </RelativeLayout>
-</dk.redweb.Red_App.ViewControllers.RedUpload.RedUploadFolderContent.RedUploadFolderContentItem>
+</dk.redweb.hca2014.ViewControllers.RedUpload.RedUploadFolderContent.RedUploadFolderContentItem>

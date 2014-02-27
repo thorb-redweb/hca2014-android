@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="dk.redweb.Red_App"
+          package="dk.redweb.hca2014"
           android:versionCode="1"
           android:versionName="1.0">
     <uses-sdk android:minSdkVersion="16"/>
@@ -22,34 +22,34 @@
     <uses-permission android:name="android.permission.VIBRATE"/>
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
-    <permission android:name="dk.redweb.Red_App.permission.C2D_MESSAGE"
+    <permission android:name="dk.redweb.hca2014.permission.C2D_MESSAGE"
                 android:protectionLevel="signature" />
     <uses-permission android:name="dk.redweb.Red_App.permission.C2D_MESSAGE" />
 
-    <application android:name=".RedEventApplication" android:theme="@android:style/Theme.Holo.Light.NoActionBar" android:label="@string/app_name" android:icon="@drawable/ic_launcher">
-        <activity android:name=".ViewControllers.SplashActivity"
+    <application android:name="dk.redweb.hca2014.RedEventApplication" android:theme="@android:style/Theme.Holo.Light.NoActionBar" android:label="@string/app_name" android:icon="@drawable/ic_launcher">
+        <activity android:name="dk.redweb.hca2014.ViewControllers.SplashActivity"
                   android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".ViewControllers.FragmentPagesActivity"
+        <activity android:name="dk.redweb.hca2014.ViewControllers.FragmentPagesActivity"
                   android:screenOrientation="portrait"/>
-        <activity android:name=".ViewControllers.System.PushMessageForwarder.PushMessageForwarder"/>
+        <activity android:name="dk.redweb.hca2014.ViewControllers.System.PushMessageForwarder.PushMessageForwarder"/>
 
         <receiver
-                android:name=".Network.PushMessages.GcmBroadcastReceiver"
+                android:name="dk.redweb.hca2014.Network.PushMessages.GcmBroadcastReceiver"
                 android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <category android:name="dk.redweb.Red_App" />
             </intent-filter>
         </receiver>
-        <service android:name=".Network.PushMessages.GcmIntentService" />
+        <service android:name="dk.redweb.hca2014.Network.PushMessages.GcmIntentService" />
 
-        <receiver android:name=".ViewControllers.Contest.BikeTracking.BikeContestReceiver"/>
-        <service android:name=".ViewControllers.Contest.BikeTracking.BikePingLocation"/>
+        <receiver android:name="dk.redweb.hca2014.ViewControllers.Contest.BikeTracking.BikeContestReceiver"/>
+        <service android:name="dk.redweb.hca2014.ViewControllers.Contest.BikeTracking.BikePingLocation"/>
 
         <meta-data
                 android:name="com.google.android.maps.v2.API_KEY"

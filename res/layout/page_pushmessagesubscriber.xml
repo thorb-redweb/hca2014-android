@@ -18,13 +18,13 @@
             android:imeOptions="actionDone"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"/>
-    <dk.redweb.Red_App.Views.FlexibleButton
+    <dk.redweb.hca2014.Views.FlexibleButton
         android:id="@+id/pushmessagesubscriber_flxSubmit"
         style="@style/Layout.Wrap.Complete"
         android:layout_gravity="center_horizontal"
         android:minWidth="100dp"
         android:layout_margin="5dp"/>
-    <dk.redweb.Red_App.Views.FlexibleButton
+    <dk.redweb.hca2014.Views.FlexibleButton
         android:id="@+id/pushmessagesubscriber_flxBack"
         style="@style/Layout.Wrap.Complete"
         android:layout_gravity="center_horizontal"

@@ -3,149 +3,39 @@
         <barcolor>#02a5e5</barcolor>
         <bartextcolor>#666666</bartextcolor>
         <backcolor>#ffffff</backcolor>
-        <backtextcolor>#666666</backtextcolor>
-        <altcolor>#ed3030</altcolor>
-        <alttextcolor>#666666</alttextcolor>
-        <textsize>18.0</textsize>
+        <backtextcolor>#000000</backtextcolor>
+        <altcolor>#e5007d</altcolor>
+        <alttextcolor>#ffffff</alttextcolor>
+        <textsize>16.0</textsize>
         <textstyle>normal</textstyle>
-        <titlesize>24.0</titlesize>
-        <titlestyle>normal</titlestyle>
-        <titleshadowoffset>2.0,2.0</titleshadowoffset>
-        <titleshadowradius>2.0</titleshadowradius>
+        <titlesize>22.0</titlesize>
+        <titlestyle>bold</titlestyle>
         <itemtitlesize>18.0</itemtitlesize>
         <itemtitlestyle>bold</itemtitlestyle>
     </default>
 
     <navigationbar>
-        <visible>NO</visible>
+        <backgroundcolor>#000000</backgroundcolor>
+
     </navigationbar>
 
     <tabbar>
-        <backgroundimage>barbackground.png</backgroundimage>
-        <textcolor>#000000</textcolor>
-        <textsize>12.0</textsize>
-        <textstyle>italic</textstyle>
-        <textshadowcolor>#FFFFFF</textshadowcolor>
-        <textshadowoffset>1.0,1.0</textshadowoffset>
+        <barheight>85</barheight>
+        <backgroundcolor>#000000</backgroundcolor>
+        <textcolor>#ffffff</textcolor>
+        <textsize>18.0</textsize>
     </tabbar>
 
-    <SwipeView>
-        <backgroundimage>julebaggrund.jpg</backgroundimage>
-        <selectedpagecolor>#b4282e</selectedpagecolor>
-        <unselectedpagecolor>#FFFFFF</unselectedpagecolor>
-    </SwipeView>
-
-    <JuleKalender>
-        <backgroundcolor>#00000000</backgroundcolor>
-    </JuleKalender>
-
-    <Laage>
-        <backgroundimage>julebaggrund.jpg</backgroundimage>
-        <titlecolor>#b4282e</titlecolor>
-        <titlesize>36.0</titlesize>
-        <textbackgroundcolor>#FFFFFF</textbackgroundcolor>
-        <textcolor>#000000</textcolor>
-        <backbuttonimage>btnseeyou.png</backbuttonimage>
-    </Laage>
-
     <Nyheder>
-        <backgroundcolor>#66151839</backgroundcolor>
-        <cellbackgroundcolor>#66151839</cellbackgroundcolor>
+
     </Nyheder>
 
     <Nyhedsside>
-        <backgroundimage>julebaggrund.jpg</backgroundimage>
-        <titlecolor>#b4282e</titlecolor>
-        <backbuttonimage>btnclose.png</backbuttonimage>
+
     </Nyhedsside>
 
     <Program>
         <leftarrow>arrow_left.png</leftarrow>
         <rightarrow>arrow_right.png</rightarrow>
     </Program>
-
-    <RedWeb>
-        <backgroundcolor>#66151839</backgroundcolor>
-        <titlecolor>#b4282e</titlecolor>
-    </RedWeb>
-
-    <RedWebMap>
-        <backbuttonimage>btnclose.png</backbuttonimage>
-    </RedWebMap>
-
-    <RUEvents>
-        <backgroundimage>bg_tile.png</backgroundimage>
-        <itembordercolor>#cdcdcd</itembordercolor>
-        <camerabuttonimage>icon_camera.png</camerabuttonimage>
-        <archivebuttonimage>icon_eye.png</archivebuttonimage>
-    </RUEvents>
-
-    <RUOther>
-        <backgroundimage>bg_tile.png</backgroundimage>
-        <subitemcamerabuttoncolor>#951a1a</subitemcamerabuttoncolor>
-        <itembordercolor>#cdcdcd</itembordercolor>
-        <camerabuttonimage>icon_camera.png</camerabuttonimage>
-        <archivebuttonimage>icon_eye.png</archivebuttonimage>
-    </RUOther>
-
-    <ContentFolder>
-        <backgroundimage>bg_tile.png</backgroundimage>
-        <topbuttonbackgroundcolor>#ffffff</topbuttonbackgroundcolor>
-        <topbuttontextstyle>normal</topbuttontextstyle>
-        <topbuttonbordercolor>#cdcdcd</topbuttonbordercolor>
-        <camerabuttonicon>icon_camera.png</camerabuttonicon>
-
-        <imagebackgroundcolor>#303030</imagebackgroundcolor>
-
-        <itembackgroundcolor>#ffffff</itembackgroundcolor>
-        <itembordercolor>#cdcdcd</itembordercolor>
-        <approveditemmarkercolor>#60af00</approveditemmarkercolor>
-        <unapproveditemmarkercolor>#e1c200</unapproveditemmarkercolor>
-        <selecteditembackgroundcolor>#60af00</selecteditembackgroundcolor>
-        <selecteditemtextcolor>#ffffff</selecteditemtextcolor>
-
-        <approvedtitlecolor>#ffffff</approvedtitlecolor>
-
-        <uploadbuttonbackgroundcolor>#60af00</uploadbuttonbackgroundcolor>
-        <uploadbuttonbackgroundcolor2>#4b8700</uploadbuttonbackgroundcolor2>
-        <uploadbuttonbordercolor>#4b8700</uploadbuttonbordercolor>
-        <uploadbuttontextcolor>#ffffff</uploadbuttontextcolor>
-
-        <editbuttonbackgroundcolor>#0099cd</editbuttonbackgroundcolor>
-        <editbuttonbackgroundcolor2>#0076a1</editbuttonbackgroundcolor2>
-        <editbuttonbordercolor>#0076a1</editbuttonbordercolor>
-        <editbuttontextcolor>#ffffff</editbuttontextcolor>
-
-        <borderwidth>1</borderwidth>
-        <corner>15</corner>
-    </ContentFolder>
-
-    <RedUploader>
-        <backgroundimage>bg_tile.png</backgroundimage>
-        <topbuttonbackgroundcolor>#ffffff</topbuttonbackgroundcolor>
-        <topbuttontextstyle>normal</topbuttontextstyle>
-        <topbuttonbordercolor>#cdcdcd</topbuttonbordercolor>
-        <camerabuttonicon>icon_camera.png</camerabuttonicon>
-
-        <textboxbackgroundcolor>#dedede</textboxbackgroundcolor>
-        <approvalboxbordercolor>#cdcdcd</approvalboxbordercolor>
-
-        <approvalbuttonbackgroundcolor>#e1c200</approvalbuttonbackgroundcolor>
-        <approvalbuttonbackgroundcolor2>#b09900</approvalbuttonbackgroundcolor2>
-        <approvalbuttonbordercolor>#b9a217</approvalbuttonbordercolor>
-        <approvalbuttontextcolor>#ffffff</approvalbuttontextcolor>
-
-        <uploadbuttonbackgroundcolor>#60af00</uploadbuttonbackgroundcolor>
-        <uploadbuttonbackgroundcolor2>#4b8700</uploadbuttonbackgroundcolor2>
-        <uploadbuttonbordercolor>#4b8700</uploadbuttonbordercolor>
-        <uploadbuttontextcolor>#ffffff</uploadbuttontextcolor>
-
-        <deletebuttonbackgroundcolor>#ea2f2f</deletebuttonbackgroundcolor>
-        <deletebuttonbackgroundcolor2>#b82222</deletebuttonbackgroundcolor2>
-        <deletebuttonbordercolor>#c62727</deletebuttonbordercolor>
-        <deletebuttontextcolor>#ffffff</deletebuttontextcolor>
-
-        <borderwidth>1</borderwidth>
-        <corner>15</corner>
-    </RedUploader>
 </appearance>

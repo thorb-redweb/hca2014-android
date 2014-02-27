@@ -24,7 +24,7 @@
               android:layout_marginLeft="15dp"
               android:layout_marginRight="15dp"
               android:padding="10dp"/>
-    <dk.redweb.Red_App.Views.FlexibleButton
+    <dk.redweb.hca2014.Views.FlexibleButton
             android:id="@+id/adventwindow_flxBackButton"
             style="@style/Layout.Wrap.Complete"
             android:layout_marginTop="-10dp"

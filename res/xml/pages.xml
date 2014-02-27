@@ -7,74 +7,29 @@
         <backgroundimage>splash.png</backgroundimage>
 	</page>
     <page>
-        <name>AutoSubscriber</name>
-        <type>PushMessageAutoSubscriber</type>
-        <child>SwipeView</child>
+        <name>HCA</name>
+        <type>HcaSplitView</type>
         <frontpage>true</frontpage>
+        <child2>Nyhedsside</child2>
     </page>
     <page>
-        <name>SwipeView</name>
-        <type>SwipeView</type>
-        <section>Nyheder</section>
-        <section>PMList</section>
-        <section>About</section>
-    </page>
-    <page>
-		<name>Nyheder</name>
-		<type>ImageArticleList</type>
-		<catid>12</catid>
-        <tabname>Forside</tabname>
-        <navname>Nyheder</navname>
-        <parent>SwipeView</parent>
-        <child>Nyhedsside</child>
-	</page>
-    <page>
-        <name>Nyhedsside</name>
-        <type>ArticleDetail</type>
-        <parent>Nyheder</parent>
-        <returnbutton>YES</returnbutton>
-    </page>
-    <page>
-        <name>PMList</name>
-        <type>PushMessageList</type>
-        <subscriptions>YES</subscriptions>
-        <parent>SwipeView</parent>
-        <child>PMessage</child>
-    </page>
-    <page>
-        <name>PMessage</name>
-        <type>PushMessageDetail</type>
-        <parent>PMList</parent>
-        <returnontap>YES</returnontap>
-        <returnbutton>YES</returnbutton>
-    </page>
-    <page>
-        <name>About</name>
-        <type>StaticArticle</type>
-        <articleid>55</articleid>
-        <returnbutton>YES</returnbutton>
-    </page>
-    <page>
-        <name>ButtonMenu</name>
-        <type>ButtonGallery</type>
-        <tabname>ButtonMenu</tabname>
-        <button1>Program</button1>
-        <button2>OverviewMap</button2>
-        <button3>WebView</button3>
-        <button4>RedWeb</button4>
-        <button5>Biking</button5>
-        <button6>Stairing</button6>
-        <button7>Camera</button7>
-        <button8>Image Uploader</button8>
+        <name>Kort</name>
+        <type>OverviewMap</type>
+        <tabname>Kort</tabname>
+        <tabimage>icon_map_bottombar.png</tabimage>
+        <child>Begivenhed</child>
     </page>
     <page>
         <name>Program</name>
         <type>DailySessionList</type>
+        <tabname>Program</tabname>
+        <tabimage>icon_program_bottombar.png</tabimage>
         <child>Begivenhed</child>
     </page>
     <page>
         <name>Begivenhed</name>
         <type>SessionDetail</type>
+        <navname>@SessionTitle</navname>
         <parent>Program</parent>
         <child>SessionMap</child>
         <returnbutton>YES</returnbutton>
@@ -87,112 +42,38 @@
         <returnbutton>YES</returnbutton>
     </page>
     <page>
-        <name>OverviewMap</name>
-        <type>OverviewMap</type>
-        <returnbutton>YES</returnbutton>
+		<name>Nyheder</name>
+		<type>ImageArticleList</type>
+        <tabname>Nyheder</tabname>
+        <tabimage>icon_news_bottombar.png</tabimage>
+		<catid>31</catid>
+        <child>Nyhedsside</child>
+	</page>
+    <page>
+        <name>Nyhedsside</name>
+        <type>ArticleDetail</type>
+        <parent>Nyheder</parent>
+        <bodyuseshtml>YES</bodyuseshtml>
     </page>
     <page>
-        <name>WebView</name>
-        <type>WebView</type>
-        <url>http://redweb.dk/</url>
-        <returnbutton>YES</returnbutton>
+        <name>Other</name>
+        <type>TableNavigator</type>
+        <tabname>Andet</tabname>
+        <tabimage>icon_about_bottombar.png</tabimage>
+        <entry>
+            <name>Om</name>
+        </entry>
     </page>
     <page>
-        <name>RedWeb</name>
-        <type>VenueDetail</type>
-        <venueid>2</venueid>
-        <child>VenueMap</child>
-    </page>
-    <page>
-        <name>VenueMap</name>
-        <type>VenueMap</type>
-        <parent>RedWeb</parent>
-    </page>
-    <page>
-        <name>Biking</name>
-        <type>BikeTracking</type>
-    </page>
-    <page>
-        <name>Stairing</name>
-        <type>StairTracking</type>
-    </page>
-    <page>
-        <name>Camera</name>
-        <type>CameraIntent</type>
-        <child>Image Uploader</child>
-        <folder>redApp</folder>
-    </page>
-    <page>
-        <name>Image Uploader</name>
-        <type>ImageUploader</type>
-        <folder>redApp</folder>
-    </page>
-    <page>
-        <name>ButtonMenu2</name>
-        <type>ButtonGallery</type>
-        <tabname>BM2</tabname>
-        <button1>About2</button1>
-        <button2>Nyheder2</button2>
-        <button3>RUEvents</button3>
-        <button4>RUOther</button4>
-        <button5>HCA</button5>
-    </page>
-    <page>
-        <name>About2</name>
+        <name>Om</name>
         <type>StaticArticle</type>
         <articleid>55</articleid>
         <returnbutton>YES</returnbutton>
     </page>
     <page>
-        <name>Nyheder2</name>
-        <type>ImageArticleList</type>
-        <catid>12</catid>
-        <navname>Nyheder</navname>
-        <child>Nyhedsside</child>
-    </page>
-    <page>
-        <name>RUEvents</name>
-        <type>RedUploadFolder</type>
-        <child>Camera2</child>
-        <child2>ContentFolder</child2>
-        <foldertype>session</foldertype>
-    </page>
-    <page>
-        <name>RUOther</name>
-        <type>RedUploadFolder</type>
-        <child>Camera2</child>
-        <child2>ContentFolder</child2>
-        <foldertype>other</foldertype>
-    </page>
-    <page>
-        <name>Camera2</name>
-        <type>CameraIntent</type>
-        <child>RedUploader</child>
-        <folder>redApp</folder>
-        <sessionid>2</sessionid>
-    </page>
-    <page>
-        <name>ContentFolder</name>
-        <type>RedUploadFolderContent</type>
-        <child>Camera2</child>
-        <child2>RedUploader</child2>
-    </page>
-    <page>
-        <name>RedUploader</name>
-        <type>RedUploadPictureView</type>
-        <parent>RUEvents</parent>
-        <child>Camera2</child>
-        <folder>redApp</folder>
-    </page>
-    <page>
-        <name>HCA</name>
-        <type>HcaSplitView</type>
-    </page>
-    <page>
         <name>PMInitializer</name>
         <type>PushMessageSubscriber</type>
         <child>TableNavigator</child>
-        <tabname>Settings</tabname>
     </page>
     <page>
         <name>TableNavigator</name>

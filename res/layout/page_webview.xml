@@ -8,7 +8,7 @@
              android:layout_above="@id/flxBackButton"
              style="@style/Layout.Full"/>
 
-    <dk.redweb.Red_App.Views.FlexibleButton
+    <dk.redweb.hca2014.Views.FlexibleButton
             android:id="@+id/flxBackButton"
             android:layout_alignParentBottom="true"
             style="@style/Layout.Wrap"

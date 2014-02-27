@@ -45,8 +45,16 @@
                 style="@style/Layout.Wrap"
                 android:orientation="horizontal"
                 android:layout_marginBottom="20sp">
-                <Spinner android:id="@+id/dailysessionlist_spnVenue"
-                         style="@style/Layout.Wrap.Complete"/>
+                <Spinner android:id="@+id/dailysessionlist_spnType"
+                    style="@style/Spinner"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                        android:layout_marginRight="5dp"/>
+            <Spinner android:id="@+id/dailysessionlist_spnVenue"
+                     style="@style/Spinner"
+                     android:layout_width="0dp"
+                     android:layout_weight="1"
+                     android:layout_marginLeft="5dp"/>
         </LinearLayout>
     </LinearLayout>
 

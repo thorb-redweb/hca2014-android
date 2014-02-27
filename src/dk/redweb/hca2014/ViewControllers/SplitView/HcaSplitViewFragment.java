@@ -1,0 +1,116 @@
+package dk.redweb.hca2014.ViewControllers.SplitView;
+
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import android.view.*;
+import android.widget.AdapterView;
+import android.widget.ListAdapter;
+import android.widget.ListView;
+import dk.redweb.hca2014.MyLog;
+import dk.redweb.hca2014.NavController;
+import dk.redweb.hca2014.R;
+import dk.redweb.hca2014.StaticNames.PAGE;
+import dk.redweb.hca2014.ViewControllers.BasePageFragment;
+import dk.redweb.hca2014.ViewModels.ArticleVM;
+import dk.redweb.hca2014.ViewModels.SessionVM;
+import dk.redweb.hca2014.Views.NewsTicker;
+import dk.redweb.hca2014.XmlHandling.XmlNode;
+import org.joda.time.DateTime;
+
+/**
+ * Created by Redweb with IntelliJ IDEA.
+ * Date: 2/25/14
+ * Time: 12:59
+ */
+public class HcaSplitViewFragment extends BasePageFragment {
+
+    FragmentActivity context;
+    GestureDetector gestureDetector;
+
+    ListView lstSessions;
+    NewsTicker newsTicker;
+
+    public HcaSplitViewFragment(XmlNode page) {
+        super(page);
+    }
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, R.layout.page_hcasplitview);
+
+        lstSessions = (ListView)findViewById(R.id.hcasplitview_lstArrangements);
+        newsTicker = (NewsTicker)findViewById(R.id.hcasplitview_nwsTicker);
+
+        context = this.getActivity();
+
+        gestureDetector = new GestureDetector(context, newsTicker);
+
+        setupSessionList();
+        setupNewsTicker();
+        changeSessionList();
+        changeNewsTicker();
+
+        return _view;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+
+        newsTicker.startFlipping();
+    }
+
+    private void setupSessionList(){
+        lstSessions.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MyLog.d("Executing lstSessions.setOnItemClickListener");
+                ListAdapter adapter = lstSessions.getAdapter();
+
+                try {
+                    NavController.changePageWithXmlNode(_page, context);
+                } catch (NoSuchFieldException e) {
+                    MyLog.e("Exception when attempting to change page", e);
+                }
+
+            }
+        });
+    }
+
+    private void setupNewsTicker(){
+        XmlNode newsChildPage = null;
+        try {
+            String child2name = _page.getStringFromNode(PAGE.CHILD2);
+            newsChildPage = _xml.getPage(child2name);
+        } catch (Exception e) {
+            MyLog.e("Exception when getting news child page", e);
+        }
+        newsTicker.SetupNewsticker(getActivity(), newsChildPage);
+        newsTicker.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                return gestureDetector.onTouchEvent(motionEvent);
+            }
+        });
+
+        newsTicker.setClickable(true);
+
+        newsTicker.setFlipInterval(6000);
+        newsTicker.setInAnimation(context, R.anim.newsticker_infromright);
+        newsTicker.setOutAnimation(context, R.anim.newsticker_outtoleft);
+    }
+
+    public void changeSessionList(){
+        MyLog.d("Running changeSessionList");
+        SessionVM[] sessions = _db.Sessions.getNextThreeVM(new DateTime());
+        HcaListViewAdapter lstSessionsAdapter = new HcaListViewAdapter(context, sessions);
+        lstSessions.setAdapter(lstSessionsAdapter);
+    }
+
+    public void changeNewsTicker(){
+        MyLog.d("Running changeEventTicker");
+        //todo add real article id
+        ArticleVM[] newsData = _db.Articles.getListOfLastThree(31);
+        newsTicker.changeContent(newsData, _net);
+    }
+}

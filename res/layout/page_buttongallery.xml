@@ -3,7 +3,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-    <dk.redweb.Red_App.Views.NavBarBox android:id="@+id/navbar"
+    <dk.redweb.hca2014.Views.NavBarBox android:id="@+id/navbar"
                                             style="@style/Layout.Wrap"
                                             android:layout_alignParentTop="true"/>
 
@@ -24,7 +24,7 @@
                 android:layout_width="0dp"
                 android:layout_weight=".5"
                 android:gravity="center">
-                <dk.redweb.Red_App.Views.FlexibleButton
+                <dk.redweb.hca2014.Views.FlexibleButton
                         android:id="@+id/buttongallery_btn1"
                         style="@style/Layout.Full"
                         android:layout_margin="20dp"
@@ -35,7 +35,7 @@
                     android:layout_width="0dp"
                     android:layout_weight=".5"
                     android:gravity="center">
-                <dk.redweb.Red_App.Views.FlexibleButton
+                <dk.redweb.hca2014.Views.FlexibleButton
                         android:id="@+id/buttongallery_btn2"
                         style="@style/Layout.Full"
                         android:layout_margin="20dp"
@@ -55,7 +55,7 @@
                     android:layout_width="0dp"
                     android:layout_weight=".5"
                     android:gravity="center">
-                <dk.redweb.Red_App.Views.FlexibleButton
+                <dk.redweb.hca2014.Views.FlexibleButton
                         android:id="@+id/buttongallery_btn3"
                         style="@style/Layout.Full"
                         android:layout_margin="20dp"
@@ -66,7 +66,7 @@
                     android:layout_width="0dp"
                     android:layout_weight=".5"
                     android:gravity="center">
-                <dk.redweb.Red_App.Views.FlexibleButton
+                <dk.redweb.hca2014.Views.FlexibleButton
                         android:id="@+id/buttongallery_btn4"
                         style="@style/Layout.Full"
                         android:layout_margin="20dp"
@@ -86,7 +86,7 @@
                     android:layout_width="0dp"
                     android:layout_weight=".5"
                     android:gravity="center">
-                <dk.redweb.Red_App.Views.FlexibleButton
+                <dk.redweb.hca2014.Views.FlexibleButton
                         android:id="@+id/buttongallery_btn5"
                         style="@style/Layout.Full"
                         android:layout_margin="20dp"
@@ -97,7 +97,7 @@
                     android:layout_width="0dp"
                     android:layout_weight=".5"
                     android:gravity="center">
-                <dk.redweb.Red_App.Views.FlexibleButton
+                <dk.redweb.hca2014.Views.FlexibleButton
                         android:id="@+id/buttongallery_btn6"
                         style="@style/Layout.Full"
                         android:layout_margin="20dp"
@@ -117,7 +117,7 @@
                     android:layout_width="0dp"
                     android:layout_weight=".5"
                     android:gravity="center">
-                <dk.redweb.Red_App.Views.FlexibleButton
+                <dk.redweb.hca2014.Views.FlexibleButton
                         android:id="@+id/buttongallery_btn7"
                         style="@style/Layout.Full"
                         android:layout_margin="20dp"
@@ -128,7 +128,7 @@
                     android:layout_width="0dp"
                     android:layout_weight=".5"
                     android:gravity="center">
-                <dk.redweb.Red_App.Views.FlexibleButton
+                <dk.redweb.hca2014.Views.FlexibleButton
                         android:id="@+id/buttongallery_btn8"
                         style="@style/Layout.Full"
                         android:layout_margin="20dp"

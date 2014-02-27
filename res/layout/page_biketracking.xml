@@ -41,14 +41,14 @@
               android:layout_margin="10dp"
               android:layout_below="@id/biketracking_lnrTopSpeedLabels"
               android:layout_centerHorizontal="true"/>
-    <dk.redweb.Red_App.Views.FlexibleButton
+    <dk.redweb.hca2014.Views.FlexibleButton
             android:id="@+id/biketracking_flxTrackerStateButton"
             style="@style/Layout.Wrap.Complete"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
             android:background="@android:color/holo_green_light"
             android:layout_below="@id/biketracking_lblStatus"/>
-    <dk.redweb.Red_App.Views.FlexibleButton
+    <dk.redweb.hca2014.Views.FlexibleButton
             android:id="@+id/biketracking_flxUploadButton"
             style="@style/Layout.Wrap.Complete"
             android:layout_centerHorizontal="true"
@@ -56,7 +56,7 @@
             android:layout_marginBottom="20dp"
             android:background="@android:color/holo_red_light"
             android:layout_below="@id/biketracking_flxTrackerStateButton"/>
-    <dk.redweb.Red_App.Views.FlexibleButton
+    <dk.redweb.hca2014.Views.FlexibleButton
             android:id="@+id/flxBackButton"
             style="@style/Layout.Wrap.Complete"
             android:layout_centerHorizontal="true"

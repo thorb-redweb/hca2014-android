@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               style="@style/Layout.Full"
         >
-    <dk.redweb.Red_App.Views.NavBarBox android:id="@+id/navbar"
+    <dk.redweb.hca2014.Views.NavBarBox android:id="@+id/navbar"
             style="@style/Layout.Wrap"
             android:layout_alignParentTop="true"/>
 
@@ -23,7 +23,7 @@
     </LinearLayout>
 
 
-    <dk.redweb.Red_App.Views.TabbarBox android:id="@+id/tabbar"
+    <dk.redweb.hca2014.Views.TabbarBox android:id="@+id/tabbar"
             style="@style/Layout.Wrap"
             android:layout_alignParentBottom="true"/>
 </RelativeLayout>

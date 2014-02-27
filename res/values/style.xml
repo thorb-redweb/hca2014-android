@@ -29,4 +29,21 @@
     <style name="Layout.Wrap.Complete">
         <item name="android:layout_width">wrap_content</item>
     </style>
+
+    <style name="Spinner" parent="@android:style/Theme.Black.NoTitleBar">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/spinnerbackground</item>
+        <item name="android:padding">5sp</item>
+        <item name="android:spinnerItemStyle">@style/SpinnerItem</item>
+        <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItem</item>
+    </style>
+
+    <style name="SpinnerItem">
+        <item name="android:background">@drawable/spinnerbackground</item>
+    </style>
+
+    <style name="SpinnerDropDownItem">
+        <item name="android:background">@drawable/spinnerbackground</item>
+    </style>
 </resources>

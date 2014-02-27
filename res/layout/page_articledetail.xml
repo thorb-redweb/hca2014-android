@@ -4,7 +4,8 @@
             android:id="@+id/sessionDetail_scrMainView"
             style="@style/Layout.Full">
     <LinearLayout android:id="@+id/articleDetail_lnrMainView"
-                  style="@style/Layout.Full"   >
+                  style="@style/Layout.Full"
+                  android:padding="10dp">
         <TextView android:id="@+id/articleDetail_lblTitle"
                   style="@style/Layout.Wrap"/>
         <ImageView android:id="@+id/articledetail_imgMain"
@@ -13,7 +14,7 @@
                  style="@style/Layout.Full"/>
         <TextView android:id="@+id/articleDetail_lblBody"
                   style="@style/Layout.Full"/>
-        <dk.redweb.Red_App.Views.FlexibleButton
+        <dk.redweb.hca2014.Views.FlexibleButton
                 android:id="@+id/flxBackButton"
                 style="@style/Layout.Wrap.Complete"
                 android:layout_marginTop="15dp"

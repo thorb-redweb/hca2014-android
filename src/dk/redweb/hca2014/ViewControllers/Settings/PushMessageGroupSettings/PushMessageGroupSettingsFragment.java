@@ -1,0 +1,84 @@
+package dk.redweb.hca2014.ViewControllers.Settings.PushMessageGroupSettings;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+import dk.redweb.hca2014.Helper.AppearanceHelper.AppearanceHelper;
+import dk.redweb.hca2014.MyLog;
+import dk.redweb.hca2014.R;
+import dk.redweb.hca2014.StaticNames.DEFAULTTEXT;
+import dk.redweb.hca2014.StaticNames.LOOK;
+import dk.redweb.hca2014.StaticNames.TEXT;
+import dk.redweb.hca2014.Helper.TextHelper.TextHelper;
+import dk.redweb.hca2014.ViewControllers.BasePageFragment;
+import dk.redweb.hca2014.ViewModels.PushMessageGroupVM;
+import dk.redweb.hca2014.Views.NavBarBox;
+import dk.redweb.hca2014.XmlHandling.XmlNode;
+
+/**
+ * Created by Redweb with IntelliJ IDEA.
+ * Date: 10/31/13
+ * Time: 11:57
+ */
+public class PushMessageGroupSettingsFragment extends BasePageFragment {
+
+    public PushMessageGroupSettingsFragment(XmlNode page) {
+        super(page);
+    }
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        super.onCreateView(inflater, container, R.layout.page_pushmessagegroupsettings);
+
+        setAppearance();
+        setText();
+
+        ListView lstSubscriptions = (ListView)findViewById(R.id.pushmessagegroupsettings_lstpmgs);
+
+        PushMessageGroupVM[] pmgVMs = _db.PushMessageGroups.getAllVMs();
+        PushMessageGroupSettingsAdapter lstSessionsAdapter = new PushMessageGroupSettingsAdapter(getActivity(), pmgVMs, _app, _page);
+        lstSubscriptions.setAdapter(lstSessionsAdapter);
+
+        return _view;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+
+        NavBarBox navBarBox = (NavBarBox)getActivity().findViewById(R.id.navbar);
+        navBarBox.setUpButtonTargetForThisPage(_page);
+    }
+
+    private void setAppearance(){
+        try {
+            AppearanceHelper helper = new AppearanceHelper(_view.getContext(), _locallook, _globallook);
+
+            LinearLayout lnrBackground = (LinearLayout)findViewById(R.id.pushmessagegroupsettings_lnrMainView);
+            helper.setViewBackgroundTileImageOrColor(lnrBackground, LOOK.PUSHMESSAGEGROUPSETTINGS_BACKGROUNDIMAGE, LOOK.PUSHMESSAGEGROUPSETTINGS_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
+
+            TextView lblTitle = (TextView)findViewById(R.id.pushmessagegroupsettings_lblTitle);
+            helper.TextView.setColor(lblTitle, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLECOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(lblTitle, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLESIZE, LOOK.GLOBAL_ITEMTITLESIZE);
+            helper.TextView.setStyle(lblTitle, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLESTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
+            helper.TextView.setShadow(lblTitle, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR, LOOK.PUSHMESSAGEGROUPSETTINGS_TITLESHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
+        } catch (Exception e) {
+            MyLog.e("Exception when setting appearance for PushMessageDetail", e);
+        }
+    }
+
+    private void setText(){
+        try{
+            TextHelper helper = new TextHelper(_view, _name, _xml);
+
+            helper.setText(R.id.pushmessagegroupsettings_lblTitle, TEXT.PUSHMESSAGEGROUPSETTINGS_TITLE, DEFAULTTEXT.PUSHMESSAGEGROUPSETTINGS_TITLE);
+
+
+        } catch (Exception e) {
+            MyLog.e("Exception when setting page text", e);
+        }
+    }
+}

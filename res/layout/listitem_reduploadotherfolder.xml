@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<dk.redweb.Red_App.ViewControllers.RedUpload.RedUploadFolder.RedUploadOtherFolderItem xmlns:android="http://schemas.android.com/apk/res/android"
+<dk.redweb.hca2014.ViewControllers.RedUpload.RedUploadFolder.RedUploadOtherFolderItem xmlns:android="http://schemas.android.com/apk/res/android"
                                                                                       android:layout_width="match_parent"
                                                                                       android:layout_height="wrap_content"
                                                                                       android:paddingLeft="4dp"
@@ -14,14 +14,14 @@
                   android:layout_alignParentLeft="true"
                   android:padding="10dp"
                   android:layout_toLeftOf="@+id/reduploadfolder_flxpicture"/>
-        <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/reduploadfolder_flxpicture"
+        <dk.redweb.hca2014.Views.FlexibleButton android:id="@+id/reduploadfolder_flxpicture"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:minWidth="50dp"
                                                 android:layout_alignTop="@id/reduploadfolder_lblBody"
                                                 android:layout_alignBottom="@id/reduploadfolder_lblBody"
                                                 android:layout_toLeftOf="@+id/reduploadfolder_flxarchive"/>
-        <dk.redweb.Red_App.Views.FlexibleButton android:id="@+id/reduploadfolder_flxarchive"
+        <dk.redweb.hca2014.Views.FlexibleButton android:id="@+id/reduploadfolder_flxarchive"
                                                 android:layout_width="wrap_content"
                                                 android:layout_height="wrap_content"
                                                 android:minWidth="50dp"
@@ -29,4 +29,4 @@
                                                 android:layout_alignBottom="@id/reduploadfolder_lblBody"
                                                 android:layout_alignParentRight="true"/>
     </RelativeLayout>
-</dk.redweb.Red_App.ViewControllers.RedUpload.RedUploadFolder.RedUploadOtherFolderItem>
+</dk.redweb.hca2014.ViewControllers.RedUpload.RedUploadFolder.RedUploadOtherFolderItem>
