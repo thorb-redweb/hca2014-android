@@ -3,7 +3,7 @@
 		<path>http://dev.hcafestivals.dk/appdata/</path>
 	</datafolder>
 	<joomla>
-		<path>http://dev.hcafestivals.dk</path>
+		<path>http://dev.hcafestivals.dk/</path>
         <css>&lt;link rel='stylesheet' href='http://dev.hcafestivals.dk/templates/redweb/css/joomla25-default.css' type='text/css'/&gt;</css>
 	</joomla>
     <project>

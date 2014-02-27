@@ -9,6 +9,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 import android.widget.ImageView;
+import dk.redweb.hca2014.MyLog;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -55,9 +56,9 @@ public class DrawableManager {
     }
 
     public Drawable fetchDrawable(String urlString){
-        Log.d("RedEvent", "DrawableManager.fetchDrawable executing...   Image url: " + urlString);
+        MyLog.d("DrawableManager.fetchDrawable executing...   Image url: " + urlString);
         if(drawableMap.containsKey(urlString)){
-            Log.v("RedEvent", "Image in cache, " + urlString);
+            MyLog.v("Image in cache, " + urlString);
             return drawableMap.get(urlString);
         }
         try{
@@ -70,7 +71,7 @@ public class DrawableManager {
             int currentWidth = opts.outWidth;
             int currentHeight = opts.outHeight;
             opts.inJustDecodeBounds = false;
-            Log.v("RedEvent", "Raw size: " + currentWidth + "x" + currentHeight + ", " + urlString);
+            MyLog.v("Raw size: " + currentWidth + "x" + currentHeight + ", " + urlString);
 
             inputStream = fetch(urlString);
 
@@ -95,15 +96,19 @@ public class DrawableManager {
 
             if(drawable != null){
                 drawableMap.put(urlString,drawable);
-                Log.v("RedEvent", "Final size: " + drawable.getIntrinsicWidth() + "x" + drawable.getIntrinsicHeight() + ", " + urlString);
+                MyLog.v("Final size: " + drawable.getIntrinsicWidth() + "x" + drawable.getIntrinsicHeight() + ", " + urlString);
             } else {
-                Log.w("RedEvent", "Could not get image");
+                MyLog.w("Could not get image");
             }
 
             return drawable;
         }
+        catch (IOException e){
+            MyLog.e("DrawableManager.fetchDrawable failed: ", e);
+            return null;
+        }
         catch (Exception e){
-            Log.e("RedEvent", "DrawableManager.fetchDrawable failed: ", e);
+            MyLog.e("DrawableManager.fetchDrawable failed: ", e);
             return null;
         }
     }
