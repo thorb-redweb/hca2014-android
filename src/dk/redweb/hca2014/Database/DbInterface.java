@@ -33,13 +33,11 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
     public static final String DATABASE_NAME = "RedApp.db";
 
     public final DbArticles Articles;
-    public final DbBikeContest BikeContest;
     public final DbCommon Common;
     public final DbEvents Events;
     public final DbMapMarkers MapMarkers;
     public final DbPushMessages PushMessages;
     public final DbPushMessageGroups PushMessageGroups;
-    public final DbRedUpload RedUpload;
     public final DbSessions Sessions;
     public final DbVenues Venues;
 
@@ -54,11 +52,6 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
             DbSchemas.Art.INTROIMAGEPATH + " TEXT, " +
             DbSchemas.Art.MAINIMAGEPATH + " TEXT, " +
             DbSchemas.Art.PUBLISHDATE + " TEXT)";
-    private static final String SQL_CREATE_BIKECONTEST_TABLE = "CREATE TABLE " + DbSchemas.Bike.TABLE_NAME +
-            " (" + DbSchemas.Bike._ID + " INTEGER PRIMARY KEY," +
-            DbSchemas.Bike.LATITUDE + " REAL, " +
-            DbSchemas.Bike.LONGITUDE + " REAL, " +
-            DbSchemas.Bike.TIME + " BIGINT)";
     private static final String SQL_CREATE_EVENT_TABLE = "CREATE TABLE " + DbSchemas.Event.TABLE_NAME +
             " (" + DbSchemas.Event._ID + " INTEGER PRIMARY KEY," +
             DbSchemas.Event.EVENT_ID + " INTEGER, " +
@@ -80,12 +73,6 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
             DbSchemas.PushGroup.GROUP_ID + " INTEGER, " +
             DbSchemas.PushGroup.NAME + " TEXT, " +
             DbSchemas.PushGroup.SUBSCRIBED + " INTEGER)";
-    private static final String SQL_CREATE_REDUPLOAD_TABLE = "CREATE TABLE " + DbSchemas.RedUpload.TABLE_NAME +
-            " (" + DbSchemas.RedUpload._ID + " INTEGER PRIMARY KEY," +
-            DbSchemas.RedUpload.LOCALIMAGEPATH + " TEXT, " +
-            DbSchemas.RedUpload.SERVERFOLDER + " TEXT, " +
-            DbSchemas.RedUpload.TEXT + " TEXT, " +
-            DbSchemas.RedUpload.APPROVED + " INTEGER)";
     private static final String SQL_CREATE_SESSION_TABLE = "CREATE TABLE " + DbSchemas.Ses.TABLE_NAME +
             " (" + DbSchemas.Ses._ID + " INTEGER PRIMARY KEY," +
             DbSchemas.Ses.SESSION_ID + " INTEGER, " +
@@ -108,11 +95,9 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
             DbSchemas.Venue.IMAGEPATH + " TEXT)";
 
     private static final String SQL_DELETE_ARTICLE_TABLE = "DROP TABLE IF EXISTS " + DbSchemas.Art.TABLE_NAME;
-    private static final String SQL_DELETE_BIKECONTEST_TABLE = "DROP TABLE IF EXISTS " + DbSchemas.Bike.TABLE_NAME;
     private static final String SQL_DELETE_EVENT_TABLE = "DROP TABLE IF EXISTS " + DbSchemas.Event.TABLE_NAME;
     private static final String SQL_DELETE_PUSHMESSAGE_TABLE = "DROP TABLE IF EXISTS " + DbSchemas.Push.TABLE_NAME;
     private static final String SQL_DELETE_PUSHMESSAGEGROUP_TABLE = "DROP TABLE IF EXISTS " + DbSchemas.PushGroup.TABLE_NAME;
-    private static final String SQL_DELETE_REDUPLOAD_TABLE = "DROP TABLE IF EXISTS " + DbSchemas.RedUpload.TABLE_NAME;
     private static final String SQL_DELETE_SESSION_TABLE = "DROP TABLE IF EXISTS " + DbSchemas.Ses.TABLE_NAME;
     private static final String SQL_DELETE_VENUE_TABLE = "DROP TABLE IF EXISTS " + DbSchemas.Venue.TABLE_NAME;
 
@@ -125,35 +110,29 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
         _xml = xml;
 
         Articles = new DbArticles(_app, _sql, _sv, _xml);
-        BikeContest = new DbBikeContest(_app,_sql,_sv,_xml);
         Common = new DbCommon(_app, _sql, _sv, _xml);
         Events = new DbEvents(_app, _sql, this, _sv, _xml);
         MapMarkers = new DbMapMarkers(_app, _sql, this, _sv, _xml);
         PushMessages = new DbPushMessages(_app, _sql, this, _sv, _xml);
         PushMessageGroups = new DbPushMessageGroups(_app, _sql, this, _sv, _xml);
-        RedUpload = new DbRedUpload(_app, _sql, this, _sv, _xml);
         Sessions = new DbSessions(_app, _sql, this, _sv, _xml);
         Venues = new DbVenues(_app, _sql, this, _sv, _xml);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ARTICLE_TABLE);
-        db.execSQL(SQL_CREATE_BIKECONTEST_TABLE);
         db.execSQL(SQL_CREATE_EVENT_TABLE);
         db.execSQL(SQL_CREATE_PUSHMESSAGE_TABLE);
         db.execSQL(SQL_CREATE_PUSHMESSAGEGROUP_TABLE);
-        db.execSQL(SQL_CREATE_REDUPLOAD_TABLE);
         db.execSQL(SQL_CREATE_SESSION_TABLE);
         db.execSQL(SQL_CREATE_VENUE_TABLE);
     }
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_ARTICLE_TABLE);
-        db.execSQL(SQL_DELETE_BIKECONTEST_TABLE);
         db.execSQL(SQL_DELETE_EVENT_TABLE);
         db.execSQL(SQL_DELETE_PUSHMESSAGE_TABLE);
         db.execSQL(SQL_DELETE_PUSHMESSAGEGROUP_TABLE);
-        db.execSQL(SQL_DELETE_REDUPLOAD_TABLE);
         db.execSQL(SQL_DELETE_SESSION_TABLE);
         db.execSQL(SQL_DELETE_VENUE_TABLE);
         onCreate(db);

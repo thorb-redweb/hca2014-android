@@ -11,16 +11,12 @@ import dk.redweb.hca2014.ViewControllers.Article.AdventCal.AdventWindowFragment;
 import dk.redweb.hca2014.ViewControllers.Article.ArticleDetail.ArticleDetailFragment;
 import dk.redweb.hca2014.ViewControllers.Article.ImageArticleList.ImageArticleListFragment;
 import dk.redweb.hca2014.ViewControllers.Article.StaticArticle.StaticArticleFragment;
-import dk.redweb.hca2014.ViewControllers.Contest.BikeTracking.BikeTrackingFragment;
 import dk.redweb.hca2014.ViewControllers.Map.OverviewMap.OverviewMapFragment;
 import dk.redweb.hca2014.ViewControllers.Map.SessionMap.SessionMapFragment;
 import dk.redweb.hca2014.ViewControllers.Map.VenueMap.VenueMapFragment;
 import dk.redweb.hca2014.ViewControllers.Misc.CameraIntent.CameraIntentFragment;
 import dk.redweb.hca2014.ViewControllers.Misc.ImageUploader.ImageUploaderFileBrowserFragment;
 import dk.redweb.hca2014.ViewControllers.Misc.ImageUploader.ImageUploaderFragment;
-import dk.redweb.hca2014.ViewControllers.RedUpload.RedUploadFolder.RedUploadFolderFragment;
-import dk.redweb.hca2014.ViewControllers.RedUpload.RedUploadFolderContent.RedUploadFolderContentFragment;
-import dk.redweb.hca2014.ViewControllers.RedUpload.RedUploadPictureView.RedUploadPictureViewFragment;
 import dk.redweb.hca2014.ViewControllers.Misc.WebView.WebViewFragment;
 import dk.redweb.hca2014.ViewControllers.Navigation.ButtonGallery.ButtonGalleryFragment;
 import dk.redweb.hca2014.ViewControllers.Navigation.SwipeView.SwipeViewFragment;
@@ -147,8 +143,6 @@ public class NavController {
             return new AdventWindowFragment(page);
         } else if(type.equals(TYPE.ARTICLEDETAIL)){
             return new ArticleDetailFragment(page);
-        } else if(type.equals(TYPE.BIKETRACKING)){
-            return new BikeTrackingFragment(page);
         } else if(type.equals(TYPE.BUTTONGALLERY)){
             return new ButtonGalleryFragment(page);
         } else if(type.equals(TYPE.CAMERAINTENT)){
@@ -180,11 +174,6 @@ public class NavController {
         } else if (type.equals(TYPE.PUSHMESSAGEUNSUBSCRIBER)){
             return new PushMessageUnsubscriberFragment(page);
         } else if(type.equals(TYPE.REDUPLOADFOLDER)){
-            return new RedUploadFolderFragment(page);
-        } else if(type.equals(TYPE.REDUPLOADFOLDERCONTENT)){
-            return new RedUploadFolderContentFragment(page);
-        } else if(type.equals(TYPE.REDUPLOADPICTUREVIEW)){
-            return new RedUploadPictureViewFragment(page);
         } else if(type.equals(TYPE.SESSIONDETAIL)){
             return new SessionDetailFragment(page);
         } else if(type.equals(TYPE.SESSIONMAP)){
