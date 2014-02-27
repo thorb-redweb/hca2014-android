@@ -4,37 +4,34 @@
               android:id="@+id/navbarbox"
               style="@style/Layout.Wrap"
               android:orientation="horizontal"
-              android:layout_height="50dp">
+              android:layout_height="50dp"
+        android:background="@android:color/black">
     <RelativeLayout
         style="@style/Layout.Full">
-        <RelativeLayout android:id="@+id/navbar_rltHomeButton"
-                        style="@style/Layout.Wrap.Complete"
-                        android:minHeight="50dp"
-                        android:minWidth="75dp"
-                        android:layout_alignParentLeft="true">
-            <TextView android:id="@+id/navbar_lblHomeButton"
-                      style="@style/Layout.Wrap.Complete"
-                      android:layout_centerInParent="true"/>
-            <ImageView android:id="@+id/navbar_imgHomeButton"
+        <ImageView android:id="@+id/navbar_imgHomeButton"
                        style="@style/Image.Wrap"
-                       android:layout_centerInParent="true"/>
-        </RelativeLayout>
+                       android:layout_alignParentLeft="true"
+                android:src="@drawable/logo_hca_top"/>
         <TextView android:id="@+id/navbar_lblTitle"
                   style="@style/Layout.Wrap.Complete"
                   android:layout_centerInParent="true"
                   android:visibility="gone"/>
-        <RelativeLayout android:id="@+id/navbar_rltUpButton"
-                style="@style/Layout.Wrap.Complete"
-                android:minHeight="50dp"
-                android:minWidth="75sp"
-                android:layout_alignParentRight="true"
-                android:visibility="gone">
-            <TextView android:id="@+id/navbar_lblUpButton"
-                      style="@style/Layout.Wrap.Complete"
-                      android:layout_centerInParent="true"/>
-            <ImageView android:id="@+id/navbar_imgUpButton"
-                       style="@style/Image.Wrap"
-                       android:layout_centerInParent="true"/>
-        </RelativeLayout>
+        <LinearLayout android:id="@+id/navbar_lnrUpButton"
+                      android:orientation="horizontal"
+                      android:layout_width="wrap_content"
+                      android:layout_height="match_parent"
+                      android:layout_alignParentRight="true"
+                      android:gravity="center_vertical"
+                      android:padding="5dp"
+                android:background="@android:color/black">
+            <TextView android:id="@+id/navbar_txtUpButton"
+                    android:layout_height="wrap_content" android:layout_width="wrap_content"
+                      android:textColor="@android:color/white"
+                      android:textStyle="bold"
+                      android:text="OP"
+                      android:layout_marginRight="5sp"/>
+            <ImageView style="@style/Image.Wrap"
+                       android:src="@drawable/navbar_uparrow"/>
+        </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

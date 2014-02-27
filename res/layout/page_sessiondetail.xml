@@ -17,6 +17,27 @@
                        android:adjustViewBounds="true"
                        android:src="@drawable/default_icon"/>
 
+            <!-- Type -->
+            <LinearLayout
+                    style="@style/Layout.Wrap"
+                    android:orientation="horizontal">
+                <LinearLayout
+                        style="@style/Layout.Wrap"
+                        android:layout_width="0dp"
+                        android:layout_weight=".4">
+                    <TextView android:id="@+id/sessionDetail_lblTypeLabel"
+                              style="@style/Layout.Wrap.Complete"
+                            android:text="Type:"/>
+                </LinearLayout>
+                <LinearLayout
+                        style="@style/Layout.Wrap"
+                        android:layout_width="0dp"
+                        android:layout_weight=".6">
+                    <TextView android:id="@+id/sessionDetail_lblTypeValue"
+                              style="@style/Layout.Wrap.Complete"/>
+                </LinearLayout>
+            </LinearLayout>
+
             <!-- Date -->
             <LinearLayout
                     style="@style/Layout.Wrap"

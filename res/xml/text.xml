@@ -20,10 +20,10 @@
     </NextSessions>
 
     <Begivenhed>
-        <date>Dag</date>
-        <place>Venue</place>
-        <time>Kl.</time>
-        <mapbutton>Sejl derudaf</mapbutton>
+        <date>Dato:</date>
+        <place>Sted:</place>
+        <time>Tidspunkt:</time>
+        <mapbutton>Find vej på kort</mapbutton>
     </Begivenhed>
 
     <Venues>

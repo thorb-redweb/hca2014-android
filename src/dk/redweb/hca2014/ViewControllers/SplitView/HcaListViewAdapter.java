@@ -7,6 +7,9 @@ import android.view.ViewGroup;
 import android.widget.*;
 import dk.redweb.hca2014.R;
 import dk.redweb.hca2014.ViewModels.SessionVM;
+import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 import java.text.SimpleDateFormat;
 
@@ -34,10 +37,10 @@ public class HcaListViewAdapter extends ArrayAdapter<SessionVM> {
         RelativeLayout rightBorder = (RelativeLayout)rowView.findViewById(R.id.hcalistview_rightborder);
 
         SessionVM session = sessions[position];
-        SimpleDateFormat formatter = new SimpleDateFormat("HH.mm");
-        String startTime = formatter.format(session.StartTime());
-        String time = startTime + ": " + session.Title();
+        String time = session.StartTimeAsString() + ": " + session.Title();
         txtTimeAndEvent.setText(time);
+        imgType.setImageResource(session.TypeImage());
+        rightBorder.setBackgroundColor(session.TypeColor());
 
         return rowView;
     }

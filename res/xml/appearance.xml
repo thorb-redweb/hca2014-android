@@ -26,6 +26,11 @@
         <textsize>18.0</textsize>
     </tabbar>
 
+    <Begivenhed>
+        <buttontextsize>22</buttontextsize>
+        <mapbuttonimage>icon_map_pink.png</mapbuttonimage>
+    </Begivenhed>
+
     <Nyheder>
 
     </Nyheder>

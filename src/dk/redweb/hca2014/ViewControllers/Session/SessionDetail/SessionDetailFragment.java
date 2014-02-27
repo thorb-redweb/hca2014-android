@@ -1,5 +1,6 @@
 package dk.redweb.hca2014.ViewControllers.Session.SessionDetail;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,6 +47,7 @@ public class SessionDetailFragment extends BasePageFragment {
 
         TextView txtTitle = (TextView)findViewById(R.id.sessionDetail_lblTitle);
         ImageView imgView = (ImageView)findViewById(R.id.sessionDetail_imgPicture);
+        TextView txtType = (TextView)findViewById(R.id.sessionDetail_lblTypeValue);
         TextView txtVenue = (TextView)findViewById(R.id.sessionDetail_lblVenueValue);
         TextView txtTime = (TextView)findViewById(R.id.sessionDetail_lblTimeValue);
         TextView txtDate = (TextView)findViewById(R.id.sessionDetail_lblDateValue);
@@ -55,6 +57,8 @@ public class SessionDetailFragment extends BasePageFragment {
         TextView txtBody = (TextView)findViewById(R.id.sessionDetail_lblBody);
 
         txtTitle.setText(_session.Title());
+        txtType.setText(_session.Type());
+        txtType.setTextColor(_session.TypeColor());
         txtDate.setText(_session.StartDateWithPattern("EEEE, dd.MM.yyyy"));
         txtTime.setText(_session.StartTimeAsString() + "-" +_session.EndTimeAsString());
         txtVenue.setText(_session.Venue());
@@ -114,23 +118,27 @@ public class SessionDetailFragment extends BasePageFragment {
             helper.TextView.setShadow(txtTitle, LOOK.SESSIONDETAIL_TITLESHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.SESSIONDETAIL_TITLESHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
+            TextView txtTypeLabel = (TextView)findViewById(R.id.sessionDetail_lblTypeLabel);
             TextView txtDateLabel = (TextView)findViewById(R.id.sessionDetail_lblDateLabel);
             TextView txtVenueLabel = (TextView)findViewById(R.id.sessionDetail_lblVenueLabel);
             TextView txtTimeLabel = (TextView)findViewById(R.id.sessionDetail_lblTimeLabel);
-            TextView[] txtLabels = new TextView[]{txtDateLabel,txtVenueLabel,txtTimeLabel};
+            TextView[] txtLabels = new TextView[]{txtTypeLabel, txtDateLabel,txtVenueLabel,txtTimeLabel};
             helper.TextView.setColor(txtLabels, LOOK.SESSIONDETAIL_LABELCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
             helper.TextView.setSize(txtLabels, LOOK.SESSIONDETAIL_LABELSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
             helper.TextView.setStyle(txtLabels, LOOK.SESSIONDETAIL_LABELSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
             helper.TextView.setShadow(txtLabels, LOOK.SESSIONDETAIL_LABELSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.SESSIONDETAIL_LABELSHADOWOFFSET, LOOK.GLOBAL_ITEMTITLESHADOWOFFSET);
 
+            TextView txtTypeValue = (TextView)findViewById(R.id.sessionDetail_lblTypeValue);
             TextView txtDateValue = (TextView)findViewById(R.id.sessionDetail_lblDateValue);
             TextView txtVenueValue = (TextView)findViewById(R.id.sessionDetail_lblVenueValue);
             TextView txtTimeValue = (TextView)findViewById(R.id.sessionDetail_lblTimeValue);
-            TextView[] txtValues = new TextView[]{txtDateValue,txtVenueValue,txtTimeValue};
+            TextView[] txtValues = new TextView[]{txtTypeValue,txtDateValue,txtVenueValue,txtTimeValue};
             helper.TextView.setColor(txtValues, LOOK.SESSIONDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
             helper.TextView.setSize(txtValues, LOOK.SESSIONDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.TextView.setStyle(txtValues, LOOK.SESSIONDETAIL_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            for(TextView textView : txtValues){
+                textView.setTypeface(null, Typeface.BOLD);
+            }
             helper.TextView.setShadow(txtValues, LOOK.SESSIONDETAIL_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.SESSIONDETAIL_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 

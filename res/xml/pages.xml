@@ -10,6 +10,7 @@
         <name>HCA</name>
         <type>HcaSplitView</type>
         <frontpage>true</frontpage>
+        <child>Begivenhed</child>
         <child2>Nyhedsside</child2>
     </page>
     <page>
@@ -32,14 +33,12 @@
         <navname>@SessionTitle</navname>
         <parent>Program</parent>
         <child>SessionMap</child>
-        <returnbutton>YES</returnbutton>
     </page>
     <page>
         <name>SessionMap</name>
         <type>SessionMap</type>
         <parent>Begivenhed</parent>
         <child>Begivenhed</child>
-        <returnbutton>YES</returnbutton>
     </page>
     <page>
 		<name>Nyheder</name>
@@ -63,17 +62,20 @@
         <entry>
             <name>Om</name>
         </entry>
+        <entry>
+            <name>Push Beskeder</name>
+        </entry>
     </page>
     <page>
         <name>Om</name>
         <type>StaticArticle</type>
-        <articleid>55</articleid>
-        <returnbutton>YES</returnbutton>
+        <articleid>87</articleid>
     </page>
     <page>
-        <name>PMInitializer</name>
+        <name>Push Beskeder</name>
         <type>PushMessageSubscriber</type>
         <child>TableNavigator</child>
+        <autoname>YES</autoname>
     </page>
     <page>
         <name>TableNavigator</name>

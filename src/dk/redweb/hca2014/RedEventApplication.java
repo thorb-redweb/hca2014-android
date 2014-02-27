@@ -65,7 +65,7 @@ public class RedEventApplication  extends Application {
 
     //Debugging section
     private boolean debugging = true;
-    private boolean debugSkipUpdates = true;
+    private boolean debugSkipUpdates = false;
     private DateTime debugCurrentDate;
     private int debugYear = 2013;
     private int debugMonth = 8;

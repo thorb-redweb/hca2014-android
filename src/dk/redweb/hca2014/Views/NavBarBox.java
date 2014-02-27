@@ -31,8 +31,8 @@ public class NavBarBox extends LinearLayout {
     FragmentActivity _parentActivity;
 
     LinearLayout _navbarBox;
-    RelativeLayout _homeButton;
-    RelativeLayout _upButton;
+    ImageView _homeButton;
+    LinearLayout _upButton;
 
     public NavBarBox(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -45,8 +45,8 @@ public class NavBarBox extends LinearLayout {
         inflater.inflate(R.layout.view_navbarbox, this);
 
         _navbarBox = (LinearLayout)findViewById(R.id.navbarbox);
-        _upButton = (RelativeLayout)findViewById(R.id.navbar_rltUpButton);
-        _homeButton = (RelativeLayout)findViewById(R.id.navbar_rltHomeButton);
+        _upButton = (LinearLayout)findViewById(R.id.navbar_lnrUpButton);
+        _homeButton = (ImageView)findViewById(R.id.navbar_imgHomeButton);
 
         setAppearance();
         setText();
@@ -81,33 +81,6 @@ public class NavBarBox extends LinearLayout {
                 helper.TextView.setShadow(txtTitle, LOOK.NAVBAR_TITLESHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
                         LOOK.NAVBAR_TITLESHADOWOFFSET, LOOK.GLOBAL_TITLESHADOWOFFSET);
             }
-
-            //Home Button
-            helper.setViewBackgroundImageOrColor(_homeButton, LOOK.NAVBAR_HOMEBUTTONBACKIMAGE, LOOK.NAVBAR_HOMEBUTTONCOLOR, LOOK.GLOBAL_ALTCOLOR);
-
-            ImageView imgHomeButton = (ImageView)findViewById(R.id.navbar_imgHomeButton);
-            helper.setImageViewImage(imgHomeButton, LOOK.NAVBAR_HOMEBUTTONIMAGE);
-
-            TextView txtHomeButton = (TextView)findViewById(R.id.navbar_lblHomeButton);
-            helper.TextView.setColor(txtHomeButton, LOOK.NAVBAR_HOMEBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.TextView.setSize(txtHomeButton, LOOK.NAVBAR_HOMEBUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.TextView.setStyle(txtHomeButton, LOOK.NAVBAR_HOMEBUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.TextView.setShadow(txtHomeButton, LOOK.NAVBAR_HOMEBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
-                    LOOK.NAVBAR_HOMEBUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
-
-            //Up Button
-            helper.setViewBackgroundImageOrColor(_upButton, LOOK.NAVBAR_UPBUTTONBACKIMAGE, LOOK.NAVBAR_UPBUTTONCOLOR, LOOK.GLOBAL_ALTCOLOR);
-
-            ImageView imgUpButton = (ImageView)findViewById(R.id.navbar_imgUpButton);
-            helper.setImageViewImage(imgUpButton, LOOK.NAVBAR_UPBUTTONIMAGE);
-
-            TextView txtUpButton = (TextView)findViewById(R.id.navbar_lblUpButton);
-            helper.TextView.setColor(txtUpButton, LOOK.NAVBAR_UPBUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.TextView.setSize(txtUpButton, LOOK.NAVBAR_UPBUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.TextView.setStyle(txtUpButton, LOOK.NAVBAR_UPBUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.TextView.setShadow(txtUpButton, LOOK.NAVBAR_UPBUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
-                    LOOK.NAVBAR_UPBUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
-
         } catch (Exception e) {
             MyLog.e("Exception in NavBarBox:setAppearance", e);
         }
@@ -117,8 +90,7 @@ public class NavBarBox extends LinearLayout {
         try {
             TextHelper helper = new TextHelper(this,LOOK.NAVIGATIONBAR,_xml);
 
-            helper.tryText(R.id.navbar_lblHomeButton, TEXT.NAVBAR_HOMEBUTTON);
-            helper.tryText(R.id.navbar_lblUpButton, TEXT.NAVBAR_UPBUTTON);
+
         } catch (Exception e) {
             MyLog.e("Exception when setting static text", e);
         }
@@ -149,17 +121,7 @@ public class NavBarBox extends LinearLayout {
     }
 
     private void updateHomeButton(XmlNode page){
-        try {
-            if(page.hasChild(PAGE.FRONTPAGE) && page.getBoolFromNode(PAGE.FRONTPAGE)){
-                _homeButton.setVisibility(View.GONE);
-            }
-            else
-            {
-                _homeButton.setVisibility(View.VISIBLE);
-            }
-        } catch (NoSuchFieldException e) {
-            MyLog.e("Exception when updating the visibility of the Home Button", e);
-        }
+
     }
 
     private void updateUpButton(XmlNode page){
@@ -189,7 +151,7 @@ public class NavBarBox extends LinearLayout {
     public void setUpButtonTargetForThisPage(final XmlNode thisPage){
         _upButton.setVisibility(VISIBLE);
 
-        TextView txtUpButton = (TextView)findViewById(R.id.navbar_lblUpButton);
+        TextView txtUpButton = (TextView)findViewById(R.id.navbar_txtUpButton);
 
         XmlNode parentPage = null;
         try {

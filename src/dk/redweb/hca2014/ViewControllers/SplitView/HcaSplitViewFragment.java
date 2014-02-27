@@ -17,6 +17,8 @@ import dk.redweb.hca2014.Views.NewsTicker;
 import dk.redweb.hca2014.XmlHandling.XmlNode;
 import org.joda.time.DateTime;
 
+import java.util.InvalidPropertiesFormatException;
+
 /**
  * Created by Redweb with IntelliJ IDEA.
  * Date: 2/25/14
@@ -66,9 +68,26 @@ public class HcaSplitViewFragment extends BasePageFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 MyLog.d("Executing lstSessions.setOnItemClickListener");
                 ListAdapter adapter = lstSessions.getAdapter();
+                SessionVM selectedSession = (SessionVM) adapter.getItem(position);
+                XmlNode childPage = null;
+                try {
+                    childPage = _xml.getPage(_childname).deepClone();
+                } catch (Exception e) {
+                    MyLog.e("Exception when getting childpage from xmlStore", e);
+                }
+                try {
+                    childPage.addChildToNode(PAGE.SESSIONID, selectedSession.SessionId());
+                } catch (InvalidPropertiesFormatException e) {
+                    MyLog.e("Exception when setting sessionid on childpage", e);
+                }
+                try {
+                    NavController.changePageWithXmlNode(childPage, getActivity());
+                } catch (NoSuchFieldException e) {
+                    MyLog.e("Exception when pushing to childpage with navcontroller", e);
+                }
 
                 try {
-                    NavController.changePageWithXmlNode(_page, context);
+                    NavController.changePageWithXmlNode(childPage, context);
                 } catch (NoSuchFieldException e) {
                     MyLog.e("Exception when attempting to change page", e);
                 }
@@ -102,7 +121,9 @@ public class HcaSplitViewFragment extends BasePageFragment {
 
     public void changeSessionList(){
         MyLog.d("Running changeSessionList");
-        SessionVM[] sessions = _db.Sessions.getNextThreeVM(new DateTime());
+        DateTime now = new DateTime();
+        if(_app.isDebugging()) now = _app.getDebugCurrentDate();
+        SessionVM[] sessions = _db.Sessions.getNextThreeVM(now);
         HcaListViewAdapter lstSessionsAdapter = new HcaListViewAdapter(context, sessions);
         lstSessions.setAdapter(lstSessionsAdapter);
     }
