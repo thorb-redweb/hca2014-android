@@ -48,8 +48,15 @@ public class TableNavigatorAdapter extends ArrayAdapter<XmlNode> {
 
         TextView txtTitle = (TextView)rowView.findViewById(R.id.tablenavigator_lblTitle);
         try {
-            txtTitle.setText(entry.getStringFromNode(PAGE.NAME));
-        } catch (NoSuchFieldException e) {
+            String pageName = entry.getStringFromNode(PAGE.NAME);
+            XmlNode page = _xml.getPage(pageName);
+            if(page.hasChild(PAGE.NAVNAME)){
+                txtTitle.setText(page.getStringFromNode(PAGE.NAVNAME));
+            }
+            else {
+                txtTitle.setText(pageName);
+            }
+        } catch (Exception e) {
             MyLog.e("Exception when attempting to get entry item from entry node", e);
         }
 

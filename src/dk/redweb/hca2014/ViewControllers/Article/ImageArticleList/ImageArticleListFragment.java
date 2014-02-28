@@ -88,7 +88,13 @@ public class ImageArticleListFragment extends BasePageFragment {
     {
         ArticleVM[] articles = new ArticleVM[0];
         try {
-            articles = _db.Articles.getPublishedVMListFromCatid(_page.getIntegerFromNode(PAGE.CATID));
+            if(_page.hasChild(PAGE.CATID)){
+                articles = _db.Articles.getPublishedVMListFromCatid(_page.getIntegerFromNode(PAGE.CATID));
+            }
+            else{
+                int[] catids = _page.getIntegerArrayFromNode(PAGE.CATIDS);
+                articles = _db.Articles.getPublishedVMListFromCatids(catids);
+            }
         } catch (NoSuchFieldException e) {
             MyLog.e("NoSuchFieldException for 'catid' in actImageArticleList:reloadListView", e);
         }

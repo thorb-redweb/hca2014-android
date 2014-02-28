@@ -76,6 +76,7 @@ public class DbMapMarkers {
             mapMarker.SessionId = sessionVM.SessionId();
             mapMarker.Text = "Næste event: " + datetime + "\r\n" + sessionVM.Title();
             mapMarker.Location = new LatLng(sessionVM.Latitude(), sessionVM.Longitude());
+            mapMarker.IconResource = sessionVM.TypeImage();
 
             mapMarkers[i] = mapMarker;
             i++;

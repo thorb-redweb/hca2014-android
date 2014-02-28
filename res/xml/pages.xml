@@ -7,7 +7,7 @@
         <backgroundimage>splash.png</backgroundimage>
 	</page>
     <page>
-        <name>HCA</name>
+        <name>Forside</name>
         <type>HcaSplitView</type>
         <frontpage>true</frontpage>
         <child>Begivenhed</child>
@@ -18,6 +18,7 @@
         <type>OverviewMap</type>
         <tabname>Kort</tabname>
         <tabimage>icon_map_bottombar.png</tabimage>
+        <parent>Forside</parent>
         <child>Begivenhed</child>
     </page>
     <page>
@@ -25,6 +26,7 @@
         <type>DailySessionList</type>
         <tabname>Program</tabname>
         <tabimage>icon_program_bottombar.png</tabimage>
+        <parent>Forside</parent>
         <child>Begivenhed</child>
     </page>
     <page>
@@ -45,7 +47,8 @@
 		<type>ImageArticleList</type>
         <tabname>Nyheder</tabname>
         <tabimage>icon_news_bottombar.png</tabimage>
-		<catid>31</catid>
+		<catids>16,31</catids>
+        <parent>Forside</parent>
         <child>Nyhedsside</child>
 	</page>
     <page>
@@ -55,46 +58,46 @@
         <bodyuseshtml>YES</bodyuseshtml>
     </page>
     <page>
-        <name>Other</name>
+        <name>Andet</name>
         <type>TableNavigator</type>
         <tabname>Andet</tabname>
         <tabimage>icon_about_bottombar.png</tabimage>
+        <parent>Forside</parent>
         <entry>
             <name>Om</name>
+            <backicon>arrow_right.png</backicon>
         </entry>
         <entry>
-            <name>Push Beskeder</name>
+            <name>Pushbeskeder</name>
+            <backicon>arrow_right.png</backicon>
         </entry>
     </page>
     <page>
         <name>Om</name>
         <type>StaticArticle</type>
         <articleid>87</articleid>
+        <parent>Andet</parent>
     </page>
     <page>
-        <name>Push Beskeder</name>
+        <name>Pushbeskeder</name>
         <type>PushMessageSubscriber</type>
-        <child>TableNavigator</child>
+        <child>Push</child>
         <autoname>YES</autoname>
     </page>
     <page>
-        <name>TableNavigator</name>
+        <name>Push</name>
         <type>TableNavigator</type>
+        <navname>Pushbeskeder</navname>
         <entry>
             <name>Unsubscriber</name>
             <backicon>arrow_right.png</backicon>
         </entry>
-        <entry>
-            <name>PMGroupSettings</name>
-            <backicon>arrow_right.png</backicon>
-        </entry>
+        <parent>Andet</parent>
     </page>
     <page>
         <name>Unsubscriber</name>
         <type>PushMessageUnsubscriber</type>
-    </page>
-    <page>
-        <name>PMGroupSettings</name>
-        <type>PushMessageGroupSettings</type>
+        <navname>Frameld Pushbeskeder</navname>
+        <parent>Push</parent>
     </page>
 </pages>

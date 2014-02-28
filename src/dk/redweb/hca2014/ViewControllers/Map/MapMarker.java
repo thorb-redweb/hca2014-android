@@ -12,6 +12,7 @@ public class MapMarker {
     public String Name;
     public String Text;
     public LatLng Location;
+    public int IconResource;
 
     public double Latitude(){
         return Location.latitude;

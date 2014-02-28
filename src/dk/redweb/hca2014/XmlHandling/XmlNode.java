@@ -102,7 +102,13 @@ public class XmlNode implements Iterable<XmlNode>, Serializable {
 
     public XmlNode addChildToNode(String name, Object value) throws InvalidPropertiesFormatException {
         if(this.value instanceof ArrayList){
-            XmlNode newChild = new XmlNode(name, value.toString());
+            XmlNode newChild;
+            if(value instanceof ArrayList){
+                newChild = new XmlNode(name, value);
+            }
+            else{
+                newChild = new XmlNode(name, value.toString());
+            }
             ((ArrayList)this.value).add(newChild);
             return newChild;
         }
@@ -112,6 +118,7 @@ public class XmlNode implements Iterable<XmlNode>, Serializable {
     public void addXmlNodeToNode(XmlNode child) throws InvalidPropertiesFormatException {
         if(this.value instanceof ArrayList){
             ((ArrayList)this.value).add(child);
+            return;
         }
         throw new InvalidPropertiesFormatException("The node " + this.name + " does not contain an array, and thus can't be added to");
     }

@@ -64,7 +64,8 @@ public class OverviewMapFragment extends BaseMapFragment {
         {
             LatLng loc = mapMarkers[i].Location;
             String titleArray = mapMarkers[i].Name + "<>" + mapMarkers[i].SessionId + "<>" + _childname;
-            Marker marker = _googleMap.addMarker(new MarkerOptions().position(loc).title(titleArray).snippet(mapMarkers[i].Text));
+            BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(mapMarkers[i].IconResource);
+            Marker marker = _googleMap.addMarker(new MarkerOptions().position(loc).title(titleArray).snippet(mapMarkers[i].Text).icon(icon));
             _locationMarkers.add(marker);
         }
 
@@ -98,7 +99,7 @@ public class OverviewMapFragment extends BaseMapFragment {
 
     private void positionUserIcon(){
         if(_userMarker == null && _isOnCreateInitialized)                                      {
-            BitmapDescriptor hereIcon = BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher);
+            BitmapDescriptor hereIcon = BitmapDescriptorFactory.fromResource(R.drawable.man);
             _userMarker = _googleMap.addMarker(new MarkerOptions().position(_userLatLng).title("Du er her").icon(hereIcon));
 
             LatLngBounds.Builder b = new LatLngBounds.Builder();

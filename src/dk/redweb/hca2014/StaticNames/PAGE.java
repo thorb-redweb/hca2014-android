@@ -17,6 +17,7 @@ public class PAGE {
     //Page Globals
     public static final String ARTICLEID = "articleid";
     public static final String CATID = "catid";
+    public static final String CATIDS = "catids";
     public static final String CHILD = "child";
     public static final String CHILD2 = "child2";
     public static final String CHILDPAGE = "childpage";
@@ -84,6 +85,8 @@ public class PAGE {
     public static final String BODYUSESHTML = "bodyuseshtml";
 
     //PushMessage Specific
+    public static final String AUTONAME = "autoname";
+    public static final String PUSHMESSAGERESULT = "pushmessageresult";
     public static final String SUBSCRIPTIONS = "subscriptions";
 
     //Tags

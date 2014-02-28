@@ -4,21 +4,6 @@
         <backbutton>Op</backbutton>
     </navigationbar>
 
-    <Forside>
-        <button1>Kort</button1>
-        <button2>Program</button2>
-        <button3>Nyheder</button3>
-        <button4>Om</button4>
-    </Forside>
-
-    <Laage>
-        <backbutton>Vi ses!</backbutton>
-    </Laage>
-
-    <NextSessions>
-        <title>Events</title>
-    </NextSessions>
-
     <Begivenhed>
         <date>Dato:</date>
         <place>Sted:</place>
@@ -26,12 +11,7 @@
         <mapbutton>Find vej på kort</mapbutton>
     </Begivenhed>
 
-    <Venues>
-        <address>Adresse</address>
-        <mapbutton>Find til Redweb</mapbutton>
-    </Venues>
-
-    <ContentFolder>
-        <title>Billed Folder</title>
-    </ContentFolder>
+    <Unsubscriber>
+        <warning>Tryk herunder for at fravælge Pushbeskeder</warning>
+    </Unsubscriber>
 </text>

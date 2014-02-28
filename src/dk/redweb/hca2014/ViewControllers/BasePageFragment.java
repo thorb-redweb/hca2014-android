@@ -41,6 +41,7 @@ public class BasePageFragment extends Fragment {
     protected XmlNode _globallook;
 
     protected View _view;
+    protected NavBarBox _navbarbox;
 
     protected DateTime DateTimeNow(){
         DateTime now = new DateTime();
@@ -91,7 +92,6 @@ public class BasePageFragment extends Fragment {
         } catch (Exception e) {
             MyLog.e("Exception when setting up TextHelper", e);
         }
-
         setLogoBars();
 
         return _view;

@@ -13,6 +13,7 @@ import dk.redweb.hca2014.StaticNames.PAGE;
 import dk.redweb.hca2014.ViewControllers.BasePageFragment;
 import dk.redweb.hca2014.ViewModels.ArticleVM;
 import dk.redweb.hca2014.ViewModels.SessionVM;
+import dk.redweb.hca2014.Views.NavBarBox;
 import dk.redweb.hca2014.Views.NewsTicker;
 import dk.redweb.hca2014.XmlHandling.XmlNode;
 import org.joda.time.DateTime;
@@ -57,7 +58,6 @@ public class HcaSplitViewFragment extends BasePageFragment {
     @Override
     public void onResume(){
         super.onResume();
-
         newsTicker.startFlipping();
     }
 

@@ -48,11 +48,8 @@
         </receiver>
         <service android:name="dk.redweb.hca2014.Network.PushMessages.GcmIntentService" />
 
-        <receiver android:name="dk.redweb.hca2014.ViewControllers.Contest.BikeTracking.BikeContestReceiver"/>
-        <service android:name="dk.redweb.hca2014.ViewControllers.Contest.BikeTracking.BikePingLocation"/>
-
         <meta-data
                 android:name="com.google.android.maps.v2.API_KEY"
-                android:value="AIzaSyBNFyUf8AzrnlPGfN2Ty4g2ac4k8cZZw3s"/>
+                android:value="AIzaSyD1M_pKZqrj7734EwgIe1dSS0JqyiOQq1o"/>
     </application>
 </manifest>

@@ -126,12 +126,12 @@ public class NavBarBox extends LinearLayout {
 
     private void updateUpButton(XmlNode page){
         try {
-            XmlNode parentPage = _xml.getOfficialParentOf(page);
-            if(parentPage.hasChild(PAGE.FRONTPAGE) && parentPage.getBoolFromNode(PAGE.FRONTPAGE)){
+            if(page.hasChild(PAGE.FRONTPAGE) && page.getBoolFromNode(PAGE.FRONTPAGE)){
                 _upButton.setVisibility(GONE);
             }
             else{
                 _upButton.setVisibility(VISIBLE);
+                setUpButtonTargetForThisPage(page);
             }
         } catch (Exception e) {
             MyLog.e("Exception when updating the visibility of the Up Button", e);
@@ -158,7 +158,7 @@ public class NavBarBox extends LinearLayout {
             parentPage = _xml.getOfficialParentOf(thisPage);
 
             if(parentPage.hasChild(PAGE.NAVNAME)){
-                txtUpButton.setText(determineNavname(parentPage));
+                txtUpButton.setText(determineNavname(parentPage, thisPage));
             } else {
                 txtUpButton.setText(parentPage.getStringFromNode(PAGE.NAME));
             }
@@ -184,12 +184,16 @@ public class NavBarBox extends LinearLayout {
         });
     }
 
-    private String determineNavname(XmlNode parentPage) throws NoSuchFieldException {
+    private String determineNavname(XmlNode parentPage, XmlNode childPage) throws NoSuchFieldException {
         String navname = parentPage.getStringFromNode(PAGE.NAVNAME);
         if(navname.equals(PAGE.TAG_SESSIONTITLE)){
-            int sessionId = parentPage.getChildFromNode(PAGE.PARENTPARAMETERS).getIntegerFromNode(PAGE.SESSIONID);
+            int sessionId = childPage.getIntegerFromNode(PAGE.SESSIONID);
             SessionVM session = _db.Sessions.getVMFromId(sessionId);
-            return session.Title();
+            String sessionName = session.Title();
+            if(sessionName.length() > 20){
+                sessionName = sessionName.substring(0, 20);
+            }
+            return sessionName;
         }
 
         return navname;

@@ -15,6 +15,9 @@ import dk.redweb.hca2014.ViewControllers.FragmentPagesActivity;
 import dk.redweb.hca2014.XmlHandling.XmlNode;
 import dk.redweb.hca2014.XmlHandling.XmlStore;
 
+import java.util.ArrayList;
+import java.util.InvalidPropertiesFormatException;
+
 /**
  * Created by Redweb with IntelliJ IDEA.
  * Date: 10/23/13
@@ -65,74 +68,19 @@ public class PushMessageForwarder extends FragmentActivity implements Delegate_u
     public void returnFromUpdateToDatabase() {
         Bundle extras = getIntent().getExtras();
         String type = extras.getString(EXTRA.TYPE);
+        String messageId = extras.getString(EXTRA.MESSAGEID);
 
-        if(type.equals("pm")){
-            startPushMessageDetail();
-        }
-        else if(type.equals("a")){
-            startArticleDetail();
-        }
-        _doingwork = false;
-    }
-
-    public void startPushMessageDetail(){
-        Bundle extras = getIntent().getExtras();
-        String pushMessageId = extras.getString(EXTRA.MESSAGEID);
-        String type = TYPE.PUSHMESSAGEDETAIL;
-
-        XmlNode pendingPage = null;
+        XmlNode forwardNode = new XmlNode(PAGE.PUSHMESSAGERESULT,new ArrayList<XmlNode>());
         try {
-            XmlNode selectedPage = _xml.getPage(type);
-
-            pendingPage = selectedPage.deepClone();
-            pendingPage.addChildToNode(PAGE.PUSHMESSAGEID, pushMessageId);
-        } catch (Exception e) {
-            MyLog.e("Exception when setting up PushMessageDetail page for pendingIntent", e);
-        }
-
-        XmlNode pendingParentPage = null;
-        try{
-            XmlNode parentPage = _xml.getPage(pendingPage.getStringFromNode(PAGE.PARENT));
-
-            pendingParentPage = parentPage.deepClone();
-            pendingParentPage.addChildToNode(PAGE.CHILDPAGE, pendingPage.value());
-        } catch (Exception e) {
-            MyLog.e("Exception when setting up PushMessageDetail parentpage for pendingIntent", e);
+            forwardNode.addChildToNode(PAGE.TYPE,type);
+            forwardNode.addChildToNode(PAGE.PUSHMESSAGEID, messageId);
+        } catch (InvalidPropertiesFormatException e) {
+            MyLog.e("Exception when adding type and messageid to forwardnode", e);
         }
 
         Intent pushMessageDetail = new Intent(this, FragmentPagesActivity.class);
-        pushMessageDetail.putExtra(EXTRA.PAGE, pendingParentPage);
+        pushMessageDetail.putExtra(EXTRA.PAGE, forwardNode);
         this.startActivity(pushMessageDetail);
-    }
-
-    public void startArticleDetail(){
-        Bundle extras = getIntent().getExtras();
-        String articleId = extras.getString(EXTRA.MESSAGEID);
-        String type = TYPE.ARTICLEDETAIL;
-
-        XmlNode pendingPage = null;
-        try {
-            XmlNode selectedPage = _xml.getPage(type);
-
-            pendingPage = selectedPage.deepClone();
-            pendingPage.addChildToNode(PAGE.ARTICLEID, articleId);
-        } catch (Exception e) {
-            MyLog.e("Exception when setting up ArticleDetail page for pendingIntent", e);
-        }
-
-        XmlNode pendingParentPage = null;
-        try{
-            XmlNode parentPage = _xml.getPage(pendingPage.getStringFromNode(PAGE.PARENT));
-
-            pendingParentPage = parentPage.deepClone();
-            pendingParentPage.addChildToNode(PAGE.CHILDPAGE, pendingPage.value());
-        } catch (Exception e) {
-            MyLog.e("Exception when setting up ArticleDetail parentpage for pendingIntent", e);
-        }
-
-        Intent articleDetail = new Intent(this, FragmentPagesActivity.class);
-        articleDetail.putExtra(EXTRA.PAGE, pendingParentPage);
-        this.startActivity(articleDetail);
     }
 
     @Override

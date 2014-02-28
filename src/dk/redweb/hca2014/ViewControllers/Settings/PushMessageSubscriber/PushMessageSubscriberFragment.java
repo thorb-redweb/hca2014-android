@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,6 +23,7 @@ import dk.redweb.hca2014.Interfaces.Delegate_uploadRegistrationAttributes;
 import dk.redweb.hca2014.Network.PushMessages.PushMessageInitializationHandling;
 import dk.redweb.hca2014.StaticNames.DEFAULTTEXT;
 import dk.redweb.hca2014.StaticNames.LOOK;
+import dk.redweb.hca2014.StaticNames.PAGE;
 import dk.redweb.hca2014.StaticNames.TEXT;
 import dk.redweb.hca2014.ViewControllers.BasePageFragment;
 import dk.redweb.hca2014.Views.FlexibleButton;
@@ -38,6 +40,7 @@ public class PushMessageSubscriberFragment extends BasePageFragment implements D
     Boolean firstVisit;
     PushMessageInitializationHandling _pmHandler;
     private ProgressDialog _progressDialog;
+    private boolean autoname;
 
     public PushMessageSubscriberFragment(XmlNode page) {
         super(page);
@@ -59,18 +62,31 @@ public class PushMessageSubscriberFragment extends BasePageFragment implements D
         setAppearance();
         setText();
 
+        autoname = false;
+        try {
+            autoname = _page.getBoolWithNoneAsFalseFromNode(PAGE.AUTONAME);
+        } catch (NoSuchFieldException e) {
+            MyLog.e("Exception when attempting to get whether the user should be autonamed", e);
+        }
         EditText txtUserName = (EditText)findViewById(R.id.pushmessagesubscriber_txtUserName);
-        txtUserName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if(actionId == EditorInfo.IME_ACTION_DONE){
-                    closeKeyBoard();
-                    addUserToDatabase();
-                    return true;
+        if(autoname){
+            TextView lblUsername = (TextView)findViewById(R.id.pushmessagesubscriber_lblUserName);
+            lblUsername.setVisibility(View.GONE);
+            txtUserName.setVisibility(View.GONE);
+        }
+        else{
+            txtUserName.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                    if(actionId == EditorInfo.IME_ACTION_DONE){
+                        closeKeyBoard();
+                        addUserToDatabase();
+                        return true;
+                    }
+                    return false;
                 }
-                return false;
-            }
-        });
+            });
+        }
 
         FlexibleButton flxSubmitButton = (FlexibleButton)findViewById(R.id.pushmessagesubscriber_flxSubmit);
         flxSubmitButton.setOnClickListener(submitButtonOnClickListener());
@@ -167,7 +183,13 @@ public class PushMessageSubscriberFragment extends BasePageFragment implements D
 
     private void addUserToDatabase(){
         EditText txtName = (EditText)findViewById(R.id.pushmessagesubscriber_txtUserName);
-        String username = txtName.getText().toString();
+        String username;
+        if(autoname){
+            username = Settings.Secure.getString(getActivity().getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+        }
+        else {
+            username = txtName.getText().toString();
+        }
         if(username.length() < 1){
             AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
             alertDialog.setTitle("Navn påkrævet");

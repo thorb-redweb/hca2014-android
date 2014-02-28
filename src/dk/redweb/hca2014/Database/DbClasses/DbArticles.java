@@ -16,6 +16,8 @@ import org.joda.time.DateTime;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
 * Created by Redweb with IntelliJ IDEA.
 * Date: 9/18/13
@@ -94,7 +96,7 @@ public class DbArticles {
         return articleVMs;
     }
 
-    public Article[] getPublishedListFromCatid(int catid){
+    public Article[] getPublishedListFromCatids(int[] catids){
         DateTime currentDateTime;
         if(_app.isDebugging()){
             currentDateTime = _app.getDebugCurrentDate();
@@ -104,7 +106,13 @@ public class DbArticles {
 
         String dateTimeString = "'" + Converters.JodaDateTimeToSQLDateTime(currentDateTime) + "'";
 
-        String whereString = DbSchemas.Art.CATID + " = " + catid + " AND datetime(" + DbSchemas.Art.PUBLISHDATE + ") <= datetime(" + dateTimeString + ")";
+        String whereCatidString = DbSchemas.Art.CATID + " = " + catids[0];
+        for(int i = 1; i < catids.length; i++){
+            int catid = catids[i];
+            whereCatidString += " OR " + DbSchemas.Art.CATID + " = " + catid;
+        }
+        String whereDateString = " AND datetime(" + DbSchemas.Art.PUBLISHDATE + ") <= datetime(" + dateTimeString + ")";
+        String whereString = whereCatidString + whereDateString;
         String sortString = DbSchemas.Art.PUBLISHDATE + " DESC";
 
         Cursor c = _sql.query(DbSchemas.Art.TABLE_NAME, ALL_COLUMNS, whereString, null, null, null, sortString);
@@ -128,7 +136,17 @@ public class DbArticles {
     }
 
     public ArticleVM[] getPublishedVMListFromCatid(int catid) {
-        Article[] articles = getPublishedListFromCatid(catid);
+        Article[] articles = getPublishedListFromCatids(new int[]{catid});
+        ArticleVM[] articleVMs = new ArticleVM[articles.length];
+        for(int i = 0; i < articles.length; i++){
+            articleVMs[i] = new ArticleVM(articles[i]);
+        }
+        return articleVMs;
+    }
+
+    public ArticleVM[] getPublishedVMListFromCatids(int[] catids) {
+        Article[] articles = getPublishedListFromCatids(catids);
+
         ArticleVM[] articleVMs = new ArticleVM[articles.length];
         for(int i = 0; i < articles.length; i++){
             articleVMs[i] = new ArticleVM(articles[i]);

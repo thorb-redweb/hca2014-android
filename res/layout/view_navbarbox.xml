@@ -11,6 +11,7 @@
         <ImageView android:id="@+id/navbar_imgHomeButton"
                        style="@style/Image.Wrap"
                        android:layout_alignParentLeft="true"
+                       android:layout_toLeftOf="@+id/navbar_lblTitle"
                 android:src="@drawable/logo_hca_top"/>
         <TextView android:id="@+id/navbar_lblTitle"
                   style="@style/Layout.Wrap.Complete"
@@ -20,6 +21,7 @@
                       android:orientation="horizontal"
                       android:layout_width="wrap_content"
                       android:layout_height="match_parent"
+                      android:layout_toRightOf="@+id/navbar_lblTitle"
                       android:layout_alignParentRight="true"
                       android:gravity="center_vertical"
                       android:padding="5dp"
