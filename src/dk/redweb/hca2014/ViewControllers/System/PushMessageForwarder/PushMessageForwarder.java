@@ -1,5 +1,6 @@
 package dk.redweb.hca2014.ViewControllers.System.PushMessageForwarder;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -32,6 +33,8 @@ public class PushMessageForwarder extends FragmentActivity implements Delegate_u
     DbInterface _db;
     XmlStore _xml;
 
+    private ProgressDialog _progressDialog;
+
     Boolean _doingwork;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,12 @@ public class PushMessageForwarder extends FragmentActivity implements Delegate_u
         _app = (RedEventApplication)getApplication();
         _db = _app.getDbInterface();
         _xml = _app.getXmlStore();
+
+        _progressDialog = new ProgressDialog(this);
+        _progressDialog.setTitle("Henter data fra databasen");
+        _progressDialog.setMessage("Dette kan tage et par minutter...");
+        _progressDialog.show();
+
         _app.getServerInterface().updateFromServer(this);
 
         _doingwork = true;
@@ -66,6 +75,8 @@ public class PushMessageForwarder extends FragmentActivity implements Delegate_u
 
     @Override
     public void returnFromUpdateToDatabase() {
+        _progressDialog.dismiss();
+
         Bundle extras = getIntent().getExtras();
         String type = extras.getString(EXTRA.TYPE);
         String messageId = extras.getString(EXTRA.MESSAGEID);

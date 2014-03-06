@@ -3,6 +3,7 @@ package dk.redweb.hca2014;
 import android.app.Application;
 import android.content.SharedPreferences;
 import android.util.Log;
+import com.google.android.gms.maps.model.LatLng;
 import dk.redweb.hca2014.Database.DbInterface;
 import dk.redweb.hca2014.Network.NetworkInterface;
 import dk.redweb.hca2014.Network.ServerInterface;
@@ -64,8 +65,10 @@ public class RedEventApplication  extends Application {
     }
 
     //Debugging section
-    private boolean debugging = false;
+    private boolean debugging = true;
     private boolean debugSkipUpdates = false;
+    private LatLng debugPosition = new LatLng(55.395030,10.384113);
+    public LatLng getDebugPosition(){ return debugPosition; }
     private DateTime debugCurrentDate;
     private int debugYear = 2013;
     private int debugMonth = 8;

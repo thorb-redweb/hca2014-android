@@ -1,6 +1,8 @@
 package dk.redweb.hca2014.ViewControllers.Session.SessionDetail;
 
+import android.content.Intent;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -77,11 +79,26 @@ public class SessionDetailFragment extends BasePageFragment {
                 }
             }
         });
-        rltTicketButton.setVisibility(View.GONE);
+        if(_session.SubmissionPath().matches("")){
+            rltTicketButton.setVisibility(View.GONE);
+        }
+        else{
+            rltTicketButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(_session.SubmissionPath()));
+                    startActivity(browserIntent);
+                }
+            });
+        }
 
         try {
             if(_page.hasChild(PAGE.BODYUSESHTML) && _page.getBoolFromNode(PAGE.BODYUSESHTML)) {
-                webBody.loadDataWithBaseURL(null, _session.DetailsWithHtml(), "text/html", "UTF-8", null);
+                String htmlString = _xml.css + _session.DetailsWithHtml();
+                webBody.loadDataWithBaseURL(_xml.joomlaPath, htmlString, "text/html", "UTF-8", null);
+
+
+                //webBody.loadDataWithBaseURL(null, _session.DetailsWithHtml(), "text/html", "UTF-8", null);
                 txtBody.setVisibility(View.GONE);
             } else {
                 txtBody.setText(_session.DetailsWithoutHtml());
@@ -146,10 +163,12 @@ public class SessionDetailFragment extends BasePageFragment {
             helper.setViewBackgroundColor(lnrButtonMap, LOOK.SESSIONDETAIL_BUTTONCOLOR, LOOK.GLOBAL_ALTCOLOR);
 
             TextView txtButtonMap = (TextView)findViewById(R.id.sessionDetail_lblButtonMap);
-            helper.TextView.setColor(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
-            helper.TextView.setSize(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
-            helper.TextView.setStyle(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
-            helper.TextView.setShadow(txtButtonMap, LOOK.SESSIONDETAIL_BUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
+            TextView txtTicketMap = (TextView)findViewById(R.id.sessionDetail_lblButtonTicket);
+            TextView[] buttonLabels = new TextView[]{txtButtonMap,txtTicketMap};
+            helper.TextView.setColor(buttonLabels, LOOK.SESSIONDETAIL_BUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
+            helper.TextView.setSize(buttonLabels, LOOK.SESSIONDETAIL_BUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
+            helper.TextView.setStyle(buttonLabels, LOOK.SESSIONDETAIL_BUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setShadow(buttonLabels, LOOK.SESSIONDETAIL_BUTTONTEXTSHADOWCOLOR, LOOK.GLOBAL_ALTTEXTSHADOWCOLOR,
                     LOOK.SESSIONDETAIL_BUTTONTEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
             ImageView imgButtonMap = (ImageView)findViewById(R.id.sessionDetail_imgButtonMap);

@@ -7,11 +7,16 @@
         <backgroundimage>splash.png</backgroundimage>
 	</page>
     <page>
+        <name>Autosubscriber</name>
+        <type>PushMessageAutoSubscriber</type>
+        <child>Forside</child>
+    </page>
+    <page>
         <name>Forside</name>
         <type>HcaSplitView</type>
-        <frontpage>true</frontpage>
         <child>Begivenhed</child>
         <child2>Nyhedsside</child2>
+        <frontpage>true</frontpage>
     </page>
     <page>
         <name>Kort</name>
@@ -35,6 +40,7 @@
         <navname>@SessionTitle</navname>
         <parent>Program</parent>
         <child>SessionMap</child>
+        <bodyuseshtml>YES</bodyuseshtml>
     </page>
     <page>
         <name>SessionMap</name>
@@ -47,7 +53,7 @@
 		<type>ImageArticleList</type>
         <tabname>Nyheder</tabname>
         <tabimage>icon_news_bottombar.png</tabimage>
-		<catids>16,31</catids>
+		<catids>9,16,30,31</catids>
         <parent>Forside</parent>
         <child>Nyhedsside</child>
 	</page>
@@ -58,46 +64,11 @@
         <bodyuseshtml>YES</bodyuseshtml>
     </page>
     <page>
-        <name>Andet</name>
-        <type>TableNavigator</type>
-        <tabname>Andet</tabname>
-        <tabimage>icon_about_bottombar.png</tabimage>
-        <parent>Forside</parent>
-        <entry>
-            <name>Om</name>
-            <backicon>arrow_right.png</backicon>
-        </entry>
-        <entry>
-            <name>Pushbeskeder</name>
-            <backicon>arrow_right.png</backicon>
-        </entry>
-    </page>
-    <page>
         <name>Om</name>
         <type>StaticArticle</type>
         <articleid>87</articleid>
-        <parent>Andet</parent>
-    </page>
-    <page>
-        <name>Pushbeskeder</name>
-        <type>PushMessageSubscriber</type>
-        <child>Push</child>
-        <autoname>YES</autoname>
-    </page>
-    <page>
-        <name>Push</name>
-        <type>TableNavigator</type>
-        <navname>Pushbeskeder</navname>
-        <entry>
-            <name>Unsubscriber</name>
-            <backicon>arrow_right.png</backicon>
-        </entry>
-        <parent>Andet</parent>
-    </page>
-    <page>
-        <name>Unsubscriber</name>
-        <type>PushMessageUnsubscriber</type>
-        <navname>Frameld Pushbeskeder</navname>
-        <parent>Push</parent>
+        <parent>Forside</parent>
+        <tabname>Om</tabname>
+        <tabimage>icon_about_bottombar.png</tabimage>
     </page>
 </pages>

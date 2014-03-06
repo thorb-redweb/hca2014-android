@@ -82,7 +82,7 @@ public class SplashActivity extends Activity implements Delegate_dumpServer, Del
     public void startDownloads(){
         _progressDialog = new ProgressDialog(this);
         _progressDialog.setTitle("Henter data fra databasen");
-        _progressDialog.setMessage("Henter...");
+        _progressDialog.setMessage("Dette kan tage et par minutter...");
         _progressDialog.show();
         if(_db.DatabaseIsEmpty()){
             _shortload = true;
@@ -158,7 +158,7 @@ public class SplashActivity extends Activity implements Delegate_dumpServer, Del
     private void launchFrontPage(){
         try {
             _firsttime = false;
-            XmlNode frontPage = _xml.getFrontPage();
+            XmlNode frontPage = _xml.getPage("Autosubscriber");
 
             Intent mainIntent = new Intent(this, FragmentPagesActivity.class);
             mainIntent.putExtra(EXTRA.PAGE, frontPage);

@@ -76,7 +76,8 @@ public class SessionMapFragment extends BaseMapFragment {
         String titleArray = _session.Title() + "<>" + _session.SessionId() + "<>" + _childname;
         String snippet = _session.StartTimeAsString();
 
-        _sessionMarker = _googleMap.addMarker(new MarkerOptions().position(_session.Location()).title(titleArray).snippet(snippet));
+        BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(_session.TypeImage());
+        _sessionMarker = _googleMap.addMarker(new MarkerOptions().position(_session.Location()).title(titleArray).snippet(snippet).icon(icon));
 
         CameraUpdate center = CameraUpdateFactory.newLatLng(_standardCenter);
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(_standardZoom);
@@ -109,7 +110,7 @@ public class SessionMapFragment extends BaseMapFragment {
 
     private void positionUserIcon(){
         if(_userMarker == null && _isOnCreateInitialized)                                      {
-            BitmapDescriptor hereIcon = BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher);
+            BitmapDescriptor hereIcon = BitmapDescriptorFactory.fromResource(R.drawable.man);
             _userMarker = _googleMap.addMarker(new MarkerOptions().position(_userLatLng).title("Du er her").icon(hereIcon));
 
             LatLngBounds.Builder b = new LatLngBounds.Builder();

@@ -251,6 +251,10 @@ public class BaseMapFragment extends BasePageFragment implements LocationListene
     @Override
     public void onLocationChanged(Location location){
         _userLatLng = new LatLng(location.getLatitude(), location.getLongitude());
+        if(_app.isDebugging()){
+            _userLatLng = _app.getDebugPosition();
+        }
+
     }
 
     @Override
