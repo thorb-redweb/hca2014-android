@@ -123,6 +123,7 @@ public class SplashActivity extends Activity implements Delegate_dumpServer, Del
 
     @Override
     public void returnFromUpdateToDatabase() {
+        _app.setLastDatabaseUpdate(DateTime.now());
         _screen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

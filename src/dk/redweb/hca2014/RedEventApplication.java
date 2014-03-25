@@ -70,9 +70,9 @@ public class RedEventApplication  extends Application {
     private LatLng debugPosition = new LatLng(55.395030,10.384113);
     public LatLng getDebugPosition(){ return debugPosition; }
     private DateTime debugCurrentDate;
-    private int debugYear = 2013;
+    private int debugYear = 2014;
     private int debugMonth = 8;
-    private int debugDay = 24;
+    private int debugDay = 22;
     private int debugHour = 13;
     private int debugMinute = 54;
     public DateTime getDebugCurrentDate(){ return debugCurrentDate; }

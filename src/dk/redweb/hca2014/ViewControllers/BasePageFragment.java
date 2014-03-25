@@ -12,6 +12,7 @@ import dk.redweb.hca2014.Helper.AppearanceHelper.AppearanceHelper;
 import dk.redweb.hca2014.Helper.TextHelper.TextHelper;
 import dk.redweb.hca2014.Network.NetworkInterface;
 import dk.redweb.hca2014.Network.ServerInterface;
+import dk.redweb.hca2014.Network.UpdateService;
 import dk.redweb.hca2014.StaticNames.*;
 import dk.redweb.hca2014.Views.FlexibleButton;
 import dk.redweb.hca2014.Views.NavBarBox;
@@ -42,6 +43,8 @@ public class BasePageFragment extends Fragment {
 
     protected View _view;
     protected NavBarBox _navbarbox;
+
+    private UpdateService _updateService;
 
     protected DateTime DateTimeNow(){
         DateTime now = new DateTime();
@@ -122,6 +125,15 @@ public class BasePageFragment extends Fragment {
         {
             navbar.updateNavigationBar(_page);
         }
+
+        _updateService = new UpdateService(_app);
+        _updateService.start();
+    }
+
+    @Override
+    public void onPause(){
+        _updateService.stop();
+        super.onPause();
     }
 
     private void setLogoBars(){

@@ -1,10 +1,10 @@
 <network>
 	<datafolder>
-		<path>http://dev.hcafestivals.dk/appdata/</path>
+		<path>http://hcafestivals.dk/appdata/</path>
 	</datafolder>
 	<joomla>
-		<path>http://dev.hcafestivals.dk/</path>
-        <css>&lt;link rel='stylesheet' href='http://dev.hcafestivals.dk/templates/redweb/css/joomla25-default.css' type='text/css'/&gt;</css>
+		<path>http://hcafestivals.dk/</path>
+        <css>&lt;link rel='stylesheet' href='http://hcafestivals.dk/templates/redweb/css/joomla25-default.css' type='text/css'/&gt;</css>
 	</joomla>
     <project>
         <id>363303982550</id>
