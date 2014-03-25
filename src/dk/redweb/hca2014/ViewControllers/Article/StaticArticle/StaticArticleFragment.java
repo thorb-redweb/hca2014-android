@@ -45,7 +45,7 @@ public class StaticArticleFragment extends BasePageFragment {
 
         WebView body = (WebView)findViewById(R.id.staticArticle_webBody);
 
-        String htmlString = _xml.css + article.FullTextWithHtml();
+        String htmlString = _xml.css + article.IntroTextWithHtml();
         body.loadDataWithBaseURL(_xml.joomlaPath, htmlString, "text/html", "UTF-8", null);
 
         setupBackButton();

@@ -45,6 +45,9 @@ public class DbVenues {
         for(int i = 0; i < activeIds.length; i++){
             whereString += " OR " + DbSchemas.Venue.VENUE_ID + " = '" + activeIds[i] + "'";
         }
+        if(whereString.length() < 5){
+            return new String[0];
+        }
         whereString = whereString.substring(4,whereString.length());
         Cursor c = _sql.query(true, DbSchemas.Venue.TABLE_NAME, new String[]{DbSchemas.Venue.TITLE},
                 whereString, null, null, null, DbSchemas.Venue.TITLE, null);
