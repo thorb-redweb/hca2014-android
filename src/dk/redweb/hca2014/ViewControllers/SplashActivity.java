@@ -9,6 +9,7 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import dk.redweb.hca2014.*;
 import dk.redweb.hca2014.Database.DbInterface;
 import dk.redweb.hca2014.Interfaces.Delegate_dumpServer;
@@ -34,7 +35,7 @@ public class SplashActivity extends Activity implements Delegate_dumpServer, Del
     private ServerInterface _sv;
     private XmlStore _xml;
 
-    private LinearLayout _screen;
+    private RelativeLayout _screen;
     private ProgressDialog _progressDialog;
     private Timer _timer;
 
@@ -55,17 +56,7 @@ public class SplashActivity extends Activity implements Delegate_dumpServer, Del
         _xml = _app.getXmlStore();
         _sv = _app.getServerInterface();
 
-        _screen = (LinearLayout) findViewById(R.id.splash_lnrPage);
-
-        try {
-            XmlNode page = _xml.getPage(TYPE.SPLASH);
-            String imageFileName = page.getStringFromNode(PAGE.BACKGROUNDIMAGE);
-            Drawable drawable = My.getDrawableFromResourceWithFilename(imageFileName, getApplicationContext());
-
-            _screen.setBackground(drawable);
-        } catch (Exception e) {
-            MyLog.e("Exception when attempting to set splashImage", e);
-        }
+        _screen = (RelativeLayout) findViewById(R.id.splash_lnrPage);
     }
 
     @Override

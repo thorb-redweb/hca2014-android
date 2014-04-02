@@ -47,15 +47,10 @@ public class PushMessageAutoSubscriberFragment extends BasePageFragment implemen
             return null;
         }
 
-        addUserToDatabase();
-        return _view;
-    }
-
-
-
-    private void addUserToDatabase(){
         _pmHandler.initializePushService("");
         firstTime = false;
+        changeToNextPage();
+        return null;
     }
 
     @Override

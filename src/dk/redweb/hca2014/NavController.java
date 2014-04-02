@@ -137,6 +137,7 @@ public class NavController {
         } catch (NoSuchFieldException e) {
             MyLog.e("Exception when getting type from page", e);
         }
+        MyLog.d("Launching page of type: " + type);
         if(type.equals(TYPE.ADVENTCAL)){
             return new AdventCalFragment(page);
         } else if(type.equals(TYPE.ADVENTWINDOW)){

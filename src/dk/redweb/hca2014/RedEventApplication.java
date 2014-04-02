@@ -65,7 +65,7 @@ public class RedEventApplication  extends Application {
     }
 
     //Debugging section
-    private boolean debugging = true;
+    private boolean debugging = false;
     private boolean debugSkipUpdates = false;
     private LatLng debugPosition = new LatLng(55.395030,10.384113);
     public LatLng getDebugPosition(){ return debugPosition; }

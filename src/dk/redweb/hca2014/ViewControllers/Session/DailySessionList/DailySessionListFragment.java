@@ -63,7 +63,9 @@ public class DailySessionListFragment extends BasePageFragment {
         setAppearance();
         setText();
 
-        _dateOfListContent = new LocalDate();
+        if(_dateOfListContent == null){
+            _dateOfListContent = new LocalDate();
+        }
         if(_app.isDebugging()){
             _dateOfListContent = _app.getDebugCurrentDate().toLocalDate();
         }
@@ -104,16 +106,18 @@ public class DailySessionListFragment extends BasePageFragment {
     }
 
     private void setupSpinner(){
-        Spinner typeSpinner = (Spinner)findViewById(R.id.dailysessionlist_spnType);
-        final String[] types = new String[]{"Underholdning og teater", "Leg og læring", "Musik", "Kulturformidling", "Kunst og kultur", "Spoken word"};
-        loadSpinnerData(typeSpinner, types, typeSpinnerTitle);
-        Spinner venueSpinner = (Spinner)findViewById(R.id.dailysessionlist_spnVenue);
-        final String[] venues = _db.Venues.getAllActiveNames();
-        loadSpinnerData(venueSpinner, venues, venueSpinnerTitle);
+        if(_spnType.getSelectedItem() == null){
+            final String[] types = new String[]{"Underholdning og teater", "Leg og læring", "Musik", "Kulturformidling", "Kunst og kultur", "Spoken word"};
+            loadSpinnerData(_spnType, types, typeSpinnerTitle);
+        }
+        if(_spnVenue.getSelectedItem() == null){
+            final String[] venues = _db.Venues.getAllActiveNames();
+            loadSpinnerData(_spnVenue, venues, venueSpinnerTitle);
+        }
 
-        typeSpinner.setOnItemSelectedListener(new TypeSpinnerListener());
+        _spnType.setOnItemSelectedListener(new TypeSpinnerListener());
 
-        venueSpinner.setOnItemSelectedListener(new VenueSpinnerListener());
+        _spnVenue.setOnItemSelectedListener(new VenueSpinnerListener());
     }
 
     private void loadSpinnerData(Spinner spinner, String[] rawData, String title)
@@ -140,6 +144,8 @@ public class DailySessionListFragment extends BasePageFragment {
                 try {
                     XmlNode nextPage = _xml.getPage(_childname).deepClone();
                     nextPage.addChildToNode(PAGE.SESSIONID, selectedSession.SessionId());
+                    DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
+                    String date = formatter.print(_dateOfListContent);
                     NavController.changePageWithXmlNode(nextPage,getActivity());
                 } catch (Exception e) {
                     MyLog.e("Exception in DailySessionListActivity:onClickListener", e);

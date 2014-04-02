@@ -63,6 +63,9 @@ public class OverviewMapFragment extends BaseMapFragment {
         for(int i = 0; i < mapMarkers.length; i++)
         {
             LatLng loc = mapMarkers[i].Location;
+            if(loc.equals(new LatLng(0,0))){
+                continue;
+            }
             String titleArray = mapMarkers[i].Name + "<>" + mapMarkers[i].SessionId + "<>" + _childname;
             BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(mapMarkers[i].IconResource);
             Marker marker = _googleMap.addMarker(new MarkerOptions().position(loc).title(titleArray).snippet(mapMarkers[i].Text).icon(icon));

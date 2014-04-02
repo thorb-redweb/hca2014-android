@@ -1,17 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
               android:id="@+id/splash_lnrPage"
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <LinearLayout android:id="@+id/splash_hca"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_above="@+id/splash_top"
+            android:background="@android:color/black">
+        <ImageView
+                   android:layout_width="match_parent" android:layout_height="wrap_content"
+                   android:layout_gravity="center"
+                android:src="@drawable/splash_hca_logo"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/splash_top"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:layout_above="@+id/splash_bottom"
+                  android:background="@android:color/black">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                   android:layout_gravity="right"
+                   android:src="@drawable/splash_logo_justimagine_top"/>
+
+    </LinearLayout>
+    <LinearLayout android:id="@+id/splash_bottom"
+                  android:orientation="vertical"
+                  android:layout_width="match_parent" android:layout_height="wrap_content"
+                  android:layout_alignParentBottom="true">
+        <ImageView
+                   android:layout_width="wrap_content" android:layout_height="wrap_content"
+                   android:layout_gravity="right"
+                   android:src="@drawable/splash_logo_justimagine_bottom"/>
+        <ImageView
+                   android:layout_width="match_parent" android:layout_height="wrap_content"
+                   android:layout_marginBottom="16dp"
+                   android:src="@drawable/splash_redweb_logo"/>
+    </LinearLayout>
     <LinearLayout android:id="@+id/splash_errorBox"
                   style="@style/Layout.Wrap.Complete"
-                  android:layout_marginTop="10sp"
-                  android:layout_marginLeft="10sp"
-                  android:layout_marginRight="10sp">
+                  android:layout_centerInParent="true">
         <TextView android:id="@+id/splash_errorText"
                   style="@style/Layout.Wrap.Complete"
                   android:layout_margin="10sp"/>
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>
