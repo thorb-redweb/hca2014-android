@@ -10,9 +10,12 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.ExifInterface;
 import android.net.Uri;
+import android.os.Bundle;
 import dk.redweb.hca2014.StaticNames.LOOK;
+import dk.redweb.hca2014.XmlHandling.XmlNode;
 
 import java.io.File;
+import java.util.ArrayList;
 
 /**
  * Created by Redweb with IntelliJ IDEA.
@@ -132,5 +135,88 @@ public class My {
             array[oppositeIndex] = tmp;
         }
         return array;
+    }
+
+    public static void saveXmlPageInBundle(XmlNode page, Bundle bundle){
+        ArrayList<Integer> prefixArray = new ArrayList<Integer>();
+        prefixArray.add(0); //Set prefix array to {0}
+        saveXmlNodeInBundle(prefixArray, page, bundle); //Send the page to form the root
+    }
+
+    private static void saveXmlNodeInBundle(ArrayList<Integer> prefixArray, XmlNode node, Bundle bundle){
+        String prefixString = makePrefixString(prefixArray); //Make the prefixArray into String ex: 1.0.1
+        //If the node holds data, simply add name and value to the bundle
+        //The prefix of the value has v added, to seperate the two
+        if(node.isValueNode()){
+            String value1 = node.name();
+            String value2 = node.value().toString();
+            bundle.putString(prefixString,value1);
+            bundle.putString(prefixString+"v",value2);
+        }
+        //If the node holds an array, add the nodes name to the bundle, and then start adding the children
+        //Then prefix of the children has one added integer, so the children of 0.1 are 0.1.0, 0.1.1, 0.1.2, etc.
+        else{
+            String value1 = node.name();
+            bundle.putString(prefixString,value1);
+            ArrayList<Integer> newPrefixArray = new ArrayList<Integer>(prefixArray);
+            newPrefixArray.add(0);
+            for(XmlNode childNode : node){
+                saveXmlNodeInBundle(newPrefixArray, childNode, bundle);
+                int lastIndex = newPrefixArray.size()-1;
+                newPrefixArray.set(lastIndex,newPrefixArray.get(lastIndex) + 1);
+            }
+        }
+    }
+
+    public static XmlNode loadXmlPageFromBundle(Bundle b){
+        MyLog.v("Unbundling page");
+        ArrayList<Integer> prefixArray = new ArrayList<Integer>();
+        prefixArray.add(0); //Set the prefix to 0
+        XmlNode parentNode = loadXmlPageFromBundle(prefixArray, b); //Pull the pageNode (which will have prefix 0) from the bundle
+        return parentNode;
+    }
+
+    private static XmlNode loadXmlPageFromBundle(ArrayList<Integer> prefixArray, Bundle b){
+        XmlNode node;
+
+        String prefixString = makePrefixString(prefixArray);
+
+        String key = b.getString(prefixString);
+        String value = b.getString(prefixString + "v");
+        MyLog.v("Prefix: " + prefixString + " Key: " + key + " Value: " + value);
+
+        //If the the key is associated with a value, then we have a value node, and make it
+        if(value != null){
+            node = new XmlNode(key, value);
+        }
+        //Otherwise, we have an array node.
+        //We make the array, and call loadXmlPageFromBundle again to fill it with children
+        //The prefix of the children has one added integer, so the children of 0.1 are 0.1.0, 0.1.1, 0.1.2, etc.
+        //Once the array has been gathered, we create the node with the originally retrieved key and the childnode array
+        else{
+            ArrayList<Object> childNodes = new ArrayList<Object>();
+            ArrayList<Integer> newPrefixArray = new ArrayList<Integer>(prefixArray);
+            newPrefixArray.add(0);
+            String newPrefixString = makePrefixString(newPrefixArray);
+            while(b.getString(newPrefixString) != null){
+                XmlNode childNode = loadXmlPageFromBundle(newPrefixArray, b);
+                childNodes.add(childNode);
+                int lastIndex = newPrefixArray.size()-1;
+                newPrefixArray.set(lastIndex,newPrefixArray.get(lastIndex) + 1);
+                newPrefixString = makePrefixString(newPrefixArray);
+            }
+            node = new XmlNode(key, childNodes);
+        }
+
+        return node;
+    }
+
+    public static String makePrefixString(ArrayList<Integer> prefixArray){
+        String prefixString = "";
+        for(int prefixPart : prefixArray){
+            prefixString += "." + prefixPart;
+        }
+        prefixString = prefixString.substring(1);
+        return prefixString;
     }
 }

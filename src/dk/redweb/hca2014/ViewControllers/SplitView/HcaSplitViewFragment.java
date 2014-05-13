@@ -6,6 +6,7 @@ import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import dk.redweb.hca2014.My;
 import dk.redweb.hca2014.MyLog;
 import dk.redweb.hca2014.NavController;
 import dk.redweb.hca2014.R;
@@ -33,8 +34,26 @@ public class HcaSplitViewFragment extends BasePageFragment {
     ListView lstSessions;
     NewsTicker newsTicker;
 
+    public HcaSplitViewFragment(){
+        super(null);
+    }
+
     public HcaSplitViewFragment(XmlNode page) {
         super(page);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        My.saveXmlPageInBundle(_page, outState);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(_page == null){
+            _page = My.loadXmlPageFromBundle(savedInstanceState);
+        }
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

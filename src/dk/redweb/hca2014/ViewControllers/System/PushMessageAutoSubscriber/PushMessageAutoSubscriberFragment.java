@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import dk.redweb.hca2014.Interfaces.Delegate_uploadRegistrationAttributes;
+import dk.redweb.hca2014.My;
 import dk.redweb.hca2014.MyLog;
 import dk.redweb.hca2014.NavController;
 import dk.redweb.hca2014.Network.PushMessages.PushMessageInitializationHandling;
@@ -24,9 +25,27 @@ public class PushMessageAutoSubscriberFragment extends BasePageFragment implemen
     boolean firstTime;
     PushMessageInitializationHandling _pmHandler;
 
+    public PushMessageAutoSubscriberFragment(){
+        super(null);
+    }
+
     public PushMessageAutoSubscriberFragment(XmlNode page) {
         super(page);
         firstTime = true;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        My.saveXmlPageInBundle(_page, outState);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(_page == null){
+            _page = My.loadXmlPageFromBundle(savedInstanceState);
+        }
     }
 
     @Override

@@ -168,6 +168,13 @@ public class XmlNode implements Iterable<XmlNode>, Serializable {
         return false;
     }
 
+    public boolean isValueNode(){
+        if(this.value instanceof ArrayList){
+            return false;
+        }
+        return true;
+    }
+
     public XmlNode(String name, Object value){
         this.name = name;
         this.value = value;

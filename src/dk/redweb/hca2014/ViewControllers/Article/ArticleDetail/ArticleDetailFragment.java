@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 import dk.redweb.hca2014.Helper.AppearanceHelper.AppearanceHelper;
+import dk.redweb.hca2014.My;
 import dk.redweb.hca2014.MyLog;
 import dk.redweb.hca2014.R;
 import dk.redweb.hca2014.StaticNames.*;
@@ -28,8 +29,26 @@ import dk.redweb.hca2014.cssfile;
  */
 public class ArticleDetailFragment extends BasePageFragment {
 
+    public ArticleDetailFragment(){
+        super(null);
+    }
+
     public ArticleDetailFragment(XmlNode page) {
         super(page);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        My.saveXmlPageInBundle(_page, outState);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(_page == null){
+            _page = My.loadXmlPageFromBundle(savedInstanceState);
+        }
     }
 
     @Override

@@ -52,11 +52,32 @@ public class DailySessionListFragment extends BasePageFragment {
         return -1;
     }
 
+    public DailySessionListFragment(){
+        super(null);
+        _listPosition = -255;
+        _lastTypeChoice = "";
+        _lastVenueChoice = "";
+    }
+
     public DailySessionListFragment(XmlNode page) {
         super(page);
         _listPosition = -255;
         _lastTypeChoice = "";
         _lastVenueChoice = "";
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        My.saveXmlPageInBundle(_page, outState);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(_page == null){
+            _page = My.loadXmlPageFromBundle(savedInstanceState);
+        }
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -91,6 +112,7 @@ public class DailySessionListFragment extends BasePageFragment {
 
         initializeDate();
         if(_adapter == null){
+
             reloadListView();
         }
         if(_page.hasChild(PAGE.LISTPOSITION)){
@@ -287,7 +309,7 @@ public class DailySessionListFragment extends BasePageFragment {
     }
 
     private void reloadListView(){
-        if(!_spnType.getSelectedItem().toString().matches(_lastTypeChoice) ||
+        if(_spnType.getSelectedItem() != null && _lastTypeChoice != null && !_spnType.getSelectedItem().toString().matches(_lastTypeChoice) ||
                 !_spnVenue.getSelectedItem().toString().matches(_lastVenueChoice) ||
                 !_dateOfListContent.equals(_lastDateChoice) ||
                 _listPosition != -255){

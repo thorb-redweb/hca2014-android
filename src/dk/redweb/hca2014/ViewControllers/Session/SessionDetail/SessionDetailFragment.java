@@ -27,8 +27,26 @@ public class SessionDetailFragment extends BasePageFragment {
 
     SessionVM _session;
 
+    public SessionDetailFragment(){
+        super(null);
+    }
+
     public SessionDetailFragment(XmlNode page) {
         super(page);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        My.saveXmlPageInBundle(_page, outState);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(_page == null){
+            _page = My.loadXmlPageFromBundle(savedInstanceState);
+        }
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

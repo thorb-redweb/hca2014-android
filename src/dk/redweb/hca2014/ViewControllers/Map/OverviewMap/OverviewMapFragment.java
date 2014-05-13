@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.*;
+import dk.redweb.hca2014.My;
 import dk.redweb.hca2014.MyLog;
 import dk.redweb.hca2014.R;
 import dk.redweb.hca2014.ViewControllers.Map.BaseMapFragment;
@@ -29,8 +30,26 @@ public class OverviewMapFragment extends BaseMapFragment {
 
     boolean _isOnCreateInitialized = false;
 
+    public OverviewMapFragment(){
+        super(null);
+    }
+
     public OverviewMapFragment(XmlNode page) {
         super(page);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        My.saveXmlPageInBundle(_page, outState);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(_page == null){
+            _page = My.loadXmlPageFromBundle(savedInstanceState);
+        }
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

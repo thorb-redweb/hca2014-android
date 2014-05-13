@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.RelativeLayout;
 import dk.redweb.hca2014.Helper.AppearanceHelper.AppearanceHelper;
+import dk.redweb.hca2014.My;
 import dk.redweb.hca2014.MyLog;
 import dk.redweb.hca2014.R;
 import dk.redweb.hca2014.StaticNames.DEFAULTTEXT;
@@ -26,8 +27,26 @@ import dk.redweb.hca2014.XmlHandling.XmlNode;
  */
 public class StaticArticleFragment extends BasePageFragment {
 
+    public StaticArticleFragment(){
+        super(null);
+    }
+
     public StaticArticleFragment(XmlNode page) {
         super(page);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        My.saveXmlPageInBundle(_page, outState);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(_page == null){
+            _page = My.loadXmlPageFromBundle(savedInstanceState);
+        }
     }
 
     public View onCreateView(LayoutInflater inflate, ViewGroup container, Bundle savedInstanceState) {

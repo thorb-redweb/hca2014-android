@@ -56,19 +56,6 @@ public class BasePageFragment extends Fragment {
 
     public BasePageFragment(XmlNode page){
         _page = page;
-
-        try {
-            _name = page.getStringFromNode(PAGE.NAME);
-        } catch (NoSuchFieldException e) {
-            MyLog.e("NoSuchFieldException for 'name' in BasePageFragment:constructor getting name from xml", e);
-        }
-        if(page.hasChild(PAGE.CHILD)){
-            try {
-                _childname = page.getStringFromNode(PAGE.CHILD);
-            } catch (NoSuchFieldException e) {
-                MyLog.e("NoSuchFieldException for 'child' in BasePageFragment:constructor getting childname from xml", e);
-            }
-        }
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, int resourceId){
@@ -79,6 +66,19 @@ public class BasePageFragment extends Fragment {
         _net = _app.getNetworkInterface();
         _sv = _app.getServerInterface();
         _xml = _app.getXmlStore();
+
+        try {
+            _name = _page.getStringFromNode(PAGE.NAME);
+        } catch (NoSuchFieldException e) {
+            MyLog.e("NoSuchFieldException for 'name' in BasePageFragment:constructor getting name from xml", e);
+        }
+        if(_page.hasChild(PAGE.CHILD)){
+            try {
+                _childname = _page.getStringFromNode(PAGE.CHILD);
+            } catch (NoSuchFieldException e) {
+                MyLog.e("NoSuchFieldException for 'child' in BasePageFragment:constructor getting childname from xml", e);
+            }
+        }
 
         try {
             if(_xml.appearance.hasChild(_name)){
