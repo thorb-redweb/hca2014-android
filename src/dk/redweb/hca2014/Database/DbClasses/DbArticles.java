@@ -16,8 +16,6 @@ import org.joda.time.DateTime;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
 /**
 * Created by Redweb with IntelliJ IDEA.
 * Date: 9/18/13

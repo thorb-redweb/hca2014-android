@@ -13,9 +13,12 @@ import dk.redweb.hca2014.Helper.TextHelper.TextHelper;
 import dk.redweb.hca2014.StaticNames.LOOK;
 import dk.redweb.hca2014.StaticNames.PAGE;
 import dk.redweb.hca2014.StaticNames.TEXT;
+import dk.redweb.hca2014.StaticNames.TYPE;
 import dk.redweb.hca2014.ViewModels.SessionVM;
 import dk.redweb.hca2014.XmlHandling.XmlNode;
 import dk.redweb.hca2014.XmlHandling.XmlStore;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 
 /**
  * Created by Redweb with IntelliJ IDEA.
@@ -174,6 +177,24 @@ public class NavBarBox extends LinearLayout {
                     if(thisPage.hasChild(PAGE.PARENTPARAMETERS)){
                         for(XmlNode child : thisPage.getChildFromNode(PAGE.PARENTPARAMETERS)){
                             nextPage.addXmlNodeToNode(child);
+                        }
+                    }
+                    if(thisPage.getStringFromNode(PAGE.TYPE).matches(TYPE.SESSIONDETAIL) &&
+                            nextPage.getStringFromNode(PAGE.TYPE).matches(TYPE.DAILYSESSIONLIST)){
+
+                        int sessionid = thisPage.getIntegerFromNode(PAGE.SESSIONID);
+                        SessionVM session = _db.Sessions.getVMFromId(sessionid);
+                        DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
+                        String date = formatter.print(session.StartDate());
+                        nextPage.addChildToNode(PAGE.SESSIONDATE, date);
+                        if(thisPage.hasChild(PAGE.TYPEFILTER)){
+                            nextPage.addXmlNodeToNode(thisPage.getChildFromNode(PAGE.TYPEFILTER));
+                        }
+                        if(thisPage.hasChild(PAGE.VENUEFILTER)){
+                            nextPage.addXmlNodeToNode(thisPage.getChildFromNode(PAGE.VENUEFILTER));
+                        }
+                        if(thisPage.hasChild(PAGE.LISTPOSITION)){
+                            nextPage.addXmlNodeToNode(thisPage.getChildFromNode(PAGE.LISTPOSITION));
                         }
                     }
                     NavController.changePageWithXmlNode(nextPage, _parentActivity);

@@ -15,7 +15,8 @@
                 android:layout_margin="10sp">
             <ImageView android:id="@+id/imageArticleListItem_img"
                        style="@style/Image.Wrap"
-                       android:layout_centerHorizontal="true"/>
+                       android:layout_centerHorizontal="true"
+                       android:adjustViewBounds="true"/>
         </RelativeLayout>
         <RelativeLayout
                 style="@style/Layout.Full"

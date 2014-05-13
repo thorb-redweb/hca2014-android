@@ -65,6 +65,12 @@ public class PAGE {
     public static final String BUTTON7CHILD = "button7";
     public static final String BUTTON8CHILD = "button8";
 
+    //SessionNavigation Specific
+    public static final String LISTPOSITION = "listposition";
+    public static final String SESSIONDATE = "sessiondate";
+    public static final String TYPEFILTER = "typefilter";
+    public static final String VENUEFILTER = "venuefilter";
+
     //RedUpload Specific
     public static final String REDUPLOADFOLDERTYPE = "foldertype";
     public static final String REDUPLOADFOLDERTYPESESSION = "session";

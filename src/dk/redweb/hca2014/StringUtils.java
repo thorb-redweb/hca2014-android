@@ -23,8 +23,8 @@ public class StringUtils {
 
     public static String stripHtmlAndJoomla(String htmlString)
     {
-        htmlString = htmlString.replaceAll("\\<.*?\\>", "");
-        htmlString = htmlString.replaceAll("&nbsp;", " ");
+        htmlString = htmlString.replaceAll("\\<.*?\\>", "");    //Remove html tags
+        htmlString = htmlString.replaceAll("&nbsp;", " ");      //Convert &nbsp; to space
         htmlString = stripJoomlaTags(htmlString);
         return htmlString;
     }
@@ -33,6 +33,7 @@ public class StringUtils {
     {
         htmlString = htmlString.replaceAll("\\[.*?\\]\r\n", "");
         htmlString = htmlString.replaceAll("\\[.*?\\]", "");
+        htmlString = htmlString.replaceAll("\\\\\"", "\"");         //Make \" into "
         return htmlString;
     }
 }

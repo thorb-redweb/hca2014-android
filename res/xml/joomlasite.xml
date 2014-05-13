@@ -1,9 +1,9 @@
 <network>
 	<datafolder>
-		<path>http://hcafestivals.dk/appdata/</path>
+		<path>http://hca.thorb.intern.redweb.dk/appdata/</path>
 	</datafolder>
 	<joomla>
-		<path>http://hcafestivals.dk/</path>
+		<path>http://hca.thorb.intern.redweb.dk/</path>
         <css>&lt;link rel='stylesheet' href='http://hcafestivals.dk/templates/redweb/css/joomla25-default.css' type='text/css'/&gt;</css>
 	</joomla>
     <project>

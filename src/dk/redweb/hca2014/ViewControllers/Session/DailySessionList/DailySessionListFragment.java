@@ -29,12 +29,19 @@ public class DailySessionListFragment extends BasePageFragment {
     private Spinner _spnVenue;
     private ListView _lstSession;
 
+    private DailySessionListAdapter _adapter;
+    private int _listPosition;
+    private int _listTop;
+    private String _lastTypeChoice;
+    private String _lastVenueChoice;
+    private LocalDate _lastDateChoice;
+
     private LocalDate _dateOfListContent;
     private LocalDate _earliestDateWithSession;
     private LocalDate _latestDateWithSession;
 
-    String typeSpinnerTitle = "Sorter på type";
-    String venueSpinnerTitle = "Sorter på sted";
+    private String typeSpinnerTitle = "Sorter på type";
+    private String venueSpinnerTitle = "Sorter på sted";
 
     private String _filterType;
     private Venue _filterVenue;
@@ -47,6 +54,9 @@ public class DailySessionListFragment extends BasePageFragment {
 
     public DailySessionListFragment(XmlNode page) {
         super(page);
+        _listPosition = -255;
+        _lastTypeChoice = "";
+        _lastVenueChoice = "";
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -63,6 +73,15 @@ public class DailySessionListFragment extends BasePageFragment {
         setAppearance();
         setText();
 
+        if(_page.hasChild(PAGE.SESSIONDATE)){
+            try {
+                DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
+                _dateOfListContent = formatter.parseLocalDate(_page.getStringFromNode(PAGE.SESSIONDATE));
+                _page.removeXmlNodeWithName(PAGE.SESSIONDATE);
+            } catch (NoSuchFieldException e) {
+                MyLog.e("Exception when setting session date from page", e);
+            }
+        }
         if(_dateOfListContent == null){
             _dateOfListContent = new LocalDate();
         }
@@ -71,7 +90,23 @@ public class DailySessionListFragment extends BasePageFragment {
         }
 
         initializeDate();
-        reloadListView();
+        if(_adapter == null){
+            reloadListView();
+        }
+        if(_page.hasChild(PAGE.LISTPOSITION)){
+            try {
+                String[] listCoordinates = _page.getStringFromNode(PAGE.LISTPOSITION).split(",");
+                _listPosition = Integer.parseInt(listCoordinates[0]);
+                _listTop = Integer.parseInt(listCoordinates[1]);
+            } catch (NoSuchFieldException e) {
+                MyLog.e("Exception when setting list position from page", e);
+            }
+            try {
+                _page.removeXmlNodeWithName(PAGE.LISTPOSITION);
+            } catch (NoSuchFieldException e) {
+                MyLog.e("Exception when removing listposition from page", e);
+            }
+        }
 
         return _view;
     }
@@ -106,18 +141,49 @@ public class DailySessionListFragment extends BasePageFragment {
     }
 
     private void setupSpinner(){
+        final String[] types = new String[]{"Underholdning og teater", "Leg og læring", "Musik", "Kulturformidling", "Kunst og kultur", "Spoken word"};
+        final String[] venues = _db.Venues.getAllActiveNames();
+
         if(_spnType.getSelectedItem() == null){
-            final String[] types = new String[]{"Underholdning og teater", "Leg og læring", "Musik", "Kulturformidling", "Kunst og kultur", "Spoken word"};
             loadSpinnerData(_spnType, types, typeSpinnerTitle);
+            _spnType.setOnItemSelectedListener(new TypeSpinnerListener());
         }
         if(_spnVenue.getSelectedItem() == null){
-            final String[] venues = _db.Venues.getAllActiveNames();
             loadSpinnerData(_spnVenue, venues, venueSpinnerTitle);
+            _spnVenue.setOnItemSelectedListener(new VenueSpinnerListener());
         }
 
-        _spnType.setOnItemSelectedListener(new TypeSpinnerListener());
+        if(_page.hasChild(PAGE.TYPEFILTER)){
+            try {
+                String type = _page.getStringFromNode(PAGE.TYPEFILTER);
+                for (int i = 0; i < types.length; i++){
+                    if(types[i].matches(type)){
+                        _spnType.setSelection(i+1);
+                        break;
+                    }
+                }
+                _filterType = type;
+                _page.removeXmlNodeWithName(PAGE.TYPEFILTER);
+            } catch (NoSuchFieldException e) {
+                MyLog.e("Exception when setting selected event type from page", e);
+            }
+        }
 
-        _spnVenue.setOnItemSelectedListener(new VenueSpinnerListener());
+        if(_page.hasChild(PAGE.VENUEFILTER)){
+            try {
+                String venueName = _page.getStringFromNode(PAGE.VENUEFILTER);
+                for (int i = 0; i < venues.length; i++){
+                    if(venues[i].matches(venueName)){
+                        _spnVenue.setSelection(i+1);
+                        break;
+                    }
+                }
+                _filterVenue = _db.Venues.getFromName(venueName);
+                _page.removeXmlNodeWithName(PAGE.VENUEFILTER);
+            } catch (NoSuchFieldException e) {
+                MyLog.e("Exception when setting selected venue from page", e);
+            }
+        }
     }
 
     private void loadSpinnerData(Spinner spinner, String[] rawData, String title)
@@ -144,8 +210,12 @@ public class DailySessionListFragment extends BasePageFragment {
                 try {
                     XmlNode nextPage = _xml.getPage(_childname).deepClone();
                     nextPage.addChildToNode(PAGE.SESSIONID, selectedSession.SessionId());
-                    DateTimeFormatter formatter = DateTimeFormat.forPattern("yyyy-MM-dd");
-                    String date = formatter.print(_dateOfListContent);
+                    nextPage.addChildToNode(PAGE.TYPEFILTER, _spnType.getSelectedItem().toString());
+                    nextPage.addChildToNode(PAGE.VENUEFILTER, _spnVenue.getSelectedItem().toString());
+                    _listPosition = _lstSession.getFirstVisiblePosition();
+                    View topView = _lstSession.getChildAt(0);
+                    _listTop = (topView == null) ? 0 : topView.getTop();
+                    nextPage.addChildToNode(PAGE.LISTPOSITION, _listPosition+","+_listTop);
                     NavController.changePageWithXmlNode(nextPage,getActivity());
                 } catch (Exception e) {
                     MyLog.e("Exception in DailySessionListActivity:onClickListener", e);
@@ -217,10 +287,22 @@ public class DailySessionListFragment extends BasePageFragment {
     }
 
     private void reloadListView(){
-        setDateLabel();
-        SessionVM[] sessions = _db.Sessions.getVMListFromDayAndVenueId(_dateOfListContent,getFilterVenueId(),_filterType);
-        DailySessionListAdapter lstSessionsAdapter = new DailySessionListAdapter(_view.getContext(), sessions, _xml, _page);
-        _lstSession.setAdapter(lstSessionsAdapter);
+        if(!_spnType.getSelectedItem().toString().matches(_lastTypeChoice) ||
+                !_spnVenue.getSelectedItem().toString().matches(_lastVenueChoice) ||
+                !_dateOfListContent.equals(_lastDateChoice) ||
+                _listPosition != -255){
+            _lastTypeChoice = _spnType.getSelectedItem().toString();
+            _lastVenueChoice = _spnVenue.getSelectedItem().toString();
+            _lastDateChoice = _dateOfListContent;
+            setDateLabel();
+            SessionVM[] sessions = _db.Sessions.getVMListFromDayAndVenueId(_dateOfListContent,getFilterVenueId(),_filterType);
+            _adapter = new DailySessionListAdapter(_view.getContext(), sessions, _xml, _page);
+            _lstSession.setAdapter(_adapter);
+            if(_listPosition != -255){
+                _lstSession.setSelectionFromTop(_listPosition,_listTop);
+                _listPosition = -255;
+            }
+        }
     }
 
     private void setDateLabel()

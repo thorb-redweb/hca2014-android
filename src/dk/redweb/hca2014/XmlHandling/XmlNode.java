@@ -123,13 +123,28 @@ public class XmlNode implements Iterable<XmlNode>, Serializable {
         throw new InvalidPropertiesFormatException("The node " + this.name + " does not contain an array, and thus can't be added to");
     }
 
+    public void removeXmlNodeWithName(String name) throws NoSuchFieldException {
+        XmlNode chosenChild = null;
+        for (XmlNode child : (ArrayList<XmlNode>)value){
+            if(child.name().equals(name)){
+                chosenChild = child;
+                break;
+            }
+        }
+        if(chosenChild != null){
+            ((ArrayList<XmlNode>) value).remove(chosenChild);
+            return;
+        }
+        throw new NoSuchFieldException("XmlNode " + name + " does not exist on node " + this.name);
+    }
+
     public XmlNode getChildFromNode(String name) throws NoSuchFieldException {
         for (XmlNode child : (ArrayList<XmlNode>)value){
             if(child.name().equals(name)){
                 return child;
             }
         }
-        throw new NoSuchFieldException("Integer value " + name + " does not exist on node " + this.name);
+        throw new NoSuchFieldException("XmlNode " + name + " does not exist on node " + this.name);
     }
 
     public XmlNode[] getAllChildNodesWithName(String name){

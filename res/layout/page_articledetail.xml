@@ -9,7 +9,8 @@
         <TextView android:id="@+id/articleDetail_lblTitle"
                   style="@style/Layout.Wrap"/>
         <ImageView android:id="@+id/articledetail_imgMain"
-                   style="@style/Image.Full"/>
+                   style="@style/Image.Full"
+                    android:adjustViewBounds="true"/>
         <WebView android:id="@+id/articleDetail_webBody"
                  style="@style/Layout.Full"/>
         <TextView android:id="@+id/articleDetail_lblBody"
