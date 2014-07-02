@@ -19,6 +19,8 @@ import dk.redweb.hca2014.ViewModels.SessionVM;
 import dk.redweb.hca2014.XmlHandling.XmlNode;
 import org.joda.time.LocalDate;
 
+import java.util.ArrayList;
+
 /**
  * Created by Redweb with IntelliJ IDEA.
  * Date: 1/14/14
@@ -105,8 +107,8 @@ public class StyledSessionListFragment extends BasePageFragment {
     }
 
     private void reloadListView(){
-        SessionVM[] sessions = _db.Sessions.getVMListFromDayAndVenueId(_dateOfListContent,-1,"");
-        StyledSessionListAdapter lstSessionsAdapter = new StyledSessionListAdapter(_view.getContext(), sessions, _xml, _page);
+        ArrayList<SessionVM> sessions = _db.Sessions.getVMListFromDayAndVenueId(_dateOfListContent,-1,"", "");
+        StyledSessionListAdapter lstSessionsAdapter = new StyledSessionListAdapter(_view.getContext(), sessions.toArray(new SessionVM[]{}), _xml, _page);
         _lstSession.setAdapter(lstSessionsAdapter);
     }
 }

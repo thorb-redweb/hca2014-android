@@ -33,6 +33,7 @@ public class TabbarBox extends LinearLayout {
         super(context, attrs);
 
         _app = (RedEventApplication)context.getApplicationContext();
+        _app.setTabbar(this);
         _xml = _app.getXmlStore();
 
         LayoutInflater inflater = LayoutInflater.from(context);

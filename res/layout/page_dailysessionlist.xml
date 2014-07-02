@@ -29,7 +29,7 @@
                 <TextView android:id="@+id/dailysessionlist_lblDate"
                           style="@style/Layout.Wrap.Complete"
                           android:textStyle="bold"/>
-                <LinearLayout android:id="@+id/dailysessionlist_lnrDateUnderline"
+                <View android:id="@+id/dailysessionlist_lnrDateUnderline"
                               style="@style/Layout.Wrap"
                               android:layout_height="2sp"
                               android:background="#e5007d"/>
@@ -49,12 +49,20 @@
                     style="@style/Spinner"
                     android:layout_width="0dp"
                     android:layout_weight="1"
+                    android:layout_gravity="center_vertical"
                         android:layout_marginRight="5dp"/>
             <Spinner android:id="@+id/dailysessionlist_spnVenue"
                      style="@style/Spinner"
                      android:layout_width="0dp"
                      android:layout_weight="1"
-                     android:layout_marginLeft="5dp"/>
+                     android:layout_gravity="center_vertical"
+                     android:layout_marginLeft="5dp"
+                     android:layout_marginRight="5dp"/>
+            <dk.redweb.hca2014.Views.FlexibleButton
+                    android:id="@+id/dailysessionlist_btnSearch"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dp"/>
         </LinearLayout>
     </LinearLayout>
 

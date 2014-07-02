@@ -34,7 +34,8 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name="dk.redweb.hca2014.ViewControllers.FragmentPagesActivity"/>
+        <activity android:name="dk.redweb.hca2014.ViewControllers.FragmentPagesActivity"
+                  android:screenOrientation="portrait"/>
         <activity android:name="dk.redweb.hca2014.ViewControllers.System.PushMessageForwarder.PushMessageForwarder"/>
 
         <receiver

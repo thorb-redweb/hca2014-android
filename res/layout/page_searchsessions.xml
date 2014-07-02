@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent" android:layout_height="match_parent">
+    <EditText android:id="@+id/searchsessions_txtSearchField"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:hint="Søg"/>
+    <ListView android:id="@+id/searchsessions_lstSessions"
+              style="@style/Layout.Full"
+              android:cacheColorHint="@android:color/white"
+              android:divider="@null"
+              android:dividerHeight="0dp"
+              android:paddingLeft="10sp"
+              android:paddingRight="15sp"/>
+    <LinearLayout android:id="@+id/searchsessions_lnrEmptyList"
+                  android:visibility="gone"
+                  style="@style/Layout.Full"
+                  android:gravity="center">
+        <TextView android:id="@+id/searchsesssions_lblEmptyList"
+                  style="@style/Layout.Wrap.Complete"/>
+    </LinearLayout>
+</LinearLayout>

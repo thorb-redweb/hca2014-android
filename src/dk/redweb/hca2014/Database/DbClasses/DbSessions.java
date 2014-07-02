@@ -19,6 +19,8 @@ import org.joda.time.LocalDate;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 /**
  * Created by Redweb with IntelliJ IDEA.
  * Date: 9/18/13
@@ -85,24 +87,24 @@ public class DbSessions {
         return sessions;
     }
 
-    public SessionVM[] getVMListFromDayAndVenueId(LocalDate day, int venueId, String type) {
+    public ArrayList<SessionVM> getVMListFromDayAndVenueId(LocalDate day, int venueId, String type, String searchString) {
         String chosenDay = "'" + Converters.LocalDateToSQLDate(day) + "'";
         String dateWhereString = "date(" + DbSchemas.Ses.STARTDATETIME + ") = date(" + chosenDay + ")";
         String venueWhereString = "";
         if(venueId >= 0) venueWhereString = " AND " + DbSchemas.Ses.VENUE_ID + " = '" + venueId + "'";
         String typeWhereString = "";
         if(type != null) typeWhereString = " AND " + DbSchemas.Ses.EVENTTYPE + " = '" + type + "'";
-        String whereString = dateWhereString + venueWhereString + typeWhereString;
+        String searchWhereString = "";
+        if(!searchString.matches("")) searchWhereString = " AND " + DbSchemas.Ses.TITLE + " LIKE '%" + searchString + "%'";
+        String whereString = dateWhereString + venueWhereString + typeWhereString + searchWhereString;
 
         Cursor c = _sql.query(DbSchemas.Ses.TABLE_NAME, ALL_COLUMNS, whereString, null, null, null, DbSchemas.Ses.STARTDATETIME);
 
-        SessionVM[] sessions = new SessionVM[c.getCount()];
+        ArrayList<SessionVM> sessions = new ArrayList<SessionVM>();
 
-        int i = 0;
         while(c.moveToNext())
         {
-            sessions[i] = new SessionVM(MakeSessionFromCursor(c));
-            i++;
+            sessions.add(new SessionVM(MakeSessionFromCursor(c)));
         }
 
         if(c.getCount() == 0)
@@ -187,6 +189,26 @@ public class DbSessions {
         if(SQLDate == null) return null;
 
         return Converters.SQLDateTimeToLocalDate(SQLDate);
+    }
+
+    public ArrayList<SessionVM> searchSessions(String searchString){
+        ArrayList<SessionVM> sessions = new ArrayList<SessionVM>();
+        if(searchString.matches("")){
+            return sessions;
+        }
+
+        String whereString = DbSchemas.Ses.TITLE + " LIKE '%" + searchString + "%'";
+
+        Cursor c = _sql.query(DbSchemas.Ses.TABLE_NAME, ALL_COLUMNS, whereString, null, null, null, DbSchemas.Ses.STARTDATETIME);
+
+        while(c.moveToNext())
+        {
+            sessions.add(new SessionVM(MakeSessionFromCursor(c)));
+        }
+
+        c.close();
+
+        return sessions;
     }
 
     public Session getFromId(int sessionid) {

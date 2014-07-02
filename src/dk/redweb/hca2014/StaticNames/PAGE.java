@@ -67,6 +67,7 @@ public class PAGE {
 
     //SessionNavigation Specific
     public static final String LISTPOSITION = "listposition";
+    public static final String SEARCHSTRING = "searchString";
     public static final String SESSIONDATE = "sessiondate";
     public static final String TYPEFILTER = "typefilter";
     public static final String VENUEFILTER = "venuefilter";

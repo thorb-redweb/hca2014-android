@@ -193,6 +193,9 @@ public class NavBarBox extends LinearLayout {
                         if(thisPage.hasChild(PAGE.VENUEFILTER)){
                             nextPage.addXmlNodeToNode(thisPage.getChildFromNode(PAGE.VENUEFILTER));
                         }
+                        if(thisPage.hasChild(PAGE.SEARCHSTRING)){
+                            nextPage.addXmlNodeToNode(thisPage.getChildFromNode(PAGE.SEARCHSTRING));
+                        }
                         if(thisPage.hasChild(PAGE.LISTPOSITION)){
                             nextPage.addXmlNodeToNode(thisPage.getChildFromNode(PAGE.LISTPOSITION));
                         }

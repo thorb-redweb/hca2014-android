@@ -114,9 +114,6 @@ public class SessionDetailFragment extends BasePageFragment {
             if(_page.hasChild(PAGE.BODYUSESHTML) && _page.getBoolFromNode(PAGE.BODYUSESHTML)) {
                 String htmlString = _xml.css + _session.DetailsWithHtml();
                 webBody.loadDataWithBaseURL(_xml.joomlaPath, htmlString, "text/html", "UTF-8", null);
-
-
-                //webBody.loadDataWithBaseURL(null, _session.DetailsWithHtml(), "text/html", "UTF-8", null);
                 txtBody.setVisibility(View.GONE);
             } else {
                 txtBody.setText(_session.DetailsWithoutHtml());

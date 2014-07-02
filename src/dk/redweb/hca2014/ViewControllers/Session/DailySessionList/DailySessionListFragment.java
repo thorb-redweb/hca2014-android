@@ -12,11 +12,14 @@ import dk.redweb.hca2014.DatabaseModel.Venue;
 import dk.redweb.hca2014.StaticNames.*;
 import dk.redweb.hca2014.ViewControllers.BasePageFragment;
 import dk.redweb.hca2014.ViewModels.SessionVM;
+import dk.redweb.hca2014.Views.CustomDialog;
+import dk.redweb.hca2014.Views.FlexibleButton;
 import dk.redweb.hca2014.XmlHandling.XmlNode;
 import org.joda.time.LocalDate;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 /**
@@ -27,6 +30,7 @@ import java.util.Locale;
 public class DailySessionListFragment extends BasePageFragment {
     private Spinner _spnType;
     private Spinner _spnVenue;
+    private FlexibleButton _btnSearch;
     private ListView _lstSession;
 
     private DailySessionListAdapter _adapter;
@@ -35,13 +39,15 @@ public class DailySessionListFragment extends BasePageFragment {
     private String _lastTypeChoice;
     private String _lastVenueChoice;
     private LocalDate _lastDateChoice;
+    private String _searchString;
+    private String _lastSearch;
 
     private LocalDate _dateOfListContent;
     private LocalDate _earliestDateWithSession;
     private LocalDate _latestDateWithSession;
 
-    private String typeSpinnerTitle = "Sorter på type";
-    private String venueSpinnerTitle = "Sorter på sted";
+    private String typeSpinnerTitle = "Type";
+    private String venueSpinnerTitle = "Sted";
 
     private String _filterType;
     private Venue _filterVenue;
@@ -57,6 +63,8 @@ public class DailySessionListFragment extends BasePageFragment {
         _listPosition = -255;
         _lastTypeChoice = "";
         _lastVenueChoice = "";
+        _searchString = "";
+        _lastSearch = "";
     }
 
     public DailySessionListFragment(XmlNode page) {
@@ -64,6 +72,8 @@ public class DailySessionListFragment extends BasePageFragment {
         _listPosition = -255;
         _lastTypeChoice = "";
         _lastVenueChoice = "";
+        _searchString = "";
+        _lastSearch = "";
     }
 
     @Override
@@ -85,10 +95,12 @@ public class DailySessionListFragment extends BasePageFragment {
 
         _spnType = (Spinner)findViewById(R.id.dailysessionlist_spnType);
         _spnVenue = (Spinner)findViewById(R.id.dailysessionlist_spnVenue);
+        _btnSearch = (FlexibleButton)findViewById(R.id.dailysessionlist_btnSearch);
         _lstSession = (ListView)findViewById(R.id.dailysessionlist_lstSessions);
 
         setupDateArrows();
         setupSpinner();
+        setupSearchButton();
         setupListView();
 
         setAppearance();
@@ -112,7 +124,6 @@ public class DailySessionListFragment extends BasePageFragment {
 
         initializeDate();
         if(_adapter == null){
-
             reloadListView();
         }
         if(_page.hasChild(PAGE.LISTPOSITION)){
@@ -219,6 +230,36 @@ public class DailySessionListFragment extends BasePageFragment {
         spinner.setAdapter(dataAdapter);
     }
 
+    private void setupSearchButton(){
+
+        if(_page.hasChild(PAGE.SEARCHSTRING)){
+            try{
+                _searchString = _page.getStringFromNode(PAGE.SEARCHSTRING);
+            }
+            catch (Exception e){
+                MyLog.e("Error when getting searchstring from page: ", e);
+            }
+        }
+        final DailySessionListFragment fragment = this;
+        _btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try{
+                    new SearchSessionDialog(fragment, _searchString);
+                }
+                catch (Exception e){
+                    MyLog.e("Exception in DailySessionList:btnSearch:onClickListener", e);
+                }
+            }
+        });
+    }
+
+    public void searchForSessions(String searchString) {
+        _searchString =  searchString;
+        initializeDate();
+        reloadListView();
+    }
+
     private void setupListView(){
         _lstSession.setEmptyView(findViewById(R.id.imageArticleList_lnrEmptyList));
 
@@ -234,6 +275,7 @@ public class DailySessionListFragment extends BasePageFragment {
                     nextPage.addChildToNode(PAGE.SESSIONID, selectedSession.SessionId());
                     nextPage.addChildToNode(PAGE.TYPEFILTER, _spnType.getSelectedItem().toString());
                     nextPage.addChildToNode(PAGE.VENUEFILTER, _spnVenue.getSelectedItem().toString());
+                    nextPage.addChildToNode(PAGE.SEARCHSTRING, _searchString);
                     _listPosition = _lstSession.getFirstVisiblePosition();
                     View topView = _lstSession.getChildAt(0);
                     _listTop = (topView == null) ? 0 : topView.getTop();
@@ -258,8 +300,10 @@ public class DailySessionListFragment extends BasePageFragment {
 
             helper.setListViewBackgroundColor(_lstSession, LOOK.DAILYSESSIONLIST_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
-            LinearLayout titleUnderline = (LinearLayout)findViewById(R.id.dailysessionlist_lnrDateUnderline);
+            View titleUnderline = (View)findViewById(R.id.dailysessionlist_lnrDateUnderline);
             helper.setViewBackgroundColor(titleUnderline, LOOK.DAILYSESSIONLIST_TITLEUNDERLINECOLOR, LOOK.GLOBAL_ALTCOLOR);
+
+            helper.FlexButton.setButtonStyle(_btnSearch);
 
             final ImageView backArrow = (ImageView)findViewById(R.id.dailysessionlist_imgDateBack);
             helper.setImageViewImage(backArrow, LOOK.DAILYSESSIONLIST_LEFTARROW);
@@ -281,6 +325,7 @@ public class DailySessionListFragment extends BasePageFragment {
         try {
             TextHelper helper = new TextHelper(_view, _name, _xml);
             helper.setText(R.id.dailysessionlist_lblEmptyList, TEXT.DAILYSESSIONLIST_EMPTYLIST, DEFAULTTEXT.DAILYSESSIONLIST_EMPTYLIST);
+            helper.setFlexibleButtonText(R.id.dailysessionlist_btnSearch, "Søg", "Søg");
         } catch (Exception e) {
             MyLog.e("Exception when setting static text", e);
         }
@@ -312,12 +357,14 @@ public class DailySessionListFragment extends BasePageFragment {
         if(_spnType.getSelectedItem() != null && _lastTypeChoice != null && !_spnType.getSelectedItem().toString().matches(_lastTypeChoice) ||
                 !_spnVenue.getSelectedItem().toString().matches(_lastVenueChoice) ||
                 !_dateOfListContent.equals(_lastDateChoice) ||
+                !_searchString.matches(_lastSearch) ||
                 _listPosition != -255){
             _lastTypeChoice = _spnType.getSelectedItem().toString();
             _lastVenueChoice = _spnVenue.getSelectedItem().toString();
             _lastDateChoice = _dateOfListContent;
+            _lastSearch = _searchString;
             setDateLabel();
-            SessionVM[] sessions = _db.Sessions.getVMListFromDayAndVenueId(_dateOfListContent,getFilterVenueId(),_filterType);
+            ArrayList<SessionVM> sessions = _db.Sessions.getVMListFromDayAndVenueId(_dateOfListContent,getFilterVenueId(),_filterType,_searchString);
             _adapter = new DailySessionListAdapter(_view.getContext(), sessions, _xml, _page);
             _lstSession.setAdapter(_adapter);
             if(_listPosition != -255){

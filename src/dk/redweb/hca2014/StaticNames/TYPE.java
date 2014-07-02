@@ -29,6 +29,7 @@ public class TYPE {
     public static final String REDUPLOADFOLDER = "RedUploadFolder";
     public static final String REDUPLOADFOLDERCONTENT = "RedUploadFolderContent";
     public static final String REDUPLOADPICTUREVIEW = "RedUploadPictureView";
+    public static final String SEARCHSESSIONS = "SearchSessions";
     public static final String SESSIONDETAIL = "SessionDetail";
     public static final String SESSIONMAP = "SessionMap";
     public static final String SPLITVIEW = "SplitView";

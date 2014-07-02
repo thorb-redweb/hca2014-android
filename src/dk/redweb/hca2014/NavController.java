@@ -24,6 +24,7 @@ import dk.redweb.hca2014.ViewControllers.Navigation.TableNavigator.TableNavigato
 import dk.redweb.hca2014.ViewControllers.PushMessages.PushMessageDetail.PushMessageDetailFragment;
 import dk.redweb.hca2014.ViewControllers.PushMessages.PushMessageList.PushMessageListFragment;
 import dk.redweb.hca2014.ViewControllers.Session.DailySessionList.DailySessionListFragment;
+import dk.redweb.hca2014.ViewControllers.Session.SearchSessions.SearchSessionsFragment;
 import dk.redweb.hca2014.ViewControllers.Session.SessionDetail.SessionDetailFragment;
 import dk.redweb.hca2014.ViewControllers.Session.StyledSessionList.StyledSessionListFragment;
 import dk.redweb.hca2014.ViewControllers.Settings.PushMessageGroupSettings.PushMessageGroupSettingsFragment;
@@ -175,6 +176,9 @@ public class NavController {
         } else if (type.equals(TYPE.PUSHMESSAGEUNSUBSCRIBER)){
             return new PushMessageUnsubscriberFragment(page);
         } else if(type.equals(TYPE.REDUPLOADFOLDER)){
+        }
+        else if(type.equals(TYPE.SEARCHSESSIONS)){
+            return new SearchSessionsFragment(page);
         } else if(type.equals(TYPE.SESSIONDETAIL)){
             return new SessionDetailFragment(page);
         } else if(type.equals(TYPE.SESSIONMAP)){

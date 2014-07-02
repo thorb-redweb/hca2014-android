@@ -9,6 +9,7 @@ import dk.redweb.hca2014.Network.NetworkInterface;
 import dk.redweb.hca2014.Network.ServerInterface;
 import dk.redweb.hca2014.StaticNames.PAGE;
 import dk.redweb.hca2014.Views.NavBarBox;
+import dk.redweb.hca2014.Views.TabbarBox;
 import dk.redweb.hca2014.XmlHandling.XmlNode;
 import dk.redweb.hca2014.XmlHandling.XmlStore;
 import org.joda.time.DateTime;
@@ -33,6 +34,14 @@ public class RedEventApplication  extends Application {
     private NavBarBox _navbar;
     public NavBarBox getNavbar(){return _navbar;}
     public void setNavbar(NavBarBox navbar){_navbar = navbar;}
+
+    private TabbarBox _tabbar;
+    public TabbarBox getTabbar() {
+        return _tabbar;
+    }
+    public void setTabbar(TabbarBox tabbar) {
+        _tabbar = tabbar;
+    }
 
     public int getDatabaseDataVersion(){
         SharedPreferences prefs = this.getSharedPreferences("database", MODE_PRIVATE);

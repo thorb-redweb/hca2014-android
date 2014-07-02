@@ -35,6 +35,12 @@
         <child>Begivenhed</child>
     </page>
     <page>
+        <name>Søgeside</name>
+        <type>SearchSessions</type>
+        <parent>Program</parent>
+        <child>Begivenhed</child>
+    </page>
+    <page>
         <name>Begivenhed</name>
         <type>SessionDetail</type>
         <navname>@SessionTitle</navname>

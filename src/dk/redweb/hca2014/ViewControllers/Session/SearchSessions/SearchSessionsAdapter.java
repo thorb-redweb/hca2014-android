@@ -1,7 +1,6 @@
-package dk.redweb.hca2014.ViewControllers.Session.DailySessionList;
+package dk.redweb.hca2014.ViewControllers.Session.SearchSessions;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,11 +20,11 @@ import dk.redweb.hca2014.XmlHandling.XmlStore;
 import java.util.ArrayList;
 
 /**
- * Created by Redweb with IntelliJ IDEA.
- * Date: 9/20/13
- * Time: 11:40 AM
+ * package: dk.redweb.hca2014.ViewControllers.Session.SearchSessions
+ * copyright: Copyright (C) 2005 - 2014 redweb ApS. All rights reserved.
+ * license: GNU General Public License version 2 or later.
  */
-public class DailySessionListAdapter  extends ArrayAdapter<SessionVM> {
+public class SearchSessionsAdapter extends ArrayAdapter<SessionVM> {
 
     private Context _context;
     private XmlStore _xml;
@@ -33,7 +32,7 @@ public class DailySessionListAdapter  extends ArrayAdapter<SessionVM> {
 
     public ArrayList<SessionVM> sessions;
 
-    public DailySessionListAdapter(Context context, ArrayList<SessionVM> values, XmlStore xml, XmlNode parent){
+    public SearchSessionsAdapter(Context context, ArrayList<SessionVM> values, XmlStore xml, XmlNode parent){
         super(context, R.layout.listitem_dailysessionlist, values);
         _context = context;
         this.sessions = values;
@@ -46,8 +45,8 @@ public class DailySessionListAdapter  extends ArrayAdapter<SessionVM> {
     {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         LinearLayout rowView = (LinearLayout)inflater.inflate(R.layout.listitem_dailysessionlist, parent, false);
-        TextView txtTimeAndPlace = (TextView)rowView.findViewById(R.id.dailysessionlistitem_lblTimeAndPlace);
-        TextView txtEvent = (TextView)rowView.findViewById(R.id.dailysessionlistitem_lblEvent);
+        TextView txtTimeAndDate = (TextView)rowView.findViewById(R.id.dailysessionlistitem_lblTimeAndPlace);
+        TextView txtVenueAndEvent = (TextView)rowView.findViewById(R.id.dailysessionlistitem_lblEvent);
         TextView txtType = (TextView)rowView.findViewById(R.id.dailysessionlistitem_lblType);
         ImageView imgType = (ImageView)rowView.findViewById(R.id.dailysessionlistitem_imgType);
         View vwRightBorder = (View)rowView.findViewById(R.id.dailysessionlistitem_vwRightBorder);
@@ -55,9 +54,10 @@ public class DailySessionListAdapter  extends ArrayAdapter<SessionVM> {
 
         SessionVM session = sessions.get(position);
 
-        String timeAndPlace = session.StartTimeAsString() + "-" + session.EndTimeAsString() + " - " + session.Venue();
-        txtTimeAndPlace.setText(timeAndPlace);
-        txtEvent.setText(session.Title());
+        String dateComponent = session.StartDateWithPattern("EEEE dd.");
+        dateComponent = dateComponent.substring(0,1).toUpperCase() + dateComponent.substring(1);
+        txtTimeAndDate.setText(dateComponent + " kl. " + session.StartTimeAsString());
+        txtVenueAndEvent.setText(session.Venue() + "\n" + session.Title());
         txtType.setText(session.Type());
 
         setAppearance(rowView);
@@ -79,10 +79,10 @@ public class DailySessionListAdapter  extends ArrayAdapter<SessionVM> {
 
             helper.setViewBackgroundColor(lineitem, LOOK.DAILYSESSIONLIST_BACKGROUNDCOLOR, LOOK.GLOBAL_BACKCOLOR);
 
-            TextView txtTimeAndPlace = (TextView)lineitem.findViewById(R.id.dailysessionlistitem_lblTimeAndPlace);
-            TextView txtEvent = (TextView)lineitem.findViewById(R.id.dailysessionlistitem_lblEvent);
+            TextView txtTimeAndDate = (TextView)lineitem.findViewById(R.id.dailysessionlistitem_lblTimeAndPlace);
+            TextView txtVenueAndEvent = (TextView)lineitem.findViewById(R.id.dailysessionlistitem_lblEvent);
             TextView txtType = (TextView)lineitem.findViewById(R.id.dailysessionlistitem_lblType);
-            TextView[] textViews = new TextView[]{txtTimeAndPlace,txtEvent,txtType};
+            TextView[] textViews = new TextView[]{txtTimeAndDate,txtVenueAndEvent,txtType};
             helper.TextView.setColor(textViews, LOOK.DAILYSESSIONLIST_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
             helper.TextView.setSize(textViews, LOOK.DAILYSESSIONLIST_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
             helper.TextView.setStyle(textViews, LOOK.DAILYSESSIONLIST_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);

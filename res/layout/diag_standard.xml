@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:orientation="vertical"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/transparent">
+    <FrameLayout
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_gravity="center"
+            android:padding="4dp"
+            android:background="@color/accent">
+        <LinearLayout android:id="@+id/diag_lnrBox"
+                      android:orientation="vertical"
+                      android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:background="@color/white">
+            <TextView android:id="@+id/diag_lblTitle"
+                      android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:padding="16dp"
+                      android:textStyle="bold"
+                      android:textSize="24dp"/>
+            <View android:layout_width="match_parent" android:layout_height="2dp"
+                  android:background="@color/accent"/>
+            <TextView android:id="@+id/diag_lblMessage"
+                      android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:layout_margin="12dp"
+                      android:textSize="16sp"/>
+            <LinearLayout android:orientation="horizontal"
+                          android:layout_width="match_parent" android:layout_height="wrap_content">
+                <Button android:id="@+id/diag_btnOk"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/accent"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:text="OK"/>
+                <Button android:id="@+id/diag_btnCancel"
+                        android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@color/accent"
+                        android:textColor="@color/white"
+                        android:textStyle="bold"
+                        android:text="Fortryd"/>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>
