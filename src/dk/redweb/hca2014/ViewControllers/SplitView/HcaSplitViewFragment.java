@@ -133,7 +133,7 @@ public class HcaSplitViewFragment extends BasePageFragment {
 
         newsTicker.setClickable(true);
 
-        newsTicker.setFlipInterval(6000);
+        newsTicker.setFlipInterval(12000);
         newsTicker.setInAnimation(context, R.anim.newsticker_infromright);
         newsTicker.setOutAnimation(context, R.anim.newsticker_outtoleft);
     }
