@@ -177,7 +177,7 @@ public class DbArticles {
         return articleVM;
     }
 
-    public ArticleVM[] getListOfLastThree(int catid){
+    public ArticleVM[] getListOfLastThree(){
         DateTime currentDateTime;
         if(_app.isDebugging()){
             currentDateTime = _app.getDebugCurrentDate();
@@ -187,8 +187,12 @@ public class DbArticles {
 
         String dateTimeString = "'" + Converters.JodaDateTimeToSQLDateTime(currentDateTime) + "'";
 
-        String whereString = "datetime(" + DbSchemas.Art.PUBLISHDATE + ") <= datetime(" + dateTimeString + ") " +
-                "AND " + DbSchemas.Art.CATID + " = " + catid;
+        int[] catids = new int[]{9,30,31,34};
+        String whereString = DbSchemas.Art.CATID + " = " + catids[0];
+        for(int i = 1; i < catids.length; i++){
+            int catid = catids[i];
+            whereString += " OR " + DbSchemas.Art.CATID + " = " + catid;
+        }
         String sortString = DbSchemas.Art.PUBLISHDATE + " DESC";
 
         Cursor c = _sql.query(DbSchemas.Art.TABLE_NAME, ALL_COLUMNS, whereString, null, null, null, sortString, "0, 3");

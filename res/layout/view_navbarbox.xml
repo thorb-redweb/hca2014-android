@@ -12,7 +12,8 @@
                        style="@style/Image.Wrap"
                        android:layout_alignParentLeft="true"
                        android:layout_toLeftOf="@+id/navbar_lblTitle"
-                android:src="@drawable/logo_hca_top"/>
+                       android:adjustViewBounds="true"
+                        android:src="@drawable/logo_hca_top"/>
         <TextView android:id="@+id/navbar_lblTitle"
                   style="@style/Layout.Wrap.Complete"
                   android:layout_centerInParent="true"

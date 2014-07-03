@@ -150,7 +150,7 @@ public class HcaSplitViewFragment extends BasePageFragment {
     public void changeNewsTicker(){
         MyLog.d("Running changeEventTicker");
         //todo add real article id
-        ArticleVM[] newsData = _db.Articles.getListOfLastThree(9);
+        ArticleVM[] newsData = _db.Articles.getListOfLastThree();
         newsTicker.changeContent(newsData, _net);
     }
 }
