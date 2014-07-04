@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -61,5 +62,11 @@ public class FlexibleButton extends RelativeLayout{
 
     public void setTextShadowLayer(float radius, float dx, float dy, int color){
         txtButton.setShadowLayer(radius,dx,dy,color);
+    }
+
+    public void setAsSpinner(){
+        this.setGravity(RelativeLayout.ALIGN_RIGHT);
+        txtButton.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+        txtButton.setPadding(12,5,12,5);
     }
 }

@@ -30,9 +30,9 @@
                           style="@style/Layout.Wrap.Complete"
                           android:textStyle="bold"/>
                 <View android:id="@+id/dailysessionlist_lnrDateUnderline"
-                              style="@style/Layout.Wrap"
-                              android:layout_height="2sp"
-                              android:background="#e5007d"/>
+                      style="@style/Layout.Wrap"
+                      android:layout_height="2sp"
+                      android:background="#e5007d"/>
             </LinearLayout>
             <ImageView android:id="@+id/dailysessionlist_imgDateForward"
                        style="@style/Image.Full"
@@ -45,24 +45,28 @@
                 style="@style/Layout.Wrap"
                 android:orientation="horizontal"
                 android:layout_marginBottom="20sp">
-                <Spinner android:id="@+id/dailysessionlist_spnType"
-                    style="@style/Spinner"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_gravity="center_vertical"
-                        android:layout_marginRight="5dp"/>
-            <Spinner android:id="@+id/dailysessionlist_spnVenue"
-                     style="@style/Spinner"
-                     android:layout_width="0dp"
+            <Spinner android:id="@+id/dailysessionlist_spnType"
+                     android:layout_width="0dp" android:layout_height="match_parent"
                      android:layout_weight="1"
                      android:layout_gravity="center_vertical"
+                     android:gravity="center"
+                     android:layout_marginRight="5dp"
+                     style="@style/Spinner"/>
+            <Spinner android:id="@+id/dailysessionlist_spnVenue"
+                     android:layout_width="0dp" android:layout_height="match_parent"
+                     android:layout_weight="1"
+                     android:layout_gravity="center_vertical"
+                     android:gravity="center"
                      android:layout_marginLeft="5dp"
-                     android:layout_marginRight="5dp"/>
+                     android:layout_marginRight="5dp"
+                     style="@style/Spinner"/>
             <dk.redweb.hca2014.Views.FlexibleButton
                     android:id="@+id/dailysessionlist_btnSearch"
-                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_width="0dp" android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="5dp"/>
+                    android:layout_marginLeft="5dp"
+                    style="@style/Spinner"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -85,6 +89,6 @@
                   style="@style/Layout.Full"
                   android:gravity="center">
         <TextView android:id="@+id/dailysessionlist_lblEmptyList"
-                style="@style/Layout.Wrap.Complete"/>
+                  style="@style/Layout.Wrap.Complete"/>
     </LinearLayout>
 </RelativeLayout>

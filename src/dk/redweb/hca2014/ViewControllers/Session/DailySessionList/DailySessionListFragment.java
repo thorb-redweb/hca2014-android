@@ -1,6 +1,7 @@
 package dk.redweb.hca2014.ViewControllers.Session.DailySessionList;
 
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -157,7 +158,7 @@ public class DailySessionListFragment extends BasePageFragment {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                _dateOfListContent = _db.Sessions.getDateForLastFromDateAndVenueId(_dateOfListContent, getFilterVenueId());
+                _dateOfListContent = _db.Sessions.getDateForLastFromDateAndVenueId(_dateOfListContent, getFilterVenueId(),_filterType,_searchString);
                 reloadListView();
             }
         };
@@ -167,14 +168,14 @@ public class DailySessionListFragment extends BasePageFragment {
         return new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                _dateOfListContent = _db.Sessions.getDateForNextFromDateAndVenueId(_dateOfListContent, getFilterVenueId());
+                _dateOfListContent = _db.Sessions.getDateForNextFromDateAndVenueId(_dateOfListContent, getFilterVenueId(),_filterType,_searchString);
                 reloadListView();
             }
         };
     }
 
     private void setupSpinner(){
-        final String[] types = new String[]{"Underholdning og teater", "Leg og læring", "Musik", "Kulturformidling", "Kunst og kultur", "Spoken word"};
+        final String[] types = new String[]{"Underholdning og teater", "Leg og læring", "Musik", "Kulturformidling", "Kunst og kultur", "Spoken Word"};
         final String[] venues = _db.Venues.getAllActiveNames();
 
         if(_spnType.getSelectedItem() == null){
@@ -303,7 +304,7 @@ public class DailySessionListFragment extends BasePageFragment {
             View titleUnderline = (View)findViewById(R.id.dailysessionlist_lnrDateUnderline);
             helper.setViewBackgroundColor(titleUnderline, LOOK.DAILYSESSIONLIST_TITLEUNDERLINECOLOR, LOOK.GLOBAL_ALTCOLOR);
 
-            helper.FlexButton.setButtonStyle(_btnSearch);
+            _btnSearch.setAsSpinner();
 
             final ImageView backArrow = (ImageView)findViewById(R.id.dailysessionlist_imgDateBack);
             helper.setImageViewImage(backArrow, LOOK.DAILYSESSIONLIST_LEFTARROW);
@@ -332,8 +333,8 @@ public class DailySessionListFragment extends BasePageFragment {
     }
 
     private void initializeDate() {
-        LocalDate earliestDateWithSession = _db.Sessions.getDateForEarliestFromVenueId(getFilterVenueId());
-        LocalDate latestDateWithSession = _db.Sessions.getDateForLatestFromVenueId(getFilterVenueId());
+        LocalDate earliestDateWithSession = _db.Sessions.getDateForEarliestFromVenueId(getFilterVenueId(),_filterType,_searchString);
+        LocalDate latestDateWithSession = _db.Sessions.getDateForLatestFromVenueId(getFilterVenueId(),_filterType,_searchString);
 
         if(earliestDateWithSession == null || latestDateWithSession == null){
             _earliestDateWithSession = _dateOfListContent;
@@ -349,7 +350,7 @@ public class DailySessionListFragment extends BasePageFragment {
         else if(_dateOfListContent.isAfter(_latestDateWithSession))
             _dateOfListContent = _latestDateWithSession;
         else if(_db.Sessions.isDateSessionless(_dateOfListContent, getFilterVenueId())){
-            _dateOfListContent = _db.Sessions.getDateForNextFromDateAndVenueId(_dateOfListContent, getFilterVenueId());
+            _dateOfListContent = _db.Sessions.getDateForNextFromDateAndVenueId(_dateOfListContent, getFilterVenueId(),_filterType,_searchString);
         }
     }
 

@@ -94,15 +94,15 @@ public class StyledSessionListFragment extends BasePageFragment {
     }
 
     private void initializeDate() {
-        LocalDate earliestDateWithSession = _db.Sessions.getDateForEarliestFromVenueId(-1);
-        LocalDate latestDateWithSession = _db.Sessions.getDateForLatestFromVenueId(-1);
+        LocalDate earliestDateWithSession = _db.Sessions.getDateForEarliestFromVenueId(-1, "", "");
+        LocalDate latestDateWithSession = _db.Sessions.getDateForLatestFromVenueId(-1, "", "");
 
         if(_dateOfListContent.isBefore(earliestDateWithSession))
             _dateOfListContent = earliestDateWithSession;
         else if(_dateOfListContent.isAfter(latestDateWithSession))
             _dateOfListContent = latestDateWithSession;
         else {
-            _dateOfListContent = _db.Sessions.getDateForNextFromDateAndVenueId(_dateOfListContent, -1);
+            _dateOfListContent = _db.Sessions.getDateForNextFromDateAndVenueId(_dateOfListContent, -1, "", "");
         }
     }
 

@@ -95,7 +95,7 @@ public class DbSessions {
         String typeWhereString = "";
         if(type != null) typeWhereString = " AND " + DbSchemas.Ses.EVENTTYPE + " = '" + type + "'";
         String searchWhereString = "";
-        if(!searchString.matches("")) searchWhereString = " AND " + DbSchemas.Ses.TITLE + " LIKE '%" + searchString + "%'";
+        if(!searchString.matches("")) searchWhereString = " AND (" + DbSchemas.Ses.TITLE + " LIKE '%" + searchString + "%' OR " + DbSchemas.Ses.DETAILS + " LIKE '%" + searchString + "%')";
         String whereString = dateWhereString + venueWhereString + typeWhereString + searchWhereString;
 
         Cursor c = _sql.query(DbSchemas.Ses.TABLE_NAME, ALL_COLUMNS, whereString, null, null, null, DbSchemas.Ses.STARTDATETIME);
@@ -119,71 +119,54 @@ public class DbSessions {
         return sessions;
     }
 
-    public LocalDate getDateForNextFromDateAndVenueId(LocalDate date, int venueId) {
+    public LocalDate getDateForNextFromDateAndVenueId(LocalDate date, int venueId, String type, String searchString) {
 
-        String dateString = "'" + Converters.LocalDateToSQLDate(date) + "'";
-        String dateWhereString = "date(" + DbSchemas.Ses.STARTDATETIME + ") > date(" + dateString + ")";
+        String selectString = DbSchemas.Ses.STARTDATETIME;
+        String dateWhereString = " AND date(" + DbSchemas.Ses.STARTDATETIME + ") > date('" + Converters.LocalDateToSQLDate(date) + "')";
+        String sortString = " ORDER BY " + DbSchemas.Ses.STARTDATETIME;
 
+        return getDateForParameters(selectString, dateWhereString, sortString, venueId, type, searchString);
+    }
+
+    public LocalDate getDateForLastFromDateAndVenueId(LocalDate date, int venueId, String type, String searchString) {
+
+        String selectString = DbSchemas.Ses.STARTDATETIME;
+        String dateWhereString = " AND datetime(" + DbSchemas.Ses.STARTDATETIME + ") < datetime('" + Converters.LocalDateToSQLDate(date) + "')";
+        String sortString = " ORDER BY " + DbSchemas.Ses.STARTDATETIME + " DESC";
+
+        return getDateForParameters(selectString, dateWhereString, sortString, venueId, type, searchString);
+    }
+
+    public LocalDate getDateForEarliestFromVenueId(int venueId, String type, String searchString) {
+        String selectString = "MIN(datetime(" + DbSchemas.Ses.STARTDATETIME + "))";
+        String dateWhereString = "";
+        String sortString = "";
+
+        return getDateForParameters(selectString, dateWhereString, sortString, venueId, type, searchString);
+    }
+
+    public LocalDate getDateForLatestFromVenueId(int venueId, String type, String searchString) {
+        String selectString = "MAX(datetime(" + DbSchemas.Ses.STARTDATETIME + "))";
+        String dateWhereString = "";
+        String sortString = "";
+
+        return getDateForParameters(selectString, dateWhereString, sortString, venueId, type, searchString);
+    }
+
+    private LocalDate getDateForParameters(String getDate, String dateWhereString, String sortString, int venueId, String type, String searchString){
         String venueWhereString = "";
         if(venueId >= 0) venueWhereString = " AND " + DbSchemas.Ses.VENUE_ID + " = '" + venueId + "'";
-
-        String whereString = dateWhereString + venueWhereString;
-        String sortString = DbSchemas.Ses.STARTDATETIME;
-
-        Cursor c = _sql.query(DbSchemas.Ses.TABLE_NAME, new String[] {DbSchemas.Ses.STARTDATETIME}, whereString, null, null, null, sortString, "1");
-
-        c.moveToFirst();
-
-        if(c.getCount() == 0){
-            return null;
+        String typeWhereString = "";
+        if(type != null) typeWhereString = " AND " + DbSchemas.Ses.EVENTTYPE + " = '" + type + "'";
+        String searchWhereString = "";
+        if(!searchString.matches("")) searchWhereString = " AND (" + DbSchemas.Ses.TITLE + " LIKE '%" + searchString + "%' OR " + DbSchemas.Ses.DETAILS + " LIKE '%" + searchString + "%')";
+        String whereString = dateWhereString + venueWhereString + typeWhereString + searchWhereString;
+        if(whereString.length() > 0){
+            whereString = " WHERE " + whereString.substring(5);
         }
 
-        LocalDate nextDate = Converters.SQLDateTimeToLocalDate(c.getString(0));
-
-        return nextDate;
-    }
-
-    public LocalDate getDateForLastFromDateAndVenueId(LocalDate date, int venueId) {
-
-        String dateTimeString = "'" + Converters.LocalDateToSQLDate(date) + "'";
-        String dateWhereString = "datetime(" + DbSchemas.Ses.STARTDATETIME + ") < datetime(" + dateTimeString + ")";
-
-        String venueWhereString = "";
-        if(venueId >= 0) venueWhereString = " AND " + DbSchemas.Ses.VENUE_ID + " = '" + venueId + "'";
-
-        String whereString = dateWhereString + venueWhereString;
-        String sortString = DbSchemas.Ses.STARTDATETIME + " DESC";
-
-        Cursor c = _sql.query(DbSchemas.Ses.TABLE_NAME, new String[] {DbSchemas.Ses.STARTDATETIME}, whereString, null, null, null, sortString, "1");
-
-        c.moveToFirst();
-
-        return Converters.SQLDateTimeToLocalDate(c.getString(0));
-    }
-
-    public LocalDate getDateForEarliestFromVenueId(int venueId) {
-        String whereString = "";
-        if(venueId >= 0){
-            whereString = " WHERE " + DbSchemas.Ses.VENUE_ID + " = " + venueId;
-        }
-
-        final SQLiteStatement statement = _sql.compileStatement("SELECT MIN(datetime(" + DbSchemas.Ses.STARTDATETIME + ")) " +
-                "FROM " + DbSchemas.Ses.TABLE_NAME + whereString);
-
-        String SQLDate = statement.simpleQueryForString();
-        if(SQLDate == null) return null;
-
-        return Converters.SQLDateTimeToLocalDate(SQLDate);
-    }
-
-    public LocalDate getDateForLatestFromVenueId(int venueId) {
-        String whereString = "";
-        if(venueId >= 0){
-            whereString = " WHERE " + DbSchemas.Ses.VENUE_ID + " = " + venueId;
-        }
-
-        final SQLiteStatement statement = _sql.compileStatement("SELECT MAX(datetime(" + DbSchemas.Ses.STARTDATETIME + ")) " +
-                "FROM " + DbSchemas.Ses.TABLE_NAME + whereString);
+        final SQLiteStatement statement = _sql.compileStatement("SELECT " + getDate +
+                " FROM " + DbSchemas.Ses.TABLE_NAME + whereString + sortString);
 
         String SQLDate = statement.simpleQueryForString();
         if(SQLDate == null) return null;
