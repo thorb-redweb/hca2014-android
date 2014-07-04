@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,9 @@ import dk.redweb.hca2014.ViewControllers.BasePageFragment;
 import dk.redweb.hca2014.ViewModels.SessionVM;
 import dk.redweb.hca2014.Views.FlexibleButton;
 import dk.redweb.hca2014.XmlHandling.XmlNode;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 /**
  * Created by Redweb with IntelliJ IDEA.
@@ -73,6 +77,7 @@ public class SessionDetailFragment extends BasePageFragment {
         TextView txtDate = (TextView)findViewById(R.id.sessionDetail_lblDateValue);
         RelativeLayout rltMapButton = (RelativeLayout)findViewById(R.id.sessionDetail_rltMapButton);
         RelativeLayout rltTicketButton = (RelativeLayout)findViewById(R.id.sessionDetail_rltTicketButton);
+        LinearLayout lnrCalendarButton = (LinearLayout)findViewById(R.id.sessionDetail_lnrButtonCalendar);
         WebView webBody = (WebView)findViewById(R.id.sessionDetail_webBody);
         TextView txtBody = (TextView)findViewById(R.id.sessionDetail_lblBody);
 
@@ -109,6 +114,19 @@ public class SessionDetailFragment extends BasePageFragment {
                 }
             });
         }
+        lnrCalendarButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent calIntent = new Intent(Intent.ACTION_INSERT);
+                calIntent.setData(CalendarContract.Events.CONTENT_URI);
+                calIntent.setType("vnd.android.cursor.item/event");
+                calIntent.putExtra(CalendarContract.Events.TITLE, _session.Title());
+                calIntent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, _session.StartDateTimeAsCalendar().getTimeInMillis());
+                calIntent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME, _session.EndDateTimeAsCalendar().getTimeInMillis());
+                calIntent.putExtra(CalendarContract.Events.EVENT_LOCATION, _session.Venue());
+                startActivity(calIntent);
+            }
+        });
 
         try {
             if(_page.hasChild(PAGE.BODYUSESHTML) && _page.getBoolFromNode(PAGE.BODYUSESHTML)) {
@@ -177,9 +195,13 @@ public class SessionDetailFragment extends BasePageFragment {
             RelativeLayout lnrButtonMap = (RelativeLayout)findViewById(R.id.sessionDetail_rltMapButton);
             helper.setViewBackgroundColor(lnrButtonMap, LOOK.SESSIONDETAIL_BUTTONCOLOR, LOOK.GLOBAL_ALTCOLOR);
 
+            LinearLayout lnrButtonCalendar = (LinearLayout)findViewById(R.id.sessionDetail_lnrButtonCalendar);
+            helper.setViewBackgroundColor(lnrButtonCalendar, LOOK.SESSIONDETAIL_BUTTONCOLOR, LOOK.GLOBAL_ALTCOLOR);
+
             TextView txtButtonMap = (TextView)findViewById(R.id.sessionDetail_lblButtonMap);
             TextView txtTicketMap = (TextView)findViewById(R.id.sessionDetail_lblButtonTicket);
-            TextView[] buttonLabels = new TextView[]{txtButtonMap,txtTicketMap};
+            TextView txtButtonCalendar = (TextView)findViewById(R.id.sessionDetail_lblButtonCalendar);
+            TextView[] buttonLabels = new TextView[]{txtButtonMap,txtTicketMap, txtButtonCalendar};
             helper.TextView.setColor(buttonLabels, LOOK.SESSIONDETAIL_BUTTONTEXTCOLOR, LOOK.GLOBAL_ALTTEXTCOLOR);
             helper.TextView.setSize(buttonLabels, LOOK.SESSIONDETAIL_BUTTONTEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
             helper.TextView.setStyle(buttonLabels, LOOK.SESSIONDETAIL_BUTTONTEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);

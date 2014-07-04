@@ -101,7 +101,7 @@
             <!--Map Button-->
             <RelativeLayout android:id="@+id/sessionDetail_rltMapButton"
                             style="@style/Layout.Wrap"
-                            android:layout_marginTop="7sp"
+                            android:layout_marginTop="7dp"
                             android:padding="7sp"
                             android:background="#E5007D">
                 <TextView android:id="@+id/sessionDetail_lblButtonMap"
@@ -115,7 +115,7 @@
             <!--Ticket Button-->
             <RelativeLayout android:id="@+id/sessionDetail_rltTicketButton"
                             style="@style/Layout.Wrap"
-                            android:layout_marginTop="7sp"
+                            android:layout_marginTop="7dp"
                             android:padding="7sp"
                             android:background="#E5007D">
                 <TextView android:id="@+id/sessionDetail_lblButtonTicket"
@@ -127,6 +127,22 @@
                         android:layout_alignParentRight="true"
                         android:src="@drawable/icon_ticket_pink"/>
             </RelativeLayout>
+
+            <!--Calendar Button-->
+            <LinearLayout android:id="@+id/sessionDetail_lnrButtonCalendar"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:padding="7dp"
+                    android:background="#E5007D">
+                <TextView android:id="@+id/sessionDetail_lblButtonCalendar"
+                        android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center_vertical"
+                        android:text="Tilføj til Kalender"/>
+                <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:src="@drawable/icon_calendar_pink"/>
+            </LinearLayout>
 
             <WebView android:id="@+id/sessionDetail_webBody"
                       style="@style/Layout.Full"

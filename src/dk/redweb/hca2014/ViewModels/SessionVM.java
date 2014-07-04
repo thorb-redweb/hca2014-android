@@ -7,10 +7,13 @@ import dk.redweb.hca2014.DatabaseModel.Session;
 import dk.redweb.hca2014.R;
 import dk.redweb.hca2014.StringUtils;
 import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
 import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
 
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.Locale;
 
 /**
@@ -66,6 +69,22 @@ public class SessionVM {
         return _session.StartTime;
     }
 
+    public GregorianCalendar StartDateTimeAsCalendar(){
+        LocalDate date = _session.StartDate;
+        LocalTime time = _session.StartTime;
+        GregorianCalendar calendar = new GregorianCalendar(date.getYear(), date.getMonthOfYear()-1, date.getDayOfMonth(),
+                time.getHourOfDay(), time.getMinuteOfHour(), time.getSecondOfMinute());
+        return calendar;
+    }
+
+    public LocalDateTime StartDateTime(){
+        LocalDate date = _session.StartDate;
+        LocalTime time = _session.StartTime;
+        LocalDateTime dateTime = new LocalDateTime(date.getYear(), date.getMonthOfYear(), date.getDayOfMonth(),
+                time.getHourOfDay(), time.getMinuteOfHour(), time.getSecondOfMinute());
+        return dateTime;
+    }
+
     public String StartDateWithPattern(String pattern){
         DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern(pattern).withLocale(locale);
         return dateTimeFormatter.print(_session.StartDate);
@@ -82,6 +101,22 @@ public class SessionVM {
 
     public LocalTime EndTime(){
         return _session.EndTime;
+    }
+
+    public GregorianCalendar EndDateTimeAsCalendar(){
+        LocalDate date = _session.EndDate;
+        LocalTime time = _session.EndTime;
+        GregorianCalendar calendar = new GregorianCalendar(date.getYear(), date.getMonthOfYear()-1, date.getDayOfMonth(),
+                time.getHourOfDay(), time.getMinuteOfHour(), time.getSecondOfMinute());
+        return calendar;
+    }
+
+    public LocalDateTime EndDateTime(){
+        LocalDate date = _session.EndDate;
+        LocalTime time = _session.EndTime;
+        LocalDateTime dateTime = new LocalDateTime(date.getYear(), date.getMonthOfYear(), date.getDayOfMonth(),
+                time.getHourOfDay(), time.getMinuteOfHour(), time.getSecondOfMinute());
+        return dateTime;
     }
 
     public String EndDateWithPattern(String pattern){
