@@ -132,7 +132,7 @@
             <LinearLayout android:id="@+id/sessionDetail_lnrButtonCalendar"
                     android:orientation="horizontal"
                     android:layout_width="match_parent" android:layout_height="wrap_content"
-                    android:layout_marginTop="7dp"
+                    android:layout_marginTop="7dp" android:layout_marginBottom="14dp"
                     android:padding="7dp"
                     android:background="#E5007D">
                 <TextView android:id="@+id/sessionDetail_lblButtonCalendar"

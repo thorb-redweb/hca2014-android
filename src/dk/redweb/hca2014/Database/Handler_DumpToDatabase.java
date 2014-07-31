@@ -5,6 +5,8 @@ import android.util.Log;
 import dk.redweb.hca2014.Interfaces.Delegate_dumpToDatabase;
 import dk.redweb.hca2014.MyLog;
 import dk.redweb.hca2014.RedEventApplication;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -63,8 +65,15 @@ public class Handler_DumpToDatabase extends AsyncTask<String, Void, String> {
                     }
                     else if(itemtype.equals("a"))
                     {
-                        MyLog.v("Creating Article ID: " + jsonObject.getInt(JsonSchemas.Art.ARTICLE_ID) + " Rowtype: " + jsonObject.getString(JsonSchemas.Art.ITEMTYPE));
-                        _db.Articles.importSingleFromJSON(jsonObject);
+                        LocalDate startOfYear2014 = new LocalDate(2014,1,1);
+                        if(Converters.SQLDateTimeToLocalDate(jsonObject.getString(JsonSchemas.Art.PUBLISHDATE)).isAfter(startOfYear2014) ||
+                                jsonObject.getInt(JsonSchemas.Art.ARTICLE_ID) == 1){
+                            MyLog.v("Creating Article ID: " + jsonObject.getInt(JsonSchemas.Art.ARTICLE_ID) + " Rowtype: " + jsonObject.getString(JsonSchemas.Art.ITEMTYPE));
+                            _db.Articles.importSingleFromJSON(jsonObject);
+                         }
+                        else{
+                            MyLog.v("Skipping Article ID: " + jsonObject.getInt(JsonSchemas.Art.ARTICLE_ID) + " because it is too old");
+                        }
                     }
                     else if(itemtype.equals("e"))
                     {

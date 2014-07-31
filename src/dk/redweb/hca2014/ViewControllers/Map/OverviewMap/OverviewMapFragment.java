@@ -81,6 +81,9 @@ public class OverviewMapFragment extends BaseMapFragment {
         MapMarker[] mapMarkers = _db.MapMarkers.getAll();
         for(int i = 0; i < mapMarkers.length; i++)
         {
+            if(mapMarkers[i] == null){
+                continue;
+            }
             LatLng loc = mapMarkers[i].Location;
             if(loc.equals(new LatLng(0,0))){
                 continue;

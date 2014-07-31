@@ -8,10 +8,16 @@ package dk.redweb.hca2014;
 public class StringUtils {
 
     public static String capitalizeFirstLetter(String rawString){
+        if(rawString == null){
+            return "";
+        }
         return Character.toUpperCase(rawString.charAt(0)) + rawString.substring(1);
     }
 
     public static String capitalizeAll(String rawString){
+        if(rawString == null){
+            return "";
+        }
         String[] wordList = rawString.split(" ");
         String returnString = "";
         for (String word : wordList){
@@ -23,6 +29,9 @@ public class StringUtils {
 
     public static String stripHtmlAndJoomla(String htmlString)
     {
+        if(htmlString == null){
+            return "";
+        }
         htmlString = htmlString.replaceAll("\\<.*?\\>", "");    //Remove html tags
         htmlString = htmlString.replaceAll("&nbsp;", " ");      //Convert &nbsp; to space
         htmlString = stripJoomlaTags(htmlString);
@@ -31,6 +40,9 @@ public class StringUtils {
 
     public static String stripJoomlaTags(String htmlString)
     {
+        if(htmlString == null){
+            return "";
+        }
         htmlString = htmlString.replaceAll("\\[.*?\\]\r\n", "");
         htmlString = htmlString.replaceAll("\\[.*?\\]", "");
         htmlString = htmlString.replaceAll("\\\\\"", "\"");         //Make \" into "

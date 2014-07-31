@@ -1,6 +1,7 @@
 package dk.redweb.hca2014.ViewControllers;
 
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -54,8 +55,26 @@ public class BasePageFragment extends Fragment {
         return now;
     }
 
+    public BasePageFragment(){
+        _page = null;
+    }
+
     public BasePageFragment(XmlNode page){
         _page = page;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        My.saveXmlPageInBundle(_page, outState);
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(_page == null){
+            _page = My.loadXmlPageFromBundle(savedInstanceState);
+        }
     }
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, int resourceId){

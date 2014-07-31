@@ -19,6 +19,8 @@ import dk.redweb.hca2014.ViewModels.SessionVM;
 import dk.redweb.hca2014.Views.FlexibleButton;
 import dk.redweb.hca2014.XmlHandling.XmlNode;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
@@ -84,7 +86,7 @@ public class SessionDetailFragment extends BasePageFragment {
         txtTitle.setText(_session.Title());
         txtType.setText(_session.Type());
         txtType.setTextColor(_session.TypeColor());
-        txtDate.setText(_session.StartDateWithPattern("EEEE, dd.MM.yyyy"));
+        txtDate.setText(_session.StartDateWithPattern("EEEE' d. 'dd MMM"));
         txtTime.setText(_session.StartTimeAsString() + "-" +_session.EndTimeAsString());
         txtVenue.setText(_session.Venue());
 
@@ -102,7 +104,8 @@ public class SessionDetailFragment extends BasePageFragment {
                 }
             }
         });
-        if(_session.SubmissionPath().matches("")){
+        String urlRegex = "\\(?\\bhttp://[-A-Za-z0-9+&@#/%?=~_()|!:,.;]*[-A-Za-z0-9+&@#/%=~_()|]";
+        if(!_session.SubmissionPath().matches(urlRegex)){
             rltTicketButton.setVisibility(View.GONE);
         }
         else{

@@ -378,7 +378,7 @@ public class DailySessionListFragment extends BasePageFragment {
     private void setDateLabel()
     {
         Locale locale = new Locale("da_DK", "da_DK");
-        DateTimeFormatter dateFormatter = DateTimeFormat.forPattern("EEE.' D. 'dd MMM").withLocale(locale);
+        DateTimeFormatter dateFormatter = DateTimeFormat.forPattern("EEEE' d. 'dd MMM").withLocale(locale);
         String labelDate = dateFormatter.print(_dateOfListContent);
 
         ((TextView) findViewById(R.id.dailysessionlist_lblDate)).setText(labelDate);

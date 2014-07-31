@@ -35,6 +35,7 @@ public class DbSessions {
 
     private final String[] ALL_COLUMNS = {DbSchemas.Ses.SESSION_ID, DbSchemas.Ses.EVENT_ID, DbSchemas.Ses.VENUE_ID,
             DbSchemas.Ses.TITLE, DbSchemas.Ses.DETAILS, DbSchemas.Ses.STARTDATETIME, DbSchemas.Ses.ENDDATETIME, DbSchemas.Ses.EVENTTYPE};
+    private final String SESSIONORDERSTRING = DbSchemas.Ses.STARTDATETIME + " ASC, " + DbSchemas.Ses.TITLE + " ASC, " + DbSchemas.Ses.ENDDATETIME + " ASC";
 
     public DbSessions(RedEventApplication app, SQLiteDatabase sql, DbInterface db, ServerInterface sv, XmlStore xml){
         _app = app;
@@ -46,7 +47,7 @@ public class DbSessions {
 
     public SessionVM[] getAllVM() {
         Cursor c = _sql.query(true, DbSchemas.Ses.TABLE_NAME, ALL_COLUMNS,
-                null, null, null, null, DbSchemas.Ses.TITLE, null);
+                null, null, null, null, SESSIONORDERSTRING, null);
 
         SessionVM[] sessions = new SessionVM[c.getCount()];
 
@@ -65,7 +66,7 @@ public class DbSessions {
         String chosenDay = "'" + Converters.JodaDateTimeToSQLDateTime(currentDateTime) + "'";
         String whereString = "datetime(" + DbSchemas.Ses.STARTDATETIME + ") >= date(" + chosenDay + ")";
 
-        Cursor c = _sql.query(DbSchemas.Ses.TABLE_NAME, ALL_COLUMNS, whereString, null, null, null, DbSchemas.Ses.STARTDATETIME, "3");
+        Cursor c = _sql.query(DbSchemas.Ses.TABLE_NAME, ALL_COLUMNS, whereString, null, null, null, SESSIONORDERSTRING, "3");
 
         SessionVM[] sessions = new SessionVM[c.getCount()];
 
@@ -98,7 +99,7 @@ public class DbSessions {
         if(!searchString.matches("")) searchWhereString = " AND (" + DbSchemas.Ses.TITLE + " LIKE '%" + searchString + "%' OR " + DbSchemas.Ses.DETAILS + " LIKE '%" + searchString + "%')";
         String whereString = dateWhereString + venueWhereString + typeWhereString + searchWhereString;
 
-        Cursor c = _sql.query(DbSchemas.Ses.TABLE_NAME, ALL_COLUMNS, whereString, null, null, null, DbSchemas.Ses.STARTDATETIME);
+        Cursor c = _sql.query(DbSchemas.Ses.TABLE_NAME, ALL_COLUMNS, whereString, null, null, null, SESSIONORDERSTRING);
 
         ArrayList<SessionVM> sessions = new ArrayList<SessionVM>();
 
@@ -182,7 +183,7 @@ public class DbSessions {
 
         String whereString = DbSchemas.Ses.TITLE + " LIKE '%" + searchString + "%'";
 
-        Cursor c = _sql.query(DbSchemas.Ses.TABLE_NAME, ALL_COLUMNS, whereString, null, null, null, DbSchemas.Ses.STARTDATETIME);
+        Cursor c = _sql.query(DbSchemas.Ses.TABLE_NAME, ALL_COLUMNS, whereString, null, null, null, SESSIONORDERSTRING);
 
         while(c.moveToNext())
         {

@@ -62,6 +62,10 @@ public class DbMapMarkers {
             Session session = _db.Sessions.MakeSessionFromCursor(c);
             SessionVM sessionVM = new SessionVM(session);
 
+            if(sessionVM.Latitude() == null || sessionVM.Longitude() == null){
+                continue;
+            }
+
             String datetime;
             if (currentDateTime.getDayOfYear() == session.StartDate.getDayOfYear()
                     || currentDateTime.getYear() == session.StartDate.getYear()){
