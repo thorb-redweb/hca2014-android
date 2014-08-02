@@ -12,7 +12,6 @@ import dk.redweb.hca2014.Helper.AppearanceHelper.AppearanceHelper;
 import dk.redweb.hca2014.Helper.TextHelper.TextHelper;
 import dk.redweb.hca2014.StaticNames.LOOK;
 import dk.redweb.hca2014.StaticNames.PAGE;
-import dk.redweb.hca2014.StaticNames.TEXT;
 import dk.redweb.hca2014.StaticNames.TYPE;
 import dk.redweb.hca2014.ViewModels.SessionVM;
 import dk.redweb.hca2014.XmlHandling.XmlNode;
@@ -179,8 +178,7 @@ public class NavBarBox extends LinearLayout {
                             nextPage.addXmlNodeToNode(child);
                         }
                     }
-                    if(thisPage.getStringFromNode(PAGE.TYPE).matches(TYPE.SESSIONDETAIL) &&
-                            nextPage.getStringFromNode(PAGE.TYPE).matches(TYPE.DAILYSESSIONLIST)){
+                    if(isDailySessionListChildorGrandChild(thisPage, nextPage)){
 
                         int sessionid = thisPage.getIntegerFromNode(PAGE.SESSIONID);
                         SessionVM session = _db.Sessions.getVMFromId(sessionid);
@@ -206,6 +204,14 @@ public class NavBarBox extends LinearLayout {
                 }
             }
         });
+    }
+
+    private boolean isDailySessionListChildorGrandChild(XmlNode thisPage, XmlNode nextPage) throws NoSuchFieldException {
+        return (thisPage.getStringFromNode(PAGE.TYPE).matches(TYPE.SESSIONDETAIL) &&
+                nextPage.getStringFromNode(PAGE.TYPE).matches(TYPE.DAILYSESSIONLIST))
+                ||
+                (thisPage.getStringFromNode(PAGE.TYPE).matches(TYPE.SESSIONMAP) &&
+                        nextPage.getStringFromNode(PAGE.TYPE).matches(TYPE.SESSIONDETAIL));
     }
 
     private String determineNavname(XmlNode parentPage, XmlNode childPage) throws NoSuchFieldException {

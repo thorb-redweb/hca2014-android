@@ -209,12 +209,16 @@ public class DbSessions {
         return new SessionVM(getFromId(sessionid));
     }
 
-    public boolean isDateSessionless(LocalDate day, int venueId) {
+    public boolean isDateSessionless(LocalDate day, int venueId, String type, String searchString) {
         String chosenDay = "'" + Converters.LocalDateToSQLDate(day) + "'";
         String dateWhereString = "date(" + DbSchemas.Ses.STARTDATETIME + ") = date(" + chosenDay + ")";
         String venueWhereString = "";
         if(venueId >= 0) venueWhereString = " AND " + DbSchemas.Ses.VENUE_ID + " = '" + venueId + "'";
-        String whereString = dateWhereString + venueWhereString;
+        String typeWhereString = "";
+        if(type != null) typeWhereString = " AND " + DbSchemas.Ses.EVENTTYPE + " = '" + type + "'";
+        String searchWhereString = "";
+        if(!searchString.matches("")) searchWhereString = " AND (" + DbSchemas.Ses.TITLE + " LIKE '%" + searchString + "%' OR " + DbSchemas.Ses.DETAILS + " LIKE '%" + searchString + "%')";
+        String whereString = dateWhereString + venueWhereString + typeWhereString + searchWhereString;
 
         Cursor c = _sql.query(DbSchemas.Ses.TABLE_NAME, ALL_COLUMNS, whereString, null, null, null, DbSchemas.Ses.STARTDATETIME);
 

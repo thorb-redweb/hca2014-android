@@ -75,6 +75,8 @@ public class Handler_UpdateToDatabase extends AsyncTask<String, Void, String> {
                         }
                     }
                 }
+                MyLog.d("Deleting 2013 articles");
+                _db.Articles.delete2013Articles();
             }
 
         } catch (JSONException e) {

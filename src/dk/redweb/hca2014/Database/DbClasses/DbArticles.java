@@ -215,6 +215,11 @@ public class DbArticles {
         return news;
     }
 
+    public void delete2013Articles(){
+        String whereString = "date(" + DbSchemas.Art.PUBLISHDATE + ") < date('2014-01-01')";
+        _sql.delete(DbSchemas.Art.TABLE_NAME, whereString, null);
+    }
+
     public void importSingleFromJSON(JSONObject jsonObject) throws JSONException {
         ContentValues values = new ContentValues();
         int articleId = Integer.parseInt(jsonObject.getString(JsonSchemas.Art.ARTICLE_ID));

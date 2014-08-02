@@ -98,6 +98,9 @@ public class SessionDetailFragment extends BasePageFragment {
                 try {
                     XmlNode nextPage = _xml.getPage(_childname).deepClone();
                     nextPage.addChildToNode(PAGE.SESSIONID, _session.SessionId());
+                    if(_page.hasChild(PAGE.LISTPOSITION)){
+                        nextPage.addXmlNodeToNode(_page.getChildFromNode(PAGE.LISTPOSITION));
+                    }
                     NavController.changePageWithXmlNode(nextPage, getActivity());
                 } catch (Exception e) {
                     MyLog.e("Exception in SessionDetailActivity:onClickListener on rltMapButton", e);

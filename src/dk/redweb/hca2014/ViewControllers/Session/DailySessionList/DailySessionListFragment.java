@@ -349,7 +349,7 @@ public class DailySessionListFragment extends BasePageFragment {
             _dateOfListContent = _earliestDateWithSession;
         else if(_dateOfListContent.isAfter(_latestDateWithSession))
             _dateOfListContent = _latestDateWithSession;
-        else if(_db.Sessions.isDateSessionless(_dateOfListContent, getFilterVenueId())){
+        else if(_db.Sessions.isDateSessionless(_dateOfListContent, getFilterVenueId(),_filterType,_searchString)){
             _dateOfListContent = _db.Sessions.getDateForNextFromDateAndVenueId(_dateOfListContent, getFilterVenueId(),_filterType,_searchString);
         }
     }
