@@ -59,7 +59,7 @@
 		<type>ImageArticleList</type>
         <tabname>Nyheder</tabname>
         <tabimage>icon_news_bottombar.png</tabimage>
-		<catids>9,30,31,34</catids>
+		<catids>9,34,37</catids>
         <parent>Forside</parent>
         <child>Nyhedsside</child>
 	</page>

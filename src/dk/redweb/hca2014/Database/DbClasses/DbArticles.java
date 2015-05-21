@@ -187,7 +187,7 @@ public class DbArticles {
 
         String dateTimeString = "'" + Converters.JodaDateTimeToSQLDateTime(currentDateTime) + "'";
 
-        int[] catids = new int[]{9,30,31,34};
+        int[] catids = new int[]{9,34,37};
         String whereString = DbSchemas.Art.CATID + " = " + catids[0];
         for(int i = 1; i < catids.length; i++){
             int catid = catids[i];
