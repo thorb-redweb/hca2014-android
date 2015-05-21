@@ -50,7 +50,7 @@ public class Handler_DumpToDatabase extends AsyncTask<String, Void, String> {
             }
             else
             {
-                Log.d("RedEvent", "Starting database load from GetJSONDatabase.onPostExecute...");
+                MyLog.d("Starting database load from GetJSONDatabase.onPostExecute...");
                 JSONArray jsonArray = new JSONArray(result);
 
                 for (int i = 0; i < jsonArray.length(); i++){

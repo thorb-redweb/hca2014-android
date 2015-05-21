@@ -24,7 +24,7 @@ public class Handler_DumpServer extends AsyncTask<String, Void, String>{
     protected String doInBackground(String... args){
         String url = xmlStore.appDataPath + "coreData.txt";
 
-        Log.v("RedEvent", "Start Dump Download in Handler_DumpServer");
+        MyLog.v("Start Dump Download in Handler_DumpServer");
 
         try {
             String result = HttpHandler.GetString(url);
@@ -40,7 +40,7 @@ public class Handler_DumpServer extends AsyncTask<String, Void, String>{
             delegate.errorOccured(result);
             return;
         }
-        Log.d("RedEvent","Server dump finished");
+        MyLog.d("Server dump finished");
         delegate.returnFromDumpServer(result);
     }
 }

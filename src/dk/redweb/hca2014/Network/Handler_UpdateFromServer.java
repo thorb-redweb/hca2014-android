@@ -47,7 +47,7 @@ public class Handler_UpdateFromServer extends AsyncTask<String, Void, String> {
             delegate.errorOccured(result);
             return;
         }
-        Log.d("RedEvent","Update download finished");
+        MyLog.d("Update download finished");
         delegate.returnFromUpdateFromServer(result);
     }
 }
