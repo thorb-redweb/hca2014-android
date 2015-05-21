@@ -76,7 +76,7 @@ public class Handler_UpdateToDatabase extends AsyncTask<String, Void, String> {
                     }
                 }
                 MyLog.d("Deleting 2013 articles");
-                _db.Articles.delete2013Articles();
+                _db.Articles.lastYearArticles();
             }
 
         } catch (JSONException e) {
@@ -91,8 +91,8 @@ public class Handler_UpdateToDatabase extends AsyncTask<String, Void, String> {
         String itemtype = jsonObject.getString("itemtype");
         if(itemtype.equals("a"))
         {
-            LocalDate startOfYear2014 = new LocalDate(2014,1,1);
-            if(Converters.SQLDateTimeToLocalDate(jsonObject.getString(JsonSchemas.Art.PUBLISHDATE)).isAfter(startOfYear2014) ||
+            LocalDate startOfYear = new LocalDate(new LocalDate().getYear(),1,1);
+            if(Converters.SQLDateTimeToLocalDate(jsonObject.getString(JsonSchemas.Art.PUBLISHDATE)).isAfter(startOfYear) ||
                     jsonObject.getInt(JsonSchemas.Art.ARTICLE_ID) == 1){
                 MyLog.v("Creating/updating Article ID: " + jsonObject.getInt(JsonSchemas.Art.ARTICLE_ID) + " Itemtype: " + jsonObject.getString(JsonSchemas.Art.ITEMTYPE));
                 _db.Articles.importSingleFromJSON(jsonObject);

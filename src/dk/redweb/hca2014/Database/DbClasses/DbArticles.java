@@ -13,6 +13,8 @@ import dk.redweb.hca2014.RedEventApplication;
 import dk.redweb.hca2014.ViewModels.ArticleVM;
 import dk.redweb.hca2014.XmlHandling.XmlStore;
 import org.joda.time.DateTime;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -215,8 +217,8 @@ public class DbArticles {
         return news;
     }
 
-    public void delete2013Articles(){
-        String whereString = "date(" + DbSchemas.Art.PUBLISHDATE + ") < date('2014-01-01')";
+    public void lastYearArticles(){
+        String whereString = "(date(" + DbSchemas.Art.PUBLISHDATE + ") < date('" + DateTime.now().getYear() + "-01-01')) AND " + DbSchemas.Art.ARTICLE_ID + " != 1";
         _sql.delete(DbSchemas.Art.TABLE_NAME, whereString, null);
     }
 
