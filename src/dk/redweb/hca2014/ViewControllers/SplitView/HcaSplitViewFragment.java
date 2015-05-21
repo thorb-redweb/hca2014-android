@@ -6,6 +6,7 @@ import android.view.*;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import dk.redweb.hca2014.DatabaseModel.Article;
 import dk.redweb.hca2014.My;
 import dk.redweb.hca2014.MyLog;
 import dk.redweb.hca2014.NavController;

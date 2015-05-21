@@ -2,6 +2,7 @@ package dk.redweb.hca2014.Network;
 
 import dk.redweb.hca2014.Interfaces.*;
 import dk.redweb.hca2014.RedEventApplication;
+import dk.redweb.hca2014.ViewControllers.Map.BaseMapFragment;
 
 /**
  * Created by Redweb with IntelliJ IDEA.
@@ -17,6 +18,10 @@ public class ServerInterface {
 
     public void dumpServer(Delegate_dumpServer delegate){
         new Handler_DumpServer(delegate, _app.getXmlStore()).execute();
+    }
+
+    public void getDirections(BaseMapFragment delegate, String travelMode, String origin, String destination){
+        new Handler_GetDirections(delegate, travelMode, origin, destination).execute();
     }
 
     public void updateFromServer(Delegate_updateFromServer delegate){

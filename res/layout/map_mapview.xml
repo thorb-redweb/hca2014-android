@@ -15,6 +15,35 @@
             android:layout_alignParentTop="true"
             android:layout_above="@+id/map_lnrButtonFrame"/>
 
+    <ImageView android:id="@+id/imgDriving"
+            android:layout_width="48dp" android:layout_height="48dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toLeftOf="@+id/imgBiking"
+            android:layout_margin="8dp"
+               android:padding="4dp"
+               android:background="@drawable/round_accent_button"
+               android:tint="@android:color/white"
+            android:src="@drawable/icon_car"/>
+    <ImageView android:id="@+id/imgBiking"
+            android:layout_width="48dp" android:layout_height="48dp"
+                 android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                 android:layout_margin="8dp"
+                 android:adjustViewBounds="true"
+                 android:scaleType="fitCenter"
+               android:background="@drawable/round_accent_button"
+               android:tint="@android:color/white"
+            android:src="@drawable/icon_bike"/>
+    <ImageView android:id="@+id/imgWalking"
+            android:layout_width="48dp" android:layout_height="48dp"
+                 android:layout_alignParentBottom="true"
+            android:layout_toRightOf="@+id/imgBiking"
+                 android:layout_margin="8dp"
+               android:padding="4dp"
+               android:background="@drawable/round_accent_button"
+               android:tint="@android:color/white"
+            android:src="@drawable/icon_walking"/>
+
     <LinearLayout android:id="@+id/map_lnrButtonFrame"
             style="@style/Layout.Wrap"
             android:layout_alignParentBottom="true">

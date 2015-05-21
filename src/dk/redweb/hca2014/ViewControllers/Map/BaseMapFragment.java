@@ -1,13 +1,12 @@
 package dk.redweb.hca2014.ViewControllers.Map;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentSender;
-import android.content.SharedPreferences;
+import android.content.*;
 import android.location.Location;
 import android.os.Bundle;
+import android.os.Message;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,19 +19,29 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.location.LocationClient;
 import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Polyline;
+import com.google.android.gms.maps.model.PolylineOptions;
 import dk.redweb.hca2014.*;
 import dk.redweb.hca2014.Helper.AppearanceHelper.AppearanceHelper;
 import dk.redweb.hca2014.Helper.TextHelper.TextHelper;
+import dk.redweb.hca2014.Network.Handler_GetDirections;
 import dk.redweb.hca2014.StaticNames.DEFAULTTEXT;
 import dk.redweb.hca2014.StaticNames.LOOK;
 import dk.redweb.hca2014.StaticNames.PAGE;
 import dk.redweb.hca2014.StaticNames.TEXT;
+import dk.redweb.hca2014.ViewControllers.BaseActivity;
 import dk.redweb.hca2014.ViewControllers.BasePageFragment;
 import dk.redweb.hca2014.Views.FlexibleButton;
 import dk.redweb.hca2014.XmlHandling.XmlNode;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by Redweb with IntelliJ IDEA.
@@ -54,6 +63,8 @@ public class BaseMapFragment extends BasePageFragment implements LocationListene
     protected LatLng _standardCenter = new LatLng(55.3904767, 10.438474700000029);
     protected float _standardZoom = 12;
     protected LatLng _userLatLng;
+
+    protected Polyline _lastRoute;
 
     boolean _updatesRequested;
 
@@ -273,6 +284,62 @@ public class BaseMapFragment extends BasePageFragment implements LocationListene
         }
     }
 
+    public void returnWithDirections(String result) {
+        try {
+            if(_lastRoute != null) {
+                _lastRoute.remove();
+            }
+
+            JSONObject json = new JSONObject(result);
+            if(json.getString("status").equals("OK")){
+                JSONObject routes = json.getJSONArray("routes").getJSONObject(0);
+
+                //Match map to bounds
+                JSONObject bounds = routes.getJSONObject("bounds");
+                JSONObject northeast = bounds.getJSONObject("northeast");
+                JSONObject southwest = bounds.getJSONObject("southwest");
+
+                LatLngBounds.Builder b = new LatLngBounds.Builder();
+
+                b.include(new LatLng(northeast.getDouble("lat"), northeast.getDouble("lng")));
+                b.include(new LatLng(southwest.getDouble("lat"), southwest.getDouble("lng")));
+
+                LatLngBounds latLngBounds = b.build();
+
+                CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(latLngBounds, 300, 300, 5);
+                _googleMap.animateCamera(cameraUpdate);
+
+
+                //Get the individual steps of the path
+                JSONObject legs = routes.getJSONArray("legs").getJSONObject(0);
+                JSONArray steps = legs.getJSONArray("steps");
+
+                //Create line to place on map
+                PolylineOptions line = new PolylineOptions();
+                line.color(getActivity().getResources().getColor(R.color.accent));
+                line.width(3);
+
+                JSONObject startLocation = legs.getJSONObject("start_location");
+                line.add(new LatLng(startLocation.getDouble("lat"),startLocation.getDouble("lng")));
+
+                for(int i = 0; i < steps.length(); i++){
+                    JSONObject step = steps.getJSONObject(i);
+                    JSONObject end = step.getJSONObject("end_location");
+                    line.add(new LatLng(end.getDouble("lat"),end.getDouble("lng")));
+                }
+
+                //Add line to map
+                _lastRoute = _googleMap.addPolyline(line);
+            }
+            else {
+                errorOccured("API call failed");
+            }
+        } catch (JSONException e) {
+            errorOccured("Not json");
+            MyLog.e("Exception when converting to json", e);
+        }
+    }
+
     @Override
     public void onConnectionFailed(ConnectionResult connectionResult) {
         if(connectionResult.hasResolution()){
@@ -298,6 +365,15 @@ public class BaseMapFragment extends BasePageFragment implements LocationListene
             showErrorDialog(resultCode);
             return false;
         }
+    }
+
+    public void errorOccured(String result) {
+        AlertDialog alertDialog = new AlertDialog.Builder(getActivity()).create();
+        alertDialog.setTitle("Fejl");
+        alertDialog.setMessage("Der er sket en fejl under hentning af data");
+        alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Prøv Igen", new Message());
+        alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Afslut App", new Message());
+        alertDialog.show();
     }
 
     private void showErrorDialog(int errorCode)

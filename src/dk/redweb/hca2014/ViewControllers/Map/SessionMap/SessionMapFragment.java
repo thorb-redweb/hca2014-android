@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.model.*;
@@ -31,6 +32,10 @@ public class SessionMapFragment extends BaseMapFragment {
     Marker _userMarker;
 
     SessionVM _session;
+
+    ImageView _imgDriving;
+    ImageView _imgBiking;
+    ImageView _imgWalking;
 
     boolean _isOnCreateInitialized = false;
 
@@ -64,6 +69,9 @@ public class SessionMapFragment extends BaseMapFragment {
 
             _session = _db.Sessions.getVMFromId(sessionId);
 
+            _imgDriving = (ImageView)findViewById(R.id.imgDriving);
+            _imgBiking = (ImageView)findViewById(R.id.imgBiking);
+            _imgWalking = (ImageView)findViewById(R.id.imgWalking);
         } catch (Exception e) {
             MyLog.e("Exception in SessionMapActivity.onCreate", e);
 
@@ -108,8 +116,6 @@ public class SessionMapFragment extends BaseMapFragment {
         _googleMap.setInfoWindowAdapter(infoWindowAdapter);
         _googleMap.setOnInfoWindowClickListener(infoWindowAdapter);
         _isOnCreateInitialized = true;
-
-        _isOnCreateInitialized = true;
     }
 
     @Override
@@ -141,9 +147,35 @@ public class SessionMapFragment extends BaseMapFragment {
 
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, 300, 300, 5);
             _googleMap.animateCamera(cameraUpdate);
+
+
+            _imgDriving.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getDirections("driving");
+                }
+            });
+
+            _imgBiking.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getDirections("bicycling");
+                }
+            });
+
+            _imgWalking.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    getDirections("walking");
+                }
+            });
         }
         else if(_isOnCreateInitialized){
             _userMarker.setPosition(_userLatLng);
         }
+    }
+
+    private void getDirections(String travelMode) {
+        _sv.getDirections(this, travelMode, _userLatLng.latitude + "," + _userLatLng.longitude, _session.Latitude() + "," + _session.Longitude());
     }
 }
