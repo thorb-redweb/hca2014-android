@@ -72,6 +72,7 @@ public class SessionDetailFragment extends BasePageFragment {
         _session = _db.Sessions.getVMFromId(sessionId);
 
         TextView txtTitle = (TextView)findViewById(R.id.sessionDetail_lblTitle);
+        ImageView imgSharing = (ImageView)findViewById(R.id.imgShare);
         ImageView imgView = (ImageView)findViewById(R.id.sessionDetail_imgPicture);
         TextView txtType = (TextView)findViewById(R.id.sessionDetail_lblTypeValue);
         TextView txtVenue = (TextView)findViewById(R.id.sessionDetail_lblVenueValue);
@@ -91,6 +92,18 @@ public class SessionDetailFragment extends BasePageFragment {
         txtVenue.setText(_session.Venue());
 
         _net.fetchImageOnThread(_session.ImagePath(), imgView);
+
+        imgSharing.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                String shareBody = _session.WebsiteLink();
+                sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, _session.Title());
+                sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(sharingIntent, "Del via"));
+            }
+        });
 
         rltMapButton.setOnClickListener(new View.OnClickListener() {
             @Override

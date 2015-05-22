@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:id="@+id/sessionDetail_scrMainView"
                 style="@style/Layout.Full">
         <LinearLayout
                 style="@style/Layout.Full"
                 android:padding="5sp">
 
-            <TextView android:id="@+id/sessionDetail_lblTitle"
-                      style="@style/Layout.Wrap.Complete"/>
+            <LinearLayout android:orientation="horizontal"
+                    android:layout_width="match_parent" android:layout_height="wrap_content">
+                <TextView android:id="@+id/sessionDetail_lblTitle"
+                          style="@style/Layout.Wrap.Complete"
+                          android:layout_width="0dp"
+                          android:layout_weight="1"
+                          android:layout_gravity="center_vertical"
+                          tools:text="Title"/>
+                <ImageView android:id="@+id/imgShare"
+                        android:layout_width="44dp" android:layout_height="44dp"
+                           android:padding="8dp"
+                           android:background="#E5007D"
+                           android:tint="@android:color/white"
+                        android:src="@drawable/ic_sharing"/>
+            </LinearLayout>
 
             <ImageView android:id="@+id/sessionDetail_imgPicture"
                        style="@style/Image.Full"

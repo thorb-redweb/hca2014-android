@@ -204,4 +204,12 @@ public class SessionVM {
     public SessionVM(Session session) {
         _session = session;
     }
+
+    public String WebsiteLink(){
+        DateTimeFormatter dateFormatter = DateTimeFormat.forPattern("yyyy-MM-dd").withLocale(locale);
+        DateTimeFormatter timeFormatter = DateTimeFormat.forPattern("HH-mm").withLocale(locale);
+        return "www.hcafestivals.dk/da/details/" + _session.SessionId + "-" + _session.Title.replace(" ","-") +
+                "/" + _session.Venue().City.replace(" ","-") +
+                "/" + _session.StartDate.toString(dateFormatter) + "/" + _session.StartTime.toString(timeFormatter);
+    }
 }
