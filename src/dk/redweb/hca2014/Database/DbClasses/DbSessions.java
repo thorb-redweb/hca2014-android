@@ -34,7 +34,8 @@ public class DbSessions {
     XmlStore _xml;
 
     private final String[] ALL_COLUMNS = {DbSchemas.Ses.SESSION_ID, DbSchemas.Ses.EVENT_ID, DbSchemas.Ses.VENUE_ID,
-            DbSchemas.Ses.TITLE, DbSchemas.Ses.DETAILS, DbSchemas.Ses.STARTDATETIME, DbSchemas.Ses.ENDDATETIME, DbSchemas.Ses.EVENTTYPE};
+            DbSchemas.Ses.TITLE, DbSchemas.Ses.DETAILS, DbSchemas.Ses.SUBMISSION, DbSchemas.Ses.STARTDATETIME,
+            DbSchemas.Ses.ENDDATETIME, DbSchemas.Ses.EVENTTYPE};
     private final String SESSIONORDERSTRING = DbSchemas.Ses.STARTDATETIME + " ASC, " + DbSchemas.Ses.TITLE + " ASC, " + DbSchemas.Ses.ENDDATETIME + " ASC";
 
     public DbSessions(RedEventApplication app, SQLiteDatabase sql, DbInterface db, ServerInterface sv, XmlStore xml){
@@ -248,6 +249,9 @@ public class DbSessions {
         values.put(DbSchemas.Ses.VENUE_ID, venueId);
         values.put(DbSchemas.Ses.TITLE, jsonObject.getString(JsonSchemas.Ses.TITLE));
         values.put(DbSchemas.Ses.DETAILS, jsonObject.getString(JsonSchemas.Ses.DETAILS));
+        if(jsonObject.has(JsonSchemas.Ses.SUBMISSION)) {
+            values.put(DbSchemas.Ses.SUBMISSION, jsonObject.getString(JsonSchemas.Ses.SUBMISSION));
+        }
         String startDate = jsonObject.getString(JsonSchemas.Ses.STARTDATE);
         String startTime = jsonObject.getString(JsonSchemas.Ses.STARTTIME);
         if(startTime.equals("null"))
@@ -293,6 +297,7 @@ public class DbSessions {
             newSession.VenueId = c.getInt(c.getColumnIndexOrThrow(DbSchemas.Ses.VENUE_ID));
             newSession.Title = c.getString(c.getColumnIndexOrThrow(DbSchemas.Ses.TITLE));
             newSession.Details = c.getString(c.getColumnIndexOrThrow(DbSchemas.Ses.DETAILS));
+            newSession.Submission = c.getString(c.getColumnIndexOrThrow(DbSchemas.Ses.SUBMISSION));
 
             String startDateTime = c.getString(c.getColumnIndexOrThrow(DbSchemas.Ses.STARTDATETIME));
             String[] splitStartDateTime = startDateTime.split(" ");

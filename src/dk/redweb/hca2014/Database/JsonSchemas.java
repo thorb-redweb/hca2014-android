@@ -55,6 +55,7 @@ public class JsonSchemas {
         public static final String VENUE_ID = "venueid";
         public static final String TITLE = "title";
         public static final String DETAILS = "details";
+        public static final String SUBMISSION = "submission";
         public static final String STARTDATE = "startdate";
         public static final String ENDDATE = "enddate";
         public static final String STARTTIME = "starttime";

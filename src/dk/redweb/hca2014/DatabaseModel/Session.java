@@ -18,6 +18,7 @@ public class Session {
     public int VenueId;
     public String Title;
     public String Details;
+    public String Submission;
     public LocalDate StartDate;
     public LocalTime StartTime;
     public LocalDate EndDate;
@@ -26,6 +27,7 @@ public class Session {
 
     private Event _event;
     private boolean _eventLazyloaded;
+
     public Event Event(){
         if(_eventLazyloaded){
             _event = Idb.GetLazyLoadedObject(EventId,Event.class,this.getClass());

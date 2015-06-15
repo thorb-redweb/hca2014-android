@@ -9,6 +9,7 @@ import dk.redweb.hca2014.Interfaces.IDbInterface;
 import dk.redweb.hca2014.DatabaseModel.Event;
 import dk.redweb.hca2014.DatabaseModel.Session;
 import dk.redweb.hca2014.DatabaseModel.Venue;
+import dk.redweb.hca2014.MyLog;
 import dk.redweb.hca2014.Network.NetworkInterface;
 import dk.redweb.hca2014.Network.ServerInterface;
 import dk.redweb.hca2014.RedEventApplication;
@@ -29,7 +30,7 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
     ServerInterface _sv;
     XmlStore _xml;
 
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 3;
     public static final String DATABASE_NAME = "RedApp.db";
 
     public final DbArticles Articles;
@@ -81,6 +82,7 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
             DbSchemas.Ses.TITLE + " TEXT, " +
             DbSchemas.Ses.DETAILS + " TEXT, " +
             DbSchemas.Ses.EVENTTYPE + " TEXT, " +
+            DbSchemas.Ses.SUBMISSION + " TEXT, " +
             DbSchemas.Ses.STARTDATETIME + " TEXT, " +
             DbSchemas.Ses.ENDDATETIME + " TEXT)";
     private static final String SQL_CREATE_VENUE_TABLE = "CREATE TABLE " + DbSchemas.Venue.TABLE_NAME +
@@ -118,6 +120,7 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
         Sessions = new DbSessions(_app, _sql, this, _sv, _xml);
         Venues = new DbVenues(_app, _sql, this, _sv, _xml);
     }
+
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_ARTICLE_TABLE);
@@ -127,6 +130,7 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
         db.execSQL(SQL_CREATE_SESSION_TABLE);
         db.execSQL(SQL_CREATE_VENUE_TABLE);
     }
+
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(SQL_DELETE_ARTICLE_TABLE);
@@ -137,9 +141,11 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
         db.execSQL(SQL_DELETE_VENUE_TABLE);
         onCreate(db);
     }
+
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion){
         onUpgrade(db, oldVersion, newVersion);
     }
+
     public void onClose(){
         _sql.close();
     }

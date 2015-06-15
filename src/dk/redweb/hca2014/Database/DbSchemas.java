@@ -72,6 +72,7 @@ public class DbSchemas {
         public static final String VENUE_ID = "venueid";
         public static final String TITLE = "title";
         public static final String DETAILS = "details";
+        public static final String SUBMISSION = "submission";
         public static final String STARTDATETIME = "startdatetime";
         public static final String ENDDATETIME = "enddatetime";
         public static final String EVENTTYPE = "eventtype";

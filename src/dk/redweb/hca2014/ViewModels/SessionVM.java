@@ -129,8 +129,14 @@ public class SessionVM {
         return dateTimeFormatter.print(_session.EndTime);
     }
 
-    public String SubmissionPath(){
-        return _session.Event().Submission;
+    public String SubmissionPath()
+    {
+        if(_session.Submission == null || _session.Submission.equals("")) {
+            return _session.Event().Submission;
+        }
+        else {
+            return _session.Submission;
+        }
     }
 
     public String ImagePath(){
