@@ -1,7 +1,6 @@
 package dk.redweb.hca2014.ViewControllers.Session.DailySessionList;
 
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import dk.redweb.hca2014.DatabaseModel.Venue;
 import dk.redweb.hca2014.StaticNames.*;
 import dk.redweb.hca2014.ViewControllers.BasePageFragment;
 import dk.redweb.hca2014.ViewModels.SessionVM;
-import dk.redweb.hca2014.Views.CustomDialog;
 import dk.redweb.hca2014.Views.FlexibleButton;
 import dk.redweb.hca2014.XmlHandling.XmlNode;
 import org.joda.time.LocalDate;
@@ -124,9 +122,9 @@ public class DailySessionListFragment extends BasePageFragment {
         }
 
         initializeDate();
-        if(_adapter == null){
-            reloadListView();
-        }
+
+        reloadListView(true);
+
         if(_page.hasChild(PAGE.LISTPOSITION)){
             try {
                 String[] listCoordinates = _page.getStringFromNode(PAGE.LISTPOSITION).split(",");
@@ -159,7 +157,7 @@ public class DailySessionListFragment extends BasePageFragment {
             @Override
             public void onClick(View view) {
                 _dateOfListContent = _db.Sessions.getDateForLastFromDateAndVenueId(_dateOfListContent, getFilterVenueId(),_filterType,_searchString);
-                reloadListView();
+                reloadListView(false);
             }
         };
     }
@@ -169,7 +167,7 @@ public class DailySessionListFragment extends BasePageFragment {
             @Override
             public void onClick(View view) {
                 _dateOfListContent = _db.Sessions.getDateForNextFromDateAndVenueId(_dateOfListContent, getFilterVenueId(),_filterType,_searchString);
-                reloadListView();
+                reloadListView(false);
             }
         };
     }
@@ -258,7 +256,7 @@ public class DailySessionListFragment extends BasePageFragment {
     public void searchForSessions(String searchString) {
         _searchString =  searchString;
         initializeDate();
-        reloadListView();
+        reloadListView(false);
     }
 
     private void setupListView(){
@@ -354,12 +352,13 @@ public class DailySessionListFragment extends BasePageFragment {
         }
     }
 
-    private void reloadListView(){
+    private void reloadListView(boolean forceUpdate){
         if(_spnType.getSelectedItem() != null && _lastTypeChoice != null && !_spnType.getSelectedItem().toString().matches(_lastTypeChoice) ||
                 !_spnVenue.getSelectedItem().toString().matches(_lastVenueChoice) ||
                 !_dateOfListContent.equals(_lastDateChoice) ||
                 !_searchString.matches(_lastSearch) ||
-                _listPosition != -255){
+                _listPosition != -255 ||
+                forceUpdate){
             _lastTypeChoice = _spnType.getSelectedItem().toString();
             _lastVenueChoice = _spnVenue.getSelectedItem().toString();
             _lastDateChoice = _dateOfListContent;
@@ -414,7 +413,7 @@ public class DailySessionListFragment extends BasePageFragment {
                 _filterVenue = _db.Venues.getFromName(venueName);
 
             initializeDate();
-            reloadListView();
+            reloadListView(false);
         }
 
         @Override
@@ -434,7 +433,7 @@ public class DailySessionListFragment extends BasePageFragment {
                 _filterType = typeName;
 
             initializeDate();
-            reloadListView();
+            reloadListView(false);
         }
 
         @Override
