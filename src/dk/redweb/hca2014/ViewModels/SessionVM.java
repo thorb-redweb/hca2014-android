@@ -91,6 +91,9 @@ public class SessionVM {
     }
 
     public String StartTimeAsString(){
+        if(_session.StartTime == null){
+            return "00";
+        }
         DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("HH:mm").withLocale(locale);
         return dateTimeFormatter.print(_session.StartTime);
     }
@@ -125,6 +128,9 @@ public class SessionVM {
     }
 
     public String EndTimeAsString(){
+        if(_session.EndTime == null){
+            return "00";
+        }
         DateTimeFormatter dateTimeFormatter = DateTimeFormat.forPattern("HH:mm").withLocale(locale);
         return dateTimeFormatter.print(_session.EndTime);
     }
