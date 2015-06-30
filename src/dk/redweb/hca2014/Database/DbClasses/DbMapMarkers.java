@@ -37,7 +37,9 @@ public class DbMapMarkers {
     public MapMarker[] getAll(){
 
         DateTime currentDateTime = new DateTime();
-        if(_app.isDebugging()){currentDateTime = _app.getDebugCurrentDate();}
+        if(_app.isDebugging()){
+            currentDateTime = _app.getDebugCurrentDate();
+        }
 
         String whereString = "datetime(" + DbSchemas.Ses.STARTDATETIME + ") >= datetime('" + Converters.JodaDateTimeToSQLDateTime(currentDateTime) + "')";
         String sortString = DbSchemas.Ses.STARTDATETIME + " DESC";
@@ -66,15 +68,8 @@ public class DbMapMarkers {
                 continue;
             }
 
-            String datetime;
-            if (currentDateTime.getDayOfYear() == session.StartDate.getDayOfYear()
-                    || currentDateTime.getYear() == session.StartDate.getYear()){
-                datetime = "kl. " + sessionVM.StartTimeAsString();
-            }
-            else
-            {
-                datetime = sessionVM.StartDateWithPattern("EEEE dd.") + " kl. " + sessionVM.StartTimeAsString();
-            }
+            String datetime = sessionVM.StartDateWithPattern("EEEE") + " kl. " + sessionVM.StartTimeAsString();
+
             MapMarker mapMarker = new MapMarker();
             mapMarker.Name = sessionVM.Venue();
             mapMarker.SessionId = sessionVM.SessionId();
