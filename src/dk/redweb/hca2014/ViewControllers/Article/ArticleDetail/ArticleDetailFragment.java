@@ -88,14 +88,14 @@ public class ArticleDetailFragment extends BasePageFragment {
             ImageView imgMain = (ImageView)findViewById(R.id.articledetail_imgMain);
             WebView webBody = (WebView)findViewById(R.id.articleDetail_webBody);
             TextView txtBody = (TextView)findViewById(R.id.articleDetail_lblBody);
+
+            _net.fetchImageOnThread(article.MainImagePath(), imgMain);
             try {
                 if(_page.hasChild(PAGE.BODYUSESHTML) && _page.getBoolFromNode(PAGE.BODYUSESHTML)) {
-                    imgMain.setVisibility(View.GONE);
                     String htmlString = _xml.css + article.FullTextWithHtml();
                     webBody.loadDataWithBaseURL(_xml.joomlaPath, htmlString, "text/html", "UTF-8", null);
                     txtBody.setVisibility(View.GONE);
                 } else {
-                    _net.fetchImageOnThread(article.MainImagePath(), imgMain);
                     txtBody.setText(article.FullTextWithoutHtml());
                     webBody.setVisibility(View.GONE);
                 }
