@@ -185,6 +185,9 @@ public class SessionVM {
         else if (_session.Type.matches("Spoken Word")){
             return Color.argb(255,100,100,100);
         }
+        else if (_session.Type.matches("Spoken Word Festival")){
+            return Color.argb(255,100,100,100);
+        }
         else if (_session.Type.matches("Underholdning og teater")){
             return Color.argb(255,229,0,125);
         }
@@ -205,6 +208,9 @@ public class SessionVM {
             return R.drawable.music;
         }
         else if (_session.Type.matches("Spoken Word")){
+            return R.drawable.spoken;
+        }
+        else if (_session.Type.matches("Spoken Word Festival")){
             return R.drawable.spoken;
         }
         else if (_session.Type.matches("Underholdning og teater")){
