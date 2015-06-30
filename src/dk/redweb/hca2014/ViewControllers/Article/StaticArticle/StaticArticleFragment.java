@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.RelativeLayout;
 import dk.redweb.hca2014.Helper.AppearanceHelper.AppearanceHelper;
@@ -63,6 +64,7 @@ public class StaticArticleFragment extends BasePageFragment {
         }
 
         WebView body = (WebView)findViewById(R.id.staticArticle_webBody);
+        body.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
 
         String htmlString = _xml.css + article.IntroTextWithHtml();
         body.loadDataWithBaseURL(_xml.joomlaPath, htmlString, "text/html", "UTF-8", null);
