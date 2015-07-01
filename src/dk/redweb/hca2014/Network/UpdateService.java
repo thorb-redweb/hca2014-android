@@ -2,6 +2,7 @@ package dk.redweb.hca2014.Network;
 
 import android.os.Handler;
 import dk.redweb.hca2014.Database.DbInterface;
+import dk.redweb.hca2014.Interfaces.Delegate_dumpServer;
 import dk.redweb.hca2014.Interfaces.Delegate_updateFromServer;
 import dk.redweb.hca2014.Interfaces.Delegate_updateToDatabase;
 import dk.redweb.hca2014.MyLog;
@@ -43,7 +44,7 @@ public class UpdateService {
         _handler.removeCallbacks(_runnable);
     }
 
-    private class UpdateRunner implements Runnable, Delegate_updateFromServer, Delegate_updateToDatabase{
+    private class UpdateRunner implements Runnable, Delegate_updateFromServer, Delegate_updateToDatabase {
 
         @Override
         public void run() {
@@ -74,6 +75,11 @@ public class UpdateService {
                 MyLog.v("Applying update to database");
                 _db.updateFromServer(result, this);
             }
+        }
+
+        @Override
+        public void returnWithNoUpdateRetrievedFromServer() {
+            returnFromUpdateToDatabase();
         }
 
         @Override

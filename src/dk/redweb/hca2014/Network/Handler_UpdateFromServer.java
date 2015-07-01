@@ -1,7 +1,6 @@
 package dk.redweb.hca2014.Network;
 
 import android.os.AsyncTask;
-import android.util.Log;
 import dk.redweb.hca2014.Interfaces.Delegate_updateFromServer;
 import dk.redweb.hca2014.MyLog;
 import dk.redweb.hca2014.RedEventApplication;
@@ -47,7 +46,12 @@ public class Handler_UpdateFromServer extends AsyncTask<String, Void, String> {
             delegate.errorOccured(result);
             return;
         }
-        MyLog.d("Update download finished");
+        //if update file does not exist on server
+        if(result.contains("404 Not Found")){
+            delegate.returnWithNoUpdateRetrievedFromServer();
+            return;
+        }
+
         delegate.returnFromUpdateFromServer(result);
     }
 }

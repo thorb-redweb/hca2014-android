@@ -163,6 +163,13 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
         new Handler_UpdateToDatabase(_app, this, delegate).execute(result);
     }
 
+    public void clearDatabase(){
+        _sql.delete(DbSchemas.Art.TABLE_NAME, null, null);
+        _sql.delete(DbSchemas.Event.TABLE_NAME, null, null);
+        _sql.delete(DbSchemas.Ses.TABLE_NAME, null, null);
+        _sql.delete(DbSchemas.Venue.TABLE_NAME, null, null);
+    }
+
     @Override
     public <T extends Object> T GetLazyLoadedObject(int wantedObjectsId, Class<T> wantedType, Type askingType) {
         T returnObject = null;

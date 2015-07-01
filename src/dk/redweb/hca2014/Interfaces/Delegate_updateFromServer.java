@@ -7,5 +7,6 @@ package dk.redweb.hca2014.Interfaces;
  */
 public interface Delegate_updateFromServer {
     public void returnFromUpdateFromServer(String result);
+    public void returnWithNoUpdateRetrievedFromServer();
     public void errorOccured(String errorMessage);
 }

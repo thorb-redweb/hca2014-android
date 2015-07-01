@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -75,6 +76,12 @@ public class SplashActivity extends Activity implements Delegate_dumpServer, Del
         _progressDialog.setTitle("Henter data fra databasen");
         _progressDialog.setMessage("Dette kan tage et par minutter...");
         _progressDialog.show();
+
+//        SharedPreferences prefs = this.getSharedPreferences("database", MODE_PRIVATE);
+//        SharedPreferences.Editor editor = prefs.edit();
+//        editor.putInt("dataVersion", 6);
+//        editor.apply();
+
         if(_db.DatabaseIsEmpty()){
             _shortload = true;
             _sv.dumpServer(this);
@@ -110,6 +117,12 @@ public class SplashActivity extends Activity implements Delegate_dumpServer, Del
         {
             _db.updateFromServer(result, this);
         }
+    }
+
+    @Override
+    public void returnWithNoUpdateRetrievedFromServer() {
+        _db.clearDatabase();
+        _sv.dumpServer(this);
     }
 
     @Override

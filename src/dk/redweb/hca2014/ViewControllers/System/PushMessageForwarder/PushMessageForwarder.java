@@ -74,6 +74,11 @@ public class PushMessageForwarder extends FragmentActivity implements Delegate_u
     }
 
     @Override
+    public void returnWithNoUpdateRetrievedFromServer() {
+        returnFromUpdateToDatabase();
+    }
+
+    @Override
     public void returnFromUpdateToDatabase() {
         _progressDialog.dismiss();
 
