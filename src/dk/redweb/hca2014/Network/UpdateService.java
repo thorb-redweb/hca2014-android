@@ -78,7 +78,7 @@ public class UpdateService {
         }
 
         @Override
-        public void returnWithNoUpdateRetrievedFromServer() {
+        public void updateFromServerWithCoreData() {
             returnFromUpdateToDatabase();
         }
 

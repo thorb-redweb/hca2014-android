@@ -120,7 +120,7 @@ public class SplashActivity extends Activity implements Delegate_dumpServer, Del
     }
 
     @Override
-    public void returnWithNoUpdateRetrievedFromServer() {
+    public void updateFromServerWithCoreData() {
         _db.clearDatabase();
         _sv.dumpServer(this);
     }

@@ -74,7 +74,7 @@ public class PushMessageForwarder extends FragmentActivity implements Delegate_u
     }
 
     @Override
-    public void returnWithNoUpdateRetrievedFromServer() {
+    public void updateFromServerWithCoreData() {
         returnFromUpdateToDatabase();
     }
 

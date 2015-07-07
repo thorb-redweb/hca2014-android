@@ -48,7 +48,7 @@ public class Handler_UpdateFromServer extends AsyncTask<String, Void, String> {
         }
         //if update file does not exist on server
         if(result.contains("404 Not Found")){
-            delegate.returnWithNoUpdateRetrievedFromServer();
+            delegate.updateFromServerWithCoreData();
             return;
         }
 
