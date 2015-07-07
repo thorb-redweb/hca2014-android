@@ -5,6 +5,9 @@ import dk.redweb.hca2014.Interfaces.Delegate_updateFromServer;
 import dk.redweb.hca2014.MyLog;
 import dk.redweb.hca2014.RedEventApplication;
 import dk.redweb.hca2014.XmlHandling.XmlStore;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  * Created by Redweb with IntelliJ IDEA.
@@ -50,6 +53,26 @@ public class Handler_UpdateFromServer extends AsyncTask<String, Void, String> {
         if(result.contains("404 Not Found")){
             delegate.updateFromServerWithCoreData();
             return;
+        }
+
+        if(result.length() > 0){
+            try {
+                //Get the system object from the array. As currently designed, the system object is always the last object
+                JSONArray resultArray = new JSONArray(result);
+                JSONObject sysObject = resultArray.getJSONObject(resultArray.length() - 1);
+
+                //check if the system's current version is below the version where it should be updated with coredata
+                //if it is, update it with coredata
+                int coredataUpdateVersion = sysObject.getInt("coredataupdateversion");
+                int databaseDataVersion = _app.getDatabaseDataVersion();
+                if(coredataUpdateVersion > databaseDataVersion){
+                    delegate.updateFromServerWithCoreData();
+                    return;
+                }
+            } catch (JSONException e) {
+                delegate.errorOccured("Error: Failure when acquiring coredataupdateversion");
+                return;
+            }
         }
 
         delegate.returnFromUpdateFromServer(result);
