@@ -1,5 +1,6 @@
 package dk.redweb.hca2014.ViewControllers.Article.ArticleDetail;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -94,8 +95,13 @@ public class ArticleDetailFragment extends BasePageFragment {
             try {
                 if(_page.hasChild(PAGE.BODYUSESHTML) && _page.getBoolFromNode(PAGE.BODYUSESHTML)) {
                     String htmlString = _xml.css + article.FullTextWithHtml();
+                    if(Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN){
+                        htmlString = "<html><head><style>img {max-width: 100%; width:auto; height: auto;}</style></head><body>"+htmlString+"</body></html>";
+                    }
+                    else {
+                        webBody.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+                    }
                     webBody.loadDataWithBaseURL(_xml.joomlaPath, htmlString, "text/html", "UTF-8", null);
-                    webBody.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
                     txtBody.setVisibility(View.GONE);
                 } else {
                     txtBody.setText(article.FullTextWithoutHtml());

@@ -1,5 +1,6 @@
 package dk.redweb.hca2014.ViewControllers.Article.StaticArticle;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -64,9 +65,15 @@ public class StaticArticleFragment extends BasePageFragment {
         }
 
         WebView body = (WebView)findViewById(R.id.staticArticle_webBody);
-        body.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
-
         String htmlString = _xml.css + article.IntroTextWithHtml();
+
+        if(Build.VERSION.SDK_INT > Build.VERSION_CODES.JELLY_BEAN){
+            htmlString = "<html><head><style>img {max-width: 100%; width:auto; height: auto;}</style></head><body>"+htmlString+"</body></html>";
+        }
+        else {
+            body.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
+        }
+
         body.loadDataWithBaseURL(_xml.joomlaPath, htmlString, "text/html", "UTF-8", null);
 
         setupBackButton();
