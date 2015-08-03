@@ -45,7 +45,11 @@ public class DbPushMessages {
 
         c.moveToFirst();
 
-        return MakePushMessageFromCursor(c);
+        PushMessage pm = MakePushMessageFromCursor(c);
+
+        c.close();
+
+        return pm;
     }
 
     public PushMessageVM getVMFromId(int messageid){
@@ -181,6 +185,8 @@ public class DbPushMessages {
             _sql.insert(DbSchemas.Push.TABLE_NAME, null, values);
             MyLog.v("New pushmessage with id:" + pushMessageId + " written to database");
         }
+
+        c.close();
     }
 
     public void deleteSingleFromJSON(JSONObject jsonObject) throws JSONException {

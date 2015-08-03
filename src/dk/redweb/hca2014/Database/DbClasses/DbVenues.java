@@ -141,6 +141,7 @@ public class DbVenues {
             _sql.insert(DbSchemas.Venue.TABLE_NAME, null, values);
             MyLog.v("New venue with id:" + venueId + " written to database");
         }
+        c.close();
     }
 
     public void deleteSingleFromJSON(JSONObject jsonObject) throws JSONException {

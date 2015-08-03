@@ -203,7 +203,11 @@ public class DbSessions {
 
         c.moveToFirst();
 
-        return MakeSessionFromCursor(c);
+        Session session = MakeSessionFromCursor(c);
+
+        c.close();
+
+        return session;
     }
 
     public SessionVM getVMFromId(int sessionid) {
@@ -222,8 +226,10 @@ public class DbSessions {
         String whereString = dateWhereString + venueWhereString + typeWhereString + searchWhereString;
 
         Cursor c = _sql.query(DbSchemas.Ses.TABLE_NAME, ALL_COLUMNS, whereString, null, null, null, DbSchemas.Ses.STARTDATETIME);
+        boolean dateSessionIsLess = c.getCount() <= 0;
+        c.close();
 
-        return c.getCount() <= 0;
+        return dateSessionIsLess;
     }
 
     public int[] activeVenueIds(){
@@ -236,6 +242,7 @@ public class DbSessions {
             ids[i] = c.getInt(c.getColumnIndexOrThrow(DbSchemas.Ses.VENUE_ID));
             i++;
         }
+        c.close();
         return ids;
     }
 
@@ -281,6 +288,7 @@ public class DbSessions {
             _sql.insert(DbSchemas.Ses.TABLE_NAME, null, values);
             MyLog.v("New session with id:" + sessionId + " written to database");
         }
+        c.close();
     }
 
     public void deleteSingleFromJSON(JSONObject jsonObject) throws JSONException {

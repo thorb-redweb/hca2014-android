@@ -261,6 +261,8 @@ public class DbArticles {
             _sql.insert(DbSchemas.Art.TABLE_NAME, null, values);
             MyLog.v("New article with id:" + articleId + " written to database");
         }
+
+        c.close();
     }
 
     public void deleteSingleFromJSON(JSONObject jsonObject) throws JSONException {

@@ -44,7 +44,11 @@ public class DbEvents {
 
         c.moveToFirst();
 
-        return MakeEventFromCursor(c);
+        Event event = MakeEventFromCursor(c);
+
+        c.close();
+
+        return event;
     }
 
     public void importSingleFromJSON(JSONObject jsonObject) throws JSONException {
@@ -77,6 +81,8 @@ public class DbEvents {
             _sql.insert(DbSchemas.Event.TABLE_NAME, null, values);
             MyLog.v("New event with id:" + eventId + " written to database");
         }
+
+        c.close();
     }
 
     public void deleteSingleFromJSON(JSONObject jsonObject) throws JSONException {

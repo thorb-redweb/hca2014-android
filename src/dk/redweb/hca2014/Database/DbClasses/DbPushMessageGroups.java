@@ -142,6 +142,8 @@ public class DbPushMessageGroups {
             _sql.insert(DbSchemas.PushGroup.TABLE_NAME, null, values);
             MyLog.v("New pushmessagegroup with id:" + groupId + " written to database");
         }
+
+        c.close();
     }
 
     public void deleteSingleFromJSON(JSONObject jsonObject) throws JSONException {
