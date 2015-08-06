@@ -33,32 +33,32 @@ public class SessionVM {
         if (_session.Title.length() != 0){
             return _session.Title;
         } else {
-            return _session.Event().Title;
+            return _session.Event.Title;
         }
     }
 
     public String SummaryWithHtml(){
-        if(_session.Event().Summary.length() != 0){
-            return StringUtils.stripJoomlaTags(_session.Event().Summary);
+        if(_session.Event.Summary.length() != 0){
+            return StringUtils.stripJoomlaTags(_session.Event.Summary);
         } else {
-            return StringUtils.stripJoomlaTags(_session.Event().Details);
+            return StringUtils.stripJoomlaTags(_session.Event.Details);
         }
     }
 
     public String SummaryWithoutHtml(){
-        if(_session.Event().Summary.length() != 0) {
-            return StringUtils.stripHtmlAndJoomla(_session.Event().Summary);
+        if(_session.Event.Summary.length() != 0) {
+            return StringUtils.stripHtmlAndJoomla(_session.Event.Summary);
         } else {
-            return StringUtils.stripHtmlAndJoomla(_session.Event().Details);
+            return StringUtils.stripHtmlAndJoomla(_session.Event.Details);
         }
     }
 
     public String DetailsWithHtml(){
-        return StringUtils.stripJoomlaTags(_session.Event().Details + "<br/>" + _session.Details);
+        return StringUtils.stripJoomlaTags(_session.Event.Details + "<br/>" + _session.Details);
     }
 
     public String DetailsWithoutHtml(){
-        return StringUtils.stripHtmlAndJoomla(_session.Event().Details + "<br/>" + _session.Details);
+        return StringUtils.stripHtmlAndJoomla(_session.Event.Details + "<br/>" + _session.Details);
     }
 
     public LocalDate StartDate(){
@@ -138,7 +138,7 @@ public class SessionVM {
     public String SubmissionPath()
     {
         if(_session.Submission == null || _session.Submission.equals("")) {
-            return _session.Event().Submission;
+            return _session.Event.Submission;
         }
         else {
             return _session.Submission;
@@ -146,19 +146,22 @@ public class SessionVM {
     }
 
     public String ImagePath(){
-        return _session.Event().Imagepath;
+        return _session.Event.Imagepath;
     }
 
     public String Venue(){
-        return _session.Venue().Title;
+        if(_session.Venue == null){
+            return "Test";
+        }
+        return _session.Venue.Title;
     }
 
     public Double Latitude(){
-        return _session.Venue().Latitude;
+        return _session.Venue.Latitude;
     }
 
     public Double Longitude(){
-        return _session.Venue().Longitude;
+        return _session.Venue.Longitude;
     }
 
     public LatLng Location(){
@@ -170,6 +173,11 @@ public class SessionVM {
     }
 
     public int TypeColor(){
+        //Catch null
+        if(_session.Type == null){
+            return Color.parseColor("#000000");
+        }
+
         if (_session.Type.matches("Kulturformidling")){
             return Color.argb(255,31,98,181);
         }
@@ -195,6 +203,11 @@ public class SessionVM {
     }
 
     public int TypeImage(){
+//        //Catch null
+//        if(_session.Type == null){
+//            return R.drawable.default_icon;
+//        }
+
         if (_session.Type.matches("Kulturformidling")){
             return R.drawable.culture;
         }
@@ -227,7 +240,7 @@ public class SessionVM {
         DateTimeFormatter dateFormatter = DateTimeFormat.forPattern("yyyy-MM-dd").withLocale(locale);
         DateTimeFormatter timeFormatter = DateTimeFormat.forPattern("HH-mm").withLocale(locale);
         return "www.hcafestivals.dk/da/details/" + _session.SessionId + "-" + _session.Title.replace(" ","-") +
-                "/" + _session.Venue().City.replace(" ","-") +
+                "/" + _session.Venue.City.replace(" ","-") +
                 "/" + _session.StartDate.toString(dateFormatter) + "/" + _session.StartTime.toString(timeFormatter);
     }
 }

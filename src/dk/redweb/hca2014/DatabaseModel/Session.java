@@ -24,40 +24,10 @@ public class Session {
     public LocalDate EndDate;
     public LocalTime EndTime;
     public String Type;
+    public Event Event;
+    public Venue Venue;
 
-    private Event _event;
-    private boolean _eventLazyloaded;
-
-    public Event Event(){
-        if(_eventLazyloaded){
-            _event = Idb.GetLazyLoadedObject(EventId,Event.class,this.getClass());
-            _eventLazyloaded = false;
-        }
-        return _event;
-    }
-    public void setEvent(Event event){
-        _event = event;
-        _eventLazyloaded = false;
-    }
-
-    private Venue _venue;
-    private boolean _venueLazyloaded;
-    public Venue Venue(){
-        if(_venueLazyloaded){
-            _venue = Idb.GetLazyLoadedObject(VenueId,Venue.class,this.getClass());
-            _venueLazyloaded = false;
-        }
-        return _venue;
-    }
-    public void setVenue(Venue venue){
-        _venue = venue;
-        _venueLazyloaded = false;
-    }
-
-    public Session(IDbInterface idb){
-        Idb = idb;
-        _eventLazyloaded = true;
-        _venueLazyloaded = true;
+    public Session(){
         EventId = -1;
         SessionId = -1;
         VenueId = -1;

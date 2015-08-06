@@ -62,6 +62,9 @@ public class DbMapMarkers {
         int i = 0;
         while(c.moveToNext()){
             Session session = _db.Sessions.MakeSessionFromCursor(c);
+            if(session == null){
+                continue;
+            }
             SessionVM sessionVM = new SessionVM(session);
 
             if(sessionVM.Latitude() == null || sessionVM.Longitude() == null){

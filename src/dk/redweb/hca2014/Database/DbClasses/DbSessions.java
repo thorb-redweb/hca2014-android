@@ -8,6 +8,7 @@ import dk.redweb.hca2014.Database.Converters;
 import dk.redweb.hca2014.Database.DbInterface;
 import dk.redweb.hca2014.Database.DbSchemas;
 import dk.redweb.hca2014.Database.JsonSchemas;
+import dk.redweb.hca2014.DatabaseModel.Event;
 import dk.redweb.hca2014.DatabaseModel.Session;
 import dk.redweb.hca2014.MyLog;
 import dk.redweb.hca2014.Network.ServerInterface;
@@ -54,7 +55,11 @@ public class DbSessions {
 
         int i = 0;
         while(c.moveToNext()){
-            sessions[i] = new SessionVM(MakeSessionFromCursor(c));
+            Session session = MakeSessionFromCursor(c);
+            if(session == null){
+                continue;
+            }
+            sessions[i] = new SessionVM(session);
             i++;
         }
 
@@ -74,7 +79,11 @@ public class DbSessions {
         int i = 0;
         while(c.moveToNext())
         {
-            sessions[i] = new SessionVM(MakeSessionFromCursor(c));
+            Session session = MakeSessionFromCursor(c);
+            if(session == null){
+                continue;
+            }
+            sessions[i] = new SessionVM(session);
             i++;
         }
 
@@ -106,7 +115,11 @@ public class DbSessions {
 
         while(c.moveToNext())
         {
-            sessions.add(new SessionVM(MakeSessionFromCursor(c)));
+            Session session = MakeSessionFromCursor(c);
+            if(session == null){
+                continue;
+            }
+            sessions.add(new SessionVM(session));
         }
 
         if(c.getCount() == 0)
@@ -188,7 +201,11 @@ public class DbSessions {
 
         while(c.moveToNext())
         {
-            sessions.add(new SessionVM(MakeSessionFromCursor(c)));
+            Session session = MakeSessionFromCursor(c);
+            if(session == null){
+                continue;
+            }
+            sessions.add(new SessionVM(session));
         }
 
         c.close();
@@ -298,7 +315,7 @@ public class DbSessions {
 
     public Session MakeSessionFromCursor(Cursor c)
     {
-        Session newSession = new Session(_db);
+        Session newSession = new Session();
         try{
             newSession.SessionId =  c.getInt(c.getColumnIndexOrThrow(DbSchemas.Ses.SESSION_ID));
             newSession.EventId = c.getInt(c.getColumnIndexOrThrow(DbSchemas.Ses.EVENT_ID));
@@ -324,10 +341,20 @@ public class DbSessions {
             newSession.EndTime = Converters.SQLTimeToLocalTime(endTime);
 
             newSession.Type = c.getString(c.getColumnIndexOrThrow(DbSchemas.Ses.EVENTTYPE));
+
+            newSession.Event = _db.Events.getFromId(newSession.EventId);
+            if(newSession.Event == null){
+                return null;
+            }
+            newSession.Venue = _db.Venues.getFromId(newSession.VenueId);
+            if(newSession.Venue == null){
+                return null;
+            }
         }
         catch (Exception e)
         {
             MyLog.e("Error", e);
+            return null;
         }
         return newSession;
     }
