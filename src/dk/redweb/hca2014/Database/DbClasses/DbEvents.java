@@ -42,10 +42,12 @@ public class DbEvents {
 
         Cursor c = _sql.query(DbSchemas.Event.TABLE_NAME, ALL_COLUMNS, whereString, null, null, null, null, "1");
 
+        if(c.getCount() == 0){
+            return null;
+        }
+
         c.moveToFirst();
-
         Event event = MakeEventFromCursor(c);
-
         c.close();
 
         return event;
