@@ -128,17 +128,21 @@ public class SplashActivity extends Activity implements Delegate_dumpServer, Del
     @Override
     public void returnFromUpdateToDatabase() {
         _app.setLastDatabaseUpdate(DateTime.now());
+        _progressDialog.dismiss();
+
+        delayedLaunchOfFrontPage();
+    }
+
+    private void delayedLaunchOfFrontPage(){
         _screen.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (_timer != null){
+                if (_timer != null) {
                     _timer.cancel();
                 }
                 launchFrontPage();
             }
         });
-
-        _progressDialog.dismiss();
 
         int time;
         if(_shortload)
@@ -176,6 +180,18 @@ public class SplashActivity extends Activity implements Delegate_dumpServer, Del
 
     @Override
     public void errorOccured(String errorMessage) {
+        //Check if the problem is missing internet connection. If so give the user the option to continue
+        if(errorMessage.equals("Error: Failure when acquiring coredataupdateversion")){
+            AlertDialog alertDialog = new AlertDialog.Builder(SplashActivity.this).create();
+            alertDialog.setTitle("Manglende Internet");
+            alertDialog.setMessage("H.C. Andersen Festivals 2015 kunne ikke forbinde til internettet. Du vil ikke få opdateringer hvis forestillinger, events, m.m. bliver opdateret.");
+            alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Prøv Igen", tryAgainOnClickListener());
+            alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Ok", continueOnClickListener());
+            alertDialog.show();
+
+            return;
+        }
+
         //Alleviate the possibility that last databaseupdate was set before the error occured
         _app.setLastDatabaseUpdate(DateTime.now().minusMinutes(6));
 
@@ -187,6 +203,17 @@ public class SplashActivity extends Activity implements Delegate_dumpServer, Del
         alertDialog.setButton(DialogInterface.BUTTON_POSITIVE, "Prøv Igen", tryAgainOnClickListener());
         alertDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Afslut App", closeAppOnClickListener());
         alertDialog.show();
+    }
+
+    public DialogInterface.OnClickListener continueOnClickListener(){
+        return new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+                _progressDialog.dismiss();
+                delayedLaunchOfFrontPage();
+            }
+        };
     }
 
     public DialogInterface.OnClickListener tryAgainOnClickListener(){
