@@ -78,6 +78,7 @@ public class SessionDetailFragment extends BasePageFragment {
         TextView txtVenue = (TextView)findViewById(R.id.sessionDetail_lblVenueValue);
         TextView txtTime = (TextView)findViewById(R.id.sessionDetail_lblTimeValue);
         TextView txtDate = (TextView)findViewById(R.id.sessionDetail_lblDateValue);
+        TextView txtPrice = (TextView)findViewById(R.id.sessionDetail_lblPriceValue);
         RelativeLayout rltMapButton = (RelativeLayout)findViewById(R.id.sessionDetail_rltMapButton);
         RelativeLayout rltTicketButton = (RelativeLayout)findViewById(R.id.sessionDetail_rltTicketButton);
         LinearLayout lnrCalendarButton = (LinearLayout)findViewById(R.id.sessionDetail_lnrButtonCalendar);
@@ -90,6 +91,7 @@ public class SessionDetailFragment extends BasePageFragment {
         txtDate.setText(_session.StartDateWithPattern("EEEE' d. 'dd MMM"));
         txtTime.setText(_session.StartTimeAsString() + "-" +_session.EndTimeAsString());
         txtVenue.setText(_session.Venue());
+        txtPrice.setText(_session.PriceLines());
 
         _net.fetchImageOnThread(_session.ImagePath(), imgView);
 
@@ -191,7 +193,8 @@ public class SessionDetailFragment extends BasePageFragment {
             TextView txtDateLabel = (TextView)findViewById(R.id.sessionDetail_lblDateLabel);
             TextView txtVenueLabel = (TextView)findViewById(R.id.sessionDetail_lblVenueLabel);
             TextView txtTimeLabel = (TextView)findViewById(R.id.sessionDetail_lblTimeLabel);
-            TextView[] txtLabels = new TextView[]{txtTypeLabel, txtDateLabel,txtVenueLabel,txtTimeLabel};
+            TextView txtPriceLabel = (TextView)findViewById(R.id.sessionDetail_lblPriceLabel);
+            TextView[] txtLabels = new TextView[]{txtTypeLabel, txtDateLabel,txtVenueLabel,txtTimeLabel, txtPriceLabel};
             helper.TextView.setColor(txtLabels, LOOK.SESSIONDETAIL_LABELCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
             helper.TextView.setSize(txtLabels, LOOK.SESSIONDETAIL_LABELSIZE, LOOK.GLOBAL_ITEMTITLESIZE);
             helper.TextView.setStyle(txtLabels, LOOK.SESSIONDETAIL_LABELSTYLE, LOOK.GLOBAL_ITEMTITLESTYLE);
@@ -202,7 +205,8 @@ public class SessionDetailFragment extends BasePageFragment {
             TextView txtDateValue = (TextView)findViewById(R.id.sessionDetail_lblDateValue);
             TextView txtVenueValue = (TextView)findViewById(R.id.sessionDetail_lblVenueValue);
             TextView txtTimeValue = (TextView)findViewById(R.id.sessionDetail_lblTimeValue);
-            TextView[] txtValues = new TextView[]{txtTypeValue,txtDateValue,txtVenueValue,txtTimeValue};
+            TextView txtPriceValue = (TextView)findViewById(R.id.sessionDetail_lblPriceValue);
+            TextView[] txtValues = new TextView[]{txtTypeValue,txtDateValue,txtVenueValue,txtTimeValue, txtPriceValue};
             helper.TextView.setColor(txtValues, LOOK.SESSIONDETAIL_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
             helper.TextView.setSize(txtValues, LOOK.SESSIONDETAIL_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
             for(TextView textView : txtValues){
@@ -257,6 +261,7 @@ public class SessionDetailFragment extends BasePageFragment {
             helper.setText(R.id.sessionDetail_lblDateLabel, TEXT.SESSIONDETAIL_DATE, DEFAULTTEXT.SESSIONDETAIL_DATE);
             helper.setText(R.id.sessionDetail_lblVenueLabel, TEXT.SESSIONDETAIL_PLACE, DEFAULTTEXT.SESSIONDETAIL_PLACE);
             helper.setText(R.id.sessionDetail_lblTimeLabel, TEXT.SESSIONDETAIL_TIME, DEFAULTTEXT.SESSIONDETAIL_TIME);
+            helper.setText(R.id.sessionDetail_lblPriceLabel, TEXT.SESSIONDETAIL_PRICE, DEFAULTTEXT.SESSIONDETAIL_PRICE);
             helper.setText(R.id.sessionDetail_lblButtonMap, TEXT.SESSIONDETAIL_MAPBUTTON, DEFAULTTEXT.SESSIONDETAIL_MAPBUTTON);
 
             helper.setFlexibleButtonText(R.id.flxBackButton, TEXT.BACKBUTTON, DEFAULTTEXT.BACKBUTTON);

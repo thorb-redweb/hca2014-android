@@ -3,6 +3,7 @@ package dk.redweb.hca2014.DatabaseModel;
 import dk.redweb.hca2014.Interfaces.IDbInterface;
 import org.joda.time.LocalDate;
 import org.joda.time.LocalTime;
+import org.json.JSONArray;
 
 
 /**
@@ -24,6 +25,7 @@ public class Session {
     public LocalDate EndDate;
     public LocalTime EndTime;
     public String Type;
+    public JSONArray Prices;
     public Event Event;
     public Venue Venue;
 

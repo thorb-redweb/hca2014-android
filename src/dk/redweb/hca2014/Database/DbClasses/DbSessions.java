@@ -17,6 +17,7 @@ import dk.redweb.hca2014.ViewModels.SessionVM;
 import dk.redweb.hca2014.XmlHandling.XmlStore;
 import org.joda.time.DateTime;
 import org.joda.time.LocalDate;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -36,7 +37,7 @@ public class DbSessions {
 
     private final String[] ALL_COLUMNS = {DbSchemas.Ses.SESSION_ID, DbSchemas.Ses.EVENT_ID, DbSchemas.Ses.VENUE_ID,
             DbSchemas.Ses.TITLE, DbSchemas.Ses.DETAILS, DbSchemas.Ses.SUBMISSION, DbSchemas.Ses.STARTDATETIME,
-            DbSchemas.Ses.ENDDATETIME, DbSchemas.Ses.EVENTTYPE};
+            DbSchemas.Ses.ENDDATETIME, DbSchemas.Ses.EVENTTYPE, DbSchemas.Ses.PRICES};
     private final String SESSIONORDERSTRING = DbSchemas.Ses.STARTDATETIME + " ASC, " + DbSchemas.Ses.TITLE + " ASC, " + DbSchemas.Ses.ENDDATETIME + " ASC";
 
     public DbSessions(RedEventApplication app, SQLiteDatabase sql, DbInterface db, ServerInterface sv, XmlStore xml){
@@ -289,7 +290,11 @@ public class DbSessions {
         String endDateTime = endDate + " " + endTime;
         values.put(DbSchemas.Ses.ENDDATETIME, endDateTime);
         values.put(DbSchemas.Ses.EVENTTYPE, jsonObject.getString(JsonSchemas.Ses.EVENTTYPE));
-
+        String priceString = "[]";
+        if(jsonObject.has(JsonSchemas.Ses.PRICES)) {
+            priceString = jsonObject.getString(JsonSchemas.Ses.PRICES);
+        }
+        values.put(DbSchemas.Ses.PRICES, priceString);
 
         String sesExistsQuery = "SELECT EXISTS(SELECT 1 FROM " + DbSchemas.Ses.TABLE_NAME +
                 " WHERE " + DbSchemas.Ses.SESSION_ID + " = " + sessionId + " LIMIT 1)";
@@ -341,6 +346,14 @@ public class DbSessions {
             newSession.EndTime = Converters.SQLTimeToLocalTime(endTime);
 
             newSession.Type = c.getString(c.getColumnIndexOrThrow(DbSchemas.Ses.EVENTTYPE));
+
+            try {
+                newSession.Prices = new JSONArray(c.getString(c.getColumnIndexOrThrow(DbSchemas.Ses.PRICES)));
+            }
+            catch (JSONException e){
+                MyLog.e("Could not convert database value to price JSONArray");
+                newSession.Prices = new JSONArray();
+            }
 
             newSession.Event = _db.Events.getFromId(newSession.EventId);
             if(newSession.Event == null){

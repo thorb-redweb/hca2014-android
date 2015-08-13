@@ -112,6 +112,26 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <!-- Price -->
+            <LinearLayout
+                    style="@style/Layout.Wrap"
+                    android:orientation="horizontal">
+                <LinearLayout
+                        style="@style/Layout.Wrap"
+                        android:layout_width="0dp"
+                        android:layout_weight=".4">
+                    <TextView android:id="@+id/sessionDetail_lblPriceLabel"
+                              style="@style/Layout.Wrap.Complete"/>
+                </LinearLayout>
+                <LinearLayout
+                        style="@style/Layout.Wrap"
+                        android:layout_width="0dp"
+                        android:layout_weight=".6">
+                    <TextView android:id="@+id/sessionDetail_lblPriceValue"
+                              style="@style/Layout.Wrap.Complete"/>
+                </LinearLayout>
+            </LinearLayout>
+
             <!--Map Button-->
             <RelativeLayout android:id="@+id/sessionDetail_rltMapButton"
                             style="@style/Layout.Wrap"

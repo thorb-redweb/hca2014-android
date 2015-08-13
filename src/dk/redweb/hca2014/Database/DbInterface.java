@@ -30,7 +30,7 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
     ServerInterface _sv;
     XmlStore _xml;
 
-    public static final int DATABASE_VERSION = 3;
+    public static final int DATABASE_VERSION = 5;
     public static final String DATABASE_NAME = "RedApp.db";
 
     public final DbArticles Articles;
@@ -84,7 +84,8 @@ public class DbInterface extends SQLiteOpenHelper implements IDbInterface {
             DbSchemas.Ses.EVENTTYPE + " TEXT, " +
             DbSchemas.Ses.SUBMISSION + " TEXT, " +
             DbSchemas.Ses.STARTDATETIME + " TEXT, " +
-            DbSchemas.Ses.ENDDATETIME + " TEXT)";
+            DbSchemas.Ses.ENDDATETIME + " TEXT, " +
+            DbSchemas.Ses.PRICES + " TEXT)";
     private static final String SQL_CREATE_VENUE_TABLE = "CREATE TABLE " + DbSchemas.Venue.TABLE_NAME +
             " (" + DbSchemas.Venue._ID + " INTEGER PRIMARY KEY," +
             DbSchemas.Venue.VENUE_ID + " INTEGER, " +

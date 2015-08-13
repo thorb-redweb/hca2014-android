@@ -80,6 +80,7 @@ public class TEXT {
     public final static String SESSIONDETAIL_DATE = "date";
     public final static String SESSIONDETAIL_PLACE = "place";
     public final static String SESSIONDETAIL_TIME = "time";
+    public final static String SESSIONDETAIL_PRICE = "price";
     public final static String SESSIONDETAIL_MAPBUTTON = "mapbutton";
 
     public final static String UPCOMINGSESSIONS_TITLE = "title";

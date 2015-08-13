@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import com.google.android.gms.maps.model.LatLng;
 import dk.redweb.hca2014.DatabaseModel.Session;
+import dk.redweb.hca2014.MyLog;
 import dk.redweb.hca2014.R;
 import dk.redweb.hca2014.StringUtils;
 import org.joda.time.LocalDate;
@@ -11,6 +12,8 @@ import org.joda.time.LocalDateTime;
 import org.joda.time.LocalTime;
 import org.joda.time.format.DateTimeFormat;
 import org.joda.time.format.DateTimeFormatter;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -242,5 +245,25 @@ public class SessionVM {
         return "www.hcafestivals.dk/da/details/" + _session.SessionId + "-" + _session.Title.replace(" ","-") +
                 "/" + _session.Venue.City.replace(" ","-") +
                 "/" + _session.StartDate.toString(dateFormatter) + "/" + _session.StartTime.toString(timeFormatter);
+    }
+
+    public String PriceLines() {
+        if(_session.Prices.length() == 0){
+            return "Gratis";
+        }
+        String priceLines = "";
+        for(int i = 0; i < _session.Prices.length(); i++){
+            try {
+                JSONObject object = _session.Prices.getJSONObject(i);
+                priceLines += object.getString("pricetype") + " " +  object.getString("price");
+            } catch (JSONException e) {
+                MyLog.e("Exception when attempting to get JSONObject priceline object from session JSONArray ", e);
+                return "Gratis";
+            }
+            if(i != _session.Prices.length() - 1){ //Don't put newline on the last line
+                priceLines += "\n";
+            }
+        }
+        return priceLines;
     }
 }

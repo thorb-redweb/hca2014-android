@@ -63,6 +63,7 @@ public class JsonSchemas {
         public static final String ITEMTYPE = "itemtype";
         public static final String ACTIONTYPE = "actiontype";
         public static final String EVENTTYPE = "eventtype";
+        public static final String PRICES = "prices";
     }
 
     public static abstract class Venue {

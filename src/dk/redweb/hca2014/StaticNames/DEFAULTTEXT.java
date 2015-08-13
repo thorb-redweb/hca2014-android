@@ -68,6 +68,7 @@ public class DEFAULTTEXT {
     public final static String SESSIONDETAIL_DATE = "Dato";
     public final static String SESSIONDETAIL_PLACE = "Sted";
     public final static String SESSIONDETAIL_TIME = "Tidspunkt";
+    public final static String SESSIONDETAIL_PRICE = "Pris";
     public final static String SESSIONDETAIL_MAPBUTTON = "Find vej på kort";
 
     public final static String UPCOMINGSESSIONS_TITLE = "Næste Begivenheder";
