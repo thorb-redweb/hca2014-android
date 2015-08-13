@@ -72,6 +72,10 @@ public class SessionMapFragment extends BaseMapFragment {
             _imgDriving = (ImageView)findViewById(R.id.imgDriving);
             _imgBiking = (ImageView)findViewById(R.id.imgBiking);
             _imgWalking = (ImageView)findViewById(R.id.imgWalking);
+
+            _imgDriving.setVisibility(View.VISIBLE);
+            _imgBiking.setVisibility(View.VISIBLE);
+            _imgWalking.setVisibility(View.VISIBLE);
         } catch (Exception e) {
             MyLog.e("Exception in SessionMapActivity.onCreate", e);
 
