@@ -23,7 +23,12 @@
                 android:layout_weight=".3"
                 android:gravity="center">
             <TextView android:id="@+id/imageArticleListItem_lblBody"
-                      style="@style/Layout.Wrap"/>
+                      style="@style/Layout.Wrap"
+                    android:layout_above="@+id/imageArticleListItem_lblPublished"/>
+            <TextView android:id="@+id/imageArticleListItem_lblPublished"
+                      style="@style/Layout.Wrap"
+                      android:lines="1"
+                    android:layout_alignParentBottom="true"/>
         </RelativeLayout>
     </LinearLayout>
 

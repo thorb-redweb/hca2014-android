@@ -8,6 +8,7 @@
         <alttextcolor>#ffffff</alttextcolor>
         <textsize>16.0</textsize>
         <textstyle>normal</textstyle>
+        <smalltextsize>12.0</smalltextsize>
         <titlesize>22.0</titlesize>
         <titlestyle>bold</titlestyle>
         <itemtitlesize>18.0</itemtitlesize>

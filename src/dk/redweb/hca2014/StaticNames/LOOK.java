@@ -94,6 +94,7 @@ public class LOOK {
     public static final String GLOBAL_ITEMTITLESTYLE = "itemtitlestyle";
     public static final String GLOBAL_TEXTSHADOWOFFSET = "textshadowoffset";
     public static final String GLOBAL_TEXTSIZE = "textsize";
+    public static final String GLOBAL_SMALLTEXTSIZE = "smalltextsize";
     public static final String GLOBAL_TEXTSTYLE = "textstyle";
     public static final String GLOBAL_TITLESHADOWOFFSET = "titleshadowoffset";
     public static final String GLOBAL_TITLESIZE = "titlesize";
@@ -282,6 +283,7 @@ public class LOOK {
     public static final String IMAGEARTICLELIST_TEXTSHADOWOFFSET = "textshadowoffset";
     public static final String IMAGEARTICLELIST_TEXTSIZE = "textsize";
     public static final String IMAGEARTICLELIST_TEXTSTYLE = "textstyle";
+    public static final String IMAGEARTICLELIST_SMALLTEXTSIZE = "smalltextsize";
 
     //NewsTicker
     public static final String NEWSTICKER_BACKGROUNDCOLOR = "backgroundcolor";

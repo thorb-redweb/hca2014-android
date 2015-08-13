@@ -50,11 +50,13 @@ public class ImageArticleListAdapter extends ArrayAdapter<ArticleVM> {
 
         TextView txtTitle = (TextView)rowView.findViewById(R.id.imageArticleListItem_lblTitle);
         TextView txtBody = (TextView)rowView.findViewById(R.id.imageArticleListItem_lblBody);
+        TextView txtPublished = (TextView)rowView.findViewById(R.id.imageArticleListItem_lblPublished);
         ImageView imgView = (ImageView)rowView.findViewById(R.id.imageArticleListItem_img);
 
         ArticleVM article = _values[position];
         txtTitle.setText(article.Title());
         txtBody.setText(article.IntroTextWithoutHtml());
+        txtPublished.setText(article.PublishDateWithPattern("dd. MMMM yyyy"));
         _net.fetchImageOnThread(article.IntroImagePath(), imgView);
 
         return rowView;
@@ -82,6 +84,13 @@ public class ImageArticleListAdapter extends ArrayAdapter<ArticleVM> {
             helper.TextView.setSize(txtBody, LOOK.IMAGEARTICLELIST_TEXTSIZE, LOOK.GLOBAL_TEXTSIZE);
             helper.TextView.setStyle(txtBody, LOOK.IMAGEARTICLELIST_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
             helper.TextView.setShadow(txtBody, LOOK.IMAGEARTICLELIST_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
+                    LOOK.IMAGEARTICLELIST_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
+
+            TextView txtPublished = (TextView)lineitem.findViewById(R.id.imageArticleListItem_lblPublished);
+            helper.TextView.setColor(txtPublished, LOOK.IMAGEARTICLELIST_TEXTCOLOR, LOOK.GLOBAL_BACKTEXTCOLOR);
+            helper.TextView.setSize(txtPublished, LOOK.IMAGEARTICLELIST_SMALLTEXTSIZE, LOOK.GLOBAL_SMALLTEXTSIZE);
+            helper.TextView.setStyle(txtPublished, LOOK.IMAGEARTICLELIST_TEXTSTYLE, LOOK.GLOBAL_TEXTSTYLE);
+            helper.TextView.setShadow(txtPublished, LOOK.IMAGEARTICLELIST_TEXTSHADOWCOLOR, LOOK.GLOBAL_BACKTEXTSHADOWCOLOR,
                     LOOK.IMAGEARTICLELIST_TEXTSHADOWOFFSET, LOOK.GLOBAL_TEXTSHADOWOFFSET);
 
         } catch (Exception e) {
